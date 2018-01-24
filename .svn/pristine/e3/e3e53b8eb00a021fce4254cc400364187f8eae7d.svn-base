@@ -1,0 +1,51 @@
+body{
+    background: #f4f5f7;
+}
+.am-header{
+    background: #313036;
+}
+section{
+    margin-top: 15px;
+}
+section .am-form div input{
+    height: 50px;
+    text-align: right;
+    position: relative;
+    color: #9da397;
+    border: none!important;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    font-size:14px;
+}
+section .am-form div label{
+    position: absolute;
+    font-size: 16px;
+    top: 12px;
+    left: 23px;
+    z-index: 999;
+}
+section .am-form div .btn1{
+    position: absolute;
+    top:10px;
+    right: 19px;
+    z-index: 999;
+    height: 30px;
+    width:76px;
+    font-size: 12px;
+    border:none;
+    border-radius: 5px;
+    background: #2adcaa;
+    color: white;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    font-size:16px;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    font-size:16px;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    font-size:16px;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    font-size:16px;
+}

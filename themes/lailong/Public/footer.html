@@ -1,0 +1,37 @@
+<br>
+<br>
+<br>
+<!-- Footer ================================================== -->
+<hr>
+{:hook('footer')}
+<div id="footer">
+<!--预加载 -->
+  <div class="myloading am-text-center" style="line-height:34px; width:100px;height:70px;background-color:rgba(0,0,0,0.3); position:fixed;top:35%;left:35%;z-index:9999; display:none;">
+              <span style="font-size:20px;" class="am-icon-spinner am-icon-pulse"></span></br>
+                加载中...
+  </div>
+<div data-am-widget="navbar"class="am-navbar am-cf am-navbar-default " id="">
+			<ul class="am-navbar-nav am-cf am-avg-sm-4"
+				style="background: #fbfbfb;">
+				<li><a href="{:U('Course/course')}"> <img class="show"
+						src="__TMPL__Public/images/course1.png" alt="课程" /> <img
+						style="display: none" class="hide"
+						src="__TMPL__Public/images/coursed.png" alt="课程" /> <span
+						class="am-navbar-label" style="color: #bfc6d1;">课程</span>
+				</a></li>
+				<li><a href="{:U('Mine/server')}"> <img class="show1"
+						src="__TMPL__Public/images/server.png" alt="管家服务" /> <img
+						style="display: none" class="hide1"
+						src="__TMPL__Public/images/servered.png" alt="管家服务" /> <span
+						class="am-navbar-label txt1" style="color: #bfc6d1;">管家服务</span>
+				</a></li>
+				<li><a href="{:U('Mine/my')}"> <img class="show2"
+						src="__TMPL__Public/images/my.png" alt="我的" /> <img
+						style="display: none" class="hide2"
+						src="__TMPL__Public/images/myd.png" alt="我的" /> <span
+						class="am-navbar-label txt2" style="color: #bfc6d1;">我的</span>
+				</a></li>
+			</ul>
+		</div>
+</div>
+{$site_tongji}

@@ -1,0 +1,102 @@
+<?php
+namespace Lailonginterface\Controller;
+use Lailonginterface\Controller\PublicController;
+
+class GetprojectlistController  extends PublicController {
+    /**
+     * 获取科目列表
+     */
+    public function index()
+    {
+       $token=$_REQUEST['token'];
+       //当前页数2
+       $pagefrist=$_REQUEST['pagefrist'];
+       //每页条数10
+       $pagelast=$_REQUEST['pagelast'];
+       $this->checkAccess($token);
+       $m=M('subject')->limit(($pagefrist-1)*$pagelast.','.($pagefrist-1)*$pagelast+$pagelast)->select();
+       if($m){
+           $this->successResult($m);
+       }else{
+           $this->errorResult("暂无数据");
+       }
+    }
+    /**
+     * 获取教科书
+     */
+    public function getbook(){
+        $token=$_REQUEST['token'];
+        $this->checkAccess($token);
+        $tb=M('textbook')->select();
+        if($tb){
+            $this->successResult($tb);
+        }else{
+            $this->errorResult("暂无数据");
+        }
+    }
+    /**
+     * 获取章节
+     */
+    public function getchapter(){
+        $token=$_REQUEST['token'];
+        $this->checkAccess($token);
+        $tb=M('chapter')->select();
+        if($tb){
+            $this->successResult($tb);
+        }else{
+            $this->errorResult("暂无数据");
+        }
+    }
+    /**
+     * 获取题型
+     */
+    public function getquestion_type(){
+        $token=$_REQUEST['token'];
+        $this->checkAccess($token);
+        $tb=M('question_type')->select();
+        if($tb){
+            $this->successResult($tb);
+        }else{
+            $this->errorResult("暂无数据");
+        }
+    }
+    /**
+     * 获取难度
+     */
+    public function getquestion_difficulty(){
+        $token=$_REQUEST['token'];
+        $this->checkAccess($token);
+        $tb=M('question_difficulty')->select();
+        if($tb){
+            $this->successResult($tb);
+        }else{
+            $this->errorResult("暂无数据");
+        }
+    }
+    /**
+     * 获取题集
+     */
+    public function getopic_set(){
+        $token=$_REQUEST['token'];
+        $this->checkAccess($token);
+        $tb=M('topic_set')->select();
+        if($tb){
+            $this->successResult($tb);
+        }else{
+            $this->errorResult("暂无数据");
+        }
+    }
+    /**
+     * 获取老师列表
+     */
+    public function geteacher(){
+        $token=$_REQUEST['token'];
+        $this->checkAccess($token);
+        $tb=M('teacher')->select();
+        if($tb){
+            $this->successResult($tb);
+        }else{
+            $this->errorResult("暂无数据");
+        }
+    }
+}

@@ -1,0 +1,7 @@
+<?php
+define ( "URL1", "https://t2s.refineit.cn/wxoauth_21g/index.php?g=weixin&m=oauthfw&a=index&url=" );//鉴权页面路径
+define('SITE_URLS',"https://t2s.refineit.cn");//项目URL
+define('CODE_LAST_TIME',"15");//验证码过期时间单位(分钟)
+define("PROJECTNAME", "lailong");
+define("ROOT", $_SERVER['DOCUMENT_ROOT'].'/'.PROJECTNAME);//文件传入时需要的根目录
+define("AVATAR_ROOT", SITE_URLS.'/'.PROJECTNAME);//文件传入时需要的根目录>>>>>>> .r560

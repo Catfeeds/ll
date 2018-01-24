@@ -1,0 +1,146 @@
+[ 2017-06-27T13:36:43+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=addchild_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.027738s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.092019s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.124957s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0232s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `lailong_child` (`name`,`nickname`,`avatar`,`birthday`,`gender`,`school`,`grade`,`vip_state`) VALUES ('1','2','14985414015951ed596887c.jpg','2017-06-12','1','123','222','2') [ RunTime:0.0024s ]
+
+[ 2017-06-27T13:39:39+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=addchild_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.034649s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.101895s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.143326s ]
+
+[ 2017-06-27T14:04:21+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=addchild_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.035262s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.111348s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.153527s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0207s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `lailong_child` (`name`,`nickname`,`avatar`,`birthday`,`gender`,`school`,`grade`,`vip_state`) VALUES ('1','2','14985414015951ed596887c.jpg','2017-06-12','1','123','222','2') [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `lailong_member` [ RunTime:0.0117s ]
+SQL: INSERT INTO `lailong_member` (`child_id`,`user_id`,`createtime`) VALUES ('13','3213123','2017-06-27 14:04:21') [ RunTime:0.0009s ]
+
+[ 2017-06-27T14:06:47+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=addchild_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.023057s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.060033s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.087100s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0180s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `lailong_child` (`name`,`nickname`,`avatar`,`birthday`,`gender`,`school`,`grade`,`vip_state`) VALUES ('213','213','14985414015951ed596887c.jpg','2017-06-12','0','21','23','0') [ RunTime:0.0006s ]
+
+[ 2017-06-27T14:07:12+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=addchild_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.027640s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.100349s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.136248s ]
+
+[ 2017-06-27T14:11:00+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=addchild_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.026060s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.085386s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.115985s ]
+
+[ 2017-06-27T14:11:40+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=addchild_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.022148s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.076759s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.102895s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0215s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `lailong_child` (`name`,`nickname`,`avatar`,`birthday`,`gender`,`school`,`grade`,`vip_state`) VALUES ('213','231','14985438945951f7164d66c.jpg','2017-06-29','1','132','31','1') [ RunTime:0.0007s ]
+
+[ 2017-06-27T14:12:22+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=addchild_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.035896s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.071964s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.117425s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0213s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `lailong_child` (`name`,`nickname`,`avatar`,`birthday`,`gender`,`school`,`grade`,`vip_state`) VALUES ('41','124','14985439205951f73081e8d.png','2017-06-24','2','1','2','2') [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `lailong_member` [ RunTime:0.0134s ]
+SQL: INSERT INTO `lailong_member` (`child_id`,`user_id`,`createtime`) VALUES ('16','124125','2017-06-27 14:12:22') [ RunTime:0.0007s ]
+
+[ 2017-06-27T14:12:50+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=addchild_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.033101s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.082615s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.120735s ]
+
+[ 2017-06-27T14:13:53+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=addchild_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.028108s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.081601s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.117604s ]
+
+[ 2017-06-27T14:13:57+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=addchild_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.027901s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.078178s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.111933s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0211s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `lailong_child` (`name`,`nickname`,`avatar`,`birthday`,`gender`,`school`,`grade`,`vip_state`) VALUES ('51','5111','14985439645951f75ccee5d.jpg','2017-07-08','1','1','33','1') [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `lailong_member` [ RunTime:0.0185s ]
+SQL: INSERT INTO `lailong_member` (`child_id`,`user_id`,`createtime`) VALUES ('17','1','2017-06-27 14:13:57') [ RunTime:0.0009s ]
+
+[ 2017-06-27T14:20:11+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=editchild&editid=11
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `id`,`name` FROM `lailong_user` WHERE (  id =  ) LIMIT 1  
+
+[ 2017-06-27T14:25:51+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=editchild&u_id=2
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `lailong_child` WHERE ( id =  ) LIMIT 1  
+
+[ 2017-06-27T14:26:24+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=editchild&u_id=2
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `lailong_child` WHERE ( id =  ) LIMIT 1  
+
+[ 2017-06-27T14:28:11+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=editchild&u_id=2
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `lailong_child` WHERE ( id =  ) LIMIT 1  
+
+[ 2017-06-27T14:37:30+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=editchild_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.031444s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.076557s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.114611s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0210s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `lailong_child` SET `name`='1',`nickname`='2',`avatar`='14985454155951fd074c150.png',`birthday`='2017-06-24',`gender`='1',`school`='4',`grade`='5',`vip_state`='1' WHERE `id` = 8 [ RunTime:0.0009s ]
+
+[ 2017-06-27T14:44:05+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=editchild_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.028970s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.071179s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.104204s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0198s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `lailong_child` SET `name`='1',`nickname`='2',`avatar`='',`birthday`='2017-06-24 00:00:00',`gender`='1',`school`='4',`grade`='5',`vip_state`='1' WHERE `id` = 8 [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `lailong_member` [ RunTime:0.0136s ]
+SQL: INSERT INTO `lailong_member` (`child_id`,`user_id`,`createtime`) VALUES ('8','4','2017-06-27 14:44:05') [ RunTime:0.0008s ]
+
+[ 2017-06-27T14:44:59+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=editchild_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.032925s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.080682s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.118979s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0209s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `lailong_child` SET `name`='1',`nickname`='2',`avatar`='14985458965951fee84bb48.png',`birthday`='2017-06-24 00:00:00',`gender`='1',`school`='4',`grade`='5',`vip_state`='1' WHERE `id` = 8 [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `lailong_member` [ RunTime:0.0195s ]
+SQL: INSERT INTO `lailong_member` (`child_id`,`user_id`,`createtime`) VALUES ('8','4','2017-06-27 14:44:59') [ RunTime:0.0012s ]
+

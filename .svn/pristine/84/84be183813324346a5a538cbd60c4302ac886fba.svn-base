@@ -1,0 +1,116 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Order/weixinorderlist')}">{:L('ADMIN_ENRO_INDEX')}</a></li>
+		</ul>
+		<form class="well form-search" method="get" action="{:U('Order/weixinorderlist')}" id="form_submit">
+		    <div class="search_type cc mb10">
+		      <div class="mb10"> 
+		        <span class="mr20">
+		        <input type="hidden" name="g" value="Order">
+		        <input type="hidden" name="m" value="Order">
+		        <input type="hidden" name="a" value="weixinorderlist">
+		     
+		        
+			        <div class="row" style="margin-top: 20px;">
+				        <div class="span1">
+				        	订单号:
+				        </div>
+				        <div class="span2">
+				        	<input type="text" name="order_id" style="width: 100px;" value="{$order_id}" placeholder="订单号"/>
+				        </div>
+				        <div class="span1">
+				        	手机号:
+						</div>
+						<div class="span2">
+							<input type="text" name="uphone" style="width: 100px;" value="{$uphone}" placeholder="用户手机号"/>
+						</div>
+						<div class="span1">
+							状态
+						</div>
+						<div class="span2">
+							<select name="state">
+								<option value="">请选择</option>
+								<option value="99" <if condition="$state eq 99">selected</if>>未支付</option>
+								<option value="1" <if condition="$state eq 1">selected</if>>支付成功</option>
+								<option value="2" <if condition="$state eq 3">selected</if>>支付失败</option>
+							</select>
+						</div>
+					</div>
+				</span>
+			   </div>
+			   	<div class="mb10"> 
+		        <span class="mr20">
+		        <div class="row" style="margin-top: 20px; ">
+		        	<div style="display:inline;margin-left: 20px;">
+				        	创建订单时间起始：
+				        
+				        	<input type="text" name="startcreatetime" class="input length_2 J_date" value="{$startcreatetime}" autocomplete="off" placeholder="请选择时间..." onClick="WdatePicker()" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+				    </div>
+				    <div style="display:inline;margin-left: 20px;">    
+							创建订单时间结束：
+						
+						
+							<input type="text" name="endcreatetime" class="input length_2 J_date" value="{$endcreatetime}" autocomplete="off" placeholder="请选择时间..." onClick="WdatePicker()" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+					</div>
+				       <button class="btn btn-primary" style="margin-left: 20px;">搜索</button>
+					</div>
+		        	
+				</span>
+			   </div>
+
+		        
+		        
+		      
+		    </div>
+		  </form>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th width="50">ID</th>
+					<th>订单号</th>
+					<th>支付金额</th>
+					<th>实际支付金额</th>
+					<th>状态</th>
+					<th>积分数量</th>
+					<th>用户名</th>
+					<th>用户手机号</th>
+					<th>{:L('CTIME')}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<foreach name="list" item="list">
+					<tr>
+						<td>{$list.id}</td>
+						<td>{$list.order_id}</td>
+						<td>{$list.amount}</td>
+						<td>{$list.pay_amount}</td>
+						
+						<td>
+							<?php switch($list['state']){
+								case "0":
+									echo "未支付";
+										break;
+								case "1":
+									echo "支付成功";
+									break;
+								case "2":
+									echo "支付失败";
+									break;
+							} ?>
+						</td>
+						<td>{$list.integral}</td>
+						<td>{$list.uname}</td>
+						<td>{$list.uphone}</td>
+						<td>{$list.createtime}</td>
+					</tr>
+				</foreach>
+			</tbody>
+		</table>
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

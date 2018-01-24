@@ -1,0 +1,338 @@
+<!doctype html>
+<html class="no-js">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>我的</title>
+<link rel="stylesheet"
+	href="__TMPL__Public/font-awesome-4.7.0/css/font-awesome.css">
+<link rel="stylesheet" href="__TMPL__Public/css/weixin/amazeui.min.css">
+<link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+<!--<link rel="stylesheet" href="__TMPL__Public/css/weixin/dd.css">-->
+<link rel="stylesheet" href="__TMPL__Public/css/weixin/my.css">
+<!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body style="padding: 4px;">
+<!--我的-->
+<section data-am-widget="accordion" class="am-accordion am-accordion-gapped" data-am-accordion='{  }'>
+	<dl class="am-accordion-item am-active" style="border-bottom: none">
+		<dt class="am-accordion-title" style="background: white">
+			<a href="user_info.html"><img src="__TMPL__Public/images/moren.png" alt=""></a><span style="font-size: 13px;color: black">罗小萌</span>
+		</dt>
+		<dd class="am-accordion-bd am-collapse am-in">
+			<!-- 规避 Collapase 处理有 padding 的折叠内容计算计算有误问题， 加一个容器 -->
+			<div class="am-accordion-content">
+				<ul class="am-list">
+
+					<li class="am-g am-list-item-dated" style="border-top: none">
+						<a href="{:U('Mine/member')}" class="am-list-item-hd ">
+							<img src="__TMPL__Public/images/user.png" alt="">
+							<span style="font-size: 13px;color: #000;line-height: 20px;position:absolute;top:13px; left: 33px;">会员信息</span>
+							<span style="position:absolute;top: 8px;right:26px;color: #92998b;">已认证</span>
+							<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+								  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+						</a>
+
+					</li>
+					<li class="am-g am-list-item-dated">
+						<a href="order_list.html" class="am-list-item-hd ">
+							<img src="__TMPL__Public/images/course.png" alt="">
+							<span style="font-size: 13px;color: #000;line-height: 20px;position:absolute;top:13px; left: 33px;">购买的课程</span>
+							<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+								  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+						</a>
+
+					</li>
+					<li class="am-g am-list-item-dated" style="border-bottom: none">
+						<a href="write_application.html" class="am-list-item-hd ">
+							<img src="__TMPL__Public/images/ides.png" alt="">
+							<span style="font-size: 13px;color: #000;line-height: 20px;position:absolute;top:13px; left: 33px;">课程意向</span>
+							<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+								  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+						</a>
+
+					</li>
+				</ul>
+			</div>
+		</dd>
+	</dl>
+	<dl class="am-accordion-item" style="border-bottom: none">
+		<dt class="am-accordion-title" style="background: white">
+			<a href="user_info.html"><img src="__TMPL__Public/images/moren.png" alt=""></a><span style="font-size: 13px;color: #000;">罗小莉</span>
+		</dt>
+		<dd class="am-accordion-bd am-collapse am-in">
+			<!-- 规避 Collapase 处理有 padding 的折叠内容计算计算有误问题， 加一个容器 -->
+			<div class="am-accordion-content">
+				<ul class="am-list">
+
+					<li class="am-g am-list-item-dated" style="border-top: none">
+						<a href="member_detail.html" class="am-list-item-hd ">
+							<img src="__TMPL__Public/images/user.png" alt="">
+							<span style="font-size: 13px;color: #000;line-height: 20px;position:absolute;top:13px; left: 33px;">会员信息</span>
+							<span style="position:absolute;top: 8px;right:26px;color: #92998b;">已认证</span>
+							<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+								  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+						</a>
+
+					</li>
+					<li class="am-g am-list-item-dated">
+						<a href="order_list.html" class="am-list-item-hd ">
+							<img src="__TMPL__Public/images/course.png" alt="">
+							<span style="font-size: 13px;color: #000;line-height: 20px;position:absolute;top:13px; left: 33px;">购买的课程</span>
+							<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+								  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+						</a>
+
+					</li>
+					<li class="am-g am-list-item-dated">
+						<a href="write_application.html" class="am-list-item-hd ">
+							<img src="__TMPL__Public/images/ides.png" alt="">
+							<span style="font-size: 13px;color: #000;line-height: 20px;position:absolute;top:13px; left: 33px;">课程意向</span>
+							<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+								  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+						</a>
+
+					</li>
+				</ul>
+			</div>
+		</dd>
+	</dl>
+	<dl class="am-accordion-item" style="background: white;margin-top: -6px;">
+		<ul class="am-list">
+			<li class="am-g am-list-item-dated" style="position: relative;border-top: none">
+				<a href="member.html" class="am-list-item-hd " style="background: white">
+					<img src="__TMPL__Public/images/add.png" alt="" style=" width: 50px;height: 50px;margin-right: 10px;">
+					<span style="font-size: 13px;color: #000;line-height: 20px;position:absolute;top:20px; left: 64px;">添加小孩</span>
+					<span style="position: absolute;top: 17px;right:9px;font-size: 20px;color: #92998b;"
+						  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+				</a>
+			</li>
+		</ul>
+	</dl>
+</section>
+<section style="margin-top: 30px;" data-am-widget="accordion" class="am-accordion am-accordion-gapped" data-am-accordion='{  }'>
+<div class="am-accordion-content">
+	<ul class="am-list">
+
+		<li class="am-g am-list-item-dated" style="border-top: none">
+			<a href="integration.htmls" class="am-list-item-hd ">
+				<img src="__TMPL__Public/images/jifen.png" alt="">
+				<span style="font-size: 13px;color: #000;line-height: 20px;position:absolute;top:13px; left: 33px;">我的积分</span>
+				<span style="position:absolute;top: 8px;left:103px;color: #92998b;">1200</span>
+				<span style="border: 1px solid #45e1b3;width: 65px;height: 22px;line-height: 21px;text-align: center; position:absolute;top: 13px;right: 26px;color: #45e1b3;">签到</span>
+				<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+					  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+			</a>
+
+		</li>
+		<li class="am-g am-list-item-dated">
+			<a href="collection.html" class="am-list-item-hd ">
+				<img src="__TMPL__Public/images/sc.png" alt="">
+				<span style="font-size: 13px;color: #000;line-height: 20px;position:absolute;top:13px; left: 33px;">我的收藏</span>
+				<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+					  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+			</a>
+
+		</li>
+		<li class="am-g am-list-item-dated">
+			<a href="my_message.html" class="am-list-item-hd ">
+				<img src="__TMPL__Public/images/passege.png" alt="">
+				<span style="font-size: 13px;color: #000;line-height: 20px;position:absolute;top:13px; left: 33px;">我的消息</span>
+				<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+					  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+			</a>
+		</li>
+		<li class="am-g am-list-item-dated">
+			<a href="recommend.html" class="am-list-item-hd ">
+				<img src="__TMPL__Public/images/tuijian.png" alt="">
+				<span style="font-size: 13px;color: #000;line-height: 20px;position:absolute;top:13px; left: 33px;">我的推荐</span>
+				<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+					  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+			</a>
+		</li>
+		<li class="am-g am-list-item-dated">
+			<a href="feedback.html" class="am-list-item-hd ">
+				<img src="__TMPL__Public/images/fankui.png" alt="">
+				<span style="font-size: 13px;color: #000;line-height: 20px;position:absolute;top:13px; left: 33px;">意见反馈</span>
+				<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+					  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+			</a>
+		</li>
+		<li class="am-g am-list-item-dated" style="border-bottom: none;margin-bottom: 54px">
+			<a href="setting.html" class="am-list-item-hd ">
+				<img src="__TMPL__Public/images/shezhi.png" alt="">
+				<span style="font-size: 13px;color: #000;line-height: 20px;position:absolute;top:13px; left: 33px;">设置</span>
+				<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+					  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+			</a>
+		</li>
+	</ul>
+</div>
+</section>
+
+<!--<php>$rarray=array("0"=>"未认证","1"=>"认证中","2"=>"认证失败","3"=>"认证成功")</php>-->
+	<!--我的信息-->
+<!--	<div data-am-widget="list_news" class="am-list-news am-list-news-default">
+		<div class="am-list-news-bd">
+			<foreach name="child" item="vo">
+			<ul class="am-list">
+				<li class="am-g am-list-item-dated"><a href="{:U('Mine/user_info?id=')}{$vo.id}"
+					class="am-list-item-hd "> <img
+						style="width: 50px; height: 50px"
+						src="{$url}{$vo.avatar}" alt=""> <span
+						class="name">{$vo.nickname}</span>
+				</a> <span style="font-size: 2.3rem" class="am-list-date fa fa-angle-up"
+					aria-hidden="true"></span></li>
+				<li class="am-g am-list-item-dated"><a href="{:U('Mine/member?id=')}{$vo.id}"
+					class="am-list-item-hd "> <img
+						style="width: 20px; height: 20px"
+						src="__TMPL__Public/images/user.png" alt=""> <span>会员信息</span>
+				</a> <span class="am-list-date fa fa-chevron-right" aria-hidden="true"></span>
+				</li>
+				<li class="am-g am-list-item-dated" style="position: relative">
+					<a href="{:U('Mine/member?id=')}{$vo.id}" class="am-list-item-hd "> <img
+						style="width: 20px; height: 20px"
+						src="__TMPL__Public/images/course.png" alt=""> <span>购买的课程</span>
+				</a> <span
+					style="position: absolute; bottom: 11px; right: 27px; color: #cecece">{$rarray[$vo[vip_state]]}</span>
+					<span class="am-list-date fa fa-chevron-right" aria-hidden="true"></span>
+				</li>
+				<li class="am-g am-list-item-dated"><a
+					href="{:U('Mine/my_intention')}" class="am-list-item-hd "> <img
+						style="width: 20px; height: 20px"
+						src="__TMPL__Public/images/ides.png" alt=""> <span>课程意向</span>
+				</a> <span class="am-list-date fa fa-chevron-right" aria-hidden="true"></span>
+				</li>
+			</ul>
+			</foreach>
+		</div>
+	</div>
+
+	<div data-am-widget="list_news"
+		class="am-list-news am-list-news-default">
+
+		<div class="am-list-news-bd">
+			<ul class="am-list">
+
+				<li class="am-g am-list-item-dated"><a href=""
+					class="am-list-item-hd "> <img
+						style="width: 50px; height: 50px"
+						src="__TMPL__Public/images/teacher1.png" alt=""> <span
+						class="name">罗小莉</span>
+				</a> <span style="font-size: 2.3rem"
+					class="am-list-date fa fa-angle-down" aria-hidden="true"></span></li>
+			</ul>
+		</div>
+
+		<div class="am-list-news-bd">
+			<ul class="am-list">
+
+				<li class="am-g am-list-item-dated"><a href="{:U('Mine/member')}"
+					class="am-list-item-hd "> <img
+						style="width: 50px; height: 50px"
+						src="__TMPL__Public/images/teacher1.png" alt=""> <span
+						class="name">添加小孩</span>
+				</a> <span style="font-size: 1.3rem"
+					class="am-list-date fa fa-chevron-right" aria-hidden="true"></span>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+
+	<div data-am-widget="list_news"
+		class="am-list-news am-list-news-default">
+
+		<div class="am-list-news-bd">
+			<ul class="am-list">
+
+				<li class="am-g am-list-item-dated" style="position: relative">
+					<a href="{:U('Mine/integration')}" class="am-list-item-hd "> <img
+						style="width: 20px; height: 20px"
+						src="__TMPL__Public/images/jifen.png" alt=""> <span>我的积分</span>
+						<span style="color: #cecece">1200</span>
+				</a> <span
+					style="position: absolute; border: 1px solid #2adcaa; width: 68px; text-align: center; bottom: 11px; right: 27px; color: #2adcaa">签到</span>
+					<span class="am-list-date fa fa-chevron-right" aria-hidden="true"></span>
+				</li>
+
+				<li class="am-g am-list-item-dated"><a href="{:U('Mine/collection')}"
+					class="am-list-item-hd "> <img
+						style="width: 20px; height: 20px"
+						src="__TMPL__Public/images/sc.png" alt=""> <span>我的收藏</span>
+				</a> <span class="am-list-date fa fa-chevron-right" aria-hidden="true"></span>
+				</li>
+
+				<li class="am-g am-list-item-dated"><a href="{:U('Mine/my_message')}"
+					class="am-list-item-hd "> <img
+						style="width: 20px; height: 20px"
+						src="__TMPL__Public/images/passege.png" alt=""> <span>我的消息</span>
+				</a> <span class="am-list-date fa fa-chevron-right" aria-hidden="true"></span>
+				</li>
+
+				<li class="am-g am-list-item-dated"><a href="{:U('Mine/recommend')}"
+					class="am-list-item-hd "> <img
+						style="width: 20px; height: 20px"
+						src="__TMPL__Public/images/tuijian.png" alt=""> <span>我的推荐</span>
+				</a> <span class="am-list-date fa fa-chevron-right" aria-hidden="true"></span>
+				</li>
+
+				<li class="am-g am-list-item-dated"><a href="{:U('Mine/feedback')}"
+					class="am-list-item-hd "> <img
+						style="width: 20px; height: 20px"
+						src="__TMPL__Public/images/fankui.png" alt=""> <span>意见反馈</span>
+				</a> <span class="am-list-date fa fa-chevron-right" aria-hidden="true"></span>
+				</li>
+
+				<li class="am-g am-list-item-dated"><a href="{:U('Mine/safe')}"
+					class="am-list-item-hd "> <img
+						style="width: 20px; height: 20px"
+						src="__TMPL__Public/images/shezhi.png" alt=""> <span>设置</span>
+				</a> <span class="am-list-date fa fa-chevron-right" aria-hidden="true"></span>
+				</li>
+
+			</ul>
+		</div>
+
+	</div>-->
+	<footer>
+		<div data-am-widget="navbar"
+			class="am-navbar am-cf am-navbar-default " id="">
+			<ul class="am-navbar-nav am-cf am-avg-sm-4"
+				style="background: #fbfbfb;">
+				<li><a href="{:U('course/course')}"> <img class="show"
+						src="__TMPL__Public/images/course1.png" alt="课程" /> <img
+
+						style="display: none" class="hide"
+						src="__TMPL__Public/images/coursed.png" alt="课程" /> <span
+						class="am-navbar-label" style="color: #bfc6d1;">课程</span>
+				</a></li>
+				<li><a href="{:U('Mine/server')}"> <img class="show1"
+						src="__TMPL__Public/images/server.png" alt="服务" /> <img
+						style="display: none" class="hide1"
+						src="__TMPL__Public/images/servered.png" alt="服务" /> <span
+						class="am-navbar-label txt1" style="color: #bfc6d1;">服务</span>
+				</a></li>
+				<li><a href="{:U('Mine/my')}"> <img class="show2"
+						src="__TMPL__Public/images/my.png" alt="我的" /> <img
+						style="display: none" class="hide2"
+						src="__TMPL__Public/images/myd.png" alt="我的" /> <span
+						class="am-navbar-label txt2" style="color: #bfc6d1;">我的</span>
+				</a></li>
+			</ul>
+		</div>
+	</footer>
+	<!--[if (gte IE 9)|!(IE)]><!-->
+	<script src="__TMPL__Public/js/weixin/jquery.min.js"></script>
+	<!--<![endif]-->
+	<!--[if lte IE 8 ]>
+<!--<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>-->
+	<![endif]-->
+	<script src="__TMPL__Public/js/weixin/amazeui.min.js"></script>
+	<script src="__TMPL__Public/js/weixin/my.js"></script>
+</body>
+</html>

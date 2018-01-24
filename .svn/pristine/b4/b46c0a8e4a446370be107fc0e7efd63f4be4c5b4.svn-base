@@ -1,0 +1,384 @@
+<?php
+
+/**
+ * 用户登录
+ */
+namespace Weixin\Controller;
+use Common\Controller\MemberbaseController;
+use Weixin\Controller\MineController;
+use Think\Log;
+class CourseController extends MemberbaseController {
+	//课程
+	function course(){
+        header("Content-Type:text/html;charset=utf-8");
+
+		/* //课程表
+		$course_time_list = M("course")->distinct(true)->field("start_time")->where("start_time >= '".date('Y-m-d H:i:s')."'")->order("start_time asc")->select();
+		//截取日期
+		$course_time_list2 = array();
+		foreach($course_time_list as $k=>$v){
+			$st = $v['start_time'];
+			$date_s = date("Y-m-d",strtotime($st));
+			if(!in_array($date_s,$course_time_list2)){
+				array_push($course_time_list2,$date_s);
+			}
+		}
+		$arr = array();
+		$weeklist = array("1"=>"周一","2"=>"周二","3"=>"周三","4"=>"周四","5"=>"周五","6"=>"周六","7"=>"周七");
+		foreach ($course_time_list2 as $key => $value) {
+			$start_time = $value;
+			$arr[$key]['start_month'] = date("n",strtotime($start_time))."月";
+			$arr[$key]['start_day'] = date("j",strtotime($start_time))."日";
+			$arr[$key]['start_week'] = $weeklist[date("w",strtotime($start_time))];
+			//课程信息
+			$course_list = M("course c")->field("c.*,t.name as teacher")
+			->join(C('DB_PREFIX')."teacher as t on t.id = c.teacher_id","left")
+			->where("c.start_time like '%$start_time%'")->select();
+			foreach($course_list as $k=>$v){
+				$arr[$key]['detaillist'][$k]['cid'] = $v['id'];
+				$arr[$key]['detaillist'][$k]['title'] = $v['title'];
+				$arr[$key]['detaillist'][$k]['cover'] = $v['cover'];
+				$arr[$key]['detaillist'][$k]['teacher'] = $v['teacher'];
+				if(date("H",strtotime($start_time)) > 12){
+					$dian = date("H",strtotime($start_time)) - 12;
+					$arr[$key]['detaillist'][$k]['start_time'] = "下午".$dian."点";
+				}else{
+					$arr[$key]['detaillist'][$k]['start_time'] = "上午".date("H",strtotime($start_time))."点";
+				}
+			}
+		}
+		 */
+         // 当前条数
+       /*  $pagesize = 3;
+        
+        // 当前页数
+        $pagec = 1;
+        $start = ($pagec - 1) * $pagesize; */
+		$c = M('Course')->where("start_time >='".date('Y-m-d H:i:s')."'")
+		->distinct(true)
+		->order("start_time asc")
+		->select();
+		$arr2 = array();
+		$num=0;
+		if ($c) {
+		    foreach ($c as $k => $v) {
+		            $num++;
+		            $starttime = date("Y-m-d 00:00:00", strtotime($v[start_time]));
+		            $endtime = date("Y-m-d 23:59:59", strtotime($v[start_time]));
+		            $r = M('Course')->field("c.*,t.name as teacher")
+		            ->table(C('DB_PREFIX') . "course as c")
+		            ->join(C('DB_PREFIX') . "teacher as t on t.id = c.teacher_id", 'left')
+		            ->where("c.start_time between '$starttime' and '$endtime'")
+		            ->select();
+		            
+		            foreach ($r as $k2 => $v2) {
+		                $r[$k2][picture] = __ROOT__ . '/data/upload/avatar/' . $v2[picture];
+		                $r[$k2][cover] = __ROOT__ . '/data/upload/avatar/' . $v2[cover];
+		            }
+		            $stime=date("Y-m-d", strtotime($v[start_time]));
+		            $arr2[$stime] = $r;
+		        }
+		    $_SESSION[nums]=$num;
+		    $rs = array();
+		    foreach ($arr2 as $k => $v) {
+		        $a = array();
+		        $a['time'] = $k;
+		        $b = array();
+		        foreach ($v as $key => $value) {
+		            $b[] = $value;
+		        }
+		        $a['list'] = $b;
+		        $rs[] = $a;
+		    }
+		}
+		$this->assign("list",$rs);
+
+
+        //课程意向数据
+        $result_sub = M('subject')->order('index_id desc')->select();//科目数据
+        $rest_tx = M('question_type')->order('index_id desc')->select();//题型数据
+        $rest_nd = M('question_difficulty')->order('index_id desc')->select();//难度数据
+        $rest_tj = M('topic_set')->order('index_id desc')->select();//题级数据
+        $rest_ls = M('teacher')->field('id,name')->select();//老师数据
+        $rest_bj = M('class_type')->order('index_id desc')->select();//班级数据
+        $resu_stu = M('member')
+            ->alias('m')
+            ->join('lailong_child c ON m.child_id = c.id')
+            ->field('c.id,c.nickname,c.name')
+            ->where(['m.user_id'=>session('weixin_user_id'),'vip_state'=>'3'])
+            ->select();//小孩数据
+        empty($resu_stu) ?  header('Location:'.U("c_jump")) : 0 ;
+        $this->assign('clist',$result_sub);
+        $this->assign('txlist',$rest_tx);
+        $this->assign('ndlist',$rest_nd);
+        $this->assign('tjlist',$rest_tj);
+        $this->assign('lslist',$rest_ls);
+        $this->assign('bjlist',$rest_bj);
+        $this->assign('stulist',$resu_stu);
+		$this->display(":course");
+	}
+	function more_course(){
+	    $pagesize=3;
+	    $num=$_REQUEST['num'];
+	    $start = ($num-1) * $pagesize;
+	    $c = M('Course')->where("start_time >='".date('Y-m-d H:i:s')."'")
+	    ->distinct(true)
+	    ->order("start_time asc")
+	    ->limit('0,'.$_SESSION[nums])
+	    ->select();
+	    $log=new log();
+	    $arr2 = array();
+	    if ($c) {
+	        foreach ($c as $k => $v) {
+	            if($k<$pagesize){
+	                $starttime = date("Y-m-d 00:00:00", strtotime($v[start_time]));
+	                $endtime = date("Y-m-d 23:59:59", strtotime($v[start_time]));
+	                $r = M('Course')->field("c.*,t.name as teacher")
+	                ->table(C('DB_PREFIX') . "course as c")
+	                ->join(C('DB_PREFIX') . "teacher as t on t.id = c.teacher_id", 'left')
+	                ->where("c.start_time between '$starttime' and '$endtime'")
+	                ->limit($start.','.$pagesize)
+	                ->select();
+	                $log->write(M('Course')->getlastsql());
+	                foreach ($r as $k2 => $v2) {
+	                    $r[$k2][picture] = __ROOT__ . '/data/upload/avatar/' . $v2[picture];
+	                    $r[$k2][cover] = __ROOT__ . '/data/upload/avatar/' . $v2[cover];
+	                }
+	                $stime=date("Y-m-d", strtotime($v[start_time]));
+	                $arr2[$stime] = $r;
+	            }
+	        }
+	        $rs = array();
+	        foreach ($arr2 as $k => $v) {
+	            $a = array();
+	            $a['time'] = $k;
+	            $b = array();
+	            foreach ($v as $key => $value) {
+	                $b[] = $value;
+	            }
+	            $a['list'] = $b;
+	            $rs[] = $a;
+	        }
+	    }
+	    $this->ajaxReturn(array('0'=>$rs));
+	}
+	
+	//课程意向提交
+	function course_sub(){
+        if(IS_POST){
+            $data = ['user_id'=>session('weixin_user_id'),'child_id'=>I('post.yx'),'grade'=>I('post.xd'),'press'=>I('post.jc'),'subject'=>I('post.km'),'chapter'=>I(post.zj),
+                'sub_chapter'=>I('post.erzj'),'question_type'=>I('post.tx'),'question_difficulty'=>I('post.nd'),'topic_set'=>I('post.tj'),'wanted_start_time'=>I('post.times'),
+                'teacher'=>I('post.ls'),'class_type'=>I('post.bj'),'createtime'=>date('Y-m-d H:i:s',time())];
+            $rest =  M('intention')->add($data);
+            if($rest){
+            	header('Location:'.U("course"));
+            }
+
+        }
+    }
+   //判断认证小孩跳转
+    function c_jump(){
+        $this->display('/nohuiyuan');
+    }
+    //ajax获取教材
+    function course_textbook(){
+        if(IS_POST){
+            $subj = I('post.subj');
+            $rest = M('textbook')->where(['subject'=>$subj])->select();
+            $this->ajaxReturn($rest);
+        }
+    }
+    //ajax获取学段
+    function course_pre(){
+        if(IS_POST){
+            $subj = I('post.subj');
+            $pre = I('post.jc');
+            $rest = M('textbook')->where(['subject'=>$subj,'press'=>$pre])->select();
+            $this->ajaxReturn($rest);
+        }
+    }
+    //ajax获取章
+    function course_chapter(){
+        if(IS_POST){
+            $sub = I('post.sub');
+            $pre = I('post.pre');
+            $gra = I('post.gra');
+            $where = ['subject'=>$sub,'press'=>$pre,'gra'=>$gra];
+            $tbookid = M('textbook')->field('id')->where($where)->find();
+            $rest = M('chapter')->field('title,textbook_id')->where(['textbook_id'=>$tbookid['id'],'parent_id'=>'0'])->select();
+            $this->ajaxReturn($rest);
+        }
+    }
+    //ajax获取节
+    function course_jie(){
+        if(IS_POST){
+            $sub = I('post.sub');
+            $pre = I('post.pre');
+            $gra = I('post.gra');
+            $where = ['subject'=>$sub,'press'=>$pre,'gra'=>$gra];
+            $tbook_id = M('textbook')->field('id')->where($where)->find();
+            $title = I('post.zj');
+            $id = M('chapter')->field('id')->where(['textbook_id'=>$tbook_id['id'],'title'=>$title])->find();
+            $rest = M('chapter')->field('title')->where(['textbook_id'=>$tbook_id['id'],'parent_id'=>$id['id']])->select();
+            $this->ajaxReturn($rest);
+        }
+    }
+	//课程详情
+	function course_detail(){
+		$id = $_GET['id'];
+		if($id){
+			$list = M("course c")->field("c.*,t.id as tid,t.name as teacher,t.avatar as tavatar,t.teaching_results,h5.content,r.address,r.title as rtitle")
+			->join(C('DB_PREFIX')."teacher as t on t.id = c.teacher_id","left")
+			->join(C('DB_PREFIX')."h5 as h5 on h5.id = c.h5_id","left")
+			->join(C('DB_PREFIX')."classroom as r on r.id = c.classroom_id","left")
+			->where("c.id = $id")->find();
+		}
+		$open_id = $_SESSION['weiopen_id'];
+		//是否被该用户收藏
+		$user_id = get_user_id($open_id);
+		$is_collected = M("collection")->where("user_id = $user_id and course_id = $id")->find();
+		if(!empty($is_collected)){
+			$is_collect = 1;
+		}
+		
+		$this->assign("is_collect",$is_collect);
+		$this->assign("list",$list);
+		$this->display(":course_detail");
+	}
+	//教师详情
+	function teacher_information(){
+		$id = $_REQUEST['id'];
+		$list = M("teacher")->where("id = $id")->find();
+		
+		
+		$this->assign("list",$list);
+		$this->display(":teacher_information");
+	}
+	//填写订单
+	function write_order(){
+	    $user=$_SESSION['weixin_user_id'];
+	    $courseid=$_REQUEST['courseid'];
+	    $course=M('course')->where("id = $courseid")->find();
+	    $teacher=M('teacher')->where("id = '$course[teacher_id]'")->find();
+	    $child=M('member')->field("c.id,c.name")->table(C('DB_PREFIX').'member as m')->join(C('DB_PREFIX').'child as c on c.id =m.child_id','left')->where("m.user_id = $user and c.vip_state =3")->select();
+	    $this->assign("course",$course);
+	    $this->assign("child",$child);
+	    $this->assign("teacher",$teacher);
+		$this->display(":write_order");
+	}
+	//支付积分
+	function do_pay(){
+	    $user=$_SESSION['weixin_user_id'];
+	    $child=$_REQUEST['child'];
+	    $integral=$_REQUEST['integral'];
+	    $course_id=$_REQUEST['courseid'];
+	    $enr=M('enrollment')->where("course_id = $course_id and user_id = $user and state =0")->find();
+	    if($enr){
+	        $m=new MineController();
+	        $m->isjifen($integral, $enr[id]);
+	       // $this->ajaxReturn(array("0"=>"104","1"=>$enr[id]));
+	    }
+	    $result=M('enrollment')->where("course_id = $course_id and user_id = $user and child_id= '$child' and state =1")->find();
+	    if($result){
+	        $this->ajaxReturn(array("0"=>"102","1"=>'已存在订单'));
+	    }
+	    //生成订单
+	    $data=array('order_id'=>'lailong'.uniqid(),'child_id'=>$child,'state'=>0,'course_id'=>$course_id,'user_id'=>$user,'note'=>$note,'createtime'=>date('Y-m-d H:i:s',time()),'integral'=>$integral);
+	    $res=M('enrollment')->add($data);
+	    if($res){
+	        $param=array('enrollment_id'=>$res,'state'=>0,'state_text'=>"订单已提交",'createtime'=>date('Y-m-d H:i:s',time()));
+	        M('enrollment_state')->add($param);
+	        //$res=M('course')->where("id = $course_id")->find();
+	        $u=M('user')->field("integral")->where('id ='.$user)->find();
+	        if($u[integral] <$integral){
+	            $this->ajaxReturn(array("0"=>"103","1"=>'当前支付积分不足'));
+	        }
+	        M('user')->where("id = $user")->save(array('integral'=>intval($u[integral]-$integral)));
+	         
+	        $data2=array(
+	            'user_id'=>$user,
+	            'obtain_type'=>4,
+	            'is_obtain'=>0,
+	            'integral'=>intval(0-$integral),
+	            'content'=>"支付课程费".$integral.'积分',
+	            'createtime'=>date('Y-m-d H:i:s',time())
+	        );
+	        M('integral')->add($data2);
+	        $str=M('enrollment')->field("state")->where("id = $res")->find();
+	        if($str[state] == 1){
+	            $this->ajaxReturn(array("0"=>"102","1"=>'此订单已完成支付'));
+	        }
+	        M('enrollment')->where("id = $res")->save(array('state'=>1));
+	        $param=array('enrollment_id'=>$res,'state'=>1,'state_text'=>"支付成功",'createtime'=>date('Y-m-d H:i:s',time()));
+	        M('enrollment_state')->add($param);
+	        $this->ajaxReturn(array("0"=>"101","1"=>'完成支付','2'=>$res));
+	        
+	    }else{
+	        $this->ajaxReturn(array("0"=>"102","1"=>'生成订单失败'));
+	    }
+	    
+	}
+	//课程意向
+	function write_application(){
+        $result = M('member')
+            ->alias('m')
+            ->join('lailong_child c ON m.child_id = c.id')
+            ->field('c.id,c.nickname,c.name')
+            ->where(['m.user_id'=>session('weixin_user_id'),'vip_state'=>'3'])
+            ->select();
+        $this->assign('child',$result);
+        $this->display(":write_application");
+	}
+    //意见直接填写
+	function stu_intention(){
+	    if(IS_POST){
+            $stu_id = I('post.child');
+            $content = I('post.stu_i');
+            empty($content) ? $this->error('输入反馈内容') : 0 ;
+            $data = ['user_id'=>session('weixin_user_id'),'child_id'=>$stu_id,'content'=>$content,'createtime'=>date('Y-m-d H:i:s',time())];
+            $result = M('intention')->add($data);
+            if($result ){
+                $code = ['status'=>'添加成功'];
+                $this->ajaxReturn($code);
+            }else{
+                $code = ['status'=>'服务器忙请稍后重试'];
+                $this->ajaxReturn($code);
+            }
+        }else{
+	        $this->error('不存在你访问的页面');
+        }
+
+    }
+    //添加收藏
+    function put_collection(){
+    	$course_id = $_REQUEST['course_id'];
+    	$weiopen_id = $_SESSION['weiopen_id'];
+    	$user_id = get_user_id($weiopen_id);
+    	//是否存在
+    	$is_collected = M("collection")->where("user_id = $user_id and course_id = $course_id")->find();
+    	if(!empty($is_collected)){
+    		//取消收藏
+    		$success = M("collection")->where("user_id = $user_id and course_id = $course_id")->delete();
+    		if($success){
+	    		$msg = array("0"=>"103");
+	    	}else{
+	    		$msg = array("0"=>"104");
+	    	}
+    	}else{
+    		//添加收藏
+	    	$data = array(
+	    		"course_id"=>$course_id,
+	    		"user_id"=>$user_id,
+	    		"createtime"=>date("Y-m-d H:i:s"),
+	    	);
+	    	$success = M("collection")->add($data);
+	    	if($success){
+	    		$msg = array("0"=>"101");
+	    	}else{
+	    		$msg = array("0"=>"102");
+	    	}
+    	}
+    	
+    	return $this->ajaxReturn($msg);
+    }
+}

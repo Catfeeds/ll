@@ -1,0 +1,37 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('scorecharge/scorechargelist')}">{:L('ADMIN_H5_INDEX')}</a></li>
+			<li><a href="{:U('scorecharge/addscore')}">{:L('ADMIN_H5_ADD')}</a></li>
+		</ul>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th width="50">ID</th>
+					<th>{:L('SCORE')}</th>
+					<th>{:L('PRICE')}</th>
+					<th>{:L('CTIME')}</th>
+					<th width="120">{:L('ACTIONS')}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<foreach name="list" item="list">
+					<tr>
+						<td>{$list.id}</td>
+						<td>{$list.integral}</td>
+						<td>{$list.amount}</td>
+						<td>{$list.createtime}</td>
+						<td><!-- <a href="{:U('h5/edith5',array('editid'=>$list[id]))}">{:L('EDIT')}</a> -->
+							<a href="{:U('scorecharge/delete',array('id'=>$list[id]))}"  class="js-ajax-delete">{:L('delete')}</a>
+						</td>
+					</tr>
+				</foreach>
+			</tbody>
+		</table>
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

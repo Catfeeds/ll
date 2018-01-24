@@ -1,0 +1,10 @@
+[ 2017-06-22T17:40:20+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=editchild_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.032508s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.075505s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.112774s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0251s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `lailong_child` SET `name`='213',`nickname`='213',`avatar`='',`birthday`='2017-06-21 00:00:00',`gender`='0',`school`='213',`grade`='312',`vip_state`='3' WHERE `id` = 11 [ RunTime:0.0011s ]
+

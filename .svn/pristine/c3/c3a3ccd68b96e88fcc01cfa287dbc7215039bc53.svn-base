@@ -1,0 +1,104 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>讲师详情</title>
+    <link rel="stylesheet" href="__TMPL__Public/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/dd.css">
+	<link rel="stylesheet" href="__TMPL__Public/css/weixin/public.css">
+	<script src="__TMPL__Public/js/weixin/jquery.min.js"></script>	
+    <!--<link rel="stylesheet" href="__TMPL__Public/css/weixin/course.css">-->
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body>
+
+
+<!--讲师简介-->
+<div class="am-g am-intro-bd" style="padding: 10px 10px;font-size: 15px">
+    <div class="xq" style="background:white;height: 97px">
+        <div class="am-intro-left am-u-sm-4" style="width:80px;height: 80px;margin: 9px 0 0 0px;">
+        	<?php
+    		if($list[avatar]){
+    			$imgurl = AVATAR_ROOT."/data/upload/avatar/".$list[avatar];
+    		}else{
+    			$imgurl = "__TMPL__Public/images/teacher1.png";
+    		}
+    		?>
+        	<!--<img style="width: 80px;height: 80px;" src="__TMPL__Public/images/teacher1.png" alt="">-->
+        		<span class="am-intro-left am-u-sm-3 tea" style="width:69px;height: 77px;border-radius: 50%; margin: 2px 0 0 6px;background-image: url('{$imgurl}');background-size: cover;background-position: 50% 50%;"></span>
+        </div>
+        <div class="am-intro-right am-u-sm-8">
+            <p style="margin-top: 8px;font-weight: bold">{$list.name}</p>
+            <p style="margin-top: -14px;font-weight: bold">毕业学校：{$list.university}</p>
+            <p style="margin-top: -14px;font-weight: bold">授课年级：{$list.teaching_grade}</p>
+        </div>
+    </div>
+</div>
+
+<!--讲师详细信息-->
+<div class="teacher" style="padding: 0 10px;font-weight: bold;color: #666a79">
+    <article class="am-article" style="background: white;padding: 5px 15px;margin-top: 5px; margin-bottom: -15px">
+        <div class="am-article-hd">
+            <span class="dot" style="
+             display: inline-block;
+                width: 7px;
+                height: 7px;
+                border:1px solid #507afb;
+                background: #507afb;
+                border-radius: 50%;" >
+            </span>&nbsp;&nbsp;<span>教学成果</span>
+        </div>
+        <div class="am-article-bd" style="font-size: 15px">
+                {$list.teaching_results}
+        </div>
+    </article>
+    <article class="am-article" style="background: white;padding: 5px 15px;margin-bottom: -15px">
+        <div class="am-article-hd">
+            <span class="dot" style="
+             display: inline-block;
+                width: 7px;
+                height: 7px;
+                border:1px solid #f75b42;
+                background: #f75b42;
+                border-radius: 50%;" >
+            </span>&nbsp;&nbsp;<span>教学经验</span>
+        </div>
+        <div class="am-article-bd" style="font-size: 15px">
+            {$list.experience}
+        </div>
+    </article>
+    <article class="am-article" style="background: white;padding: 5px 15px;margin-bottom: -15px">
+        <div class="am-article-hd">
+            <span class="dot" style="
+             display: inline-block;
+                width: 7px;
+                height: 7px;
+                border:1px solid #2dddab;
+                background: #2dddab;
+                border-radius: 50%;" >
+            </span>&nbsp;&nbsp;<span>教学特点</span>
+        </div>
+        <div class="am-article-bd" style="font-size: 15px">
+             {$list.features}
+        </div>
+    </article>
+</div>
+
+
+
+<input type="hidden" id="moban" value="__TMPL__">
+<tc_include file="Public:float"/>
+<script src="__TMPL__Public/js/weixin/public.js"></script>
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<![endif]-->
+<script src="__TMPL__Public/js/weixin/amazeui.min.js"></script>
+</body>
+</html>

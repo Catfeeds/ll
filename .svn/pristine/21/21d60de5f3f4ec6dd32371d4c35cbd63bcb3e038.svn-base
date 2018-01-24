@@ -1,0 +1,33 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <tc_include file="Public:header" />
+    <title>积分规则</title>
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/integration.css">
+	<link rel="stylesheet" href="__TMPL__Public/css/weixin/public.css">
+</head>
+<body style="background: #f4f5f7;padding:10px">
+<div class="am-container" style="color: #716e80;margin-left: 20px;font-weight: normal">
+    <p style="font-weight:bold;margin-left:-19px">积分能用来做什么？</p>
+    <p style="margin-left:-19px">可以在首页排课计划列表中，选择合适的课程报名，报名课程会消耗一定的积分。</p>
+    <br/>
+    <p style="margin-top:-10px;margin-left:-19px">积分怎么获得？</p>
+    <table width=100%; border=1 style="margin-left:-6%;">
+    <foreach name="ec" item="e">
+    	<tr>
+    		<td>{$e.content}</td>
+    		<td><if condition="$e[integral] lt 0">-{$e.integral}<elseif condition="$e[integral] gt 0"/>+{$e.integral}<else/>{$e.integral}</if></td>
+    	</tr>
+    </foreach>
+    </table>
+</div>
+<input type="hidden" id="moban" value="__TMPL__">
+<tc_include file="Public:float"/>
+<script src="__TMPL__Public/js/weixin/public.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<![endif]-->
+
+</body>
+</html>

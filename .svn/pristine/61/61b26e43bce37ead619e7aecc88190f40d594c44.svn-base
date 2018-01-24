@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * 用户登录
+ */
+namespace Weixin\Controller;
+use Think\Log;
+use Common\Controller\HomebaseController;
+class RulepageController extends HomebaseController {
+    //积分规则
+    function integral_rule(){
+        $this->display(":integral_rule");
+    }
+}

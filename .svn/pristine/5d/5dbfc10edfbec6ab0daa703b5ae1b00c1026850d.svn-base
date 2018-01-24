@@ -1,0 +1,139 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>课程详情</title>
+    <!--<link rel="icon" href="__TMPL__Public/i/favicon.png">-->
+    <!--<link rel="stylesheet" href="__TMPL__Public/fonts/fontawesome-webfont.woff">-->
+    <link rel="stylesheet" href="__TMPL__Public/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/course.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/courseX.css">
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body>
+<div class="bg">
+    <ul style="padding: 10px;" data-am-widget="gallery" class="am-gallery am-avg-sm-1
+  am-avg-md-1 am-avg-lg-1 am-gallery-default" data-am-gallery="{ pureview: true }" >
+        <li style="background: white">
+            <div class="am-gallery-item">
+                <a href="#" class="">
+                    <!--<img style="border-radius: 3px;" src="__TMPL__Public/images/bg.png"/>-->
+                    <?php
+                    	if($list[picture]){
+			    			$imgurl = AVATAR_ROOT."/data/upload/avatar/".$list[cover];
+			    		}else{
+			    			$imgurl = "__TMPL__Public/images/bg.png";
+			    		}
+                    	?>
+                    <div class="course_img" style="height:115px;background-image: url('{$imgurl}');background-size: cover;background-position: 50% 50%;">
+       				</div>
+                    <h3 class="am-gallery-title2" style="color: black;font-weight: bold;font-size: 1.6rem;">{$list.title}</h3>
+                    <div>
+                        <p style="font-size: 12px;color: #3151f8;">开课时间：{$list.start_time}</p>
+                        <p style="font-size: 12px;margin-top: -18px;color: #3151f8;">每班人数：{$list.rated_number}</p>
+                        <h3 style="margin-top: -18px;color: orangered">{$list.integral}积分</h3>
+                        <div class="starr"></div>
+                    </div>
+                </a>
+            </div>
+        </li>
+    </ul>
+
+</div>
+<if condition="$list.address neq ''">
+	<!--<div class="am-g am-intro-bd" style="padding: 10px 10px;font-size: 13px; margin-top: -10px">
+	    <div class="xq" style="background:white;position: relative">
+	        <div class="am-intro-left am-u-sm-6" style="margin: 8px 0 0 6px;">
+	            <span style="font-size: 18px;font-weight:lighter; color: black">{$list.address}</span><br>
+	            <span>{$list.rcontent}</span>
+	        </div>
+	        <div class="am-intro-right am-u-sm-6" style="margin-top: 14px;position: absolute;top: 2px;right: 0;">
+	            <img style="width: 25px;height: 30px;float: right" src="__TMPL__Public/images/address.png" alt="">
+	        </div>
+	    </div>
+	</div>-->
+	<div class="am-g am-intro-bd" style="padding: 10px 10px;font-size: 13px; margin-top: -10px;margin-bottom: 8px;">
+		<div style="width: 100%;background-color: #ffffff;padding:16px 10px 1rem;">
+			<table style="width: 100%;">
+				<tr>
+					<td style="    padding-right: 33px;">
+						<span style="font-size: 18px;font-weight:lighter; color: black">{$list.rtitle}</span>
+						<br>
+	           			 <span style="    line-height: 36px;">{$list.address}</span>
+					</td>
+					<td>
+						<img style="width: 25px;height: 30px;float: right" src="__TMPL__Public/images/address.png" alt="">
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</if>
+
+
+<div class="am-g am-intro-bd" style="padding: 10px 10px;margin-top: -18px">
+    <a href="{:U('Course/teacher_information?id=')}{$list.tid}" style="color: black">
+    	<?php
+    		if($list[tavatar]){
+    			$imgurl = AVATAR_ROOT."/data/upload/avatar/".$list[tavatar];
+    		}else{
+    			$imgurl = "__TMPL__Public/images/teacher2.png";
+    		}
+    		?>
+    <div class="xq" style="background:white;height: 110px;">
+        <div class="am-intro-left am-u-sm-3 tea" style="width:69px;height: 77px;margin: 8px 0 0 6px;background-image: url('{$imgurl}');background-size: cover;background-position: 50% 50%;">
+        </div>
+        <div class="am-intro-right am-u-sm-9" style="overflow: hidden;height: 91px;">
+            <p style="font-size: 13px;margin-top: 8px;font-weight: bold">讲师：{$list.teacher}</p>
+            <p style="font-size: 11px;margin-top: -17px;">
+            	<if condition="$list.teaching_results neq ''">{$list.teaching_results}</if></p>
+            <a href="{:U('Course/teacher_information?id=')}{$list.tid}"> <span style="color: #ceced0; top: 4.4rem;font-size:1.9rem" class="am-list-date fa fa-chevron-right" aria-hidden="true"></span></a>
+        </div>
+    </div>
+    </a>
+</div>
+
+<div class="bg1">
+    <ul data-am-widget="gallery" class="am-gallery am-avg-sm-1
+  am-avg-md-1 am-avg-lg-1 am-gallery-default" data-am-gallery="{ pureview: true }" >
+        <li style="background: white">
+            <h3>详情</h3>
+            <div class="am-gallery-item" style="padding: 16px 13px;">
+                    {$list.content}
+            </div>
+        </li>
+    </ul>
+
+</div>
+
+<div class="am-form-group">
+    <div class="am-u-sm-13" style="padding: 0px">
+    	<if condition="$list[start_time] elt date('Y-m-d H:i:s',time())">
+    		<button type="button" class="am-btn am-btn-block" style="background:#aeb4aa;height: 50px;color: white;margin-top: 10px;">已结束报名</button>
+    	<else/>
+    		 <a style="color:white" href="{:U('write_order?courseid=')}{$_GET[id]}"><button type="submit" class="am-btn am-btn-block" style="background:#4877fb;height: 50px;color: white;margin-top: 10px;">立即报名</button></a>
+    	</if>
+       
+    </div>
+</div>
+<input type="hidden" value="__TMPL__Public" id="pic_url" />
+<input type="hidden" value="{$list.id}" id="course_id" />
+<input type="hidden" value='{:U("Course/put_collection")}' id="collect_url" />
+<input type="hidden" value="{$is_collect}" id="is_collect" />
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__TMPL__Public/js/weixin/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<!--<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>-->
+<![endif]-->
+<script src="__TMPL__Public/js/weixin/amazeui.min.js"></script>
+<script src="__TMPL__Public/js/weixin/shoucang.js"></script>
+</body>
+</html>

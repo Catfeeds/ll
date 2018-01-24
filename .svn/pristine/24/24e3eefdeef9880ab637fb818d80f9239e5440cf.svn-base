@@ -1,0 +1,129 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>我的订单</title>
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/dd.css">
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body>
+<!--列表切换-->
+<div data-am-widget="tabs" class="am-tabs am-tabs-d2" >
+    <ul class="am-tabs-nav am-cf" style="background: white">
+        <li class="am-active"><a href="[data-tab-panel-0]">全部</a></li>
+        <li class=""><a href="[data-tab-panel-1]">待支付</a></li>
+        <li class=""><a href="[data-tab-panel-2]">待确认</a></li>
+        <li class=""><a href="[data-tab-panel-3]">已完成</a></li>
+        <li class=""><a href="[data-tab-panel-4]">已取消</a></li>
+    </ul>
+    <div class="am-tabs-bd">
+        <div data-tab-panel-0 class="am-tab-panel am-active">
+	        <foreach name="all_order" item="va">
+		        <div class="lb1">
+		            <img class="img1" src="{$url}{$va.picture}" alt="">
+		            <div class="txt" style="width: 150px;height: 64px;" name="{$va.oid}">
+		                <p style="font-size: 13px;color: #4a76fb">{$va.title}</p>
+		                <p style="font-size: 12px">下单时间：<php>echo date("Y-m-d",strtotime($va['createtime']));</php></p>
+		                <p style="font-size: 12px">需要积分：{$va.integral}</p>
+		            </div>
+		            <div class="statu">
+		                <if condition="$va['state'] eq 0">
+		                <p>待付款</p>
+		                <p class="pay">去支付</p>
+		                <elseif condition="$va['state'] eq 1"/>
+		                <p>待确认</p>
+		                <elseif condition="$va['state'] eq 3"/>
+		                <p style="color: #30ddac">已完成</p>
+		                <elseif condition="$va['state'] eq 4"/>
+		                <p>已取消</p>
+		                </if>
+		            </div>
+		        </div>
+	        </foreach>
+        </div>
+        <div data-tab-panel-1 class="am-tab-panel ">
+           <foreach name="dai_order" item="vb">
+		        <div class="lb1">
+		            <img class="img1" src="{$url}{$vb.picture}" alt="">
+		            <div class="txt" style="width: 150px;height: 64px;" name="{$vb.oid}">
+		                <p style="font-size: 13px;color: #4a76fb">{$vb.title}</p>
+		                <p style="font-size: 12px">下单时间：<php>echo date("Y-m-d",strtotime($vb['createtime']));</php></p>
+		                <p style="font-size: 12px">需要积分：{$vb.integral}</p>
+		            </div>
+		            <div class="statu">
+		                <p>待付款</p>
+		                <p class="pay">去支付</p>
+		            </div>
+		        </div>
+	        </foreach>
+        </div>
+        <div data-tab-panel-2 class="am-tab-panel ">
+            <foreach name="true_order" item="vc">
+		        <div class="lb1" >
+		            <img class="img1" src="{$url}{$vc.picture}" alt="">
+		            <div class="txt" style="width: 150px;height: 64px;" name="{$vc.oid}">
+		                <p style="font-size: 13px;color: #4a76fb">{$vc.title}</p>
+		                <p style="font-size: 12px">下单时间：<php>echo date("Y-m-d",strtotime($vc['createtime']));</php></p>
+		                <p style="font-size: 12px">需要积分：{$vc.integral}</p>
+		            </div>
+		            <div class="statu">
+		                <p>待确认</p>
+		            </div>
+		        </div>
+	        </foreach>
+        </div>
+        <div data-tab-panel-3 class="am-tab-panel ">
+            <foreach name="over_order" item="vd">
+		        <div class="lb1" >
+		            <img class="img1" src="{$url}{$vd.picture}" alt="">
+		            <div class="txt" style="width: 150px;height: 64px;" name="{$vd.oid}">
+		                <p style="font-size: 13px;color: #4a76fb">{$vd.title}</p>
+		                <p style="font-size: 12px">下单时间：<php>echo date("Y-m-d",strtotime($vd['createtime']));</php></p>
+		                <p style="font-size: 12px">需要积分：{$vd.integral}</p>
+		            </div>
+		            <div class="statu">
+		                <p style="color: #30ddac">已完成</p>
+		            </div>
+		        </div>
+	        </foreach>
+        </div>
+        <div data-tab-panel-4 class="am-tab-panel ">
+            <foreach name="die_order" item="ve">
+		        <div class="lb1">
+		            <img class="img1" src="{$url}{$ve.picture}" alt="">
+		            <div class="txt" style="width: 150px;height: 64px;" name="{$ve.oid}">
+		                <p style="font-size: 13px;color: #4a76fb">{$ve.title}</p>
+		                <p style="font-size: 12px">下单时间：<php>echo date("Y-m-d",strtotime($ve['createtime']));</php></p>
+		                <p style="font-size: 12px">需要积分：{$ve.integral}</p>
+		            </div>
+		            <div class="statu">
+		                <p>已取消</p>
+		            </div>
+		        </div>
+	        </foreach>
+        </div>
+    </div>
+</div>
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__TMPL__Public/js/weixin/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<![endif]-->
+<script src="__TMPL__Public/js/weixin/amazeui.min.js"></script>
+<script>
+$(".txt").click(function(){
+	var id=$(this).attr("name");
+	window.location.href="{:U('Mine/lineitem?id=')}"+id;
+})
+</script>
+</body>
+</html>

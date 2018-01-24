@@ -1,0 +1,39 @@
+/*@font-face {
+    font-family: 'FontAwesome';
+    src: url("../../fonts/fontawesome-webfont.eot"),
+            url("../../fonts/fontawesome-webfont.ttf"),
+            url("../../fonts/fontawesome-webfont.woff");
+
+    font-weight:normal;
+    font-style:normal;
+}*/
+body{
+    position: relative;
+}
+.am-intro-right{
+    padding-right: 3rem;
+}
+.bg1 .am-gallery-item img{
+    border-radius: 3px;
+    margin: 5px 0;
+}
+.xq .tea{
+    background-image: url("../../../Public/images/teacher2.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.am-form-group button{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+.starr{
+    width: 30px;
+    height: 30px;
+    float: right;
+    background-size: contain;
+    margin-top: -60px;
+    background-repeat: no-repeat;
+    background-image: url("../../../Public/images/shoucan.png");
+}

@@ -1,0 +1,47 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <tc_include file="Public:header" />
+    <title>选择年级</title>
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body>
+
+<!--表单-->
+<section>
+ <form class="am-form am-form-horizontal">
+	<foreach name="g" item="g">
+        <div class="am-form-group">
+            <div class="am-u-sm-13">
+                <label style="font-weight: inherit"></label>
+                <input type="text"  class="am-radius gender" value="{$g.title}">
+            </div>
+        </div>
+     </foreach>
+     </form>
+</section>
+<!--[if (gte IE 9)|!(IE)]><!-->
+
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<![endif]-->
+
+<script>
+$('.gender').each(function(){
+	$(this).click(function(){
+		var genders="<?php echo $_GET[genders]?>";
+		var grade=$(this).val();
+		if(grade ==null){
+			grade="";
+		}
+		if(genders ==null){
+			genders="";
+		}
+		window.location.href="{:U('Mine/member?genders=')}"+genders+'&grade='+grade;
+	})
+})
+</script>
+</body>
+</html>

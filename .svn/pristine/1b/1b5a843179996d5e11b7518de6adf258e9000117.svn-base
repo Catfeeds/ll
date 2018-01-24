@@ -1,0 +1,45 @@
+<?php
+namespace Lailonginterface\Controller;
+use Lailonginterface\Controller\PublicController;
+
+class PayController  extends PublicController {
+    /**
+     * 判断账户积分是否充足
+     */
+    public function integral()
+    {
+       $token=$_REQUEST['token'];
+       $userid=$this->checkAccess($token);
+       $integral=$_REQUEST['integral'];
+       $child=$_REQUEST['child'];
+       $u=M('user')->field("integral")->where("id = $userid")->find();
+       if(intval($u[integral])<$integral){
+           $this->errorResult("当前账户积分不足，请充值后支付");
+       }else{
+           $this->successShortResult("允许充值");
+       }
+    }
+    //完成支付
+    public function finish(){
+        $token=$_REQUEST['token'];
+        $orderid=$_REQUEST['orderid'];
+        $integral=$_REQUEST['integral'];
+        
+        $userid=$this->checkAccess($token);
+        /* $e=M('enrollment')->field("havenumber")->where("id = $orderid")->find();
+        $havenumber=$e[havenumber] + 1; */
+        $u=M('user')->field("integral")->find($userid);
+        M('user')->where("id = $userid")->save(array('integral'=>intval($u[integral]-$integral)));
+        M('enrollment')->where("id = $orderid")->save(array('state'=>3));
+        $this->successShortResult("完成支付");
+    }
+    //获取充值积分列表
+    public function getrechargescore(){
+        $res=M('scorechage')->select();
+        if($res){
+            $this->successLongResult($res, "获取成功");
+        }else{
+            $this->successShortResult("获取失败");
+        }
+    }
+}

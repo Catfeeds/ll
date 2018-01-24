@@ -1,0 +1,148 @@
+<?php
+namespace Lailonginterface\Controller;
+use Lailonginterface\Controller\PublicController;
+
+class GetprojectlistController  extends PublicController {
+    /**
+     * 获取科目 学段 章节
+     */
+    public function index()
+    {
+       $token=$_REQUEST['token'];
+       $this->checkAccess($token);
+       $subject=$_REQUEST['subject'];
+       $textbook=$_REQUEST['textbook'];
+       $m=M('subject')->order('index_id asc')->select();
+       if($subject && empty($textbook)){
+           $res=M('textbook')->where("subject = '$subject'")->order('id asc')->group("press")->select();
+           if($res){
+               $this->successLongResult($res, "操作成功");
+           }else{
+               $this->errorResult("操作失败");
+           }
+       }else if($subject && $textbook){
+           $res=M('textbook')->where("id =  $textbook")->order('id asc')->group("press")->select();
+           if($res){
+               $this->successLongResult($res, "操作成功");
+           }else{
+               $this->errorResult("操作失败");
+           }
+       }else{
+          $this->successLongResult($m, "操作成功");
+       }
+      /*  if($m){
+           $this->successResult($m);
+       }else{
+           $this->errorResult("暂无数据");
+       } */
+    }
+    /**
+     * 获取章节
+     */
+    public function getchapter(){
+        $token=$_REQUEST['token'];
+        $textbook=$_REQUEST['textbook'];
+        //0：1级章节 1：2级章节
+        $parent_id=$_REQUEST['parent_id'];
+        if(!$textbook){
+            $this->errorResult("无法取得章节信息");
+        }
+        if(!$parent_id){
+            $parent_id=0;
+        }
+        $this->checkAccess($token);
+        $tb=M('chapter')->where("parent_id = $parent_id and textbook_id = $textbook")->order('id asc')->select();
+        
+        if($tb){
+            $this->successResult($tb);
+        }else{
+            $this->errorResult("暂无数据");
+        }
+    }
+    /**
+     * 获取题型
+     */
+    public function getquestion_type(){
+        $token=$_REQUEST['token'];
+        $this->checkAccess($token);
+        $tb=M('question_type')->order("index_id asc")->select();
+        if($tb){
+            $this->successResult($tb);
+        }else{
+            $this->errorResult("暂无数据");
+        }
+    }
+    /**
+     * 获取难度
+     */
+    public function getquestion_difficulty(){
+        $token=$_REQUEST['token'];
+        $this->checkAccess($token);
+        $tb=M('question_difficulty')->order("index_id asc")->select();
+        if($tb){
+            $this->successResult($tb);
+        }else{
+            $this->errorResult("暂无数据");
+        }
+    }
+    /**
+     * 获取题集
+     */
+    public function getopic_set(){
+        $token=$_REQUEST['token'];
+        $this->checkAccess($token);
+        $tb=M('topic_set')->order("index_id asc")->select();
+        if($tb){
+            $this->successResult($tb);
+        }else{
+            $this->errorResult("暂无数据");
+        }
+    }
+    /**
+     * 获取老师列表
+     */
+    public function geteacher(){
+        $token=$_REQUEST['token'];
+        $this->checkAccess($token);
+        $tb=M('teacher_type')->field("title as name, createtime ,index_id")->order("index_id asc")->select();
+        if($tb){
+            $this->successResult($tb);
+        }else{
+            $this->errorResult("暂无数据");
+        }
+    }
+    /**
+     * 获取名师列表
+     */
+    public function getfamousteacher(){
+        $token=$_REQUEST['token'];
+        $this->checkAccess($token);
+        // 当前条数
+        $pagesize = $_REQUEST['pagesize'];
+        // 当前页数
+        $pagec = $_REQUEST['pagec'];
+        $start = ($pagec - 1) * $pagesize;
+        $tb=M('teacher')->field("*")->limit($start.','.$pagesize)->order("id asc")->select();
+            foreach ($tb as $k2 => $v2) {
+                    $tb[$k2][avatar] = __ROOT__ . '/data/upload/avatar/' . $v2[avatar];
+                }
+        if($tb){
+            $this->successResult($tb);
+        }else{
+            $this->errorResult("暂无数据");
+        }
+    }
+    /**
+     * 获取班级
+     */
+    public function getclass_type(){
+        $token=$_REQUEST['token'];
+        $this->checkAccess($token);
+        $res=M('class_type')->order("index_id asc")->select();
+        if($res){
+            $this->successResult($res);
+        }else{
+            $this->errorResult("暂无数据");
+        }
+    }
+}

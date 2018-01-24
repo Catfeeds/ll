@@ -1,0 +1,48 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <tc_include file="Public:header" />
+    <title>意见反馈</title>
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/dd.css">
+	<link rel="stylesheet" href="__TMPL__Public/css/weixin/public.css">
+
+    <!--<link rel="stylesheet" href="__TMPL__Public/css/weixin/course.css">-->
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body>
+<form class="am-form am-form-horizontal" style="padding: 10px 10px;margin-top: 20px;" action="{:U('mine/do_feedback')}" method="post"> 
+        <div class="am-form-group" style="margin-top: -18px">
+            <textarea style="border:none;::-webkit-input-placeholder {color:#d3d8cd;};resize : none;" class="content" rows="8" placeholder="请填写您宝贵的意见或反馈"></textarea>
+        </div>
+
+        <div class="am-u-sm-13" style="padding: 0;margin-top: 20px">
+            <button type="button" class="am-btn am-btn-block btn" style="background: #2adcaa;color: white;height: 50px;margin-top: -27px;border-radius:3px">提交</button>
+        </div>
+        
+        <div class="am-u-sm-13" style="padding: 0;margin-top: 20px">
+            <p style="text-align:right;"><a href="{:U('mine/contant')}" style="height: 50px;bottom:0;margin-left:auto;margin-right:auto;border-radius:3px;">联系我们</a></p>
+        </div>
+</form>
+<input type="hidden" id="moban" value="__TMPL__">
+<tc_include file="Public:float"/>
+<script src="__TMPL__Public/js/weixin/public.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<![endif]-->
+</body>
+<script>
+	$('.btn').click(function(){
+		var content=$('.content').val();
+		 $.post("{:U('mine/do_feedback')}",{content:content},function(data){
+			    if(data.status == 1){
+			    	alert('意见反馈成功');
+			    	window.location.href="{:U('mine/my')}";
+			    }else{
+			    	alert('意见反馈失败');
+			    }
+		  });
+	})
+</script>
+</html>

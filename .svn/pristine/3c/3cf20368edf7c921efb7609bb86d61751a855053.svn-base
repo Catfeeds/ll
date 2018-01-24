@@ -1,0 +1,507 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>课程</title>
+    <link rel="stylesheet" href="__TMPL__Public/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/course.css">
+    <script src="__TMPL__Public/js/weixin/jquery.min.js"></script>
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+    <style>
+        .select ul{ padding: 0;}
+        .select ul li{list-style-type:none;text-align: center;}
+        .styled-select {
+            width: 100%;
+            overflow: hidden;
+        }
+        .styled-select select {
+            background: #fff;
+            width: 268px;
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            height: 42px;
+            -webkit-appearance: none; /*for chrome*/
+        }
+		.am-form-group{
+		margin-bottom:17px;
+		}
+		section .am-form div label{
+		top:8px;
+		}
+		form .am-form-group label{
+		font-weight:400;
+		}
+    </style>
+</head>
+<body>
+<!--切换-->
+
+<div data-am-widget="tabs" class="am-tabs am-tabs-default">
+        <ul class="am-tabs-nav am-cf" style="position: fixed; top: 5px; left:calc(50% - 90px); z-index: 999">
+            <li class="am-active" style="border: 1px solid; border-radius: 5px 0 0 5px;background: #fff;"><a href="[data-tab-panel-0]">排课计划</a></li>
+            <li class="" style="border: 1px solid;border-left: none; border-radius: 0 5px 5px 0;background: #fff;"><a href="[data-tab-panel-1]">课程意向</a></li>
+        </ul>
+    <!-----------------------排课计划------------------------------------------------------->
+    <div class="am-tabs-bd" style="border: none;margin-top: 40px;">
+      <!--  <div data-tab-panel-0 class="am-tab-panel am-active">-->
+                <div data-tab-panel-0 class="am-cf am-intro-default am-tab-panel am-active tableappend" style="margin-top: 20px;padding: 5px 8px 0">
+                    <foreach name="list" item="vo">
+                    	<div class="am-intro-hd" style=" padding-bottom: 2px">
+	                        <strong style="border-right: none">{$vo.time}</strong>
+	                        <!-- <span>{$vo.start_month}{$vo.start_day}</span> -->
+	                    </div><?PHP $list2  = $vo['list'];?>
+	                    <foreach name="list2" item="v" key="k">
+	                      <php> if( $k == 0){;</php><div class="am-g am-intro-bd" style="padding-top: 7px; padding-bottom: 7px"><php>}else{</php><div class="am-g am-intro-bd" style="padding-top: 0px; padding-bottom: 7px"><php>}</php>
+		                        <a href="{:U('Course/course_detail?id=')}{$v.id}">
+		                        <div class="xq" style="background:#eff6ff;height: 60px">
+		                        	<?php
+							    		if($v[cover]){
+							    			$imgurl = $v[cover];
+							    		}else{
+							    			$imgurl = "__TMPL__Public/images/math.png";
+							    		}
+							    		?>
+		                            <div class="am-intro-left am-u-sm-2" style="width:45px;height: 45px;margin: 8px 0 0 6px;background-image: url('{$imgurl}');background-size: cover;background-position: 50% 50%;">
+		                            	<!--<if condition="$v.cover neq ''"><img style="width: 40px;height: 40px;" src="{:sp_get_asset_upload_path('avatar/'.$v['cover'])}" alt="">
+		                            	<else/><img style="width: 40px;height: 40px;" src="__TMPL__Public/images/math.png" alt="">
+		                            	</if>-->
+		                            </div>
+		                            <div class="am-intro-right am-u-sm-10"><p style="font-size: 1.6rem;margin-top: 8px;max-height: 20px;overflow: hidden;">{$v.title}</p>
+		                            	<p style="font-size: 1.4rem;margin-top: -17px;">讲师：{$v.teacher}&nbsp;&nbsp; &nbsp;开课时间：<if condition="date('H',strtotime($v[start_time])) gt 12"><php>$dian = date("H",strtotime($v[start_time])) - 12; echo "下午".$dian."点";</php><else/><php>echo "上午".date("H",strtotime($v[start_time]))."点";</php></if></p></div>
+
+		                        </div>
+		                        </a>
+		                    </div>
+	                    </foreach>
+                    </foreach>
+                </div>
+        <script>
+            $(function(){
+                $('.am-intro-hd').eq(1).next('.am-intro-bd').attr('padding','7px');
+            })
+
+        </script>
+        <!-- 课程意向 -->
+        <div data-tab-panel-1 class="am-tab-panel " style="background: #f4f5f7;padding: 0;">
+            <section>
+                <form class="am-form am-form-horizontal" action="{:U('Course/course_sub')}" method="post">
+                    <div class="am-form-group" >
+                        <div class="am-u-sm-13" style="padding: 0;height:44px;">
+                            <label>科目</label>
+                            <div class="styled-select">
+                                <select name="km" style="width: 100%;height:44px;color: #999;border:none; direction: rtl;appearance:none;  -moz-appearance:none;  -webkit-appearance:none;" id="sel_sub" required>
+                                    <option value="全部">全部</option>
+                                    <foreach name="clist" item="vo">
+                                        <option value="{$vo.title}" >{$vo.title}</option>
+                                    </foreach>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="am-form-group" style="margin-top: -16px;">
+                        <div class="am-u-sm-13" style="padding: 0;height:44px;">
+                            <label>教材</label>
+                            <div class="styled-select">
+                                <select name="jc" style="width: 100%;height:44px;color: #999;border:none; direction: rtl;appearance:none;  -moz-appearance:none;  -webkit-appearance:none;" id="sel_jc" required>
+                                    <option value="全部">全部</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        $('#sel_sub').change(function(){
+                            var sub = $('#sel_sub').val(); 
+                            var url = "{:U('Course/course_textbook')}";
+                            var d;
+                            var x=0;
+                            if(sub == '全部'){
+
+                            }else{
+                                $('#sel_jc').empty('option');
+                                $('#sel_jc').append("<option value='全部'>全部</option>");
+                                    $.ajax({
+                                        url : url,
+                                        type : 'post',
+                                        data : {'subj':sub},
+                                        success : function(data){
+                                             for (d in data){
+                                                if(d == 'referer'|| d =='state'){
+
+                                                }else{
+                                                    x++;
+                                                }
+                                             }
+                                             console.log(x);
+                                            for(var i = 0; i<x ;i++){
+                                                $('#sel_jc').append("<option value='"+data[i]['press']+"'>"+data[i]['press']+"</option>");
+                                                console.log(data[i]['press']);
+                                            }
+                                        },
+                                        error : function(e){
+                                            console.log(e);
+                                        }
+                                    })
+                            }
+                        })
+                    </script>
+                    <div class="am-form-group" style="margin-top: -16px;border-bottom：1px solid black;">
+                        <div class="am-u-sm-13" style="padding: 0;height:44px;">
+                            <label>学段</label>
+                            <div class="styled-select">
+                                <select name="xd" style="width: 100%;height:44px;color: #999;border:none; direction: rtl;appearance:none;  -moz-appearance:none;  -webkit-appearance:none;" id="sel_xd" required>
+                                    <option value="全部">全部</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                <script>
+                    $('#sel_jc').change(function(){
+                        var sub = $('#sel_sub').val();
+                        var jc = $('#sel_jc').val();
+                        var url = "{:U('Course/course_pre')}";
+                        var d;
+                        var x=0;
+                        if(sub == '全部' || jc == '全部'){
+
+                        } else{
+                            $('#sel_xd').empty('option');
+                            $('#sel_xd').append('<option value="全部">全部</option>');
+                                $.ajax({
+                                    url : url,
+                                    type : 'post',
+                                    data : {'subj':sub,'jc':jc},
+                                    success : function(data){
+                                        for (d in data){
+                                            if(d == 'referer'|| d =='state'){
+
+                                            }else{
+                                                x++;
+                                            }
+
+                                        }
+                                        console.log(x);
+                                        for(var i = 0; i<x ;i++){
+                                            $('#sel_xd').append("<option value='"+data[i]['grade']+"'>"+data[i]['grade']+"</option>");
+                                            console.log(data[i]['press']);
+                                        }
+                                    },
+                                    error : function(e){
+                                        console.log(e);
+                                    }
+                                })
+
+                        }
+                    })
+                </script>
+                    <div class="am-form-group" style="margin-top: -16px;border-bottom：1px solid #ccc">
+                        <div class="am-u-sm-13" style="padding: 0;height:44px;">
+                            <label>章节</label>
+                            <div class="styled-select">
+                                <select name="zj" style="width: 100%;height:44px;color:#999;border:none; direction: rtl;appearance:none;  -moz-appearance:none;  -webkit-appearance:none;" id="sel_zj" required>
+                                    <option value="全部">全部</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        $('#sel_xd').change(function(){
+                            var sub = $('#sel_sub').val();
+                            var jc = $('#sel_jc').val();
+                            var xd = $(this).val();
+                            var url = "{:U('Course/course_chapter')}";
+                            var d;
+                            var x=0;
+                            if(sub == '全部' || jc == '全部' || xd == '全部'){
+
+                            } else{
+                                $('#sel_zj').empty('option');
+                                $('#sel_zj').append('<option value="全部">全部</option>');
+                                $.ajax({
+                                    url : url,
+                                    type : 'post',
+                                    data : {'sub':sub,'pre':jc,'gra':xd},
+                                    success : function(data){
+                                        for (d in data){
+                                            if(d == 'referer'|| d =='state'){
+
+                                            }else{
+                                                x++;
+                                            }
+
+                                        }
+                                        console.log(x);
+                                        for(var i = 0; i<x ;i++){
+                                            $('#sel_zj').append("<option value='"+data[i]['title']+"'>"+data[i]['title']+"</option>");
+                                            console.log(data[i]['press']);
+                                        }
+                                    },
+                                    error : function(e){
+                                        console.log(e);
+                                    }
+                                })
+
+                            }
+                        })
+                    </script>
+                    <div class="am-form-group" style="margin-top: -16px;border-bottom：1px solid #ccc">
+                        <div class="am-u-sm-13" style="padding: 0;height:44px;">
+                            <label>二级章节</label>
+                            <div class="styled-select">
+                                <select name="erzj" style="width: 100%;height:44px;color: #999;border:none; direction: rtl;appearance:none;  -moz-appearance:none;  -webkit-appearance:none;" id="sel_erzj" required>
+                                    <option value="全部">全部</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        $('#sel_zj').change(function(){
+                            var sub = $('#sel_sub').val();
+                            var jc = $('#sel_jc').val();
+                            var xd = $('#sel_xd').val();
+                            var zj = $('#sel_zj').val();
+                            var url = "{:U('Course/course_jie')}";
+                            var d;
+                            var x=0;
+                            if(sub == '全部' || jc == '全部' || xd == '全部' || zj == '全部' ){
+
+                            } else{
+                                $('#sel_erzj').empty('option');
+                                $('#sel_erzj').append('<option value="全部">全部</option>');
+                                $.ajax({
+                                    url : url,
+                                    type : 'post',
+                                    data : {'sub':sub,'pre':jc,'gra':xd,'zj':zj},
+                                    success : function(data){
+                                        for (d in data){
+                                            if(d == 'referer'|| d =='state'){
+
+                                            }else{
+                                                x++;
+                                            }
+
+                                        }
+                                        console.log(x);
+                                        for(var i = 0; i<x ;i++){
+                                            $('#sel_erzj').append("<option value='"+data[i]['title']+"'>"+data[i]['title']+"</option>");
+                                            console.log(data[i]['press']);
+                                        } 
+                                    },
+                                    error : function(e){
+                                        console.log(e);
+                                    }
+                                })
+
+                            }
+                        })
+                    </script>
+                    <div class="am-form-group" style="margin-top: -16px;border-bottom：1px solid #ccc">
+                        <div class="am-u-sm-13" style="padding: 0;height:44px;">
+                            <label>题型</label>
+                            <div class="styled-select">
+                                <select name="tx" style="width: 100%;height:44px;color: #999;border:none; direction: rtl;appearance:none;  -moz-appearance:none;  -webkit-appearance:none;"  required>
+                                    <option value="全部">全部</option>
+                                    <foreach name="txlist" item="vo">
+                                        <option value="{$vo.id}" >{$vo.title}</option>
+                                    </foreach>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="am-form-group" style="margin-top: -16px;border-bottom：1px solid #ccc">
+                        <div class="am-u-sm-13" style="padding: 0;height:44px;">
+                            <label>难度</label>
+                            <div class="styled-select">
+                                <select name="nd" style="width: 100%;height:44px;color: #999;border:none; direction: rtl;appearance:none;  -moz-appearance:none;  -webkit-appearance:none;" required>
+                                    <option value="全部">全部</option>
+                                    <foreach name="ndlist" item="vo">
+                                        <option value="{$vo.id}" >{$vo.title}</option>
+                                    </foreach>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="am-form-group" style="margin-top: -16px;border-bottom：1px solid #ccc">
+                        <div class="am-u-sm-13" style="padding: 0;height:44px;">
+                            <label>题集</label>
+                            <div class="styled-select">
+                                <select name="tj" style="width: 100%;height:44px;color: #999;border:none; direction: rtl;appearance:none;  -moz-appearance:none;  -webkit-appearance:none;" required>
+                                    <option value="全部">全部</option>
+                                    <foreach name="tjlist" item="vo">
+                                        <option value="{$vo.id}" >{$vo.title}</option>
+                                    </foreach>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="am-form-group" style="margin-top: -16px;border-bottom：1px solid #ccc">
+                        <div class="am-u-sm-13" style="padding: 0;height:44px; background: #FFFFFF">
+                            <label>希望上课的时间</label>
+                            <input style="margin-left: 56%;width: 50%;height:44px; line-height: 16px; border: none; appearance:none;  -moz-appearance:none;  -webkit-appearance:none;}" type="date" name="times" class="am-radius" placeholder ='任意' >
+                        </div>
+                    </div>
+
+                    <div class="am-form-group" style="margin-top: -16px;border-bottom：1px solid #ccc">
+                        <div class="am-u-sm-13" style="padding: 0;height:44px;">
+                            <label>老师</label>
+                            <div class="styled-select">
+                                <select name="ls" style="width: 100%;height:44px;color: #999;border:none; direction: rtl;appearance:none;  -moz-appearance:none;  -webkit-appearance:none;"  required>
+                                    <option value="任意">任意</option>
+                                    <foreach name="lslist" item="vo">
+                                        <option value="{$vo.title}" >{$vo.name}</option>
+                                    </foreach>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="am-form-group" style="margin-top: -16px;border-bottom：1px solid #ccc">
+                        <div class="am-u-sm-13" style="padding: 0;height:44px;">
+                            <label>班级类型</label>
+                            <div class="styled-select">
+                                <select name="bj" style="width: 100%;height:44px;color: #999;border:none; direction: rtl;appearance:none;  -moz-appearance:none;  -webkit-appearance:none;"  required>
+                                    <option value="任意">任意</option>
+                                    <foreach name="bjlist" item="vo">
+                                        <option value="{$vo.title}" >{$vo.title}</option>
+                                    </foreach>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="am-form-group" style="margin-top: -16px;border-bottom：1px solid #ccc">
+                        <div class="am-u-sm-13" style="padding: 0;height:44px;">
+                            <label>意向学生</label>
+                            <div class="styled-select">
+                                <select name="yx" style="width: 100%;height:44px;color: #999;border:none; direction: rtl;appearance:none;  -moz-appearance:none;  -webkit-appearance:none;"  required>
+                                    <foreach name="stulist" item="vo">
+                                        <option value="{$vo.id}" >{$vo.name}</option>
+                                    </foreach>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="am-form-group">
+                        <div class="am-u-sm-13"style="text-align: center">
+                            <p style="color: #a5a8a0;font-size: 12px;letter-spacing: 1px"><a href="{:U('Course/write_application')}" style="color: blue">还可以直接填写意向</a></p>
+                        </div>
+                    </div>
+
+
+                    <div class="am-form-group">
+                        <div class="am-u-sm-13" style="padding: 0;">
+                            <button type="submit" class="am-btn am-btn-block" id="tijiao" style="background: #2adcaa;color: white;height: 50px;margin-top: -27px;border-radius:3px">提交意向</button>
+                        </div>
+                    </div>
+
+                </form>
+            </section>
+        </div>
+    </div>
+    <p style="text-align:center;color: #0e90d2;" class="select_f" name="2" id="service">点击加载更多</p>
+    <!-- ----- -->
+    <script type="text/javascript">
+        $('#tijiao').click(function(){
+            var sub = $('#sel_sub').val();
+            if(sub == '全部'){
+                alert('请选择科目');
+                return false;
+            } 
+            
+        })
+        //加载更多课程
+$(".select_f").click(function(){
+	var num=$(this).attr("name");
+	$(this).attr('name',parseInt(num)+1);
+	$.post('{:U("Course/more_course")}',
+            { num : num },
+            function(data){
+            	var html="";
+            	var inner="";
+            	console.log(data);
+            	return;
+            	$.each(data[0],function(index,item){
+            		 html+='<div class="am-intro-hd" style=" padding-bottom: 2px">';
+            			 html+='<strong style="border-right: none">'+item.time+'</strong>';
+            				 $.each(item.list,function(in2,it2){
+            					 if(in2==0){
+            						 inner+=' <div class="am-g am-intro-bd" style="padding-top: 7px; padding-bottom: 7px">';
+            					 }else{
+            						 inner+=' <div class="am-g am-intro-bd" style="padding-top: 0px; padding-bottom: 7px">';
+            					 }
+            					 inner+=' <a href="{:U(\'Course/course_detail?id=\')}'+it2.cid+'">';
+            					 inner+='<div class="xq" style="background:#eff6ff;height: 60px">';
+ 							    		if(it2.cover !=''){
+ 							    			var imgurl = it2.cover;
+ 							    		}else{
+ 							    			var imgurl = "__TMPL__Public/images/math.png";
+ 							    		}
+ 							    		inner+='<div class="am-intro-left am-u-sm-2" style="width:45px;height: 45px;margin: 8px 0 0 6px;background-image: url(\''+imgurl+'\');background-size: cover;background-position: 50% 50%;"></div>';
+ 							    		inner+='<div class="am-intro-right am-u-sm-10"><p style="font-size: 1.6rem;margin-top: 8px;max-height: 20px;overflow: hidden;">'+it2.title+'</p>';
+ 							    		inner+='<p style="font-size: 1.4rem;margin-top: -17px;">讲师：'+it2.teacher+'&nbsp;&nbsp; &nbsp;开课时间：</div></div></a></div>';
+            				 })
+            				 html+=inner;
+								 html+="</div>";
+            		})
+            		$('.tableappend').append(html);
+            	})
+            })
+    </script>
+</div>
+ 
+<!-- 顶部背景色 -->
+<div style="width: 100%;background: #f4f5f7;position: fixed;top: 0;height: 54px;z-index: 200;">
+
+</div>
+<footer style="overflow: hidden;z-index: 999">
+    <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default " id="">
+        <ul class="am-navbar-nav am-cf am-avg-sm-4" style="background: #fbfbfb;">
+            <li >
+                <a href="{:U('Course/course')}">
+                    <img class="show" src="__TMPL__Public/images/course1.png" alt="课程"/>
+                    <img style="display: none" class="hide" src="__TMPL__Public/images/coursed.png" alt="课程"/>
+                    <span class="am-navbar-label">课程</span>
+                </a>
+            </li>
+            <li >
+                <a href="{:U('Mine/server')}">
+                    <img class="show1" src="__TMPL__Public/images/server.png" alt="管家服务"/>
+                    <img  style="display: none" class="hide1" src="__TMPL__Public/images/servered.png" alt="服务"/>
+                    <span class="am-navbar-label txt1">管家服务</span>
+                </a >
+            </li>
+            <li >
+                <a href="{:U('Mine/my')}">
+                    <img class="show2" src="__TMPL__Public/images/my.png" alt="我的"/>
+                    <img  style="display: none" class="hide2" src="__TMPL__Public/images/myd.png" alt="我的"/>
+                    <span class="am-navbar-label txt2">我的</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</footer>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<!--<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>-->
+<![endif]-->
+<script src="__TMPL__Public/js/weixin/amazeui.min.js"></script>
+<script src="__TMPL__Public/js/weixin/course.js"></script>
+
+
+</body>
+</html>

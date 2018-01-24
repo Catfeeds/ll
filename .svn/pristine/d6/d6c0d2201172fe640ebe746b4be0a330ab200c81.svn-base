@@ -1,0 +1,24 @@
+<?php
+namespace Lailonginterface\Controller;
+use Lailonginterface\Controller\PublicController;
+
+class GetprojectlistController  extends PublicController {
+    /**
+     * 获取科目列表
+     */
+    public function index()
+    {
+       $token=$_REQUEST['token'];
+       //当前页数2
+       $pagefrist=$_REQUEST['pagefrist'];
+       //每页条数10
+       $pagelast=$_REQUEST['pagelast'];
+       $this->checkAccess($token);
+       $m=M('course')->limit(($pagefrist-1)*$pagelast.','.($pagefrist-1)*$pagelast+$pagelast)->select();
+       if($m){
+           $this->successResult($m);
+       }else{
+           $this->errorResult("暂无数据");
+       }
+    }
+}

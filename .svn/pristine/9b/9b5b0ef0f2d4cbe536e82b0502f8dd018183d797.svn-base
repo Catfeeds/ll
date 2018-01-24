@@ -1,0 +1,61 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>积分规则</title>
+    <link rel="stylesheet" href="__TMPL__Public/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/integration.css">
+</head>
+<body style="background: #f4f5f7">
+<div class="am-container" style="margin-top: 20px;color: #716e80;margin-left: 20px;font-weight: normal">
+    <p>积分能用来做什么？</p>
+    <p>可以在首页排课计划列表中，选择合适的课程报名，报名课程会消耗一定的积分。</p>
+    <br/>
+    <p>积分怎么获得？</p>
+    <table width=100%; border=1 style="margin-left:-6%;">
+    	<tr>
+    		<td>认证小孩</td>
+    		<td>+30积分</td>
+    	</tr>
+    	<tr>
+    		<td>签到</td>
+    		<td>+5积分</td>
+    	</tr>
+    	<tr>
+    		<td>推荐用户</td>
+    		<td>+10积分</td>
+    	</tr>
+    	<tr>
+    		<td>填写意见反馈</td>
+    		<td>根据建议的价值，奖励一定的积分</td>
+    	</tr>
+    	<tr>
+    		<td>小孩表现好 </td>
+    		<td>奖励一定积分</td>
+    	</tr>
+    	<tr>
+    		<td>小孩成绩好 奖励一定积分</td>
+    		<td>奖励一定积分</td>
+    	</tr>
+    	<tr>
+    		<td>购买</td>
+    		<td>可以在积分充值页面进行购买，1元=10积分</td>
+    	</tr>
+    </table>
+</div>
+<!--<tc_include file="Public:float"/>-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__TMPL__Public/js/weixin/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<![endif]-->
+<script src="__TMPL__Public/js/weixin/amazeui.min.js"></script>
+</body>
+</html>

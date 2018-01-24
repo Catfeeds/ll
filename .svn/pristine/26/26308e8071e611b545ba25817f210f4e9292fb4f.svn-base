@@ -1,0 +1,49 @@
+<admintpl file="header" />
+</head>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/addcourse.css" />
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('Appversion/index')}">{:L('ADMIN_FEED_INDEX')}</a></li>
+			<li class="active"><a href="{:U('Appversion/add')}">{:L('ADMIN_FEED_ADD')}</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Appversion/add_post')}">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">{:L('VERSION')}</label>
+					<div class="controls">
+						<input type="text" name="version">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('URL')}</label>
+					<div class="controls">
+						<input type="text" name="url">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('CONTENT')}</label>
+					<div class="controls">
+						<textarea rows="5" cols="5" name="content"></textarea>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('FORCE')}</label>
+					<div class="controls">
+						<select name="force">
+							<option value="0">否</option>
+							<option value="1">是</option>
+						</select>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit"><if condition="empty($_GET[id])">{:L('ADD')}<else/>{:L('EDIT')}</if></button>
+				<a class="btn" href="{:U('Information/index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<admintpl file="header" />
+</head>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/addcourse.css" />
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('record/intention')}">{:L('ADMIN_INTENT_INDEX')}</a></li>
+			<li><a href="{:U('record/intention2')}">{:L('ADMIN_INTENTX_INDEX')}</a></li>
+			<li class="active"><a href="{:U('record/find')}">{:L('ADMIN_INTENTX_FIND')}</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form">
+			<fieldset>
+			<if condition="$_GET[type] eq 0">
+			   <div class="control-group">
+					<label class="control-label">{:L('CHILD')}</label>
+					<div class="controls">
+						<input type="text" value="{$list.name}" disabled>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('GRADE')}</label>
+					<div class="controls">
+						<input type="text" value="{$list.grade}" disabled>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('PRESS')}</label>
+					<div class="controls">
+						<input type="text" value="{$list.press}" disabled>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('SUB')}</label>
+					<div class="controls">
+						<input type="text" value="{$list.subject}" disabled>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('CHAPTER')}</label>
+					<div class="controls">
+						<input type="text" value="{$list.chapter}" disabled>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('SUB_CHAPTER')}</label>
+					<div class="controls">
+						<input type="text" value="{$list.sub_chapter}" disabled>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('QT')}</label>
+					<div class="controls">
+						<input type="text"  value="{$list.question_type}" disabled>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('QD')}</label>
+					<div class="controls">
+						<input type="text" value="{$list.question_difficulty}" disabled>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('TS')}</label>
+					<div class="controls">
+						<input type="text" value="{$list.topic_set}" disabled>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('WST')}</label>
+					<div class="controls">
+						<input type="text" value="{$list.wanted_start_time}" disabled>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('TEACHER')}</label>
+					<div class="controls">
+						<input type="text" value="{$list.teacher}" disabled>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('CT')}</label>
+					<div class="controls">
+						<input type="text"  value="{$list.class_type}" disabled>
+					</div>
+				</div>
+			<elseif condition="$_GET[type] eq 1"/>
+				<div class="control-group">
+					<label class="control-label">{:L('CONTENT')}</label>
+					<div class="controls">
+						<textarea disabled style="width:70%;height:200px;">{$list.content}</textarea>
+					</div>
+				</div>
+			</if>
+			</fieldset>
+		</form>
+			<div class="form-actions">
+				<a class="btn" href="{:U('record/intention2')}">{:L('BACK')}</a>
+			</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+
+</html>

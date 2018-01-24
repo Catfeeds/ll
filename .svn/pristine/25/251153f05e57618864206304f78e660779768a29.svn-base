@@ -1,0 +1,108 @@
+<?php
+namespace Lailonginterface\Controller;
+use Lailonginterface\Controller\PublicController;
+
+class MineController  extends PublicController {
+    /**
+     * 成为会员
+     */
+    public function userauth()
+    {
+       $token=$_REQUEST['token'];
+       $userid=$this->checkAccess($token);
+       $realname=$_REQUEST['realname'];
+       $birthday=$_REQUEST['birthday'];
+       $gender=$_REQUEST['gender'];
+       $school=$_REQUEST['school'];
+       $grade=$_REQUEST['grade'];
+       $call=$_REQUEST['call'];
+       $name=$_REQUEST['name'];
+       $phone=$_REQUEST['phone'];
+       
+       if(empty($realname) || empty($birthday) || empty($school) || empty($grade)){
+           $this->emptyResult();
+       }
+       if(M('child')->where("name = '$name'")->find()){
+           $this->errorResult("此孩子已成为会员");
+       }
+       M('member')->add(array('appellation'=>$call,'phone'=>$phone,'name'=>$name,'createtime'=>date('Y-m-d H:i:s',time())));
+       $data=array('name'=>$realname,'birthday'=>$birthday,'gender'=>$gender,'school'=>$school,'grade'=>$grade,'is_vip'=>1,'user_id'=>$userid);
+        if(M('child')->add($data)){
+            $this->successShortResult($name."已成为会员");
+        }else {
+            $this->errorResult("成为会员失败");
+        }
+    }
+   //获取年级
+   public function grade(){
+       $token=$_REQUEST['token'];
+       $userid=$this->checkAccess($token);
+       $s=M('grades')->select();
+       if($s){
+           $this->successLongResult($s, "获取年级成功");
+       }else{
+           $this->errorResult("获取年级失败");
+       }
+   }
+   /**
+    * 我的订单接口
+    */
+   public function myorder(){
+       $token=$_REQUEST['token'];
+       $userid=$this->checkAccess($token);
+       $type=$_REQUEST['type'];
+       if(!in_array($electricity,array(0,1,2,3,4)))
+       {
+           $this->errorResult("参数非法！");
+       }
+        $field="c.title,c.picture,e.createtime,c.integral,e.state,e.id as orderid,e.course_id";
+       //全部
+       if($type == -1){
+           $res=M('enrollment')->table(C('DB_PREFIX')."enrollment as e")->field($field)->join(C('DB_PREFIX')."course as c on c.id =e.course_id",'left')->where("e.user_id = $userid")->select();
+            foreach($res as $r=>$s){
+                $res[$r][picture]=__ROOT__.'/data/upload/avatar/'.$s[picture];
+            }
+       }
+       //待支付
+       if($type == 0){
+           $res=M('enrollment')->table(C('DB_PREFIX')."enrollment as e")->field($field)->join(C('DB_PREFIX')."course as c on c.id =e.course_id",'left')->where("e.user_id = $userid and e.state=$type")->select();
+           foreach($res as $r=>$s){
+               $res[$r][picture]=__ROOT__.'/data/upload/avatar/'.$s[picture];
+           }
+       }
+       //已付
+       if($type == 1){
+           $res=M('enrollment')->table(C('DB_PREFIX')."enrollment as e")->field($field)->join(C('DB_PREFIX')."course as c on c.id =e.course_id",'left')->where("e.user_id = $userid and e.state=$type")->select();
+           foreach($res as $r=>$s){
+               $res[$r][picture]=__ROOT__.'/data/upload/avatar/'.$s[picture];
+           }
+       }
+       //已确认
+       if($type == 2){
+           $res=M('enrollment')->table(C('DB_PREFIX')."enrollment as e")->field($field)->join(C('DB_PREFIX')."course as c on c.id =e.course_id",'left')->where("e.user_id = $userid and e.state=$type")->select();
+           foreach($res as $r=>$s){
+               $res[$r][picture]=__ROOT__.'/data/upload/avatar/'.$s[picture];
+           }
+       }
+       //已完成
+       if($type == 3){
+           $res=M('enrollment')->table(C('DB_PREFIX')."enrollment as e")->field($field)->join(C('DB_PREFIX')."course as c on c.id =e.course_id",'left')->where("e.user_id = $userid and e.state=$type")->select();
+           foreach($res as $r=>$s){
+               $res[$r][picture]=__ROOT__.'/data/upload/avatar/'.$s[picture];
+           }
+       }
+       //已取消
+       if($type == 4){
+           $res=M('enrollment')->table(C('DB_PREFIX')."enrollment as e")->field($field)->join(C('DB_PREFIX')."course as c on c.id =e.course_id",'left')->where("c.user_id = $userid and c.state=$type")->select();
+           foreach($res as $r=>$s){
+               $res[$r][picture]=__ROOT__.'/data/upload/avatar/'.$s[picture];
+           }
+       }
+       if($res){
+           $msg="操作成功";
+           $this->successLongResult($res, $msg);
+       }else{
+           $this->errorResult("未能获取订单");
+       }
+   }
+}

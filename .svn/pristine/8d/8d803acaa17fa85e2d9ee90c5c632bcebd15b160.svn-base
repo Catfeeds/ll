@@ -1,0 +1,150 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>订单详情</title>
+    <link rel="stylesheet" href="__TMPL__Public/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/dd.css">
+    <!--<link rel="stylesheet" href="__TMPL__Public/css/weixin/course.css">-->
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body>
+<!--订单详情-->
+<div class="am-tabs-bd" style="border: none">
+    <!--  <div data-tab-panel-0 class="am-tab-panel am-active">-->
+    <div class="am-cf am-intro-default" style="margin-top: 0px;padding: 10px 10px">
+        <div class="am-g am-intro-bd" style="padding: 0px">
+            <div class="xq" style="background:white;height: 60px">
+                <div class="am-intro-left am-u-sm-2" style="width:40px;height: 40px;margin: 8px 0 0 -8px;text-align: center">
+                    <img style="display:inline-block;width: 40px;" src="__TMPL__Public/images/p.png" alt="">
+                </div>
+                <div class="am-intro-right am-u-sm-10" style="position: relative;">
+                    <p style="font-size: 14px;margin-top: 8px;color: #4672fb;font-weight: bold">
+                    沪教版7年级下学期物理第7章详解</p>
+                    <p style="font-size: 11px;margin-top: -17px;">开课时间：2017-07-01 14:00</p>
+                    <i class="fa fa-angle-right" aria-hidden="true" style="position: absolute;font-size: 16px;color: #acb1a7; top: 21px; right: 2px;"></i>
+                </div>
+            </div>
+        </div>
+      </div>
+</div>
+
+<div class="use" style="padding: 5px 10px;margin-top: -5px">
+    <ul class="am-list">
+        <li style="text-align: center;height: 50px;padding: 0 5px;border-top: none">
+            <a style="color: black;font-size: 14px">
+                <span style="float: left">所需积分</span>
+                <span style="float: right; color: #9ba195;">2000</span>
+            </a>
+        </li>
+        <li style="text-align: center;height: 50px;padding: 0 5px;position: relative">
+            <a style="color: black;font-size: 14px">
+                <span style="float: left;margin-top: -8px;">来龙教育</span>
+                <span style="position: absolute;bottom: 5px;left: 5px;font-size: 12px;color:#9ba195;">XXX路xxx号</span>
+                <span style="float: right;color:#9ba195;"><img style="width: 20px; height: 20px;margin-top: -4px" src="__TMPL__Public/images/lianxi.png" alt="">&nbsp;联系商家</span>
+            </a>
+        </li>
+        <li style="text-align: center;height: 50px;padding: 0 5px">
+            <a style="color: black;font-size: 14px">
+                <span style="float: left">讲师</span>
+                <span style="float: right; color: #9ba195;">王大锤</span>
+            </a>
+        </li>
+        <li style="text-align: center;height: 50px;padding: 0 5px;border-bottom: none">
+            <a style="color: black;font-size: 14px">
+                <span style="float: left">上课学生</span>
+                <span style="float: right; color: #9ba195;">李小萌</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<!--订单-->
+<div class="sta1">
+    <ul class="am-list">
+        <li>
+            <a href="#" style="overflow: hidden">
+                <span style="color: #9ba195; float: left">订单号码</span>
+                <span  style="color: black;margin-left: 18px">20171234567890</span>
+                <span style="float: right;display:inline-block;text-align:center;
+                font-size: 12px;color: #28ddaa; width: 50px;height: 19px;line-height: 17px; border: 1px solid #28ddaa;">复制</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span style="color: #9ba195;float: left">订单时间</span>
+                <span style="color: black;margin-left: 18px">2017-06-12 16:20:21</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span style="color: #9ba195;float: left">支付方式</span>
+                <span style="color: black;margin-left: 18px">积分支付</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!--备注-->
+<div class="sta2">
+    <ul class="am-list">
+        <li style="overflow: hidden;">
+            <a href="#" style="overflow: hidden">
+                <span style="color: black; float: left;font-size: 15px">备注</span>
+                <br>
+                <span style="color: #9ba195;float: left;font-size: 12px">
+                    因报名人数超出，与用户协商，定于2017-07-01上午10点参加，由XXX老师主讲XXX课程。
+                </span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="sta1">
+    <ul class="am-list">
+        <li>
+            <a href="#" style="overflow: hidden">
+                <span style="color:black; float: left;font-size: 15px">订单跟踪</span>
+            </a>
+        </li>
+        <li class="a">
+            <a href="#">
+                <span style="color: black;float: left;font-size: 14px">订单已提交</span>
+                <span style="color: black;float: right; margin-left: 18px">2017-06-07 09:36:35</span>
+            </a>
+        </li>
+        <li  class="a">
+            <a href="#">
+                <span style="color: black;float: left;font-size: 14px">支付成功</span>
+                <span style="color: black;float: right;margin-left: 18px">2017-06-07 09:37:35</span>
+            </a>
+        </li>
+        <li  class="a">
+            <a href="#">
+                <span style="color: black;float: left;font-size: 14px">已完成</span>
+                <span style="color: black; float: right;margin-left: 18px">2017-06-07 10:38:35</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<footer  data-am-widget="footer">
+    <a href="cancel_order.html">
+    <button>取消订单</button>
+    </a>
+</footer>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__TMPL__Public/js/weixin/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<![endif]-->
+<script src="__TMPL__Public/js/weixin/amazeui.min.js"></script>
+</body>
+</html>

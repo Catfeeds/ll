@@ -1,0 +1,78 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<!--禁止手机横屏显示-->	  
+	<meta name="screen-orientation"content="portrait">
+	<meta name="x5-orientation"content="portrait">
+    <title>我的收藏</title>
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/dd.css">
+		<link rel="stylesheet" href="__TMPL__Public/css/weixin/public.css">
+	<script src="__TMPL__Public/js/weixin/jquery.min.js"></script>	
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+	<style>
+	@media all and (orientation: landscape) { 
+		.txt{
+			left:-50px;
+		}
+	}
+		.am-tabs-bd .am-tab-panel .img1{
+			margin-top: 1.2rem;
+			margin-right:20px;
+			width: 60px;
+			height: 60px;
+			border-radius: 50%;
+			float: left;
+			background: url() no-repeat center;background-size:cover;
+		}
+	</style>
+</head>
+<body>
+
+<!--列表切换-->
+<div data-am-widget="tabs"
+     class="am-tabs am-tabs-d2">
+    <div class="am-tabs-bd">
+        <div data-tab-panel-0 class="am-tab-panel am-active">
+        	<if condition="!empty($col)">
+		        <foreach name="col" item="co">
+		        	<a href="{:U('course/course_detail?id=')}{$co.id}">
+		        	<div class="lb1" style="position:relative;">
+		                <div class="img1" style="background: url({$co[picture]}) no-repeat center;background-size:cover;"></div>
+		                <div style="width:59%; margin-left:21%;position:absolute;top:7px;"class="txt">
+		                    <p style="font-size: 1.6rem;color: #4a76fb;white-space: nowrap;overflow:hidden;text-overflow: ellipsis;">{$co.title}</p>
+		                    <p style="font-size: 1.4rem;color: #000000;white-space: nowrap;overflow:hidden;text-overflow: ellipsis;">讲师：{$co.teacher}</p>
+		                    <p style="font-size: 1.4rem;color: #000000;white-space: nowrap;overflow:hidden;text-overflow: ellipsis;">{$co.start_time}开课</p>
+		                </div>
+						<span style="float:right;color:#ccc;position:absolute;top:10px;right:10px;;"><if condition="$co[classstate] eq 1">已结束</if></span>
+	           		</div>
+	           		</a>
+		        </foreach>
+	        <else/>
+                <div style="text-align:center;background: #f4f5f7; line-height:525px">
+                    <span style="font-size:18px;color:#aeb4aa">暂无数据</span>
+                </div>
+
+	        </if>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="moban" value="__TMPL__">
+<tc_include file="Public:float"/>
+<script src="__TMPL__Public/js/weixin/public.js"></script>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__TMPL__Public/js/weixin/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<![endif]-->
+<script src="__TMPL__Public/js/weixin/amazeui.min.js"></script>
+</body>
+</html>

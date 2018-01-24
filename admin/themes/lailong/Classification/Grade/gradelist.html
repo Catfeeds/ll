@@ -1,0 +1,35 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('grade/gradelist')}">{:L('ADMIN_GRADE_INDEX')}</a></li>
+			<li><a href="{:U('grade/addgrade')}">{:L('ADMIN_GRADE_ADD')}</a></li>
+		</ul>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th width="50">ID</th>
+					<th>{:L('GRADE')}</th>
+					<th>{:L('DESC')}</th>
+					<th>{:L('CTIME')}</th>
+					<th width="120">{:L('ACTIONS')}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<foreach name="list" item="list">
+					<tr>
+						<td>{$list.id}</td>
+						<td>{$list.gradename}</td>
+						<td>{$list.dsc}</td>
+						<td>{$list.ctime}</td>
+						<td><a href="{:U('grade/delete',array('id'=>$list[id]))}" class="js-ajax-delete">{:L('DELETE')}</a></td>
+					</tr>
+				</foreach>
+			</tbody>
+		</table>
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+[ 2017-07-02T12:28:49+08:00 ] ::1 /ll/index.php/app
+ERR: 无法加载控制器:App
+
+[ 2017-07-02T12:31:07+08:00 ] ::1 /ll/index.php/weinxin
+ERR: 无法加载控制器:Weinxin
+
+[ 2017-07-02T12:31:50+08:00 ] ::1 /ll/index.php/Weinxin/login
+ERR: 无法加载控制器:Weinxin
+
+[ 2017-07-02T12:32:21+08:00 ] ::1 /ll/index.php/Weinxin/Login
+ERR: 无法加载控制器:Weinxin
+
+[ 2017-07-02T12:42:28+08:00 ] ::1 /ll/index.php/Weinxin/Login
+ERR: 无法加载控制器:Weinxin
+
+[ 2017-07-02T13:08:19+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff2?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:08:25+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:08:26+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.ttf?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:31:50+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff2?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:31:51+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:31:51+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.ttf?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:34:02+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff2?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:34:03+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:34:04+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.ttf?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:34:49+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff2?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:34:50+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:34:50+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.ttf?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:35:23+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff2?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:35:24+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:35:25+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.ttf?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:35:32+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff2?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:35:34+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:35:35+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.ttf?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:35:45+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff2?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:35:45+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:35:46+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.ttf?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:36:12+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff2?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:36:12+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:36:13+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.ttf?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:36:18+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff2?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:36:19+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:36:20+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.ttf?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:36:25+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff2?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:36:25+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:36:26+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.ttf?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:36:36+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff2?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:36:36+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:36:39+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.ttf?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:40:57+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff2?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:40:58+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:41:00+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.ttf?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:44:08+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff2?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:44:08+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:44:09+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.ttf?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:56:09+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff2?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:56:16+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:56:16+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.ttf?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:56:20+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff2?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:56:26+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.ttf?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:56:27+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff2?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:56:31+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.ttf?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:56:31+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff2?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:56:32+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:56:32+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.ttf?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:56:53+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff2?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:56:54+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:56:55+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.ttf?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:57:23+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff2?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:57:23+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T13:57:24+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.ttf?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T16:06:24+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff2?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T16:06:26+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.ttf?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T16:06:27+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff2?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T16:06:33+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.woff?v=4.6.3
+ERR: 无法加载控制器:Themes
+
+[ 2017-07-02T16:06:34+08:00 ] ::1 /ll/themes/lailong/Public/css/fonts/fontawesome-webfont.ttf?v=4.6.3
+ERR: 无法加载控制器:Themes
+

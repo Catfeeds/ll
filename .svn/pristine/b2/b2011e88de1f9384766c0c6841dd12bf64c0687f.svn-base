@@ -1,0 +1,57 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>选择性别</title>
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body>
+
+<!--表单-->
+<section>
+    <form class="am-form am-form-horizontal">
+        <div class="am-form-group">
+            <div class="am-u-sm-13">
+                <label style="font-weight: inherit"></label>
+                <input type="text"  class="am-radius gender" value="男">
+            </div>
+        </div>
+         <div class="am-form-group">
+            <div class="am-u-sm-13">
+                <label style="font-weight: inherit"></label>
+                <input type="text"  class="am-radius gender" value="女">
+            </div>
+        </div>
+    </form>
+</section>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__TMPL__Public/js/weixin/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<![endif]-->
+<script src="__TMPL__Public/js/weixin/amazeui.min.js"></script>
+<script>
+$('.gender').each(function(){
+	$(this).click(function(){
+		var genders=$(this).val();
+		var grade="<?php echo $_GET[grade]?>";
+		if(grade ==null){
+			grade="";
+		}
+		if(genders ==null){
+			genders="";
+		}
+		window.location.href="{:U('Mine/member?genders=')}"+genders+'&grade='+grade;
+	})
+})
+</script>
+</body>
+</html>

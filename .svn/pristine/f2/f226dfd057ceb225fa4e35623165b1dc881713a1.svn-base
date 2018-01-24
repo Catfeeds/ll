@@ -1,0 +1,107 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <tc_include file="Public:header" />
+    <title>用户信息</title>
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+    <script type="text/javascript">
+	//全局变量
+	var GV = {
+	    DIMAUB: "__ROOT__/",
+	    JS_ROOT: "public/js/",
+	    TOKEN: ""
+	};
+	</script>
+    <script src="__PUBLIC__/js/wind.js"></script>
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+    <style>
+		#divimg{width: 50px;height: 50px;float: right;}
+	</style>
+</head>
+<body>
+<div class="use" style="padding: 5px 10px">
+	<input type="hidden" name="child" id="child" value="{$_GET['child']}"/>
+    <ul class="am-list">
+        <li style="border-top: none;height: 70px">
+            <a href="#" style="color: black;padding: 10px;">
+                <span style="display:inline-block; margin-top: 10px;">头像</span>
+                <div id="divimg" style="background:<if condition='!empty($userinfo[avatar])'>url('{$url}{$userinfo.avatar}')no-repeat center;background-size:cover;<else/>url('__TMPL__Public/images/moren.png')no-repeat center;background-size:cover;</if>" >
+	                <input type="hidden" name="icon" id="icon"/>
+	           		<input  style="width:100%;height:100%;opacity: 0;" onchange="avatar_upload_filtration(this)" name="photo" type="file" id="file"/>
+           		</div>
+           		<!-- <img style="width:100%;height:100%;"  src="<if condition='!empty($userinfo[avatar])'>{$url}{$userinfo.avatar}<else/>__TMPL__Public/images/moren.png</if>" alt=""> -->
+            </a>
+       </li>
+    </ul>
+    <ul class="am-list">
+        <li style="border-top: none;height: 45px">
+            <a href="#" style="color: black;padding: 10px;">
+                <span >昵称</span>
+                 <input type="text"  class="am-radius" id="nickname" style="float: right;border:none;text-align:right;color:#000;" value="{$userinfo.nickname}">
+            </a>
+        </li>
+    </ul>
+    <div class="am-form-group" style="margin-top: -7px">
+         	<div class="am-u-sm-13">
+                <button type="button" class="am-btn am-btn-block submit" style="background: #2adcaa;height: 50px;color: white;margin-top: 10px;border-radius:3px">
+                	 保存
+                </button>
+            </div>
+        </div>
+</div>
+<tc_include file="Public:weixin_foot"/>
+<!--[if (gte IE 9)|!(IE)]><!-->
+
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<![endif]-->
+
+<script>
+//上传图片
+function avatar_upload_filtration(obj) {
+	var $fileinput = $(obj);
+	Wind.css("jcrop");
+	Wind.use("ajaxfileupload", "jcrop", "noty", function() {
+		$.ajaxFileUpload({
+			url : "{:U('Mine/up')}",
+			secureuri : false,
+			fileElementId : "file",
+			dataType : 'json',
+			data : {
+			},
+			success : function(data) {
+				console.log(data);
+				$('#divimg').css({'background':"url('__ROOT__/data/upload/avatar/"+data.data.icon+"')no-repeat center",'background-size':'cover'});
+				//$('#divimg').css({'background':"url('__ROOT__/data/upload/avatar/"+data.data.icon+"')",'float':'right','background-size':'cover'});
+				$('#icon').val(data.data.icon);
+			},
+		});
+	});
+}
+$('.submit').click(function(){
+	var child=$('#child').val();
+	var icon=$('#icon').val();
+	var nickname=$('#nickname').val();
+	 $.post("{:U('mine/setuserinfo')}",{child:child,icon:icon,nickname:nickname},function(data){
+		    if(data[0] == "101"){
+		    	$("#default-alert").modal();
+		 		$("#alert_conts").text(data[1]);
+		 		$('#returnval').val(1);
+		    }else{
+		    	$("#default-alert").modal();
+		 		$("#alert_conts").text(data[1]);
+		 		return;
+		    }
+	  });
+})
+$('.true').click(function(){
+	if($('#returnval').val() == 1){
+		window.location.href="{:U('Mine/my')}";
+	}else{
+		return;
+	}
+})
+</script>
+</body>
+</html>

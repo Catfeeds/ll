@@ -1,0 +1,162 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>我的订单</title>
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/dd.css">
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body>
+<!--列表切换-->
+<div data-am-widget="tabs" class="am-tabs am-tabs-d2" >
+    <ul class="am-tabs-nav am-cf"  style="background: white;position: fixed;top: 0;z-index: 999;">
+        <li class="am-active"><a style="font-size: 1.6rem" href="[data-tab-panel-0]">全部</a></li>
+        <li class=""><a style="font-size: 1.6rem" href="[data-tab-panel-1]">待支付</a></li>
+        <li class=""><a style="font-size: 1.6rem" href="[data-tab-panel-2]">待确认</a></li>
+        <li class=""><a style="font-size: 1.6rem" href="[data-tab-panel-3]">已完成</a></li>
+        <li class=""><a style="font-size: 1.6rem" href="[data-tab-panel-4]">已取消</a></li>
+    </ul>
+    <div class="am-tabs-bd" style="top: 42px;">
+        <div data-tab-panel-0 class="am-tab-panel am-active">
+	        <div style="background: #f4f5f7;padding: 0px;" id="enrollment6">
+		        <foreach name="all_order" item="va">
+			        <div class="lb1" onclick="textmes({$va.oid})">
+			            <img class="img1" src="{$url}{$va.cover}" alt="">
+			            <div class="txt" style="width: 150px;height: 64px;">
+			                <p style="font-size: 16px;color: #4a76fb;width: 150px;white-space: nowrap;text-overflow: ellipsis;">{$va.title}</p>
+			                <p style="font-size: 12px">下单时间：<php>echo date("Y-m-d",strtotime($va['time']));</php></p>
+			                <p style="font-size: 12px">需要积分：{$va.integral}</p>
+			            </div>
+			            <div class="statu">
+			                <if condition="$va['state'] eq 0">
+			                <p>待付款</p>
+			                <p class="pay">去支付</p>
+			                <elseif condition="$va['state'] eq 1"/>
+			                <p>待确认</p>
+			                <elseif condition="$va['state'] eq 3"/>
+			                <p style="color: #30ddac">已完成</p>
+			                <elseif condition="$va['state'] eq 4"/>
+			                <p>已取消</p>
+			                </if>
+			            </div>
+			        </div>
+		        </foreach>
+		    </div>
+		    <if condition="$all_c eq 1"><p style="text-align:center;color: #0e90d2;" class="enrollment" name="1" type="6" id="enrollment_6">点击加载更多</p></if>
+        </div>
+        <div data-tab-panel-1 class="am-tab-panel ">
+           <div style="background: #f4f5f7;padding: 0px;" id="enrollment0">
+	           <foreach name="dai_order" item="vb">
+			        <div class="lb1" onclick="textmes({$vb.oid})">
+			            <img class="img1" src="{$url}{$vb.cover}" alt="">
+			            <div class="txt" style="width: 150px;height: 64px;" >
+			                <p style="font-size: 16px;color: #4a76fb;width: 150px;white-space: nowrap;text-overflow: ellipsis;">{$vb.title}</p>
+			                <p style="font-size: 12px">下单时间：<php>echo date("Y-m-d",strtotime($vb['time']));</php></p>
+			                <p style="font-size: 12px">需要积分：{$vb.integral}</p>
+			            </div>
+			            <div class="statu">
+			                <p>待付款</p>
+			                <p class="pay">去支付</p>
+			            </div>
+			        </div>
+		        </foreach>
+	        </div>
+	        <if condition="$dai_c eq 1"><p style="text-align:center;color: #0e90d2;" class="enrollment" name="1" type="0" id="enrollment_0">点击加载更多</p></if>
+        </div>
+        <div data-tab-panel-2 class="am-tab-panel ">
+	        <div style="background: #f4f5f7;padding: 0px;" id="enrollment1">
+	            <foreach name="true_order" item="vc">
+			        <div class="lb1" onclick="textmes({$vc.oid})">
+			            <img class="img1" src="{$url}{$vc.cover}" alt="">
+			            <div class="txt" style="width: 150px;height: 64px;" >
+			                <p style="font-size: 16px;color: #4a76fb;width: 150px;white-space: nowrap;text-overflow: ellipsis;">{$vc.title}</p>
+			                <p style="font-size: 12px">下单时间：<php>echo date("Y-m-d",strtotime($vc['time']));</php></p>
+			                <p style="font-size: 12px">需要积分：{$vc.integral}</p>
+			            </div>
+			            <div class="statu">
+			                <p>待确认</p>
+			            </div>
+			        </div>
+		        </foreach>
+		    </div>
+		    <if condition="$true_c eq 1"><p style="text-align:center;color: #0e90d2;" class="enrollment" name="1" type="1" id="enrollment_1">点击加载更多</p></if>
+        </div>
+        <div data-tab-panel-3 class="am-tab-panel ">
+	        <div style="background: #f4f5f7;padding: 0px;" id="enrollment3">
+	            <foreach name="over_order" item="vd">
+			        <div class="lb1" onclick="textmes({$vd.oid})">
+			            <img class="img1" src="{$url}{$vd.cover}" alt="">
+			            <div class="txt" style="width: 150px;height: 64px;" >
+			                <p style="font-size: 16px;color: #4a76fb;width: 150px;white-space: nowrap;text-overflow: ellipsis;">{$vd.title}</p>
+			                <p style="font-size: 12px">下单时间：<php>echo date("Y-m-d",strtotime($vd['time']));</php></p>
+			                <p style="font-size: 12px">需要积分：{$vd.integral}</p>
+			            </div>
+			            <div class="statu">
+			                <p style="color: #30ddac">已完成</p>
+			            </div>
+			        </div>
+		        </foreach>
+		    </div>
+		    <if condition="$over_c eq 1"><p style="text-align:center;color: #0e90d2;" class="enrollment" name="1" type="3" id="enrollment_3">点击加载更多</p></if>
+        </div>
+        <div data-tab-panel-4 class="am-tab-panel ">
+	        <div style="background: #f4f5f7;padding: 0px;" id="enrollment4">
+	            <foreach name="die_order" item="ve">
+			        <div class="lb1" onclick="textmes({$ve.oid})">
+			            <img class="img1" src="{$url}{$ve.cover}" alt="">
+			            <div class="txt" style="width: 150px;height: 64px;" >
+			                <p style="font-size: 16px;color: #4a76fb;width: 150px;white-space: nowrap;text-overflow: ellipsis;">{$ve.title}</p>
+			                <p style="font-size: 12px">下单时间：<php>echo date("Y-m-d",strtotime($ve['time']));</php></p>
+			                <p style="font-size: 12px">需要积分：{$ve.integral}</p>
+			            </div>
+			            <div class="statu">
+			                <p>已取消</p>
+			            </div>
+			        </div>
+		        </foreach>
+		    </div>
+		    <if condition="$die_c eq 1"><p style="text-align:center;color: #0e90d2;" class="enrollment" name="1" type="4" id="enrollment_4">点击加载更多</p></if>
+        </div>
+    </div>
+</div>
+<input type="hidden" value="{$userid}" id="userid">
+<input type="hidden" value="{$_GET['id']}" id="ids">
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__TMPL__Public/js/weixin/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<![endif]-->
+<script src="__TMPL__Public/js/weixin/amazeui.min.js"></script>
+<script>
+function textmes(id){
+	window.location.href="{:U('Mine/lineitem?id=')}"+id;
+}
+//加载更多订单
+$(".enrollment").click(function(){
+	var num=$(this).attr("name");
+	var type=$(this).attr("type");
+	var userid=$("#userid").val();
+	var id=$("#ids").val();
+	$.post('{:U("Mine/enrollment_more")}',
+            { num : num , type : type , id : id , userid : userid},
+            function(data){
+            	console.log(data);
+            	if(data[1]!=""){
+            		$("#enrollment_"+type).attr("name",data[1]);
+            	}else{
+            		$("#enrollment_"+type).css("display","none");
+            	}
+            	$("#enrollment"+type).append(data[0]);
+            });
+})
+</script>
+</body>
+</html>

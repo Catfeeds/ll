@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * 用户登录
+ */
+namespace Weixin\Controller;
+use Common\Controller\MemberbaseController;
+use Think\Log;
+class CourseController extends MemberbaseController {
+	//课程
+	function course(){
+		$this->display(":course");
+	}
+	//课程详情
+	function course_detail(){
+		$this->display(":course_detail");
+	}
+	//教师详情
+	function teacher_information(){
+		$this->display(":teacher_information");
+	}
+	//填写订单
+	function write_order(){
+		$this->display(":write_order");
+	}
+	//选择学生
+	function choose_stu(){
+		$this->display(":choose_stu");
+	}
+	//课程意向
+	function write_application(){
+		$this->display(":write_application");
+	}
+	function stu_intention(){
+	    var_dump(I('post.'));
+    }
+}

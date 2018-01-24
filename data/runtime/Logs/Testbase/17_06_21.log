@@ -1,0 +1,11 @@
+[ 2017-06-21T17:05:09+08:00 ] ::1 /ll/index.php?g=Testbase&m=Chapter&a=getchapter
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.025471s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.060653s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.090982s ]
+SQL: SHOW COLUMNS FROM `lailong_chapter` [ RunTime:0.0198s ]
+SQL: SELECT `id`,`title` FROM `lailong_chapter` WHERE (  textbook_id = 7 and parent_id = 0  )  [ RunTime:0.0006s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.025571s ]
+INFO: [ app_end ] --END-- [ RunTime:0.025702s ]
+

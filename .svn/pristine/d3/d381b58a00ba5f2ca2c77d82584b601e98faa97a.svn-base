@@ -1,0 +1,37 @@
+<?php
+namespace Lailonginterface\Controller;
+use Lailonginterface\Controller\PublicController;
+
+class MineController  extends PublicController {
+    /**
+     * 成为会员
+     */
+    public function userauth()
+    {
+       $token=$_REQUEST['token'];
+       $userid=$this->checkAccess($token);
+       $realname=$_REQUEST['realname'];
+       $birthday=$_REQUEST['birthday'];
+       $gender=$_REQUEST['gender'];
+       $school=$_REQUEST['school'];
+       $grade=$_REQUEST['grade'];
+       $call=$_REQUEST['call'];
+       $name=$_REQUEST['name'];
+       $phone=$_REQUEST['phone'];
+       
+       if(empty($realname) || empty($birthday) || empty($school) || empty($grade)){
+           $this->emptyResult();
+       }
+       if(M('child')->where("name = '$name'")->find()){
+           $this->errorResult("此孩子已成为会员");
+       }
+       M('member')->add(array('appellation'=>$call,'phone'=>$phone,'name'=>$name,'createtime'=>date('Y-m-d H:i:s',time())));
+       $data=array('name'=>$realname,'birthday'=>$birthday,'gender'=>$gender,'school'=>$school,'grade'=>$grade,'is_vip'=>1,'user_id'=>$userid);
+        if(M('child')->add($data)){
+            $this->successShortResult($name."已成为会员");
+        }else {
+            $this->errorResult("成为会员失败");
+        }
+    }
+   
+}

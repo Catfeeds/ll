@@ -1,0 +1,45 @@
+[ 2017-06-26T17:37:56+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.032420s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.075428s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.116132s ]
+NOTIC: [8] Undefined index: user_id D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 71 行.
+NOTIC: [8] Undefined index: type D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 72 行.
+
+[ 2017-06-26T17:39:08+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.026096s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.074339s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.104890s ]
+NOTIC: [8] Undefined index: user_id D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 71 行.
+NOTIC: [8] Undefined index: type D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 72 行.
+SQL: SHOW COLUMNS FROM `lailong_course` [ RunTime:0.0218s ]
+SQL: SELECT `title` FROM `lailong_course` WHERE ( id = 1 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `lailong_news` [ RunTime:0.0145s ]
+SQL: INSERT INTO `lailong_news` (`title`,`icon`,`course_id`,`content`,`createtime`,`type`) VALUES ('12313','123','1','321','2017-06-26 17:39:08','0') [ RunTime:0.0008s ]
+NOTIC: [8] Undefined index: type2 D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 103 行.
+NOTIC: [8] Undefined index: type2 D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 115 行.
+NOTIC: [8] Use of undefined constant title - assumed 'title' D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 120 行.
+NOTIC: [8] Use of undefined constant content - assumed 'content' D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 120 行.
+NOTIC: [8] Use of undefined constant title - assumed 'title' D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 120 行.
+NOTIC: [8] Use of undefined constant phone - assumed 'phone' D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 120 行.
+NOTIC: [8] Undefined variable: u D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 120 行.
+NOTIC: [8] Undefined index: errcode D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 198 行.
+NOTIC: [8] Undefined index: errcode D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 214 行.
+
+[ 2017-06-26T17:41:27+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.025927s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.075847s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.106202s ]
+NOTIC: [8] Undefined index: user_id D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 71 行.
+NOTIC: [8] Undefined index: type D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 72 行.
+SQL: SHOW COLUMNS FROM `lailong_course` [ RunTime:0.0320s ]
+SQL: SELECT `title` FROM `lailong_course` WHERE ( id = 3 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `lailong_news` [ RunTime:0.0174s ]
+SQL: INSERT INTO `lailong_news` (`title`,`icon`,`course_id`,`content`,`createtime`,`type`) VALUES ('3123','123','3','123','2017-06-26 17:41:27','0') [ RunTime:0.0008s ]
+SQL: INSERT INTO `lailong_news` (`title`,`icon`,`course_id`,`content`,`createtime`,`type`) VALUES ('3123','123','3','123','2017-06-26 17:41:27','1') [ RunTime:0.0007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.025248s ]
+INFO: [ app_end ] --END-- [ RunTime:0.025392s ]
+

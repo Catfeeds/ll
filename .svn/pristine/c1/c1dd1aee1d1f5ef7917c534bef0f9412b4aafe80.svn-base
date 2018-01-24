@@ -1,0 +1,39 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>我的意向</title>
+    <link rel="stylesheet" href="__TMPL__Public/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/integration.css">
+</head>
+<body style="background: #f4f5f7;padding: 10px 10px;">
+<div class="am-container" style=" background: white;font-weight: normal;color: #34394e;font-weight: 500">
+    <p style="margin-top: 5px;margin-bottom: -18px;font-size: 12px; line-height: 30px">2017-06-07</p>
+    <p style="font-size: 12px">我想补习一下沪教版七年级数学第二章第三小节，只有周末有时间，希望最好是XX老师讲的</p>
+</div>
+
+<div class="am-container"
+     style=" background: white;font-weight: normal;color: #34394e;font-weight: 500;
+margin-top: 10px">
+    <p style="margin-top: 5px;margin-bottom: -18px;font-size: 12px; line-height: 30px">2017-06-05</p>
+    <p style="font-size: 12px;margin-bottom: -20px;">浙教版7年级下学期语文第二章</p>
+    <p style="font-size: 12px;margin-bottom: -20px;">中档难度</p>
+    <p style="font-size: 12px;margin-bottom: -20px;">全部题型</p>
+    <p style="font-size: 12px;margin-bottom: -20px;">期望上课时间：2017-06-20上午</p>
+    <p style="font-size: 12px;margin-bottom: 12px;">期望班级：小班</p>
+</div>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__TMPL__Public/js/weixin/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<!--<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>-->
+<![endif]-->
+<script src="__TMPL__Public/js/weixin/amazeui.min.js"></script>
+</body>
+</html>

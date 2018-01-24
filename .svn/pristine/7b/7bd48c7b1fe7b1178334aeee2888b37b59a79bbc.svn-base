@@ -1,0 +1,177 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Scorecord/index')}">积分记录列表</a></li>
+		</ul>
+		<form class="well form-search" method="get" action="{:U('Scorecord/index')}" id="form_submit">
+		    <div class="search_type cc mb10">
+		      <div class="mb10"> 
+		        <span class="mr20">
+		        <input type="hidden" name="g" value="Users">
+		        <input type="hidden" name="m" value="Scorecord">
+		        <input type="hidden" name="a" value="index">
+		        
+			        <div class="row" style="margin-top: 20px;">
+				        <div class="span1">
+				        	用户名:
+				        </div>
+				        <div class="span2">
+				        	<input type="text" name="uname1" style="width: 100px;" value="{$uname}" placeholder="用户名"/>
+				        </div>
+				        <div class="span1">
+				        	手机号:
+				        </div>
+				        <div class="span2">
+				        	<input type="text" name="phone" style="width: 100px;" value="{$phone}" placeholder="手机号"/>
+				        </div>
+				        <div class="span1">
+							类型:
+						</div>
+						<div class="span2">
+							<select name="is_obtain" style="width: 100px;">
+								<option value="">请选择</option>
+								<option value="2" <if condition="2 eq $is_obtain">selected</if>   >使用</option>
+								<option value="1" <if condition="1 eq $is_obtain">selected</if>>获取</option>
+							</select>
+						</div>
+					</div>
+				</span>
+			   </div>
+			   <div class="mb10"> 
+		        <span class="mr20">
+		        	<div class="row" style="margin-top: 20px;">
+				        <div class="span1">
+				        	积分:
+				        </div>
+				        <div class="span2">
+				        	<input type="text" name="integral" style="width: 100px;" value="{$integral}" placeholder="积分"/>
+				        </div>
+		        		<!-- <div class="span1">
+							剩余积分
+						</div>
+						<div class="span2">
+							<input type="number" name="uscore" style="width: 100px;" value="{$uscore}">
+						</div> -->
+						<div class="span1">
+		        			途径:
+		        		</div>
+		        		<div class="span2">
+		        			<select name="obtain_type" style="width: 115px;">
+	        					<option value="">请选择</option>
+		        				<option value="99" <if condition="99 eq $is_obtain">selected</if>>认证</option>
+		        				<option value="1" <if condition="1 eq $is_obtain">selected</if>>推荐用户使用</option>
+		        				<option value="2" <if condition="2 eq $is_obtain">selected</if>>签到</option>
+		        				<option value="3" <if condition="3 eq $is_obtain">selected</if>>意见反馈</option>
+		        				<option value="4" <if condition="4 eq $is_obtain">selected</if>>购买</option>
+		        				<option value="5" <if condition="5 eq $is_obtain">selected</if>>取消报名退还积分</option>
+		        				<option value="6" <if condition="6 eq $is_obtain">selected</if>>小孩表现好</option>
+		        				<option value="7" <if condition="7 eq $is_obtain">selected</if>>小孩成绩好</option>
+		        				<option value="8" <if condition="8 eq $is_obtain">selected</if>>其他</option>
+		        			</select>
+		        		</div>
+					</div>
+				</span>
+			   </div>
+			   <div class="mb10"> 
+		        <span class="mr20">
+		        	<div class="row" style="margin-top: 20px;">
+				        <div class="span2">
+				        	创建时间起始：
+				        </div>
+				        <div class="span3">
+				        	<input type="text" name="startcreatetime" class="input length_2 J_date" value="{$startcreatetime}" autocomplete="off" placeholder="请选择时间..." onClick="WdatePicker()" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+				        </div>
+						<div class="span2">
+							创建时间结束：
+						</div>	
+						<div class="span3">
+							<input type="text" name="endcreatetime" class="input length_2 J_date" value="{$endcreatetime}" autocomplete="off" placeholder="请选择时间..." onClick="WdatePicker()" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+						</div>
+						<div class="span2">
+							&nbsp;
+						</div>
+					</div>
+				</span>
+			   </div>
+			   
+			   <div class="mb10" style="text-align:right;">
+			   	<span class="mr20">
+			   		<button class="btn btn-primary">搜索</button>
+			   	</span>
+			   </div>
+		        
+		        
+		      
+		    </div>
+		  </form>
+			<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th width="50">ID</th>
+						<th>用户名</th>
+						<th>手机号</th>
+						<th>类型</th>
+						<th>积分</th>
+						<th>途径</th>
+						<!-- <th width="45">剩余积分</th> -->
+						<th width="120">推荐人手机号</th>
+						<th width="120">创建时间</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="scorecord" item="vo">
+					<tr>
+						<td>{$vo.id}</td>
+						<td>{$vo.uname}</a></td>
+						<td>{$vo.phone}</td>
+						<td><?php if($vo[is_obtain]==1) echo "获取"; if($vo[is_obtain]==0) echo  "使用"; ?></td>
+						<td>{$vo.integral}</td>
+						<td>
+							<?php 
+							switch($vo[obtain_type]){
+								case '0':
+									echo "认证";
+									break;
+								case '1':
+									echo "推荐用户使用";
+									break;
+								case '2':
+									echo "签到";
+									break;
+								case '3':
+									echo "意见反馈";
+									break;
+								case '4':
+									echo "购买";
+									break;
+								case '5':
+									echo "取消报名退还积分";
+									break;
+								case '6':
+									echo "小孩表现好";
+									break;
+								case '7':
+									echo "小孩成绩好";
+									break;
+								case '8':
+									echo "其他";
+									break;
+							}
+							?>
+						</td>
+						
+						<td>{$vo.recommended_person}</td>
+						<td>{$vo.createtime}</td>
+					</tr>
+					</foreach>
+				</tbody>
+				
+			</table>
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

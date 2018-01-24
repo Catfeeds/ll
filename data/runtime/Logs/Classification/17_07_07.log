@@ -1,0 +1,34 @@
+[ 2017-07-07T14:18:17+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=editchild_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.024090s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.067617s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.097028s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0213s ]
+SQL: SELECT * FROM `lailong_child` WHERE ( 1=1 and id = '14'  ) LIMIT 1   [ RunTime:0.0007s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `lailong_child` SET `name`='65',`nickname`='78',`avatar`='14990659735959ee75b8201.png',`birthday`='2017-08-04 00:00:00',`gender`='0',`school`='213',`grade`='123123',`vip_state`='3' WHERE `id` = 14 [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `lailong_member` [ RunTime:0.0153s ]
+SQL: SELECT * FROM `lailong_member` WHERE (  child_id = '14' and user_id = '1'  ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0137s ]
+SQL: SELECT `openid` FROM `lailong_user` WHERE ( id = 1 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: UPDATE `lailong_member` SET `child_id`='14',`user_id`='1',`appellation`='xw2213' WHERE `id` = 14 [ RunTime:0.0008s ]
+
+[ 2017-07-07T15:09:19+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=deleteicon
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.052186s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.167058s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.225604s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.038109s ]
+INFO: [ app_end ] --END-- [ RunTime:0.038314s ]
+
+[ 2017-07-07T15:10:14+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=deleteicon
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.032110s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.079398s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.116299s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.024987s ]
+INFO: [ app_end ] --END-- [ RunTime:0.025141s ]
+

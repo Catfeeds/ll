@@ -1,0 +1,16 @@
+[ 2017-06-29T17:25:36+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=userlist&leixing=1&name=&phone=&recommended_person=13&chname=
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'and recommended_person like '%13%'  ) LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `lailong_user` WHERE (  and recommended_person like '%13%'  ) LIMIT 1  
+
+[ 2017-06-29T17:46:15+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=userlist&leixing=1&name=&phone=&recommended_person=&chname=1
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Array )' at line 1
+ [ SQL语句 ] : SELECT `user_id` FROM `lailong_member` WHERE (  child_id in  Array ) 
+
+[ 2017-06-29T17:47:08+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=userlist&leixing=1&name=&phone=&recommended_person=&chname=1
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Array )' at line 1
+ [ SQL语句 ] : SELECT `user_id` FROM `lailong_member` WHERE (  child_id in  Array ) 
+
+[ 2017-06-29T17:49:20+08:00 ] ::1 /ll/index.php?g=Users&m=Loginrecord&a=loginrecordlist&search=1&uname=&phone=&startlogin_time=&endlogin_time=2017-06-29+00%3A00%3A00&app_version=&device_name=
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '=< '1498665600'  ) LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM lailong_login_record lr  left join lailong_user as u on lr.user_id=u.id   WHERE ( 1=1 and lr.login_time =< '1498665600'  ) LIMIT 1  
+

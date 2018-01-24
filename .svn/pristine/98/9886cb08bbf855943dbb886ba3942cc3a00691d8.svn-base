@@ -1,0 +1,11 @@
+@CHARSET "UTF-8";
+.photo{border:3px solid #333;width:80px;height:80px;border-radius:40px;margin:30px auto;}
+.myinfor>div{line-height:38px;position:relative;width: 100%;}
+.myinfor>div>div{text-align:center;width:50px;position: absolute;border-right:1px solid #dedede;margin-top: 5px;height: 40px;}
+.myinfor img{width:30px;height:auto;}
+.myinfor input{outline:none;box-shadow: none;text-indent: 60px;padding:10px 0 !important;height:50px;}
+input:focus{box-shadow: none !important;}
+.myinfor h3{font-weight: 100;text-indent: 10px;}
+.myinfor button{padding:10px 0;}
+.your_num{width: -moz-calc(100% - 80px) !important;width: -webkit-calc(100% - 80px) !important;width: calc(100% - 80px) !important;}
+.get_code{width: 65px;font-size: 12px;margin-top: 5px;border:none;padding: 5px 5px !important;white-space: inherit;height:38px;}

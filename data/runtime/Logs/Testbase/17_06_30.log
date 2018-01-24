@@ -1,0 +1,14 @@
+[ 2017-06-30T20:55:03+08:00 ] ::1 /ll/index.php?g=Testbase&m=classification&a=deleteicon2
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.028153s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.070687s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.103091s ]
+ERR: 无法加载控制器:Classification
+
+[ 2017-06-30T20:55:05+08:00 ] ::1 /ll/index.php?g=Testbase&m=classification&a=deleteicon
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.060712s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.102877s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.169850s ]
+ERR: 无法加载控制器:Classification
+

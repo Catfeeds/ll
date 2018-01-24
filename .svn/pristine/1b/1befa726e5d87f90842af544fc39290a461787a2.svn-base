@@ -1,0 +1,109 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <tc_include file="Public:header" />
+    <title>忘记密码</title>
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body>
+<!--表单-->
+<section>
+    <form class="am-form am-form-horizontal">
+        <div class="am-form-group">
+            <div class="am-u-sm-13">
+                <label id="te">手机号</label>
+                <input type="number" id="doc-ipt-3" class="am-radius" style="text-align: center">
+                <input type="button" value="发送验证码" class="btn1 getcode">
+            </div>
+        </div>
+
+        <div class="am-form-group" style="margin-top: -16px;">
+            <div class="am-u-sm-13">
+                <label id="yz">验证码</label>
+                <input type="text" id="doc-ipt-pwd-2" class="am-radius" placeholder="输入验证码">
+            </div>
+        </div>
+
+        <div class="am-form-group" style="margin-top: -16px;">
+            <div class="am-u-sm-13">
+                <label>输入新密码</label>
+                <input type="password" id="passwords" class="am-radius" placeholder="请输入至少6位字母或数字">
+            </div>
+        </div>
+
+        <div class="am-form-group">
+            <div class="am-u-sm-13">
+            <input type="button" id="fowget_go" value="找回密码" class="am-btn am-btn-block" style="text-align:center;background: #2adcaa;color: white;height: 50px;margin-top:10px;border-radius:3px">
+            </div>
+        </div>
+
+    </form>
+</section>
+<tc_include file="Public:weixin_foot"/>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<![endif]-->
+
+<script>
+$("#fowget_go").click(function(){
+	var phone=$("#doc-ipt-3").val();
+	var code=$("#doc-ipt-pwd-2").val();
+	var password=$("#passwords").val();
+	if(phone==""){
+		$("#my-alert").modal();
+ 		$("#alert_cont").text("请输入手机号!");
+ 		return;
+	}
+	if(code==""){
+		$("#my-alert").modal();
+ 		$("#alert_cont").text("请输入验证码!");
+ 		return;
+	}
+	if(password==""){
+		$("#my-alert").modal();
+ 		$("#alert_cont").text("请输入密码!");
+ 		return;
+	}
+	$.post('{:U("Center/black_pas")}',
+			{ phone : phone , code : code , password : password},
+		 	function(data){
+				if(data[0]=="101"){
+					$("#my-alert").modal();
+			 		$("#alert_cont").text(data[1]);
+			 		window.location.href="{:U('Center/index')}";
+				}else{
+					$("#my-alert").modal();
+			 		$("#alert_cont").text(data[1]);
+			 		return;
+				}
+	});
+})
+$(".getcode").click(function(){
+	 var phone=$("#doc-ipt-3").val();
+	 var re = /^1\d{10}$/;
+	    if (re.test(phone)) {
+	    } else {
+	   	 $("#my-alert").modal();
+			 $("#alert_cont").text("请输入正确手机号!");
+			 return;
+	    }
+	$.post('{:U("Center/black_code")}',
+			{ phone : phone},
+		 	function(data){
+				if(data[0]=="101"){
+					$("#my-alert").modal();
+			 		$("#alert_cont").text("验证码发送成功!");
+			 		return;
+				}else{
+					$("#my-alert").modal();
+			 		$("#alert_cont").text(data[1]);
+			 		return;
+				}
+	});
+})
+</script>
+</body>
+</html>

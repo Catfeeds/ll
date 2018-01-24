@@ -1,0 +1,10 @@
+<?php
+define ( "URL1", "https://t2s.refineit.cn/wxoauth_21g/index.php?g=weixin&m=oauthfw&a=index&url=" );//鉴权页面路径
+define('SITE_URL','https://t2s.refineit.cn/lailong');//项目URL
+define('SITE_URLS',"https://t2s.refineit.cn");//项目URL
+define('PAY_URL',"https://t2s.refineit.cn/wxoauth_21g");
+define("NOTIFY_URL",urlencode(PAY_URL."/WxPay/example/notifyt2.php"));//设置回调URL
+define('CODE_LAST_TIME',"15");//验证码过期时间单位(分钟)
+define("PROJECTNAME", "lailong");
+define("ROOT", $_SERVER['DOCUMENT_ROOT'].'/'.PROJECTNAME);//文件传入时需要的根目录
+define("AVATAR_ROOT", SITE_URLS.'/'.PROJECTNAME);//服务器项目路径

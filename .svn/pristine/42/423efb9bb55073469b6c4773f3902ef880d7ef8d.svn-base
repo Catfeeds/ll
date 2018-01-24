@@ -1,0 +1,53 @@
+.am-tabs-d2 .am-tabs-nav>.am-active:after{
+    border-bottom:none;
+}
+[data-am-widget=tabs] .am-tabs-nav a{
+    font-size: 12px;
+}
+.am-tabs-d2 .am-tabs-nav>.am-active a{
+    color: #4a76fb;
+}
+.am-tabs-d2 .am-tabs-nav>.am-active{
+    border-bottom:2px solid #4a76fb;
+}
+.am-tabs-d2{
+    margin:0;
+}
+.am-tabs-bd{
+    border:0;
+}
+.am-tabs-bd .am-tab-panel div{
+    background: white;
+    padding: 5px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.am-tabs-bd .am-tab-panel .img1{
+    display: block;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 4px;
+}
+
+.am-tabs-bd .am-tab-panel .txt p{
+    margin:0;
+}
+
+.am-tabs-bd .am-tab-panel .statu p{
+    font-size: 12px;
+}
+.am-tabs-bd .am-tab-panel .statu{
+    clear: both;
+    width: 55px;
+    height: 64px;
+    float: right;
+    text-align: center;
+    margin-top: -66px;
+    color: #f7563c;
+    margin-right: -5px;
+}
+.am-tabs-bd .am-tab-panel .statu .pay{
+    border:1px solid #f7563c;
+}

@@ -1,0 +1,206 @@
+<admintpl file="header" />
+</head>
+<style type="text/css">
+	.xin1{
+		width: 80px;
+		margin-left: 20px;
+		display:inline-block;
+		text-align:center;
+	}
+</style>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('course/courselist')}">{:L('ADMIN_COURSE_INDEX')}</a></li>
+			<li><a href="{:U('course/addcourse')}">{:L('ADMIN_COURSE_ADD')}</a></li>
+		</ul>
+		<form class="well form-search" method="get" action="{:U('course/courselist')}" id="form_submit">
+		    <div class="search_type cc mb10">
+		      <div class="mb10"> 
+		        <span class="mr20">
+		        <input type="hidden" name="g" value="Testbase">
+		        <input type="hidden" name="m" value="course">
+		        <input type="hidden" name="a" value="courselist">
+		        
+			        <div class="row" style="margin-top: 20px;">
+				        <div class="span1">
+				        	标题:
+				        </div>
+				        <div class="span2">
+				        	<input type="text" name="title" style="width: 100px;" value="{$title}" placeholder="标题"/>
+				        </div>
+				        <div class="span1">
+				        	最大人数:
+				        </div>
+				        <div class="span2">
+				        	<input type="text" name="rated_number" style="width: 100px;" value="{$rated_number}" placeholder="最大人数">
+				        </div>
+				        <div class="span1">
+							最大积分:
+						</div>
+						<div class="span2">
+							<input type="text" name="integral" style="width: 100px;" value="{$integral}" placeholder="最大积分">
+						</div>
+						<div class="span1">
+							教师:
+						</div>
+						<div class="span2">
+							<select name="teacher_id" style="width: 120px;">
+								<option value="">请选择</option>
+								<foreach name="teacher" item="v">
+									<option value="{$v[id]}" <if condition="$teacher_id eq $v[id]">selected</if> >{$v[name]}</option>
+								</foreach>
+							</select>
+						</div>
+					</div>
+				</span>
+			   </div>
+			   <div class="mb10"> 
+		        <span class="mr20">
+		        	<div class="row" style="margin-top: 20px; ">
+				        <div class="span2">
+				        	开课时间起始：
+				        </div>
+				        <div class="span3">
+				        	<input type="text" name="sstart_time" class="input length_2 J_date" value="{$sstart_time}" autocomplete="off" placeholder="请选择时间..." onClick="WdatePicker()" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+				        </div>
+						<div class="span2">
+							开课时间结束：
+						</div>	
+						<div class="span3">
+							<input type="text" name="estart_time" class="input length_2 J_date" value="{$estart_time}" autocomplete="off" placeholder="请选择时间..." onClick="WdatePicker()" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+						</div>
+						<div class="span2">
+							&nbsp;
+						</div>
+					</div>
+				</span>
+			   </div>
+			   
+			   <div class="mb10">
+			   	<span class="mr20">
+			   		<button class="btn btn-primary">搜索</button>
+			   	</span>
+			   </div>
+		        
+		        
+		      
+		    </div>
+		  </form>
+		<table class="table table-hover table-bordered center-table">
+			<thead>
+				<tr>
+					<th width="50">ID</th>
+					<th style="min-width:200px">{:L('NAME')}</th>
+					<th>{:L('TEACHER')}</th>
+					<th>{:L('STARTIME')}</th>
+					<th>意向人数</th>
+					<th>{:L('PERSONCOUNT')}</th>
+					<th>已报名人数</th>
+					<th>{:L('CTIME')}</th>
+					<th width="120">{:L('ACTIONS')}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<foreach name="list" item="l">
+					<tr>
+						<td>{$l.id}</td>
+						<td>{$l.title}</td>
+						<td>{$l.teacher}</td>
+						<td>{$l.start_time}</td>
+						<td><a href="#" onclick="intention_num_info('{$l.id}')" data-toggle="modal" data-target="#intention_detail" >{$l.intention_num}</a></td>
+						<td>{$l.rated_number}</td>
+						<td><a href="#" onclick="sign_up_num_info('{$l.id}')" data-toggle="modal" data-target="#sign_up_detail" >{$l.sign_up_num}</a></td>
+						<td>{$l.createtime}</td>
+						<td><a href="{:U('course/editcourse',array('editid'=>$l[id]))}">{:L('EDIT')}</a>|<a href="{:U('course/delete',array('id'=>$l['id']))}" class="js-ajax-delete">{:L('DELETE')}</a>
+						</td>
+					</tr>
+				</foreach>
+			</tbody>
+		<div class="modal fade" id="intention_detail" style="top:70px;display: none;">
+		    <div class="modal-dialog" >
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <h4 class="modal-title">意向人员信息</h4>
+		            </div>
+		            <div id="main2" class="modal-body">
+		       			<div class="row" style="display:inline-block;">
+		            		<div class="xin1">ID</div>
+		       				<div class="xin1">小孩名</div>
+		       				<div class="xin1">家长名</div>
+		       				<div class="xin1">联系方式</div>
+		            	</div>
+		            </div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-default" data-dismiss="modal">取 消</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		<div class="modal fade" id="sign_up_detail" style="top:70px;display: none;">
+		    <div class="modal-dialog" >
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <h4 class="modal-title">已报名人员信息</h4>
+		            </div>
+		            <div id="main1" class="modal-body">
+		            	<div class="row" style="display:inline-block;">
+		            		<div class="xin1">ID</div>
+		       				<div class="xin1">小孩名</div>
+		       				<div class="xin1">家长名</div>
+		       				<div class="xin1">联系方式</div>
+		            	</div>
+		       			
+		            </div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-default" data-dismiss="modal">取 消</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		</table>
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script type="text/javascript">
+		function intention_num_info(id){
+			//查询意向人员
+			$.ajax({
+			type: "POST",
+			url: "{:U('course/intention_num_info')}",
+			dataType : 'json',
+			data: {
+				id : id
+			},
+			success: function(res){
+				//js遍历生成option
+				$.each(res,function(i, val) {
+			      
+			        $("#main2").append('<div class="row" style="display:block;"><div class="xin1">'+val["uid"]+'</div><div class="xin1">'+val["chname"]+'</div><div class="xin1">'+val["uname"]+'</div><div class="xin1">'+val["uphone"]+'</div></div>');
+			      
+			    });
+			},
+		});
+		}
+		function sign_up_num_info(id){
+			//查询已报名人员
+			$.ajax({
+			type: "POST",
+			url: "{:U('course/sign_up_num_info')}",
+			dataType : 'json',
+			data: {
+				id : id
+			},
+			success: function(res){
+				//js遍历生成option
+				$.each(res,function(i, val) {
+			      
+			        $("#main1").append('<div class="row" style="display:block;"><div class="xin1">'+val["uid"]+'</div><div class="xin1">'+val["chname"]+'</div><div class="xin1">'+val["uname"]+'</div><div class="xin1">'+val["uphone"]+'</div></div>');
+			      
+			    });
+			},
+		});
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>课程意向</title>
+    <link rel="stylesheet" href="__TMPL__Public/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/dd.css">
+		<link rel="stylesheet" href="__TMPL__Public/css/weixin/public.css">
+	<script src="__TMPL__Public/js/weixin/jquery.min.js"></script>	
+    <!--<link rel="stylesheet" href="__TMPL__Public/css/weixin/course.css">-->
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+    <style>
+        .select ul{ padding: 0;}
+        .select ul li{list-style-type:none;text-align: center;}
+        .styled-select {
+            width: 240px;
+            height: 34px;
+            overflow: hidden;
+        }
+        .styled-select select {
+            background: transparent;
+            width: 268px;
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            height: 34px;
+            -webkit-appearance: none; /*for chrome*/
+        }
+    </style>
+</head>
+<body>
+
+<form class="am-form am-form-horizontal" style="padding: 10px 10px" action="{:U('Course/stu_intention')}" method="post">
+        <div class="am-list-news-bd">
+            <ul class="am-list">
+                <li class="am-g am-list-item-dated" style="position: relative;height: 50px;border: none;">
+                    <a href="##" class="am-list-item-hd " style="padding-left: 5px;color: black">
+                        <span>意向学生</span>
+                    </a>
+                    <div class="styled-select">
+                        <select id="sel" style="position: absolute;width: 270px; bottom: 11px;right: 0px;color: #000;border:none; direction: rtl;appearance:none;  -moz-appearance:none;  -webkit-appearance:none;" name="stu_id">
+                            <volist name="child" id="vo">
+                                <option value="{$vo.id}" style="text-align: right;"><php>if($vo['nickname'] == null){ echo $vo['name'];}else{echo $vo['nickname'];}</php></option>
+                            </volist>
+                        </select>
+                    </div>
+
+
+                </li>
+            </ul>
+        </div>
+        <div class="am-form-group" style="margin-top: -18px">
+            <textarea style="border:none;resize : none;" class="" rows="8" placeholder="说说你想上什么课" name="stu_intention" id="stu_i"></textarea>
+        </div>
+
+        <div class="am-u-sm-13" style="padding: 0;margin-top: 20px">
+            <a id="sub" class="am-btn am-btn-block" style="background: #2adcaa;color: white;height: 42px;margin-top: -27px;border-radius:3px">提交</a>
+        </div>
+</form>
+<tc_include file="Public:weixin_foot"/>
+<input type="hidden" id="moban" value="__TMPL__">
+<tc_include file="Public:float"/>
+<script src="__TMPL__Public/js/weixin/public.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<![endif]-->
+<script src="__TMPL__Public/js/weixin/amazeui.min.js"></script>
+<script>
+    $('select').css('color','#999');
+    $('option').css('color','#323232');
+    $('select').change(function(){
+        var $selltem = $(this).val();
+        if($selltem == $(this).find('option:first').val()){
+            $(this).css('color','#999');
+        }else{
+            $(this).css('color','#323232');
+        }
+    });
+    var index = 0 ;
+    $('#sub').click(function(){
+        if(index!=0){
+            alert('请勿重复提交');
+        }else{
+            var sel = $('#sel').val();
+            var stu_i = $('#stu_i').val();
+            if(sel == 0){
+                $("#my-alert").modal();
+                $("#alert_cont").text("请选择小孩");
+                return;
+            }else if(stu_i == ''){
+                $("#my-alert").modal();
+                $(".am-modal-footer").addClass('dbtn');
+                $("#alert_cont").text("请填写意向");
+                return;
+            }else{
+                var url = "{:U('Course/stu_intention')}";
+                $.ajax({
+                    url : url,
+                    type : 'POST',
+                    data : {'child': sel,'stu_i' : stu_i},
+                    success : function (data){
+                        window.location.href= "{:U('Course/course')}";
+                    },
+                    error : function(e){
+                        $("#my-alert").modal();
+                        $("#alert_cont").text("服务器忙请稍后再试");
+                        return;
+                    }
+                })
+                index ++;
+            }
+        }
+    })
+</script>
+</body>
+</html>

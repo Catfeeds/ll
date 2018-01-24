@@ -1,0 +1,153 @@
+<admintpl file="header" />
+<link href="__TMPL__Public/assets/css/public.css" rel="stylesheet">
+<style>
+	.control-group{
+		margin-left :100px; 
+	}
+</style>
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('feedback/index')}">{:L('ADMIN_FEED_INDEX')}</a></li>
+		</ul>
+		<table class="table table-hover table-bordered table-list center-table">
+			<thead>
+				<tr>
+					<th width="50">ID</th>
+					<th>{:L('CONTENT')}</th>
+					<th>{:L('USER')}</th>
+					<th>{:L('CTIME')}</th>
+					<th>积分累计</th>
+					<th class="w-120">{:L('ACTIONS')}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<foreach name="list" item="list">
+					<tr>
+						<td>{$list.id}</td>
+						<td>{$list.content}</td>
+						<td>{$list.username}</td>
+						<td>{$list.createtime}</td>
+						<td>{$list.integral}</td>
+						<td><a href="{:U('feedback/delete',array('id'=>$list[id]))}" class="js-ajax-delete">{:L('DELETE')}</a>
+							|
+							<a href="#" onclick="addsorce('{$list[user_id]}','{$list[username]}')" data-toggle="modal" data-target="#detail" >奖励积分</a>
+							|
+							<a href="{:U('Feedback/getDetail','id='.$list[id])}" target="logs" class="logs">积分查看</a>
+						</td>
+					</tr>
+				</foreach>
+			</tbody>
+		</table>
+		<div id="bg"></div>
+		<!-- 弹窗 -->
+		<div class="count">
+			<div class="layer_top">
+				<div class="time_ask"> 意见反馈积分</div>
+				<!--<div class="close">×</div>-->
+				<iframe name="logs" class="iframe"   width="810px"  frameborder="0" height="350px" scrolling="no"></iframe>
+			</div>
+		 	
+		</div>
+		<div class="modal fade" id="detail" style="top:70px;display: none;">
+		    <div class="modal-dialog" >
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <h4 class="modal-title">给用户添加积分</h4>
+		            </div>
+		            <div class="modal-body">
+		       			<form id="form1" action="{:U('Users/User/addsorce')}" method="post">
+		       				<fieldset>
+		       				<input type="hidden" name="id" value="" >
+			       				<div class="control-group">
+									<label class="control-label">用户</label>
+									<div class="controls">
+										<input type="text" id="uname" value="" readonly >
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">积分</label>
+									<div class="controls">
+										<input type="number" name="integral" value="">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">类型</label>
+									<div class="controls">
+										<select name="obtain_type">
+											<option value="3">意见反馈</option>
+										</select>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">备注</label>
+									<div class="controls">
+										<textarea name="content"></textarea>
+									</div>
+								</div>
+		       				</fieldset>
+		       			</form>
+		            </div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-default" data-dismiss="modal">取 消</button>
+		                <button type="button" onclick="submit1()" class="btn btn-default" data-dismiss="modal">确 认</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/js/layer/layer.js"></script>
+	<script type="text/javascript">
+	//点击弹出历史积分列表
+	$(".logs").click(function(){
+		var width = $(document).width();
+		var height = $(document).height();
+		var left = (width-810)/2;
+		$('.count').css('display','block');
+		$('.count').css('left',left);
+		$('.count').css('z-index','1003')
+		$("#bg").css("display", "block");
+		$("#bg").css("width", width);
+		$("#bg").css("height", height);
+	})
+	//关闭弹出层
+	function close(){
+		$('.count').css('display','none');
+		$('.count1').css('display','none');
+		$("#bg").css("display", "none");
+	}
+	$('#bg').click(function(){
+		close();
+	})
+		function addsorce(id,name){
+			$("input[name=id]").val(id);
+			$("#uname").val(name);
+		}
+		function myrefresh()
+		{
+      	 window.location.reload();
+		}
+		function submit1(){
+
+			var data = $("#form1").serialize();
+			$.post("{:U('Users/User/addsorce')}",data,function(res){
+				if(res=='1'){
+					alert("积分不能为负数");
+				}
+				if(res=='2'){
+					alert("添加积分成功");
+					window.location.reload()
+				}
+				if(res == "3"){
+					alert("该用户没有反馈过意见！");
+				}
+				
+			});
+		  setTimeout('myrefresh()',3000);
+		}
+	</script>
+</body>
+</html>

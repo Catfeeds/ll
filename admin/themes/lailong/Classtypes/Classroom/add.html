@@ -1,0 +1,48 @@
+<admintpl file="header" />
+</head>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/addcourse.css" />
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('Classroom/classroomlist')}">教室列表</a></li>
+			<li class="active"><a href="{:U('Classroom/add')}">新增教室</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Classroom/add_post')}">
+			
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">教室名字</label>
+					<div class="controls">
+						<input type="text" name="title" value="{$title}" required>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">地址</label>
+					<div class="controls">
+						<input type="text" name="address" value="{$address}" required>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">联系人手机</label>
+					<div class="controls">
+						<input type="text" name="phone" value="{$phone}" required>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">描述</label>
+					<div class="controls">
+						<textarea name="content">{$content}</textarea>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit
+">{:L('SAVE')}</button>
+				<a class="btn" href="javascript:history.back(-1);">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+
+</html>

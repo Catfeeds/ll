@@ -1,0 +1,235 @@
+<!doctype html>
+<html class="no-js">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>我的</title>
+<link rel="stylesheet"
+	href="__TMPL__Public/font-awesome-4.7.0/css/font-awesome.css">
+<link rel="stylesheet" href="__TMPL__Public/css/weixin/amazeui.min.css">
+<link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+<!--<link rel="stylesheet" href="__TMPL__Public/css/weixin/dd.css">-->
+<link rel="stylesheet" href="__TMPL__Public/css/weixin/my.css">
+<!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body style="padding: 4px;">
+<!--我的-->
+<section data-am-widget="accordion" class="am-accordion am-accordion-gapped" data-am-accordion='{  }'>
+<foreach name="child" item="c" key="k">
+	<eq name="k" value="0">
+		<dl class="am-accordion-item am-active" style="border-bottom: none">
+			<dt class="am-accordion-title" style="background: white">
+				<a href="{:U('mine/user_info?child')}{$c.id}"><img src="<if condition='!empty($c[avatar])'>__ROOT__/data/upload/avatar/{$c.avatar}<else/>__TMPL__Public/images/moren.png</if>" alt=""></a><span style="font-size: 1.6rem;color: black">{$c.name}</span>
+			</dt>
+			<dd class="am-accordion-bd am-collapse am-in">
+				<!-- 规避 Collapase 处理有 padding 的折叠内容计算计算有误问题， 加一个容器 -->
+				<div class="am-accordion-content">
+					<ul class="am-list">
+						<li class="am-list-item-dated" style="border-top: none">
+							<a href="{:U('Mine/member?child=')}{$c.id}" class="am-list-item-hd ">
+								<img src="__TMPL__Public/images/user.png" alt="">
+								<span style="font-size: 1.6rem;color: #000;line-height: 20px;position:absolute;top:13px; left: 35px;">会员信息</span>
+								<span style="position:absolute;top: 8px;right:26px;color: #92998b;"><if condition="$c[vip_state] eq 0">未认证<elseif condition="$c[vip_state] eq 1"/>认证中<elseif condition="$c[vip_state] eq 2"/>认证失败<elseif condition="$c[vip_state] eq 3"/>已认证</if></span>
+								<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+									  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+							</a>
+						</li>
+						<li class="am-g am-list-item-dated">
+							<a href="{:U('Mine/order_list?id=')}{$c.id}"  class="am-list-item-hd ">
+								<img src="__TMPL__Public/images/course.png" alt="">
+								<span style="font-size: 1.6rem;color: #000;line-height: 20px;position:absolute;top:13px; left: 35px;">购买的课程</span>
+								<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+									  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+							</a>
+
+						</li>
+						<li class="am-g am-list-item-dated" style="border-bottom: none">
+							<a href="{:U('Mine/my_intention?child=')}{$c.id}" class="am-list-item-hd ">
+								<img src="__TMPL__Public/images/ides.png" alt="">
+								<span style="font-size: 1.6rem;color: #000;line-height: 20px;position:absolute;top:13px; left: 35px;">课程意向</span>
+								<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+									  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+							</a>
+
+						</li>
+					</ul>
+				</div>
+			</dd>
+		</dl>
+	<else/>
+		<dl class="am-accordion-item" style="border-bottom: none">
+			<dt class="am-accordion-title" style="background: white">
+				<a href="{:U('mine/user_info?child')}{$c.id}"><img src="<if condition='!empty($c[avatar])'>__ROOT__/data/upload/avatar/{$c.avatar}<else/>__TMPL__Public/images/moren.png</if>" alt=""></a><span style="font-size: 1.6rem;color: black">{$c.name}</span>
+			</dt>
+			<dd class="am-accordion-bd am-collapse">
+				<!-- 规避 Collapase 处理有 padding 的折叠内容计算计算有误问题， 加一个容器 -->
+				<div class="am-accordion-content">
+					<ul class="am-list">
+						<li class="am-list-item-dated" style="border-top: none">
+							<a href="{:U('Mine/member?child=')}{$c.id}" class="am-list-item-hd ">
+								<img src="__TMPL__Public/images/user.png" alt="">
+								<span style="font-size: 1.6rem;color: #000;line-height: 20px;position:absolute;top:13px; left: 35px;">会员信息</span>
+								<span style="position:absolute;top: 8px;right:26px;color: #92998b;"><if condition="$c[vip_state] eq 0">未认证<elseif condition="$c[vip_state] eq 1"/>认证中<elseif condition="$c[vip_state] eq 2"/>认证失败<elseif condition="$c[vip_state] eq 3"/>已认证</if></span>
+								<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+									  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+							</a>
+						</li>
+						<li class="am-g am-list-item-dated">
+							<a href="{:U('Mine/order_list?id=')}{$c.id}"  class="am-list-item-hd ">
+								<img src="__TMPL__Public/images/course.png" alt="">
+								<span style="font-size: 1.6rem;color: #000;line-height: 20px;position:absolute;top:13px; left: 35px;">购买的课程</span>
+								<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+									  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+							</a>
+
+						</li>
+						<li class="am-g am-list-item-dated" style="border-bottom: none">
+							<a href="{:U('Mine/my_intention?child=')}{$c.id}" class="am-list-item-hd ">
+								<img src="__TMPL__Public/images/ides.png" alt="">
+								<span style="font-size: 1.6rem;color: #000;line-height: 20px;position:absolute;top:13px; left: 35px;">课程意向</span>
+								<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+									  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+							</a>
+
+						</li>
+					</ul>
+				</div>
+			</dd>
+		</dl>
+	</eq>
+
+</foreach>
+	<dl class="am-accordion-item" style="background: white;">
+		<ul class="am-list">
+			<li class="am-g am-list-item-dated" style="position: relative;border-top: none">
+				<a  href="{:U('Mine/member')}" class="am-list-item-hd " style="background: white">
+					<img src="__TMPL__Public/images/add.png" alt="" style=" width: 50px;height: 50px;margin-right: 10px;">
+					<span style="font-size: 1.6rem;color: #000;line-height: 20px;position:absolute;top:20px; left: 64px;">添加小孩</span>
+					<span style="position: absolute;top: 17px;right:9px;font-size: 20px;color: #92998b;"
+						  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+				</a>
+			</li>
+		</ul>
+	</dl>
+</section>
+<section style="margin-top: 30px;" data-am-widget="accordion" class="am-accordion am-accordion-gapped" data-am-accordion='{  }'>
+<div class="am-accordion-content">
+	<ul class="am-list">
+
+		<li class="am-g am-list-item-dated" style="border-top: none">
+			 <a href="{:U('Mine/integration')}" class="am-list-item-hd "> 
+				<img src="__TMPL__Public/images/jifen.png" alt="">
+				<span style="font-size: 1.6rem;color: #000;line-height: 20px;position:absolute;top:13px; left:35px;">我的积分</span>
+				<span id="userscore" style="position:absolute;top: 8px;left:117px;color: #92998b;">{$u.integral}</span>
+				<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+					  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+			 </a> 
+			<span style="border: 1px solid #45e1b3;width: 65px;height: 22px;line-height: 21px;text-align: center; position:absolute;top: 13px;right: 26px;color: #45e1b3;" id="sign"> <if condition="$bool eq 0">签到<else/>已签到</if></span>
+		</li>
+		<li class="am-g am-list-item-dated">
+			<a href="{:U('Mine/collection')}" class="am-list-item-hd ">
+				<img src="__TMPL__Public/images/sc.png" alt="">
+				<span style="font-size: 1.6rem;color: #000;line-height: 20px;position:absolute;top:13px; left: 35px;">我的收藏</span>
+				<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+					  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+			</a>
+		</li>
+		<li class="am-g am-list-item-dated">
+			<a href="{:U('Mine/my_message')}" class="am-list-item-hd ">
+				<img src="__TMPL__Public/images/passege.png" alt="">
+				<span style="font-size: 1.6rem;color: #000;line-height: 20px;position:absolute;top:13px; left: 35px;">我的消息</span>
+				<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+					  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+			</a>
+		</li>
+		<li class="am-g am-list-item-dated">
+			<a href="{:U('Rulepage/recommend?userid=')}{$_SESSION[weixin_user_id]}" class="am-list-item-hd ">
+				<img src="__TMPL__Public/images/tuijian.png" alt="">
+				<span style="font-size: 1.6rem;color: #000;line-height: 20px;position:absolute;top:13px; left: 35px;">我的推荐</span>
+				<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+					  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+			</a>
+		</li>
+		<li class="am-g am-list-item-dated">
+			<a href="{:U('Mine/feedback')}" class="am-list-item-hd ">
+				<img src="__TMPL__Public/images/fankui.png" alt="">
+				<span style="font-size: 1.6rem;color: #000;line-height: 20px;position:absolute;top:13px; left: 35px;">意见反馈</span>
+				<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+					  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+			</a>
+		</li>
+		<li class="am-g am-list-item-dated" style="border-bottom: none;margin-bottom: 54px">
+			<a href="{:U('Mine/setting')}" class="am-list-item-hd ">
+				<img src="__TMPL__Public/images/shezhi.png" alt="">
+				<span style="font-size: 1.6rem;color: #000;line-height: 20px;position:absolute;top:13px; left: 35px;">设置</span>
+				<span style="position: absolute;top: 13px;right:8px;font-size: 20px;color: #92998b;"
+					  class="am-list-date fa fa-angle-right" aria-hidden="true"></span>
+			</a>
+		</li>
+	</ul>
+</div>
+</section>
+
+
+	<footer>
+		<div data-am-widget="navbar"
+			class="am-navbar am-cf am-navbar-default " id="">
+			<ul class="am-navbar-nav am-cf am-avg-sm-4"
+				style="background: #fbfbfb;">
+				<li><a href="{:U('Course/course')}"> <img class="show"
+						src="__TMPL__Public/images/course1.png" alt="课程" /> <img
+						style="display: none" class="hide"
+						src="__TMPL__Public/images/coursed.png" alt="课程" /> <span
+						class="am-navbar-label" style="color: #bfc6d1;">课程</span>
+				</a></li>
+				<li><a href="{:U('Mine/server')}"> <img class="show1"
+						src="__TMPL__Public/images/server.png" alt="管家服务" /> <img
+						style="display: none" class="hide1"
+						src="__TMPL__Public/images/servered.png" alt="管家服务" /> <span
+						class="am-navbar-label txt1" style="color: #bfc6d1;">管家服务</span>
+				</a></li>
+				<li><a href="{:U('Mine/my')}"> <img class="show2"
+						src="__TMPL__Public/images/my.png" alt="我的" /> <img
+						style="display: none" class="hide2"
+						src="__TMPL__Public/images/myd.png" alt="我的" /> <span
+						class="am-navbar-label txt2" style="color: #bfc6d1;">我的</span>
+				</a></li>
+			</ul>
+		</div>
+
+	</footer>
+	<tc_include file="Public:weixin_foot"/>
+	<!--[if (gte IE 9)|!(IE)]><!-->
+	<script src="__TMPL__Public/js/weixin/jquery.min.js"></script>
+	<!--<![endif]-->
+	<!--[if lte IE 8 ]>
+<!--<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>-->
+	<![endif]-->
+	<script src="__TMPL__Public/js/weixin/amazeui.min.js"></script>
+	<script src="__TMPL__Public/js/weixin/my.js"></script>
+<script>
+$("#sign").click(function(){
+	var inter=$('#userscore').text();
+	$.post('{:U("Mine/sign")}',
+		 	function(data){
+				if(data[0]=="101"){
+					$("#my-alert").modal();
+			 		$("#alert_cont").text(data[1]);
+			 		$('#sign').text('已签到');
+			 		$('#userscore').text(data[2]);
+				}else{
+					$("#my-alert").modal();
+			 		$("#alert_cont").text(data[1]);
+			 		return;
+				}
+	});
+})
+
+
+</script>
+</body>
+</html>

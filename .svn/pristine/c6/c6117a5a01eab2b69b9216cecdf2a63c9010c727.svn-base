@@ -1,0 +1,13 @@
+/**
+ * Created by Administrator on 2017/6/18.
+ */
+var starr=document.getElementsByClassName("starr")[0];
+var i = 1;
+var imgArr = ["../Public/images/shoucan.png","../Public/images/yishoucan.png"];
+starr.addEventListener("click", function () {
+    if (i == 2) {
+        i = 1;
+    }
+    starr.style.backgroundImage = "url('"+imgArr[i]+"')";
+    i++;
+});

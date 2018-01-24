@@ -1,0 +1,57 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>我的消息</title>
+    <link rel="stylesheet" href="../Public/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="../Public/css/weixin/bdTel.css">
+    <link rel="stylesheet" href="../Public/css/weixin/course.css">
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body>
+<div data-am-widget="intro" class="am-intro am-cf am-intro-default" style="padding: 10px 12px;background: #f4f5f7">
+    <div class="am-g am-intro-bd" style="background:white;padding: 0px">
+        <div class="xq" style="height: inherit">
+            <div class="am-intro-left am-u-sm-3" style="width:79px;height: 56px;margin-top: 15px">
+                <img style="display: inline-block; width: 56px;height: 56px" src="../Public/images/p.png" alt="">
+            </div>
+            <div class="am-intro-right am-u-sm-9">
+                <p style="font-size: 13px;margin-top: 8px;font-weight: bold">沪教版9年级下学期化学开课啦</p>
+                <p style="margin-top: -19px;font-size: 12px;color:black;">2017-06-13</p>
+                <p style="font-size: 11px;margin-top: -17px;
+color: #7f7c8e">描述描述描述描述描述描述描述描述
+                描述描述描述描述描述描述描述描述描述描述描</p></div>
+        </div>
+    </div>
+</div>
+
+<div data-am-widget="intro" class="am-intro am-cf am-intro-default" style="padding: 10px 12px;background: #f4f5f7">
+    <div class="am-g am-intro-bd" style="background:white;padding: 0px">
+        <div class="xq" style="height: inherit">
+            <div class="am-intro-left am-u-sm-3" style="width:79px;height: 56px;margin-top: 15px">
+                <img style="display: inline-block; width: 56px;height: 56px" src="../Public/images/p.png" alt="">
+            </div>
+            <div class="am-intro-right am-u-sm-9">
+                <p style="font-size: 13px;margin-top: 8px;font-weight: bold">沪教版9年级下学期化学开课啦</p>
+                <p style="margin-top: -19px;font-size: 12px;color:black;">2017-06-13</p>
+                <p style="font-size: 11px;margin-top: -17px;
+color: #7f7c8e">描述描述描述描述描述描述描述描述
+                    描述描述描述描述描述描述描述描述描述描述描</p></div>
+        </div>
+    </div>
+</div>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="../Public/js/weixin/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<![endif]-->
+<script src="../Public/js/weixin/amazeui.min.js"></script>
+</body>
+</html>

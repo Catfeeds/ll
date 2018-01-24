@@ -1,0 +1,6 @@
+<?php
+define("UPLOADPATH", './data/upload/avatar/');
+define( 'APPID', 'wxd167009635d6e592');
+define('APPSECRET', "c7f48c8756590a04803ff0c06ea3d342");
+define('COURSE_MODEL', 'uuYOUBBficw0yE4ID9R5i5TpqczHeTFEFZ1WfiZCnlA');//课程开课通知
+define('AUTH_MODEL', 'hdQzRGClgbCCJCD_LhODrXJzNpz8_z_p9RivmWCcbjo');//认证成功提醒

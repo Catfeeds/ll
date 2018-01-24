@@ -1,0 +1,29 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('course/courselist')}">{:L('ADMIN_COURSE_INDEX')}</a></li>
+			<li><a href="{:U('course/addcourse')}">{:L('ADMIN_COURSE_ADD')}</a></li>
+		</ul>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th width="50">ID</th>
+					<th>{:L('NAME')}</th>
+					<th>{:L('TEACHER')}</th>
+					<th>{:L('STARTIME')}</th>
+					<th>{:L('PERSONCOUNT')}</th>
+					<th>{:L('CTIME')}</th>
+					<th width="120">{:L('ACTIONS')}</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+			</tbody>
+		</table>
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

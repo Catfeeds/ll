@@ -1,0 +1,256 @@
+[ 2017-06-26T16:47:38+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=sign_up_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.030827s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.053430s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.089468s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0222s ]
+SQL: SELECT u.id as uid,u.name as uname,u.phone as uphone,ch.name as chname FROM lailong_enrollment i  left join lailong_user u on u.id = i.user_id left join lailong_child ch on ch.id=i.child_id   WHERE (  i.id = 4 and ( i.state = 1 or i.state = 3 ) )  [ RunTime:0.0007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.025360s ]
+INFO: [ app_end ] --END-- [ RunTime:0.025491s ]
+
+[ 2017-06-26T17:05:41+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=sign_up_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.034969s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.104007s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.144969s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0196s ]
+SQL: SELECT u.id as uid,u.name as uname,u.phone as uphone,ch.name as chname FROM lailong_enrollment i  left join lailong_user u on u.id = i.user_id left join lailong_child ch on ch.id=i.child_id   WHERE (  i.id = 4 and ( i.state = 1 or i.state = 3 ) )  [ RunTime:0.0008s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.034553s ]
+INFO: [ app_end ] --END-- [ RunTime:0.034674s ]
+
+[ 2017-06-26T17:05:44+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=sign_up_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.030603s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.077367s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.114438s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0229s ]
+SQL: SELECT u.id as uid,u.name as uname,u.phone as uphone,ch.name as chname FROM lailong_enrollment i  left join lailong_user u on u.id = i.user_id left join lailong_child ch on ch.id=i.child_id   WHERE (  i.id = 3 and ( i.state = 1 or i.state = 3 ) )  [ RunTime:0.0007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.029117s ]
+INFO: [ app_end ] --END-- [ RunTime:0.029247s ]
+
+[ 2017-06-26T17:06:07+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=sign_up_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.021055s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.047565s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.072107s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0157s ]
+SQL: SELECT u.id as uid,u.name as uname,u.phone as uphone,ch.name as chname FROM lailong_enrollment i  left join lailong_user u on u.id = i.user_id left join lailong_child ch on ch.id=i.child_id   WHERE (  i.id = 6 and ( i.state = 1 or i.state = 3 ) )  [ RunTime:0.0005s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.015541s ]
+INFO: [ app_end ] --END-- [ RunTime:0.015637s ]
+
+[ 2017-06-26T17:06:24+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=sign_up_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.020786s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.058798s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.084035s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0227s ]
+SQL: SELECT u.id as uid,u.name as uname,u.phone as uphone,ch.name as chname FROM lailong_enrollment i  left join lailong_user u on u.id = i.user_id left join lailong_child ch on ch.id=i.child_id   WHERE (  i.id = 3 and ( i.state = 1 or i.state = 3 ) )  [ RunTime:0.0008s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.041062s ]
+INFO: [ app_end ] --END-- [ RunTime:0.041268s ]
+
+[ 2017-06-26T17:06:48+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=sign_up_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.024218s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.066335s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.094873s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0284s ]
+SQL: SELECT u.id as uid,u.name as uname,u.phone as uphone,ch.name as chname FROM lailong_enrollment i  left join lailong_user u on u.id = i.user_id left join lailong_child ch on ch.id=i.child_id   WHERE (  i.id = 3 and ( i.state = 1 or i.state = 3 ) )  [ RunTime:0.0008s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.026280s ]
+INFO: [ app_end ] --END-- [ RunTime:0.026439s ]
+
+[ 2017-06-26T17:07:24+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=sign_up_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.033639s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.097750s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.136425s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0230s ]
+SQL: SELECT u.id as uid,u.name as uname,u.phone as uphone,ch.name as chname FROM lailong_enrollment i  left join lailong_user u on u.id = i.user_id left join lailong_child ch on ch.id=i.child_id   WHERE (  i.id = 6 and ( i.state = 1 or i.state = 3 ) )  [ RunTime:0.0009s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.025993s ]
+INFO: [ app_end ] --END-- [ RunTime:0.026164s ]
+
+[ 2017-06-26T17:09:17+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=sign_up_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015480s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.044874s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.063901s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0150s ]
+SQL: SELECT u.id as uid,u.name as uname,u.phone as uphone,ch.name as chname FROM lailong_enrollment i  left join lailong_user u on u.id = i.user_id left join lailong_child ch on ch.id=i.child_id   WHERE (  i.id = 3 and ( i.state = 1 or i.state = 3 ) )  [ RunTime:0.0005s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.018311s ]
+INFO: [ app_end ] --END-- [ RunTime:0.018418s ]
+
+[ 2017-06-26T17:10:26+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=sign_up_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.032911s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.082857s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.120685s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0177s ]
+SQL: SELECT u.id as uid,u.name as uname,u.phone as uphone,ch.name as chname FROM lailong_enrollment i  left join lailong_user u on u.id = i.user_id left join lailong_child ch on ch.id=i.child_id   WHERE (  i.id = 3 and ( i.state = 1 or i.state = 3 ) )  [ RunTime:0.0007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.032430s ]
+INFO: [ app_end ] --END-- [ RunTime:0.032698s ]
+
+[ 2017-06-26T17:13:17+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=sign_up_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.033317s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.073448s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.112274s ]
+
+[ 2017-06-26T17:13:42+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=sign_up_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.026601s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.075490s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.106672s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0225s ]
+SQL: SELECT u.id as uid,u.name as uname,u.phone as uphone,ch.name as chname FROM lailong_enrollment i  left join lailong_user u on u.id = i.user_id left join lailong_child ch on ch.id=i.child_id   WHERE (  i.id = 3 and ( i.state = 1 or i.state = 3 ) )  [ RunTime:0.0012s ]
+
+[ 2017-06-26T17:18:05+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=sign_up_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.024145s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.075500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.103890s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0235s ]
+SQL: SELECT u.id as uid,u.name as uname,u.phone as uphone,ch.name as chname FROM lailong_enrollment i  left join lailong_user u on u.id = i.user_id left join lailong_child ch on ch.id=i.child_id   WHERE (  i.course_id = 3 and ( i.state = 1 or i.state = 3 ) )  [ RunTime:0.0009s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.027772s ]
+INFO: [ app_end ] --END-- [ RunTime:0.027909s ]
+
+[ 2017-06-26T17:18:12+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=sign_up_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.023948s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.070447s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.098765s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0199s ]
+SQL: SELECT u.id as uid,u.name as uname,u.phone as uphone,ch.name as chname FROM lailong_enrollment i  left join lailong_user u on u.id = i.user_id left join lailong_child ch on ch.id=i.child_id   WHERE (  i.course_id = 3 and ( i.state = 1 or i.state = 3 ) )  [ RunTime:0.0013s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.037604s ]
+INFO: [ app_end ] --END-- [ RunTime:0.037787s ]
+
+[ 2017-06-26T17:19:37+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=sign_up_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.031033s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.065908s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.101683s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0231s ]
+SQL: SELECT u.id as uid,u.name as uname,u.phone as uphone,ch.name as chname FROM lailong_enrollment i  left join lailong_user u on u.id = i.user_id left join lailong_child ch on ch.id=i.child_id   WHERE (  i.course_id = 3 and ( i.state = 1 or i.state = 3 ) )  [ RunTime:0.0009s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.026636s ]
+INFO: [ app_end ] --END-- [ RunTime:0.026794s ]
+
+[ 2017-06-26T17:20:06+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=sign_up_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.022589s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.063034s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.089335s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0183s ]
+SQL: SELECT u.id as uid,u.name as uname,u.phone as uphone,ch.name as chname FROM lailong_enrollment i  left join lailong_user u on u.id = i.user_id left join lailong_child ch on ch.id=i.child_id   WHERE (  i.course_id = 3 and ( i.state = 1 or i.state = 3 ) )  [ RunTime:0.0007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.027031s ]
+INFO: [ app_end ] --END-- [ RunTime:0.027180s ]
+
+[ 2017-06-26T17:22:50+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=sign_up_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.023897s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.053825s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.081725s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0229s ]
+SQL: SELECT u.id as uid,u.name as uname,u.phone as uphone,ch.name as chname FROM lailong_enrollment i  left join lailong_user u on u.id = i.user_id left join lailong_child ch on ch.id=i.child_id   WHERE (  i.course_id = 3 and ( i.state = 1 or i.state = 3 ) )  [ RunTime:0.0009s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.025916s ]
+INFO: [ app_end ] --END-- [ RunTime:0.026052s ]
+
+[ 2017-06-26T17:23:00+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=sign_up_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.036928s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.068080s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.109535s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0198s ]
+SQL: SELECT u.id as uid,u.name as uname,u.phone as uphone,ch.name as chname FROM lailong_enrollment i  left join lailong_user u on u.id = i.user_id left join lailong_child ch on ch.id=i.child_id   WHERE (  i.course_id = 6 and ( i.state = 1 or i.state = 3 ) )  [ RunTime:0.0007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.026219s ]
+INFO: [ app_end ] --END-- [ RunTime:0.026355s ]
+
+[ 2017-06-26T17:24:08+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=sign_up_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.030937s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.062437s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.097859s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0211s ]
+SQL: SELECT u.id as uid,u.name as uname,u.phone as uphone,ch.name as chname FROM lailong_enrollment i  left join lailong_user u on u.id = i.user_id left join lailong_child ch on ch.id=i.child_id   WHERE (  i.course_id = 3 and ( i.state = 1 or i.state = 3 ) )  [ RunTime:0.0008s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.026268s ]
+INFO: [ app_end ] --END-- [ RunTime:0.026445s ]
+
+[ 2017-06-26T17:25:55+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=sign_up_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.024312s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.063561s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.092875s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0208s ]
+SQL: SELECT u.id as uid,u.name as uname,u.phone as uphone,ch.name as chname FROM lailong_enrollment i  left join lailong_user u on u.id = i.user_id left join lailong_child ch on ch.id=i.child_id   WHERE (  i.course_id = 3 and ( i.state = 1 or i.state = 3 ) )  [ RunTime:0.0008s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.028277s ]
+INFO: [ app_end ] --END-- [ RunTime:0.028418s ]
+
+[ 2017-06-26T17:26:24+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=sign_up_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.019131s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.049885s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.072460s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0114s ]
+SQL: SELECT u.id as uid,u.name as uname,u.phone as uphone,ch.name as chname FROM lailong_enrollment i  left join lailong_user u on u.id = i.user_id left join lailong_child ch on ch.id=i.child_id   WHERE (  i.course_id = 3 and ( i.state = 1 or i.state = 3 ) )  [ RunTime:0.0009s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.020914s ]
+INFO: [ app_end ] --END-- [ RunTime:0.021074s ]
+
+[ 2017-06-26T17:26:40+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=sign_up_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.025119s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.067018s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.097146s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0198s ]
+SQL: SELECT u.id as uid,u.name as uname,u.phone as uphone,ch.name as chname FROM lailong_enrollment i  left join lailong_user u on u.id = i.user_id left join lailong_child ch on ch.id=i.child_id   WHERE (  i.course_id = 3 and ( i.state = 1 or i.state = 3 ) )  [ RunTime:0.0008s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.025218s ]
+INFO: [ app_end ] --END-- [ RunTime:0.025352s ]
+
+[ 2017-06-26T17:27:28+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=sign_up_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.022314s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.065745s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.094177s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0128s ]
+SQL: SELECT u.id as uid,u.name as uname,u.phone as uphone,ch.name as chname FROM lailong_enrollment i  left join lailong_user u on u.id = i.user_id left join lailong_child ch on ch.id=i.child_id   WHERE (  i.course_id = 3 and ( i.state = 1 or i.state = 3 ) )  [ RunTime:0.0008s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.024706s ]
+INFO: [ app_end ] --END-- [ RunTime:0.024823s ]
+
+[ 2017-06-26T17:32:52+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=sign_up_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.019958s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.052451s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.076749s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0176s ]
+SQL: SELECT u.id as uid,u.name as uname,u.phone as uphone,ch.name as chname FROM lailong_enrollment i  left join lailong_user u on u.id = i.user_id left join lailong_child ch on ch.id=i.child_id   WHERE (  i.course_id = 3 and ( i.state = 1 or i.state = 3 ) )  [ RunTime:0.0013s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.022406s ]
+INFO: [ app_end ] --END-- [ RunTime:0.022539s ]
+
+[ 2017-06-26T17:35:06+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=intention_num_info
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.025244s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.070214s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.101622s ]
+SQL: SHOW COLUMNS FROM `lailong_intention` [ RunTime:0.0201s ]
+SQL: SELECT u.id as uid,u.name as uname,u.phone as uphone,ch.name as chname FROM lailong_intention i  left join lailong_user u on u.id = i.user_id left join lailong_child ch on ch.id=i.child_id   WHERE (  i.course_id = 4 )  [ RunTime:0.0008s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.025640s ]
+INFO: [ app_end ] --END-- [ RunTime:0.025768s ]
+

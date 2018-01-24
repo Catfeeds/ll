@@ -1,0 +1,53 @@
+.bgt{
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("../../../Public/images/blue.png");
+    overflow: hidden;
+}
+.bgt .lf{
+    width: 70%;
+    height: 200px;
+    text-align: center;
+    float: left;
+    padding-top: 44px;
+    color: white;
+    position: relative;
+}
+.bgt .rg{
+    width: 30%;
+    height: 200px;
+    float: right;
+    overflow: hidden;
+    padding-top: 10px;
+    position: relative;
+}
+.bgt .rg p{
+    width: 65px;
+    text-align: center;
+    margin-top: 76px;
+    margin-left: 27px;
+    color: white;
+    border:1px solid white;
+    border-radius: 13px;
+}
+.am-nav-tabs{
+    border-bottom: none;
+}
+.am-nav-tabs li{
+    background: white;
+}
+.am-nav-tabs li a{
+    /*border-bottom-color:#ddd;*/
+}
+.am-nav-tabs>li.am-active>a, .am-nav-tabs>li.am-active>a:focus, .am-nav-tabs>li.am-active>a:hover{
+    border-bottom:1px solid #ddd;
+}
+
+.am-thumbnails>li{
+    padding:0;
+}
+.am-nav-tabs>li{
+    margin-bottom: 15px;
+}

@@ -1,0 +1,50 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <tc_include file="Public:header" />
+    <title>课程</title>
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/course.css">
+	
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body>
+<div class="am-container" style="text-align: center">
+    <p style="margin-top: 223px;">还不是会员？</p>
+    <p style="margin-top: 0px;margin-left:-2%;"><a href="{:U('Mine/my')}" style="color:#0743fc;border-bottom: 1px solid #0743fc" >请前往认证</a></p>
+</div>
+<footer style="overflow: hidden;z-index: 999">
+    <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default " id="">
+        <ul class="am-navbar-nav am-cf am-avg-sm-4" style="background: #fbfbfb;">
+            <li >
+                <a href="{:U('Course/course')}">
+                    <img class="show" src="__TMPL__Public/images/course1.png" alt="课程"/>
+                    <img style="display: none" class="hide" src="__TMPL__Public/images/coursed.png" alt="课程"/>
+                    <span class="am-navbar-label" style="color: rgb(7, 67, 252);">课程</span>
+                </a>
+            </li>
+            <li >
+                <a href="{:U('Mine/server')}">
+                    <img class="show1" src="__TMPL__Public/images/server.png" alt="管家服务"/>
+                    <img  style="display: none" class="hide1" src="__TMPL__Public/images/servered.png" alt="管家服务"/>
+                    <span class="am-navbar-label txt1">管家服务</span>
+                </a >
+            </li>
+            <li >
+                <a href="{:U('Mine/my')}">
+                    <img class="show2" src="__TMPL__Public/images/my.png" alt="我的"/>
+                    <img  style="display: none" class="hide2" src="__TMPL__Public/images/myd.png" alt="我的"/>
+                    <span class="am-navbar-label txt2">我的</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</footer>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<!--<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>-->
+<![endif]-->
+<script src="__TMPL__Public/js/weixin/course.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<admintpl file="header" />
+</head>
+<style>
+.group{
+    width:20%;
+    float: left;
+    margin-left: 10px;
+	overflow:hidden;
+}
+.word{
+    width:39%;
+    padding-top: 7px;
+    float: left;
+	overflow:hidden;
+	margin-top:7px;
+}
+.select_2{
+    width:60%;
+    float: left;
+	overflow:hidden;
+	margin-top:7px;
+}
+.input{ width:55%;
+    float: left;
+	overflow:hidden;
+	margin-top:7px;}
+.form{height:100px;}
+</style>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('record/intention')}">{:L('ADMIN_INTENT_INDEX')}</a></li>
+			<li><a href="{:U('record/intention2')}">{:L('ADMIN_INTENTX_INDEX')}</a></li>
+		</ul>
+		<form class="well form-search form" method="post" action="{:U('record/intention')}">
+		<input type="hidden" name="leixing" value="1" />
+			<div class="group">
+				<lable class="word">上课学生：</lable>
+				<select class="select_2" name="child">
+					<option value="">全部</option>
+					<foreach name="child" item="vo">
+						<option value="{$vo.id}" <if condition="$formget[child] eq $vo['id']" >selected <else/></if> >{$vo.name}</option>
+					</foreach>
+				</select>
+			</div>
+			<div class="group">
+				<lable class="word">学段：</lable>
+				<select class="select_2" name="grade">
+					<option value="">全部</option>
+					<foreach name="grade" item="vo">
+						<option value="{$vo.title}" <if condition="$formget[grade] eq $vo['title']" >selected <else/></if> >{$vo.title}</option>
+					</foreach>
+				</select>
+			</div>
+			<div class="group">
+				<lable class="word">科目：</lable>
+				<select class="select_2" name="subject">
+					<option value="">全部</option>
+					<foreach name="subject" item="vo">
+						<option value="{$vo.title}" <if condition="$formget[subject] eq $vo['title']" >selected <else/></if> >{$vo.title}</option>
+					</foreach>
+				</select>
+			</div>
+			<div class="group">
+				<lable class="word">题型：</lable>
+				<select class="select_2" name="question_type">
+					<option value="">全部</option>
+					<foreach name="question_type" item="vo">
+						<option value="{$vo.title}" <if condition="$formget[question_type] eq $vo['title']" >selected <else/></if> >{$vo.title}</option>
+					</foreach>
+				</select>
+			</div>
+			<div class="group">
+				<lable class="word">试题难度	：</lable>
+				<select class="select_2" name="question_difficulty">
+					<option value="">全部</option>
+					<foreach name="question_difficulty" item="vo">
+						<option value="{$vo.title}" <if condition="$formget[question_difficulty] eq $vo['title']" >selected <else/></if> >{$vo.title}</option>
+					</foreach>
+				</select>
+			</div>
+			<div class="group">
+				<lable class="word">希望上课时间	：</lable>
+				<input type="text" class="js-date date input" name="wanted_start_time" value="{$formget.wanted_start_time}" autocomplete="off">
+			</div>
+			<div class="group">
+				<lable class="word">希望上课教师	：</lable>
+				<input type="text" class="input" name="teacher" value="{$formget.teacher}"/>
+			</div>
+			<div class="group">
+				<lable class="word">班级类型	：</lable>
+				<select class="select_2" name="class_type">
+					<option value="">全部</option>
+					<foreach name="class_type" item="vo">
+						<option value="{$vo.title}" <if condition="$formget[class_type] eq $vo['title']" >selected <else/></if> >{$vo.title}</option>
+					</foreach>
+				</select>
+			</div>
+				<input type="submit" class="btn btn-primary" value="搜索" style="margin-left:30px;margin-top:50px;"/>
+		</form>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th width="50">ID</th>
+					<th>{:L('CHILD')}</th>
+					<th>{:L('GRADE')}</th>
+					<th>{:L('SUB')}</th>
+					<th>{:L('QT')}</th>
+					<th>{:L('QD')}</th>
+					<th>{:L('WST')}</th>
+					<th>{:L('TEACHER')}</th>
+					<th>{:L('CT')}</th>
+					<th>{:L('CTIME')}</th>
+					<th width="120">{:L('ACTIONS')}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<foreach name="list" item="list">
+					<tr>
+						<td>{$list.id}</td>
+						<td>{$list.name}</td>
+						<td>{$list.grade}</td>
+						<td>{$list.subject}</td>
+						<td>{$list.question_type}</td>
+						<td>{$list.question_difficulty}</td>
+						<td><?php if($list['wanted_start_time']!="0000-00-00 00:00:00"){ echo $list['wanted_start_time']; } ?></td>
+						<td>{$list.teacher}</td>
+						<td>{$list.class_type}</td>
+						<td>{$list.createtime}</td>
+						<td><a href="{:U('record/find',array('id'=>$list[id],'type'=>0))}">{:L('查看')}</a>|<a href="{:U('record/relation',array('id'=>$list[id],'type'=>1))}">关联意向课程</td>
+					</tr>
+				</foreach>
+			</tbody>
+		</table>
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

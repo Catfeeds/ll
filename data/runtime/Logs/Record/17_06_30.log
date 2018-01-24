@@ -1,0 +1,4 @@
+[ 2017-06-30T09:17:57+08:00 ] ::1 /ll/index.php?g=Record&m=Record&a=intention&menuid=187
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'is true ) LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM lailong_intention as i left JOIN lailong_user as u on u.id = i.user_id left JOIN lailong_child as ch on ch.id =i.child_id  WHERE ( 1=1 and (i.content is null or i.content = '')  and   is true ) LIMIT 1  
+

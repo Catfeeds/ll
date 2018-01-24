@@ -1,0 +1,61 @@
+<admintpl file="header" />
+</head>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/addcourse.css" />
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('classification/member')}">成员列表</a></li>
+			<li class="active"><a href="{:U('classification/addmember')}">新增成员</a></li>
+		</ul>
+		<form method="post" class="form-horizontal " action="{:U('classification/addmember_post')}">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">孩子</label>
+					<div class="controls">
+						<select name="child_id" required>
+							<option value="">请选择</option>
+							<foreach name="child" item="vo">
+								<option value="{$vo.id}" <if condition="$vo[id] eq $child_id">selected</if>>{$vo.name}（{$vo.nickname}）</option>
+							</foreach>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">用户</label>
+					<div class="controls">
+						<select name="user_id" required>
+							<option value="">请选择</option>
+							<foreach name="users" item="vo">
+								<option value="{$vo.id}" <if condition="$vo[id] eq $user_id">selected</if>>{$vo.name}</option>
+							</foreach>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">称呼</label>
+					<div class="controls">
+						<input type="text" name="appellation" value="{$appellation}" required="required">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">管理权限</label>
+					<div class="controls">
+						<select name="is_manager" required>
+							<option value="0">无</option>
+							<option value="1">有</option>
+						</select>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary ">{:L('ADD')}</button>
+				<a class="btn" href="{:U('classification/member')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+<script type="text/javascript">
+
+</script>
+</html>

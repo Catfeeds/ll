@@ -1,0 +1,77 @@
+<?php
+
+/**
+ * 用户登录
+ */
+namespace Weixin\Controller;
+use Common\Controller\MemberbaseController;
+use Think\Log;
+class CourseController extends MemberbaseController {
+	//课程
+	function course(){
+		//课程表
+		$course_time_list = M("course")->distinct(true)->field("start_time")->where("start_time >= '".date('Y-m-d H:i:s')."'")->order("start_time asc")->select();
+		$arr = array();
+		$weeklist = array("1"=>"周一","2"=>"周二","3"=>"周三","4"=>"周四","5"=>"周五","6"=>"周六","7"=>"周七");
+		foreach ($course_time_list as $key => $value) {
+			$start_time = $value['start_time'];
+			$arr[$key]['start_month'] = date("n",strtotime($start_time))."月";
+			$arr[$key]['start_day'] = date("j",strtotime($start_time))."日";
+			$arr[$key]['start_week'] = $weeklist[date("w",strtotime($start_time))];
+			//课程信息
+			$course_list = M("course c")->field("c.*,t.name as teacher")
+			->join(C('DB_PREFIX')."teacher as t on t.id = c.teacher_id","left")
+			->where("c.start_time = '$start_time'")->select();
+			foreach($course_list as $k=>$v){
+				$arr[$key]['detaillist'][$k]['cid'] = $v['id'];
+				$arr[$key]['detaillist'][$k]['title'] = $v['title'];
+				$arr[$key]['detaillist'][$k]['picture'] = $v['picture'];
+				$arr[$key]['detaillist'][$k]['teacher'] = $v['teacher'];
+				if(date("H",strtotime($start_time)) > 12){
+					$dian = date("H",strtotime($start_time)) - 12;
+					$arr[$key]['detaillist'][$k]['start_time'] = "下午".$dian."点";
+				}else{
+					$arr[$key]['detaillist'][$k]['start_time'] = "上午".date("H",strtotime($start_time))."点";
+				}
+			}
+		}
+		$this->assign("list",$arr);
+		$this->display(":course");
+	}
+	//课程详情
+	function course_detail(){
+		$this->display(":course_detail");
+	}
+	//教师详情
+	function teacher_information(){
+		$this->display(":teacher_information");
+	}
+	//填写订单
+	function write_order(){
+		$this->display(":write_order");
+	}
+	//选择学生
+	function choose_stu(){
+		$this->display(":choose_stu");
+	}
+	//课程意向
+	function write_application(){
+        $result = M('member')
+            ->alias('m')
+            ->join('lailong_child c ON m.child_id = c.id')
+            ->field('c.id,c.nickname,c.name')
+            ->where(['m.user_id'=>session('weixin_user_id')])
+            ->select();
+        $this->assign('child',$result);
+        $this->display(":write_application");
+	}
+    //意见反馈
+	function stu_intention(){
+        $stu_id = I('post.stu_id');
+        $content = I('post.stu_intention');
+        empty($content) ? $this->error('输入反馈内容') : 0 ;
+        $data = ['user_id'=>$stu_id,'content'=>$content,'createtime'=>date('Y-d-s H:i:s',time())];
+        $result = M('feedback')->add($data);
+        !$result ? $this->error('服务器忙请稍后再试') :  $this->success('正在跳转',U('course'));
+    }
+}

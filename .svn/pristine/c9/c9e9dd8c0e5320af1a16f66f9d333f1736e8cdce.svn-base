@@ -1,0 +1,40 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('child/childlist')}">{:L('ADMIN_TEACHER_INDEX')}</a></li>
+		</ul>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th width="50">ID</th>
+					<th>{:L('REALNAME')}</th>
+					<th>{:L('BIRTHDAY')}</th>
+					<th>{:L('SCHOOL')}</th>
+					<th>{:L('GRADE')}</th>
+					<th>{:L('ISVIP')}</th>
+					<th>{:L('CTIME')}</th>
+					<th width="120">{:L('ACTIONS')}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<foreach name="list" item="list">
+					<tr>
+						<td>{$list.id}</td>
+						<td>{$list.name}</td>
+						<td>{$list.birthday}</td>
+						<td>{$list.school}</td>
+						<td>{$list.grade}</td>
+						<td><if condition="$list[is_vip] eq 0">否<else/> 是</if></td>
+						<td>{$list.createtime}</td>
+						<td><a href="{:U('classification/editeacher',array('editid'=>$list[id]))}">{:L('EDIT')}</a></td>
+					</tr>
+				</foreach>
+			</tbody>
+		</table>
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

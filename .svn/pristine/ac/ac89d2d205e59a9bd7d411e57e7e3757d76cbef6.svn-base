@@ -1,0 +1,120 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Loginrecord/loginrecordlist')}">登录记录列表</a></li>
+		</ul>
+		<form class="well form-search" method="get" action="{:U('Loginrecord/loginrecordlist')}" id="form_submit">
+		    <div class="search_type cc mb10">
+		      <div class="mb10"> 
+		        <span class="mr20">
+		        <input type="hidden" name="g" value="Users">
+		        <input type="hidden" name="m" value="Loginrecord">
+		        <input type="hidden" name="a" value="loginrecordlist">
+		        <input type="hidden" name="search" value="1">
+			        <div class="row" style="margin-top: 20px;">
+				        <div class="span2">
+				        	用户名:
+				        </div>
+				        <div class="span3">
+				        	<input type="text" name="uname"  value="{$uname}" placeholder="请输入查找的用户名"/>
+				        </div>
+				        <div class="span2">
+				        	手机号:
+				        </div>
+				        <div class="span3">
+				        	<input type="text" name="phone"  value="{$phone}" placeholder="请输入查找的手机号"/>
+				        </div>
+				        <div class="span2">
+							&nbsp;
+						</div>
+					</div>
+				</span>
+			   </div>
+			   <div class="mb10"> 
+		        <span class="mr20">
+		        	<div class="row" style="margin-top: 20px;">
+				        <div class="span2">
+				        	登录时间起始：
+				        </div>
+				        <div class="span3">
+				        	<input type="text" name="startlogin_time"  class="input length_2 J_date" value="<?php if($startlogin_time) echo date('Y-m-d H:i:s',$startlogin_time)   ?>" autocomplete="off" placeholder="请选择时间..." onClick="WdatePicker()" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+				        </div>
+						<div class="span2">
+							登录时间结束：
+						</div>	
+						<div class="span3">
+							<input type="text" name="endlogin_time"  class="input length_2 J_date" value="<?php if($endlogin_time) echo date('Y-m-d H:i:s',$endlogin_time)  ?>" autocomplete="off" placeholder="请选择时间..." onClick="WdatePicker()" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+						</div>
+						<div class="span2">
+							&nbsp;
+						</div>
+					</div>
+				</span>
+			   </div>
+			   <div class="mb10"> 
+		        <span class="mr20">
+		        	<div class="row" style="margin-top: 20px;">
+				        <div class="span2">
+				        	app版本号:
+				        </div>
+				        <div class="span3">
+				        	<input type="text" name="app_version"  value="{$app_version}" placeholder="请输入查找的版本号"/>
+				        </div>
+		        		<div class="span2">
+		        			设备型号:
+		        		</div>
+		        		<div class="span3">
+		        			<input type="text" name="device_name"  value="{$device_name}" placeholder="请输入查找的型号"/>
+		        		</div>
+		        		<div class="span2">
+							&nbsp;
+						</div>
+					</div>
+				</span>
+			   </div>
+			   <div class="mb10">
+			   	<span class="mr20">
+			   		<button class="btn btn-primary">搜索</button>
+			   	</span>
+			   </div>
+		        
+		        
+		      
+		    </div>
+		  </form>
+			<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th width="50">ID</th>
+						<th>用户名</th>
+						<th>手机号</th>
+						<th width="45">积分</th>
+						<th width="120">推荐人手机号</th>
+						<th width="120">登录时间</th>
+						<th>app版本号</th>
+						<th>设备型号</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="loginrecordlist" item="vo">
+					<tr>
+						<td>{$vo.id}</td>
+						<td>{$vo.uname}</a></td>
+						<td>{$vo.phone}</td>
+						<td>{$vo.integral}</td>
+						<td>{$vo.recommended_person}</td>
+						<td><?php echo date('Y-m-d H:i:s',$vo[login_time])?></td>
+						<td>{$vo.app_version}</td>
+						<td>{$vo.device_name}</td>
+					</tr>
+					</foreach>
+				</tbody>
+				
+			</table>
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

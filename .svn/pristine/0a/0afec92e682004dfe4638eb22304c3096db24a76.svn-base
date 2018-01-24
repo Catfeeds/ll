@@ -1,0 +1,36 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('information/index')}">{:L('ADMIN_INFO_INDEX')}</a></li>
+			<li><a href="{:U('information/add')}">{:L('ADMIN_INFO_ADD')}</a></li>
+		</ul>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th width="50">ID</th>
+					<th>{:L('TITLE')}</th>
+					<th>{:L('ICON')}</th>
+					<th>{:L('CTIME')}</th>
+					<th width="120">{:L('ACTIONS')}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<foreach name="list" item="list">
+					<tr>
+						<td>{$list.id}</td>
+						<td>{$list.title}</td>
+						<td><if condition="!empty($list[icon])"><img src="__ROOT__/data/upload/avatar/{$list.icon}" style="width:50px;height:50px;"/></if></td>
+						<td>{$list.createtime}</td>
+						<td><a href="{:U('information/add',array('id'=>$list[id]))}">{:L('EDIT')}</a>|
+						<a class="js-ajax-delete" href="{:U('information/delete',array('id'=>$list[id]))}">{:L('DELETE')}</a></td>
+					</tr>
+				</foreach>
+			</tbody>
+		</table>
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<?php
+
+namespace Classtypes\Controller;
+use Common\Controller\AdminbaseController;
+class ClasstypeController extends AdminbaseController {
+	function _initialize() {
+	}
+     public function classtypelist(){
+         $where= "1=1";
+         $title=$_REQUEST['title'];
+         if(!empty($title)){
+            $where.=" and title like '%".$title."%' ";
+            $parameter['title']=$title;
+            $this->assign('title',$title);
+         }
+         $model = M ("class_type");
+         $count = $model->where($where)->count();
+         $page = $this->page($count, C('PAGENUM'));
+         $list = $model->where($where)->order("id DESC")->limit($page->firstRow . ',' . $page->listRows)->select();
+         $this->assign('list', $list);
+         if($parameter){
+            foreach ($parameter as $key => $value) {
+                $page->parameter .= "$key=".urlencode($value)."&";
+            }
+         } 
+         $this->assign("page", $page->show());
+         $this->display();
+     }
+     public function addclasstype(){
+        $this->display();
+     }
+     public function add_post(){
+        $is_exist=M('class_type')->where("title = '".$_POST[title]."'")->find();
+        if(empty($is_exist)){
+            if(IS_POST){
+                $_POST['createtime']=date("Y-m-d H:i:s");
+                if (M("class_type")->create()!==false){
+                    if (M("class_type")->add()!==false) {
+                        $this->success(L('ADD_SUCCESS'), U("Classtype/classtypelist"));
+                    } else {
+                        $this->error(L('ADD_FAILED'));
+                    }
+                } else {
+                    $this->error(M("class_type")->getError());
+                }
+        
+            }
+        }else{
+                $this->error("学段已存在");
+            }
+        
+     }
+     public function editclasstype(){
+        $res=M("class_type")->where("id = $_REQUEST[editid]")->find();
+        $this->assign($res);
+        $this->display();
+     }
+     public function edit_post(){
+        $is_exist=M('class_type')->where("title = '".$_POST[title]."' and id != '".$_POST[id]."' ")->find();
+        if(empty($is_exist)){
+            if(IS_POST){
+                if (M("class_type")->create()!==false){
+                    if (M("class_type")->save()!==false) {
+                        $this->success(L('ADD_SUCCESS'), U("Classtype/classtypelist"));
+                    } else {
+                        $this->error(L('ADD_FAILED'));
+                    }
+                } else {
+                    $this->error(M("class_type")->getError());
+                }
+            }
+        }else{
+            $this->error("学段已存在");
+        }
+     }
+     public function deleteclasstype(){
+        $id = I("get.id",0,"intval");
+        if (M('class_type')->delete($id)!==false) {
+            $this->success("删除成功！");
+        } else {
+            $this->error("删除失败！");
+        }
+    }
+}

@@ -1,0 +1,99 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('read/index')}">{:L('ADMIN_MESSAGE_INDEX')}</a></li>
+		</ul>
+		<form method="post" class="<!-- form-horizontal  -->js-ajax-form" action="{:U('read/edit_post')}">
+			<input name="id" type="hidden" value="{$com.id}">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">{:L('TITLE')}</label>
+					<div class="controls">
+						<input type="text" name="title" value="{$com.title}">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('SENDER')}</label>
+					<div class="controls">
+						<select name="sender">
+							<option value=""></option>
+							<foreach name="sender" item="sender">
+							<option value="{$sender.id}"<php>if($sender[id] == $com[sender]) echo selected</php>>{$sender.user_nicename}</option>
+							</foreach>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('RECEIVER')}</label>
+					<div class="controls">
+						<select name="receiver">
+							<option value=""></option>
+							<foreach name="receiver" item="receiver">
+							<option value="{$receiver.id}"<php>if($receiver[id] == $com[receiver]) echo selected</php>>{$receiver.user_nicename}</option>
+							</foreach>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('ICON')}</label>
+					<div class="controls">
+						<img id="img1" src="__ROOT__/data/upload/avatar/{$com.url}" style="width: 150px; height: 100px;">
+						<br/><br/><input type="text" name="iconid" value="{$com.icon}"> <input type="file"
+							onchange="avatar_upload(this)" id="file1" name="icon" />
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('TYPE')}</label>
+					<div class="controls">
+						<select name="type">
+							<option></option>
+							<option value="0"<php>if($com[type] == 0) echo selected</php>>系统</option>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('CONTENT')}</label>
+					<div class="controls">
+						<textarea name="content">{$com.content}</textarea>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('EDIT')}</button>
+				<a class="btn" href="{:U('read/index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>
+<script type="text/javascript">
+function avatar_upload(obj) {
+	var $fileinput = $(obj);
+	var img1 = $('#img1').next().next().next('input').val();
+	Wind.css("jcrop");
+	Wind.use("ajaxfileupload", "jcrop", "noty", function() {
+		$
+				.ajaxFileUpload({
+					url : "{:U('read/up_1')}",
+					secureuri : false,
+					fileElementId : "file1",
+					dataType : 'json',
+					data : {
+						img1 : img1
+					},
+					success : function(data) {
+						$('#img1').attr(
+								'src',
+								'__ROOT__/data/upload/avatar/'
+										+ data.data.dataurl);
+						$('#img1').next().next().next('input').val(data.data.dataid);
+					},
+					error : function(data, status, e) {
+					}
+				});
+	});
+}
+</script>

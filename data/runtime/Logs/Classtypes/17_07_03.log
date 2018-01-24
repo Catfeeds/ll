@@ -1,0 +1,90 @@
+[ 2017-07-03T10:15:24+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Subject&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.026814s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.068603s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.103180s ]
+SQL: SHOW COLUMNS FROM `lailong_subject` [ RunTime:0.0197s ]
+NOTIC: [8] Use of undefined constant title - assumed 'title' D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\SubjectController.class.php 第 39 行.
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+ [ SQL语句 ] : SELECT * FROM `lailong_subject` WHERE ( title = '/*/'#SX' ) LIMIT 1  
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+ [ SQL语句 ] : SELECT * FROM `lailong_subject` WHERE ( title = '/*/'#SX' ) LIMIT 1  
+
+[ 2017-07-03T10:16:00+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Subject&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.037298s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.101427s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.152915s ]
+SQL: SHOW COLUMNS FROM `lailong_subject` [ RunTime:0.0227s ]
+NOTIC: [8] Use of undefined constant title - assumed 'title' D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\SubjectController.class.php 第 39 行.
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '/*/#' ) LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `lailong_subject` WHERE ( title = ''/*/#' ) LIMIT 1  
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '/*/#' ) LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `lailong_subject` WHERE ( title = ''/*/#' ) LIMIT 1  
+
+[ 2017-07-03T10:17:43+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Subject&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.028600s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.130579s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.164586s ]
+SQL: SHOW COLUMNS FROM `lailong_subject` [ RunTime:0.0221s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''/*/# ) LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `lailong_subject` WHERE ( title = '/*/# ) LIMIT 1  
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''/*/# ) LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `lailong_subject` WHERE ( title = '/*/# ) LIMIT 1  
+
+[ 2017-07-03T10:18:49+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Subject&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.023378s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.058965s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.087664s ]
+SQL: SHOW COLUMNS FROM `lailong_subject` [ RunTime:0.0294s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `lailong_subject` (`title`,`index_id`,`createtime`) VALUES ('\'/*/#','1','2017-07-03 10:18:49') [ RunTime:0.0008s ]
+
+[ 2017-07-03T10:56:19+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Subject&a=subjectlist&title=%27%231
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '\'#1%'  ) LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `lailong_subject` WHERE ( 1=1 and title like '%'\'#1%'  ) LIMIT 1  
+
+[ 2017-07-03T10:58:04+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Subject&a=subjectlist&title=%27%231
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '$valuevalue1%'  ) LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `lailong_subject` WHERE ( 1=1 and title like '%'$valuevalue1%'  ) LIMIT 1  
+
+[ 2017-07-03T10:58:20+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Subject&a=subjectlist&title=%27%231
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '\\..#1%'  ) LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `lailong_subject` WHERE ( 1=1 and title like '%'\\..#1%'  ) LIMIT 1  
+
+[ 2017-07-03T10:59:27+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Subject&a=subjectlist&title=%27%231
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '\'#1%'  ) LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `lailong_subject` WHERE ( 1=1 and title like '%'\'#1%'  ) LIMIT 1  
+
+[ 2017-07-03T11:14:32+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Subject&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.030483s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.071331s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.109562s ]
+SQL: SHOW COLUMNS FROM `lailong_subject` [ RunTime:0.0221s ]
+NOTIC: [2] Invalid argument supplied for foreach() D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 267 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Db\Driver.class.php 第 802 行.
+SQL: INSERT INTO `lailong_subject` () VALUES () [ RunTime:0.0019s ]
+NOTIC: [2] Illegal string offset 'id' D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 328 行.
+NOTIC: [8] Use of undefined constant title - assumed 'title' D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\SubjectController.class.php 第 43 行.
+SQL: SELECT * FROM `lailong_subject` WHERE ( title = '' ) LIMIT 1   [ RunTime:0.0006s ]
+
+[ 2017-07-03T11:18:29+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Subject&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.030052s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.075791s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.110804s ]
+SQL: SHOW COLUMNS FROM `lailong_subject` [ RunTime:0.0242s ]
+NOTIC: [2] Invalid argument supplied for foreach() D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 267 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Db\Driver.class.php 第 802 行.
+SQL: INSERT INTO `lailong_subject` () VALUES () [ RunTime:0.0007s ]
+NOTIC: [2] Illegal string offset 'id' D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 328 行.
+NOTIC: [8] Use of undefined constant title - assumed 'title' D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\SubjectController.class.php 第 43 行.
+SQL: SELECT * FROM `lailong_subject` WHERE ( title = '123/3123\123' ) LIMIT 1   [ RunTime:0.0006s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `lailong_subject` (`title`,`index_id`,`createtime`) VALUES ('\'123/3123\\123','12','2017-07-03 11:18:29') [ RunTime:0.0022s ]
+

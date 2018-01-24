@@ -1,0 +1,26 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <tc_include file="Public:header" />
+    <title>设置</title>
+    <link rel="stylesheet" href="__TMPL__/Public/css/weixin/bdTel.css">
+	<link rel="stylesheet" href="__TMPL__Public/css/weixin/public.css">
+</head>
+<body>
+<div class="use" style="padding: 5px 10px;margin-top: 5px;">
+    <ul class="am-list">
+        <li style="border-top: none"><a href="{:U('Mine/safe')}" style="color: black;padding-left: 5px;position: relative">账户安全与设置</a>
+            <i style="float: right;position: absolute;top: 18px;right: 5px;font-size: 20px;color: #a3a1ad;" class="fa fa-angle-right" aria-hidden="true"></i></li>
+    </ul>
+</div>
+<footer style="width:100%; font-size:12px;color:#9a9a9a;text-align:center;position:fixed;bottom:20px;">来龙教育版权所有 © 2017</footer>
+
+<input type="hidden" id="moban" value="__TMPL__">
+<tc_include file="Public:float"/>
+<script src="__TMPL__Public/js/weixin/public.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<![endif]-->
+</body>
+</html>

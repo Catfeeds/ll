@@ -1,0 +1,80 @@
+[ 2017-06-27T10:16:35+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.028909s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.065958s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.099914s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0230s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0009s ]
+
+[ 2017-06-27T10:16:39+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.028506s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.062018s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.095506s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0215s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0008s ]
+
+[ 2017-06-27T10:16:43+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.029568s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.067104s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.101543s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0211s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0008s ]
+
+[ 2017-06-27T10:16:47+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.027246s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.066142s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.098338s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0223s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0008s ]
+
+[ 2017-06-27T10:17:06+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.031810s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.072567s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.109224s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0222s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0008s ]
+
+[ 2017-06-27T10:18:02+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.028612s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.062818s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.098363s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0213s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0008s ]
+
+[ 2017-06-27T10:22:52+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.027566s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.072680s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.105173s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0249s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0014s ]
+
+[ 2017-06-27T10:23:17+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.030647s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.063556s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.100449s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0212s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0008s ]
+
+[ 2017-06-27T10:23:20+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.027444s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.076378s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.108929s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0261s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0012s ]
+
+[ 2017-06-27T10:23:36+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.028026s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.066540s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.099522s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0244s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0009s ]
+

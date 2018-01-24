@@ -1,0 +1,103 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>添加成员</title>
+    <link rel="stylesheet" href="../Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="../Public/css/weixin/bdTel.css">
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body>
+<!--表单-->
+<section>
+    <form class="am-form am-form-horizontal">
+        <div class="am-form-group">
+            <div class="am-u-sm-13">
+                <label id="te">称呼</label>
+                <input type="number" id="doc-ipt-3" class="am-radius" style="text-align:right" placeholder="爸爸">
+            </div>
+        </div>
+
+        <div class="am-form-group" style="margin-top: -16px;">
+            <div class="am-u-sm-13">
+                <label id="yz">联系电话</label>
+                <input type="password" id="doc-ipt-pwd-2" class="am-radius" placeholder="13812345678">
+            </div>
+        </div>
+        <div class="am-form-group">
+            <div class="am-u-sm-13">
+            <input type="button" id="regist_go" value="保存"
+                   class="am-btn am-btn-block" style="text-align:center;background: #2adcaa;color: white;height: 50px;margin-top: -2px;border-radius:3px">
+            </div>
+        </div>
+
+    </form>
+</section>
+<tc_include file="Public:weixin_foot"/>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="../Public/js/weixin/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<!--<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>-->
+<![endif]-->
+<script src="../Public/js/weixin/amazeui.min.js"></script>
+<script>
+$("#regist_go").click(function(){
+	var phone=$("#doc-ipt-3").val();
+	var code=$("#doc-ipt-pwd-2").val();
+	var recommend=$("#doc-ipt-pwd-3").val();
+	if(phone==""){
+		$("#my-alert").modal();
+ 		$("#alert_cont").text("请输入手机号!");
+ 		return;
+	}
+	if(code==""){
+		$("#my-alert").modal();
+ 		$("#alert_cont").text("请输入验证码!");
+ 		return;
+	}
+	$.post('{:U("Center/bang_go")}',
+			{ phone : phone , code : code , recommend : recommend},
+		 	function(data){
+				if(data[0]=="101"){
+					$("#my-alert").modal();
+			 		$("#alert_cont").text(data[1]);
+			 		return;
+				}else{
+					$("#my-alert").modal();
+			 		$("#alert_cont").text(data[1]);
+			 		return;
+				}
+	});
+})
+$(".getcode").click(function(){
+	var phone=$("#doc-ipt-3").val();
+	var re = /^1\d{10}$/;
+    if (re.test(phone)) {
+    } else {
+   	 $("#my-alert").modal();
+		 $("#alert_cont").text("请输入正确手机号!");
+		 return;
+    }
+	$.post('{:U("Center/send_note")}',
+			{ phone : phone},
+		 	function(data){
+				if(data[0]=="101"){
+					$("#my-alert").modal();
+			 		$("#alert_cont").text("验证码发送成功!");
+			 		return;
+				}else{
+					$("#my-alert").modal();
+			 		$("#alert_cont").text(data[1]);
+			 		return;
+				}
+	});
+})
+</script>
+</body>
+</html>

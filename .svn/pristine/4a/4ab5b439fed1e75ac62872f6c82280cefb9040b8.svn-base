@@ -1,0 +1,331 @@
+<?php
+namespace Lailonginterface\Controller;
+use Lailonginterface\Controller\PublicController;
+
+class MineController  extends PublicController {
+    /**
+     * 成为会员
+     */
+    public function userauth()
+    {
+       $token=$_REQUEST['token'];
+       $userid=$this->checkAccess($token);
+       $realname=$_REQUEST['realname'];
+       $birthday=$_REQUEST['birthday'];
+       $gender=$_REQUEST['gender'];
+       $school=$_REQUEST['school'];
+       $grade=$_REQUEST['grade'];
+       $call=$_REQUEST['call'];
+       $name=$_REQUEST['name'];
+       if(empty($realname) || empty($birthday) || empty($school) || empty($grade)){
+           $this->emptyResult();
+       }
+       if(M('child')->where("name = '$realname' and vip_state = 3")->find()){
+           $this->errorResult("此孩子已成为会员");
+       }
+      
+       $data=array('name'=>$realname,'nickname'=>$realname,'birthday'=>date('Y-m-d H:i:s',$birthday),'gender'=>$gender,'school'=>$school,'grade'=>$grade,'vip_state'=>1,'user_id'=>$userid);
+        if(M('child')->add($data)){
+             M('member')->add(array('appellation'=>$call,'child_id'=>M('child')->getLastInsID(),'user_id'=>$userid,'createtime'=>date('Y-m-d H:i:s',time())));
+            M('user')->where("id = $userid")->save(array('name'=>$name));
+             $this->successShortResult($name."申请成为会员");
+        }else {
+            $this->errorResult("申请成为会员失败");
+        }
+    }
+    //获取用户认证信息
+   public function getuserauth(){
+       $token=$_REQUEST['token'];
+       $child=$_REQUEST['child'];
+       $userid=$this->checkAccess($token);
+       $t=M('child')->field("c.*,m.appellation,u.name as username")->table(C('DB_PREFIX')."child as c")
+       ->join(C('DB_PREFIX').'member as m on m.child_id =c.id','left')
+       ->join(C('DB_PREFIX').'user as u on u.id =m.user_id')
+       ->where("m.child_id = $child and m.user_id = $userid")->find();
+       $msg="获取用户认证成功";
+       $this->successLongResult($t, $msg);
+   }
+   //获取年级
+   public function grade(){
+       $token=$_REQUEST['token'];
+       $userid=$this->checkAccess($token);
+       $s=M('grade')->select();
+       if($s){
+           $this->successLongResult($s, "获取年级成功");
+       }else{
+           $this->errorResult("获取年级失败");
+       }
+   }
+   /**
+    * 我的订单接口
+    */
+   public function myorder(){
+       $token=$_REQUEST['token'];
+       $userid=$this->checkAccess($token);
+       $child=$_REQUEST['child'];
+       $type=$_REQUEST['type'];
+       if(!in_array($type,array(0,1,2,3,4)))
+       {
+           $this->errorResult("参数非法！");
+       }
+        $field="c.title,c.picture,e.createtime,c.integral,e.state,e.id as orderid,e.course_id";
+       //全部
+       if($type == -1){
+           $res=M('enrollment')->table(C('DB_PREFIX')."enrollment as e")->field($field)->join(C('DB_PREFIX')."course as c on c.id =e.course_id",'left')->where("e.user_id = $userid and e.child_id=$child")->select();
+            foreach($res as $r=>$s){
+                $res[$r][picture]=__ROOT__.'/data/upload/avatar/'.$s[picture];
+            }
+       }
+       //待支付
+       if($type == 0){
+           $res=M('enrollment')->table(C('DB_PREFIX')."enrollment as e")->field($field)->join(C('DB_PREFIX')."course as c on c.id =e.course_id",'left')->where("e.user_id = $userid and e.state=$type and e.child_id=$child")->select();
+           foreach($res as $r=>$s){
+               $res[$r][picture]=__ROOT__.'/data/upload/avatar/'.$s[picture];
+           }
+       }
+       //已付
+       if($type == 1){
+           $res=M('enrollment')->table(C('DB_PREFIX')."enrollment as e")->field($field)->join(C('DB_PREFIX')."course as c on c.id =e.course_id",'left')->where("e.user_id = $userid and e.state=$type and e.child_id=$child")->select();
+           foreach($res as $r=>$s){
+               $res[$r][picture]=__ROOT__.'/data/upload/avatar/'.$s[picture];
+           }
+       }
+/*        //已确认
+       if($type == 2){
+           $res=M('enrollment')->table(C('DB_PREFIX')."enrollment as e")->field($field)->join(C('DB_PREFIX')."course as c on c.id =e.course_id",'left')->where("e.user_id = $userid and e.state=$type")->select();
+           foreach($res as $r=>$s){
+               $res[$r][picture]=__ROOT__.'/data/upload/avatar/'.$s[picture];
+           }
+       }
+ */       //已完成
+       if($type == 3){
+           $res=M('enrollment')->table(C('DB_PREFIX')."enrollment as e")->field($field)->join(C('DB_PREFIX')."course as c on c.id =e.course_id",'left')->where("e.user_id = $userid and e.state=$type and e.child_id=$child")->select();
+           foreach($res as $r=>$s){
+               $res[$r][picture]=__ROOT__.'/data/upload/avatar/'.$s[picture];
+           }
+       }
+       //已取消
+       if($type == 4){
+           $res=M('enrollment')->table(C('DB_PREFIX')."enrollment as e")->field($field)->join(C('DB_PREFIX')."course as c on c.id =e.course_id",'left')->where("e.user_id = $userid and e.state=$type and e.child_id=$child")->select();
+           foreach($res as $r=>$s){
+               $res[$r][picture]=__ROOT__.'/data/upload/avatar/'.$s[picture];
+           }
+       }
+       if($res){
+           $msg="操作成功";
+           $this->successLongResult($res, $msg);
+       }else{
+           $this->errorResult("未能获取订单");
+       }
+   }
+   /**
+    * 我的订单详情
+    */
+   public function myorderdetail(){
+       $token=$_REQUEST['token'];
+       $userid=$this->checkAccess($token);
+       $order_id=$_REQUEST[orderid];
+       $field="c.title,c.picture,e.createtime,c.integral,e.state,e.id as orderid,e.course_id,e.order_id as order_sn,c.start_time,e.note as remark,chil.name as childname";
+       $res=M('enrollment')->table(C('DB_PREFIX')."enrollment as e")->field($field)->join(C('DB_PREFIX')."course as c on c.id =e.course_id",'left')->join(C('DB_PREFIX')."child as chil on chil.id = e.child_id",'left')->where("e.id = $order_id and e.user_id = $userid")->find();
+       $order_lifeinfo=M('enrollment_state')->where("enrollment_id = $order_id")->select();
+       $res[order_lifeinfo]=$order_lifeinfo;
+       
+       if($res){
+           $msg="操作成功";
+           $this->successLongResult($res, $msg);
+       }else{
+           $msg="操作失败";
+           $this->errorResult($res, $msg);
+       }
+   }
+   /**
+    * 编辑小孩
+    */
+   public function editchild(){
+       $token=$_REQUEST['token'];
+       $this->checkAccess($token);
+       $child=$_REQUEST['child'];
+       $nickname=$_REQUEST['nickname'];
+       $photo=$_FILES['photo'];
+       $config = array (
+           'FILE_UPLOAD_TYPE' => sp_is_sae () ? "Sae" : 'Local',
+           'rootPath' =>  C ( "UPLOADPATH" ),
+           /* 'maxSize' => 2097152, // 2M  */
+           /* 'maxSize' => 104857600, // 100M  */
+           'saveName' => array (
+               'uniqid',
+           ),
+           'exts' => array (
+               'jpg',
+               'png',
+               'jpeg',
+               'gif',
+               'bmp'
+           ),
+           'autoSub' => false
+       );
+       $upload = new \Think\Upload ( $config );
+       $info = $upload->upload ();
+       $first = array_shift($info);
+       $savename= $first['savename'];
+       if(!empty($photo)){
+           $data[avatar] = $savename;
+       }
+       if(!empty($nickname)){
+           $data[nickname] = $nickname;
+       }
+       $c=M('Child')->where("id = $child")->save($data);
+       if($c){
+           $this->successShortResult("操作成功");
+       }else{
+           $this->errorResult("操作失败");
+       }
+   }
+   /**
+    * 签到
+    */
+   public function signup(){
+       $token=$_REQUEST['token'];
+       $user=$this->checkAccess($token);
+       $date=date('Y-m-d H:i:s',time());
+       $start=date('Y-m-d 00:00:00',time());
+       $end=date('Y-m-d 23:59:59');
+       if(M('check_in')->where("createtime between '$start' and '$end' and user_id = $user")->find()){
+           $this->successShortResult("今天已签到过了");
+       }
+       if(M('check_in')->add(array('user_id'=>$user,'createtime'=>date('Y-m-d H:i:s',time())))){
+           $this->successShortResult("签到成功");
+       }else{
+           $this->errorResult("签到失败");
+       }
+   }
+   /**
+    * 是否签到
+    */
+   public function is_signup(){
+       $token=$_REQUEST['token'];
+       $user=$this->checkAccess($token);
+       $date=date("Y-m-d H:i:s",time());
+       $start=date('Y-m-d 00:00:00',time());
+       $end=date('Y-m-d 23:59:59');
+       if(M('check_in')->where("createtime between '$start' and '$end' and user_id = $user")->find()){
+           $this->successShortResult("今天已签到");
+       }else{
+           $this->errorResult("签到失败");
+       }
+   }
+   /**
+    * 添加孩子
+    */
+   public function addchild(){
+       $token=$_REQUEST['token'];
+       $user=$this->checkAccess($token);
+       $realname=$_REQUEST['realname'];
+       $birthday=$_REQUEST['birthday'];
+       $gender=$_REQUEST['gender'];
+       $school=$_REQUEST['school'];
+       $grade=$_REQUEST['grade'];
+       $data=array('name'=>$realname,'birthday'=>$birthday,'gender'=>$gender,'school'=>$school,'grade'=>$grade,'is_vip'=>0,'user_id'=>$userid);
+        if(M('child')->add($data)){
+            $this->successShortResult("添加孩子成功");
+        }else {
+            $this->errorResult("添加孩子失败");
+        }
+   }
+   /**
+    * 添加成员
+    */
+   public function addmember(){
+       $token=$_REQUEST['token'];
+       $user=$this->checkAccess($token);
+       $child=$_REQUEST['child'];
+       $call=$_REQUEST['call'];
+       $name=$_REQUEST['name'];
+       if(M('member')->add(array('appellation'=>$call,'child_id'=>$child,'user_id'=>$userid,'createtime'=>date('Y-m-d H:i:s',time())))){
+           
+           $this->successShortResult("添加成员成功");
+       }else {
+           $this->errorResult("添加成员失败");
+       }
+   }
+   /**
+    * 获取用户积分和积分记录
+    */
+   public function getscore(){
+       $token=$_REQUEST['token'];
+       $user=$this->checkAccess($token);
+       $array=array();
+       $u=M('user')->field("integral")->where("id = $user")->find();
+       $array[myintegral] =$u[integral];
+       $i=M("integral")->where("user_id = $user")->select();
+       $array[scorelist] = $i;
+       $this->successLongResult($array, "操作成功");
+   }
+   /**
+    * 我的消息
+    */
+   public function mymessage(){
+       $token=$_REQUEST['token'];
+       $user=$this->checkAccess($token);
+       $n=M('news')->where("user_id = $user")->select();
+       if($n){
+           $this->successLongResult($n,"操作成功");
+       }else{
+           $this->errorResult("操作失败");
+       }
+   }
+   /**
+    * 我的意向
+    */
+   public function myintention(){
+       $token=$_REQUEST['token'];
+       $user=$this->checkAccess($token);
+       $child=$_REQUEST['child'];
+       $model=M('intention');
+       $where="i.user_id = $user and child_id =$child";
+       $field="i.*,u.phone,ch.name";
+       $res=$model->field($field)->table(C('DB_PREFIX')."intention as i")->join(C('DB_PREFIX')."user as u on u.id = i.user_id",'left')->join(C('DB_PREFIX').'child as ch on ch.id =i.child_id','left')->order("i.createtime DESC")->where($where)->select();
+       $array=array();
+       foreach($res as $l =>$li){
+           if($li[content] == ""){
+               $array[$l][id]=$li[id];
+               $array[$l][childname]=$li[name];
+               $array[$l][grade]=$li[grade];
+               $array[$l][press]=$li[press];
+               $array[$l][subject]=$li[subject];
+               $array[$l][chapter]=$li[chapter];
+               $array[$l][sub_chapter]=$li[sub_chapter];
+               $array[$l][question_type]=$li[question_type];
+               $array[$l][question_difficulty]=$li[question_difficulty];
+               $array[$l][topic_set]=$li[topic_set];
+               $array[$l][wanted_start_time]=$li[wanted_start_time];
+               $array[$l][teacher]=$li[teacher];
+               $array[$l][class_type]=$li[class_type];
+               $array[$l][createtime]=$li[createtime];
+           }else{
+               $array[$l][id]=$li[id];
+               $array[$l][content]=$li[content];
+               $array[$l][createtime]=$li[createtime];
+               $array[$l][phone]=$li[phone];
+           }
+       }
+      $this->successLongResult($array, "操作成功");
+   }
+   /**
+    * 版本号更新
+    */
+   public function findversion(){
+       $token=$_REQUEST['token'];
+       $version=$_REQUEST['version'];
+       $apv=M('app_version')->select();
+       foreach ($apv as $a=>$v){
+        if ($version >= $v['version']) {
+                 $result = "当前版本为最新版本";
+                 $this->errorResult($result) ;
+             } else {
+                 $this->successLongResult($v, "获取到最新版本") ;
+             }
+       }
+      
+   }
+}

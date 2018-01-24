@@ -1,0 +1,81 @@
+[ 2017-07-03T15:00:15+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=addchild_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.027740s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.078714s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.111218s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0310s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `lailong_child` (`name`,`nickname`,`avatar`,`birthday`,`gender`,`school`,`grade`,`vip_state`) VALUES ('312','33','14990651665959eb4ea2957.jpg','2017-07-12','2','as','as','0') [ RunTime:0.0012s ]
+
+[ 2017-07-03T15:10:07+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=editchild&u_id=1&editid=13
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'user_id = 1 ) LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `user_id`,`appellation` FROM `lailong_member` WHERE (  child_id = 13 user_id = 1 ) LIMIT 1  
+
+[ 2017-07-03T15:10:40+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=editchild_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.029381s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.068681s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.103123s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0232s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `lailong_child` SET `name`='312',`nickname`='33',`avatar`='14990651665959eb4ea2957.jpg',`birthday`='2017-07-12 00:00:00',`gender`='2',`school`='as',`grade`='as',`vip_state`='0' WHERE `id` = 13 [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `lailong_member` [ RunTime:0.0170s ]
+SQL: SELECT * FROM `lailong_member` WHERE (  child_id = '13' and user_id = '1'  ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: INSERT INTO `lailong_member` (`child_id`,`user_id`,`appellation`,`createtime`) VALUES ('13','1','xxx','2017-07-03 15:10:40') [ RunTime:0.0010s ]
+
+[ 2017-07-03T15:12:34+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=editchild_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.030037s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.076084s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.116542s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0307s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `lailong_child` SET `name`='312',`nickname`='33',`avatar`='14990651665959eb4ea2957.jpg',`birthday`='2017-07-12 00:00:00',`gender`='2',`school`='as',`grade`='as',`vip_state`='1' WHERE `id` = 13 [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `lailong_member` [ RunTime:0.0162s ]
+SQL: SELECT * FROM `lailong_member` WHERE (  child_id = '13' and user_id = '1'  ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: UPDATE `lailong_member` SET `child_id`='13',`user_id`='1',`appellation`='xxx' WHERE `id` = 13 [ RunTime:0.0006s ]
+
+[ 2017-07-03T15:13:05+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=addchild_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.028212s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.080446s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.116874s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0231s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `lailong_child` (`name`,`nickname`,`avatar`,`birthday`,`gender`,`school`,`grade`,`vip_state`) VALUES ('65','78','14990659735959ee75b8201.png','2017-08-04','0','213','123','2') [ RunTime:0.0010s ]
+
+[ 2017-07-03T15:18:14+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=editchild_post
+ERR: {"touser":"oRLbGwVN_ephoKxezu7MW7N2YrG4","template_id":"WxMde2DGqeW8i6cMV8dtHBxbVpndrB8WKdtY5rU7LCA","url":"","topcolor":"#7B68EE","data":{"productType":{"value":"%E6%82%A8%E7%9A%84%E5%B0%8F%E5%AD%A9%E8%AE%A4%E8%AF%81%E5%A4%B1%E8%B4%A5%EF%BC%8C%E8%AF%B7%E4%BF%AE%E6%94%B9%E5%90%8E%E9%87%8D%E6%96%B0%E7%94%B3%E8%AF%B7%E8%AE%A4%E8%AF%81"},"name":{"value":"test"},"number":{"value":"1%E4%BB%BD"},"expDate":{"value":"2017-07-03"},"remark":{"value":"sss"}}}111
+[ 2017-07-03T15:18:14+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=editchild_post
+ERR: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx6ccce8752525b8cc&secret=7d87a2a84199b99cf6c5765f657fcac4
+[ 2017-07-03T15:18:16+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=editchild_post
+ERR: Array
+[ 2017-07-03T15:18:16+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=editchild_post
+ERR: vEYiAzdBac9NrXH6MY7x6ChnBWijwhEz7-Bc2mEXalgDwfF9MF4vD6rr1iIBHzS1JPAnxeZexg-5B5KFAIEqGN6unwyXq-GGGrI8lrhZSFZqSBTyrzcm40RaViuKfPC3JZZiAHAOEE222
+[ 2017-07-03T15:18:16+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=editchild_post
+ERR: https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=vEYiAzdBac9NrXH6MY7x6ChnBWijwhEz7-Bc2mEXalgDwfF9MF4vD6rr1iIBHzS1JPAnxeZexg-5B5KFAIEqGN6unwyXq-GGGrI8lrhZSFZqSBTyrzcm40RaViuKfPC3JZZiAHAOEE{"touser":"oRLbGwVN_ephoKxezu7MW7N2YrG4","template_id":"WxMde2DGqeW8i6cMV8dtHBxbVpndrB8WKdtY5rU7LCA","url":"","topcolor":"#7B68EE","data":{"productType":{"value":"您的小孩认证失败，请修改后重新申请认证"},"name":{"value":"test"},"number":{"value":"1份"},"expDate":{"value":"2017-07-03"},"remark":{"value":"sss"}}}3333
+[ 2017-07-03T15:18:16+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=editchild_post
+ERR: 44444
+[ 2017-07-03T15:18:16+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=editchild_post
+ERR: {"errcode":40003,"errmsg":"invalid openid hint: [93H0299ge20]"}555
+[ 2017-07-03T15:18:16+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=editchild_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.029150s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.077495s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.112162s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0221s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `lailong_child` SET `name`='65',`nickname`='78',`avatar`='14990659735959ee75b8201.png',`birthday`='2017-08-04 00:00:00',`gender`='0',`school`='213',`grade`='123',`vip_state`='2' WHERE `id` = 14 [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `lailong_member` [ RunTime:0.0176s ]
+SQL: SELECT * FROM `lailong_member` WHERE (  child_id = '14' and user_id = '1'  ) LIMIT 1   [ RunTime:0.0007s ]
+NOTIC: [8] Undefined variable: timend D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 430 行.
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0137s ]
+SQL: SELECT `openid` FROM `lailong_user` WHERE ( id = 1 ) LIMIT 1   [ RunTime:0.0005s ]
+NOTIC: [8] Array to string conversion D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Log.class.php 第 102 行.
+SQL: INSERT INTO `lailong_member` (`child_id`,`user_id`,`appellation`,`createtime`) VALUES ('14','1','xw2','2017-07-03 15:18:16') [ RunTime:0.0009s ]
+

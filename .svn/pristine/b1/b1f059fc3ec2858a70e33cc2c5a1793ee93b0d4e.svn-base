@@ -1,0 +1,40 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>我的意向</title>
+    <link rel="stylesheet" href="__TMPL__Public/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/integration.css">
+</head>
+<body style="background: #f4f5f7;padding: 0px 10px;">
+<foreach name="mes" item="vo">
+<div class="am-container" style=" background: white;color: #34394e;font-weight: 500;margin-top:10px;">
+    <p style="margin-top: 5px;margin-bottom: -18px;font-size:  1.6rem; line-height: 30px">{$vo.createtime}</p>
+    <if condition="!empty($vo['grade'])">
+	    <p style="font-size:  1.6rem;margin-bottom: -20px;">{$vo.press}{$vo.grade}{$vo.subject}{$vo.chapter}{$vo.sub_chapter}</p>
+		<p style="font-size:  1.6rem;margin-bottom: -20px;">题型：{$vo.question_type}</p>	    
+	    <p style="font-size:  1.6rem;margin-bottom: -20px;">难度：{$vo.question_difficulty}</p>
+	    <p style="font-size:  1.6rem;margin-bottom: -20px;">题集：{$vo.topic_set}</p>
+	    <p style="font-size:  1.6rem;margin-bottom: -20px;">期望上课时间：<if condition="!empty($vo[wanted_start_time])">{$vo.wanted_start_time}<else/>任意</if></p>
+	    <p style="font-size:  1.6rem;margin-bottom: -20px;">期望的老师：<if condition="!empty($vo[teacher])">{$vo.teacher}<else/>任意</if></p>
+	    <p style="font-size: 1.6rem;margin-bottom: 12px;">期望班级类型：<if condition="!empty($vo[class_type])">{$vo.class_type}<else/>任意</if></p>
+    <else/>
+    	<p style="font-size:  1.6rem">{$vo.content}</p>
+    </if>
+</div>
+</foreach>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__TMPL__Public/js/weixin/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<!--<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>-->
+<![endif]-->
+<script src="__TMPL__Public/js/weixin/amazeui.min.js"></script>
+</body>
+</html>

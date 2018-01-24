@@ -1,0 +1,170 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>成为会员</title>
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+    <style>
+        .select ul{ padding: 0;}
+        .select ul li{list-style-type:none;text-align: center;}
+        .styled-select {
+            width: 100%;
+            overflow: hidden;
+        }
+        .styled-select select {
+            background: #fff;
+            width: 268px;
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            height: 42px;
+            -webkit-appearance: none; /*for chrome*/
+        }
+    </style>
+</head>
+<body>
+
+<!--表单-->
+<section>
+    <form class="am-form am-form-horizontal">
+    <input type='hidden' name="edit" value="{$res.id}">
+        <div class="am-form-group">
+            <div class="am-u-sm-13">
+                <label style="font-weight: inherit">真实姓名</label>
+                <input type="text"  class="am-radius" id="name" <if condition="!empty($res[id])"> style="color: #999 !important;" value="{$res[name]}" disabled</if> placeholder="真实姓名">
+            </div>
+        </div>
+
+       <div class="am-form-group" style="margin-top: -16px">
+            <div class="am-u-sm-13">
+                <label style="font-weight: inherit">年龄</label>
+                <!-- <input type="date" name="w_date" style="background-color:#fff;" class="w_date am-radius"  placeholder="请填写正确时间格式，例如2000-00-00">
+                 <label id="age" style="width:100%;backgound:#fff;font-weight: inherit;position:relative;float:right;margin-right: 9%;margin-top: -11%;"></label> -->
+                <input type="number" class="am-radius" id="age" <if condition="!empty($res[id])">style="color: #999;" value="{$age}" disabled</if>   placeholder="请输入年龄">
+            </div>
+        </div>
+
+        <div class="am-form-group" style="margin-top: -16px">
+            <div class="am-u-sm-12" >
+                <label style="font-weight: inherit">性别</label>
+                <div class="styled-select">
+                    <select id="gender" style="width: 100%;color: #999;border:none; direction: rtl;appearance:none;  -moz-appearance:none;  -webkit-appearance:none;" <if condition="!empty($res[id])">disabled</if> >
+                        <option>请选择</option>
+                        <option value="1"  <if condition="!empty($res[id]) && $res[gender] eq 1">selected</if>>男</option>
+                        <option value="2" <if condition="!empty($res[id]) && $res[gender] eq 2">selected</if>>女</option>
+                    </select>
+                </div>
+                <!--<input type="text" class="am-radius" id="gender" <if condition="!empty($_SESSION['gender'])">value="{$_SESSION['gender']}"</if> placeholder="性别"   value="{$_GET['genders']}" >-->
+            </div>
+        </div>
+
+        <div class="am-form-group" style="margin-top: -16px">
+            <div class="am-u-sm-13">
+                <label style="font-weight: inherit">所在学校</label>
+                <input type="text" class="am-radius" id="school" <if condition="!empty($res[id])">value="{$res[school]}"disabled</if> placeholder="请填写学校名称">
+            </div>
+        </div>
+
+
+        <div class="am-form-group" style="margin-top: -16px">
+         <div class="am-u-sm-12">
+                <label style="font-weight: inherit">年级</label>
+                 <div class="styled-select">
+                 <if condition="!empty($res[id])">
+                 <input type="text" style="color: #999;" class="am-radius"  value="{$res.grade}" disabled/>
+                 <else/>
+                 	  <select id="grade" style="width: 100%;color: #999;border:none; direction: rtl;appearance:none;  -moz-appearance:none;  -webkit-appearance:none;">
+                         <option>请选择</option>
+                         <foreach name="g" item="g">
+                         	<option value="{$g.id}">{$g.title}</option>
+                         </foreach>
+                     </select>
+                 </if>
+                 </div>
+                 <!--<input type="text" class="am-radius" id="grade" <if condition="!empty($_SESSION['grade'])">value="{$_SESSION['grade']}"</if> placeholder="请选择年级"  <if condition="!empty($_GET[grade]) && $_GET[grade] neq null"> value="{$_GET['grade']}"</if> >-->
+            </div>
+        </div>
+        <div class="am-u-sm-5" style="text-indent: 10px;margin-top: 3em; margin-bottom: 5px;font-weight: bold">
+            <span>家长信息</span>
+        </div>
+        <div class="am-form-group" style="margin-top: -16px">
+            <div class="am-u-sm-13">
+                <label style="font-weight: inherit">称呼</label>
+                <input type="text"  class="am-radius" id="appellation" <if condition="!empty($res[id])"> style="color: #999;" value="{$res[appellation]}" disabled</if> placeholder="与孩子的关系">
+            </div>
+        </div>
+
+        <div class="am-form-group" style="margin-top: -16px">
+            <div class="am-u-sm-13">
+                <label style="font-weight: inherit">姓名</label>
+                <input type="text" class="am-radius" id="username"  <if condition="!empty($res[id])"> style="color: #999;" disabled</if> placeholder="真实姓名" value="{$u.name}">
+            </div>
+        </div>
+
+        <div class="am-form-group" style="margin-top: -16px">
+            <div class="am-u-sm-13">
+                <label style="font-weight: inherit">手机号码</label>
+                <input type="text" class="am-radius" id="phone" <if condition="!empty($res[id])"> style="color: #999;" disabled</if> placeholder="手机号码" value="{$u.phone}">
+            </div>
+        </div>
+       <div style="text-align: center">
+           <span style="font-size: 13px;color: #CCCCCC">上海睿风开发版本</span>
+       </div>
+
+        <div class="am-form-group" style="margin-top: -7px">
+         <if condition="empty($res[id])">
+         	<div class="am-u-sm-13">
+                <button type="button" class="am-btn am-btn-block submit" style="background: #2adcaa;height: 50px;color: white;margin-top: 10px;border-radius:3px">
+                  <!--  <a style="width: 100%;height: 50px;color: white" href="{:U('Mine/my')}"> -->提交认证<!-- </a> --></button>
+            </div>
+         </if>
+        </div>
+
+    </form>
+</section>
+<tc_include file="Public:weixin_foot"/>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__TMPL__Public/js/weixin/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<![endif]-->
+<script src="__TMPL__Public/js/weixin/amazeui.min.js"></script>
+<script>
+ $(".submit").click(function(){
+	var name=$("#name").val();
+	var age=$('#age').val();
+	var gender=$('#gender').find("option:selected").val();
+	var school=$('#school').val();
+	var grade=$('#grade').find("option:selected").val();
+	var appellation=$('#appellation').val();
+	var username=$('#username').val();
+	if(name == "" || age == "" || gender == "" || school == "" || grade == "" || appellation == "" || username == ""){
+		$("#my-alert").modal();
+ 		$("#alert_cont").text("请完善信息");
+ 		return;
+	}
+	$.post('{:U("Mine/do_member")}',
+			{name:name,age:age,gender:gender,school:school,grade:grade,appellation:appellation,username:username},
+		 	function(data){
+				if(data[0]=="101"){
+					$("#my-alert").modal();
+			 		$("#alert_cont").text(data[1]);
+			 		window.location.href="{:U('Mine/my')}";
+				}else{
+					$("#my-alert").modal();
+			 		$("#alert_cont").text(data[1]);
+			 		return;
+				}
+	});
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<?php
+
+namespace Other\Controller;
+use Common\Controller\AdminbaseController;
+class FeedbackController extends AdminbaseController {
+	function _initialize() {
+	}
+    /**
+     *意见反馈列表
+     */
+    public function index() {
+        $_SESSION['num_feedback']="";
+        $_SESSION['f_res']="";
+        $user_key_word = isset ( $_REQUEST ['user_key_word'] ) ? $_REQUEST ['user_key_word'] : ''; // 关键字
+        $phone_key_word = isset ( $_REQUEST ['phone_key_word'] ) ? $_REQUEST ['phone_key_word'] : ''; // 关键字
+        $where= "1=1";
+        //判断是否表单处提交的数据，如果是就重置session值
+        if($_REQUEST['leixing']==1){
+            $_SESSION['user_key_word']=$user_key_word;
+            $_SESSION['phone_key_word']=$phone_key_word;
+        }
+        if($_SESSION['user_key_word'] != ''){
+            $where .= " and (a.user_login like '%$_SESSION[user_key_word]%')";
+        }
+        if($_SESSION['phone_key_word'] != ''){
+            $where .= " and (a.mobile like '%$_SESSION[phone_key_word]%')";
+        }
+        if($_POST['type']=='全部'){
+            $_SESSION['user_key_word']="";
+            $_SESSION['phone_key_word']="";
+        }
+        $model = M ("feedback");
+        $count = $model->where($where)->count();
+        $page = $this->page($count, C('PAGENUM'));
+        $list = $model->field("f.content,f.id,f.createtime,u.phone as username,u.id as user_id")->table(C('DB_PREFIX')."feedback as f")->join(C('DB_PREFIX').'user as u on u.id =f.user_id','left')->order("id DESC")->limit($page->firstRow . ',' . $page->listRows)->where($where)->select();
+        foreach ($list as $key => $value) {
+        	$feedback_id = $value['id'];
+        	$inte = M("integral")->field("sum(integral) as sum")->where("feedback_id = $feedback_id")->find();
+        	$list[$key]['integral'] = $inte['sum'];
+        }
+        $this->assign('list', $list);
+        $this->assign("page", $page->show('Admin'));
+        $this->assign("formget",$_SESSION); 
+       	$this->display();
+    }
+    public function delete(){
+        if(M('feedback')->delete($_GET[id])){
+            $this->success("删除成功");
+        }else{
+            $this->error("删除失败");
+        }
+    }
+    //意见反馈积分添加详情
+	public function getDetail(){
+		$model = M('integral i');
+		$where = 'feedback_id='.$_GET['id'];
+		$count = $model->where($where)->count();
+		$page = $this->page($count,5);
+		$feedback = $model->field("i.id,i.integral,i.createtime as itime,f.createtime as ftime,f.content as fcontent,u.name")
+		->join(C('DB_PREFIX')."feedback as f on f.id = i.feedback_id","left")
+		->join(C('DB_PREFIX')."user as u on u.id = i.user_id","left")
+		->limit($page->firstRow . ',' . $page->listRows)->where($where)->select();
+		
+		$this->assign('feedback',$feedback);
+		$this->assign('Page',$page->show('Admin'));
+		$this->display('Feedback/more');
+	}
+}

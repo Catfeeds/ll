@@ -1,0 +1,127 @@
+<?php
+
+/**
+ * 我的
+ */
+namespace Weixin\Controller;
+use Common\Controller\MemberbaseController;
+use Think\Log;
+class MineController extends MemberbaseController {
+	//我的
+	function my(){
+		//.$_SESSION['weixin_user_id']
+		//查询孩子
+		$child=M("user")->field("c.*")->table(C("DB_PREFIX")."user as a")->join(C("DB_PREFIX")."member as b on a.id=b.user_id")
+		->join(C("DB_PREFIX")."child as c on b.child_id=c.id")->where("a.id=8")->select();
+		$this->assign("child",$child);
+		$this->assign("url",C("UPLOADPATH"));
+		$this->display(":my");
+	}
+	//会员信息
+	function user_info(){
+		$id=$_REQUEST['id'];
+		if($id){
+			$userinfo=M("child")->where("id=$id")->find();
+		}
+		$this->assign("url",C("UPLOADPATH"));
+		$this->assign("userinfo",$userinfo);
+		$this->display(":user_info");
+	}
+	//订单列表
+	function order_list(){
+		$id=$_REQUEST['id'];
+		if($id){
+			//全部订单
+			$all_order=M("enrollment")->field("b.*,a.state,a.id as oid")->table(C("DB_PREFIX")."enrollment as a")
+			->join(C("DB_PREFIX")."course as b on a.course_id=b.id")
+			->where("child_id=$id")->order(array("a.createtime"=>DESC))->select();
+			//待支付订单
+			$dai_order=M("enrollment")->field("b.*,a.state,a.id as oid")->table(C("DB_PREFIX")."enrollment as a")
+			->join(C("DB_PREFIX")."course as b on a.course_id=b.id")
+			->where("child_id=$id and a.state=0")->order(array("a.createtime"=>DESC))->select();
+			//待确认订单
+			$true_order=M("enrollment")->field("b.*,a.state,a.id as oid")->table(C("DB_PREFIX")."enrollment as a")
+			->join(C("DB_PREFIX")."course as b on a.course_id=b.id")
+			->where("child_id=$id and a.state=1")->order(array("a.createtime"=>DESC))->select();
+			//已完成订单
+			$over_order=M("enrollment")->field("b.*,a.state,a.id as oid")->table(C("DB_PREFIX")."enrollment as a")
+			->join(C("DB_PREFIX")."course as b on a.course_id=b.id")
+			->where("child_id=$id and a.state=3")->order(array("a.createtime"=>DESC))->select();
+			//已取消订单
+			$die_order=M("enrollment")->field("b.*,a.state,a.id as oid")->table(C("DB_PREFIX")."enrollment as a")
+			->join(C("DB_PREFIX")."course as b on a.course_id=b.id")
+			->where("child_id=$id and a.state=4")->order(array("a.createtime"=>DESC))->select();
+		}
+		$this->assign("url",C("UPLOADPATH"));
+		$this->assign("all_order",$all_order);
+		$this->assign("dai_order",$dai_order);
+		$this->assign("true_order",$true_order);
+		$this->assign("over_order",$over_order);
+		$this->assign("die_order",$die_order);
+		$this->display(":order_list");
+	}
+	//会员认证
+	function member(){
+		$this->display(":member");
+	}
+	//订单详情
+	function lineitem(){
+		$this->display(":lineitem");
+	}
+	//创建订单
+	function cancel_order(){
+		$this->display(":cancel_order");
+	}
+	//切换孩子
+	function switch_child(){
+		$this->display(":switch_child");
+	}
+	//课程意向
+	function my_intention(){
+		$this->display(":my_intention");
+	}
+	//我的积分
+	function integration(){
+		$this->display(":integration");
+	}
+	//积分规则
+	function integral_rule(){
+		$this->display(":integral_rule");
+	}
+	//充值
+	function recharge(){
+		$this->display(":recharge");
+	}
+	//我的收藏
+	function collection(){
+		$this->display(":collection");
+	}
+	//我的消息
+	function my_message(){
+		$this->display(":my_message");
+	}
+	//我的推荐
+	function recommend(){
+		$this->display(":recommend");
+	}
+	//设置
+	function safe(){
+		$this->display(":safe");
+	}
+	//修改手机号
+	function change_tel(){
+		$this->display(":change_tel");
+	}
+	//修改密码
+	function change_pw(){
+		$this->display(":change_pw");
+	}
+	//意见反馈
+	function feedback(){
+		$this->display(":feedback");
+	}
+	//服务
+	function server(){
+		$this->display(":server");
+	}
+}

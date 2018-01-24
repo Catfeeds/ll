@@ -1,0 +1,43 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>用户信息</title>
+    <link rel="stylesheet" href="../Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="../Public/css/weixin/bdTel.css">
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body>
+<div class="use" style="padding: 5px 10px">
+    <ul class="am-list">
+        <li style="border-top: none;height: 70px">
+            <a href="#" style="color: black;padding: 10px;">
+                <span style="display:inline-block; margin-top: 10px;">头像</span>
+                <img style="float: right;width: 50px;height: 50px" src="../Public/images/teacher2.png" alt="">
+            </a>
+       </li>
+    </ul>
+
+    <ul class="am-list">
+        <li style="border-top: none;height: 45px">
+            <a href="#" style="color: black;padding: 10px;">
+                <span >昵称</span>
+                <span style="float: right">李小萌</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="../Public/js/weixin/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<![endif]-->
+<script src="../Public/js/weixin/amazeui.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+
+.am-tabs .am-tabs-nav{
+    text-align: center;
+    width: 180px;
+    margin: 0 auto;
+}
+.am-tabs-default .am-cf li a{
+    height: 35px;
+    line-height: 35px;
+}
+.am-tabs-default .am-tabs-nav>.am-active a{
+    background-color: black;
+}
+.am-intro-default{
+    background: white;
+}
+.am-intro-default .am-intro-bd .xq{
+    color: #2759f5;
+}
+.am-intro-default .am-intro-hd {
+    background-color: white;
+    color: black;
+    padding: 0 10px;
+    border-bottom: 0.5px solid #e6e9ea;
+}
+.am-intro-default .am-intro-hd strong{
+    display: inline-block;
+    padding-right: 10px;
+    border-right: 0.5px solid #e6e9ea;
+}
+.am-intro-default .am-intro-hd span{
+    font-weight: bold;
+}

@@ -1,0 +1,187 @@
+[ 2017-07-02T14:36:18+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Textbook&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.027120s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.065066s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.097422s ]
+
+[ 2017-07-02T14:36:19+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Textbook&a=add_chapter
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.027432s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.064124s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.097005s ]
+
+[ 2017-07-02T14:39:37+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Textbook&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.022385s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.061236s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.088399s ]
+
+[ 2017-07-02T14:39:38+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Textbook&a=add_chapter
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.026616s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.063370s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.095154s ]
+
+[ 2017-07-02T14:56:46+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Textbook&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.028628s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.073622s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.107156s ]
+
+[ 2017-07-02T15:01:07+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Textbook&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.027567s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.072718s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.105297s ]
+SQL: SHOW COLUMNS FROM `lailong_textbook` [ RunTime:0.0224s ]
+SQL: INSERT INTO `lailong_textbook` (`subject`,`press`,`grade`,`updatetime`,`createtime`) VALUES ('语文','沪教版','小学二年级下学期','2017-07-02 15:01:06','2017-07-02 15:01:06') [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `lailong_chapter` [ RunTime:0.0178s ]
+SQL: DELETE FROM `lailong_chapter` WHERE (  textbook_id = 15 ) [ RunTime:0.0007s ]
+NOTIC: [8] Undefined index: zhang0 D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\TextbookController.class.php 第 188 行.
+
+[ 2017-07-02T15:02:40+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Textbook&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.040470s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.077778s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.124034s ]
+SQL: SHOW COLUMNS FROM `lailong_textbook` [ RunTime:0.0259s ]
+SQL: INSERT INTO `lailong_textbook` (`subject`,`press`,`grade`,`updatetime`,`createtime`) VALUES ('数学','浙教版','小学二年级上学期','2017-07-02 15:02:40','2017-07-02 15:02:40') [ RunTime:0.0007s ]
+
+[ 2017-07-02T15:07:36+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Textbook&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.034171s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.063664s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.102996s ]
+SQL: SHOW COLUMNS FROM `lailong_textbook` [ RunTime:0.0163s ]
+SQL: INSERT INTO `lailong_textbook` (`subject`,`press`,`grade`,`updatetime`,`createtime`) VALUES ('语文','沪教版','小学三年级上学期','2017-07-02 15:07:36','2017-07-02 15:07:36') [ RunTime:0.0008s ]
+
+[ 2017-07-02T15:11:47+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Textbook&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.033038s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.068223s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.106378s ]
+SQL: SHOW COLUMNS FROM `lailong_textbook` [ RunTime:0.0153s ]
+SQL: INSERT INTO `lailong_textbook` (`subject`,`press`,`grade`,`updatetime`,`createtime`) VALUES ('数学','苏教版','小学二年级上学期','2017-07-02 15:11:47','2017-07-02 15:11:47') [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `lailong_chapter` [ RunTime:0.0147s ]
+SQL: DELETE FROM `lailong_chapter` WHERE (  textbook_id = 18 ) [ RunTime:0.0005s ]
+NOTIC: [8] Undefined index: zhang0 D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\TextbookController.class.php 第 189 行.
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('测试1','0','18','2017-07-02 15:11:47') [ RunTime:0.0006s ]
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('1','31','18','2017-07-02 15:11:47') [ RunTime:0.0004s ]
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('2','31','18','2017-07-02 15:11:47') [ RunTime:0.0004s ]
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('44','0','18','2017-07-02 15:11:47') [ RunTime:0.0004s ]
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('44','34','18','2017-07-02 15:11:47') [ RunTime:0.0005s ]
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('12','34','18','2017-07-02 15:11:47') [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: zhang3 D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\TextbookController.class.php 第 189 行.
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('2','0','18','2017-07-02 15:11:47') [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: jie4 D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\TextbookController.class.php 第 203 行.
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('1','0','18','2017-07-02 15:11:47') [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: jie5 D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\TextbookController.class.php 第 203 行.
+NOTIC: [8] Undefined index: zhang6 D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\TextbookController.class.php 第 189 行.
+
+[ 2017-07-02T15:26:19+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Textbook&a=edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.028036s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.069920s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.103139s ]
+SQL: SHOW COLUMNS FROM `lailong_textbook` [ RunTime:0.0145s ]
+SQL: UPDATE `lailong_textbook` SET `subject`='数学',`press`='苏教版',`grade`='小学二年级上学期',`updatetime`='2017-07-02 15:26:19' WHERE `id` = 18 [ RunTime:0.0011s ]
+
+[ 2017-07-02T15:26:20+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Textbook&a=add_chapter
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.030534s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.063080s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.098468s ]
+ERR: 参数错误或者未定义:datax
+
+[ 2017-07-02T15:27:55+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Textbook&a=edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.044468s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.101472s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.151987s ]
+SQL: SHOW COLUMNS FROM `lailong_textbook` [ RunTime:0.0213s ]
+SQL: UPDATE `lailong_textbook` SET `subject`='数学',`press`='苏教版',`grade`='小学二年级上学期',`updatetime`='2017-07-02 15:27:54' WHERE `id` = 18 [ RunTime:0.0008s ]
+
+[ 2017-07-02T15:49:54+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Textbook&a=edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.027177s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.071162s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.103305s ]
+NOTIC: [8] Undefined index: id D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\TextbookController.class.php 第 127 行.
+SQL: SHOW COLUMNS FROM `lailong_textbook` [ RunTime:0.0213s ]
+
+[ 2017-07-02T15:50:34+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Textbook&a=edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.028587s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.066769s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.100176s ]
+NOTIC: [8] Undefined index: id D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\TextbookController.class.php 第 127 行.
+SQL: SHOW COLUMNS FROM `lailong_textbook` [ RunTime:0.0200s ]
+
+[ 2017-07-02T15:51:46+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Textbook&a=edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.033501s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.065297s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.103967s ]
+
+[ 2017-07-02T15:53:47+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Textbook&a=edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.022599s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.056353s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.083168s ]
+SQL: SHOW COLUMNS FROM `lailong_textbook` [ RunTime:0.0202s ]
+SQL: UPDATE `lailong_textbook` SET `subject`='数学',`press`='苏教版',`grade`='小学二年级下学期',`updatetime`='2017-07-02 15:53:47' WHERE `id` = 18 [ RunTime:0.0007s ]
+
+[ 2017-07-02T15:54:05+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Textbook&a=edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.028621s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.054546s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.087515s ]
+SQL: SHOW COLUMNS FROM `lailong_textbook` [ RunTime:0.0147s ]
+SQL: UPDATE `lailong_textbook` SET `subject`='数学',`press`='苏教版',`grade`='小学二年级下学期',`updatetime`='2017-07-02 15:54:05' WHERE `id` = 18 [ RunTime:0.0006s ]
+
+[ 2017-07-02T15:54:27+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Textbook&a=edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.031176s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.064785s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.101044s ]
+SQL: SHOW COLUMNS FROM `lailong_textbook` [ RunTime:0.0210s ]
+SQL: UPDATE `lailong_textbook` SET `subject`='数学',`press`='苏教版',`grade`='小学二年级下学期',`updatetime`='2017-07-02 15:54:27' WHERE `id` = 18 [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `lailong_chapter` [ RunTime:0.0135s ]
+SQL: DELETE FROM `lailong_chapter` WHERE (  textbook_id = 18 ) [ RunTime:0.0015s ]
+NOTIC: [8] Undefined index: zhang0 D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\TextbookController.class.php 第 175 行.
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('测试1','0','18','2017-07-02 15:54:27') [ RunTime:0.0007s ]
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('1','39','18','2017-07-02 15:54:27') [ RunTime:0.0006s ]
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('2','39','18','2017-07-02 15:54:27') [ RunTime:0.0004s ]
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('44','0','18','2017-07-02 15:54:27') [ RunTime:0.0004s ]
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('44','42','18','2017-07-02 15:54:27') [ RunTime:0.0004s ]
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('12','42','18','2017-07-02 15:54:27') [ RunTime:0.0004s ]
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('2','0','18','2017-07-02 15:54:27') [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: jie3 D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\TextbookController.class.php 第 189 行.
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('1','0','18','2017-07-02 15:54:27') [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: jie4 D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\TextbookController.class.php 第 189 行.
+NOTIC: [8] Undefined index: zhang5 D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\TextbookController.class.php 第 175 行.
+
+[ 2017-07-02T15:54:43+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Textbook&a=edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.029820s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.068194s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.102811s ]
+SQL: SHOW COLUMNS FROM `lailong_textbook` [ RunTime:0.0226s ]
+SQL: UPDATE `lailong_textbook` SET `subject`='数学',`press`='苏教版',`grade`='小学二年级下学期',`updatetime`='2017-07-02 15:54:43' WHERE `id` = 18 [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `lailong_chapter` [ RunTime:0.0136s ]
+SQL: DELETE FROM `lailong_chapter` WHERE (  textbook_id = 18 ) [ RunTime:0.0015s ]
+NOTIC: [8] Undefined index: zhang0 D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\TextbookController.class.php 第 175 行.
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('测试1','0','18','2017-07-02 15:54:43') [ RunTime:0.0006s ]
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('1','47','18','2017-07-02 15:54:43') [ RunTime:0.0005s ]
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('2','47','18','2017-07-02 15:54:43') [ RunTime:0.0005s ]
+NOTIC: [8] Undefined index: zhang2 D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\TextbookController.class.php 第 175 行.
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('2','0','18','2017-07-02 15:54:43') [ RunTime:0.0005s ]
+NOTIC: [8] Undefined index: jie3 D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\TextbookController.class.php 第 189 行.
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('1','0','18','2017-07-02 15:54:43') [ RunTime:0.0006s ]
+NOTIC: [8] Undefined index: jie4 D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\TextbookController.class.php 第 189 行.
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('3','0','18','2017-07-02 15:54:43') [ RunTime:0.0005s ]
+NOTIC: [8] Undefined index: jie5 D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\TextbookController.class.php 第 189 行.
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('4','0','18','2017-07-02 15:54:43') [ RunTime:0.0005s ]
+NOTIC: [8] Undefined index: jie6 D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\TextbookController.class.php 第 189 行.
+NOTIC: [8] Undefined index: zhang7 D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\TextbookController.class.php 第 175 行.
+

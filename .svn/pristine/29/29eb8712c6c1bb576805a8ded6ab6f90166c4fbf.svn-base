@@ -1,0 +1,55 @@
+<?php
+namespace Lailonginterface\Controller;
+use Lailonginterface\Controller\PublicController;
+
+class PayController  extends PublicController {
+    /**
+     * 判断账户积分是否充足
+     */
+    public function integral()
+    {
+       $token=$_REQUEST['token'];
+       $userid=$this->checkAccess($token);
+       $integral=$_REQUEST['integral'];
+       $u=M('user')->field("integral")->where("id = $userid")->find();
+       if(intval($u[integral])<0){
+           $this->errorResult("当前账户积分不足，请充值后支付");
+       }
+       if(intval($u[integral])<$integral){
+           $this->errorResult("当前账户积分不足，请充值后支付");
+       }else{
+           $this->successShortResult("允许充值");
+       }
+    }
+    //完成支付
+    public function finish(){
+        $token=$_REQUEST['token'];
+        $orderid=$_REQUEST['orderid'];
+        $integral=$_REQUEST['integral'];
+        
+        $userid=$this->checkAccess($token);
+        /* $e=M('enrollment')->field("havenumber")->where("id = $orderid")->find();
+        $havenumber=$e[havenumber] + 1; */
+        $u=M('user')->field("integral")->find($userid);
+        M('user')->where("id = $userid")->save(array('integral'=>intval($u[integral]-$integral)));
+        $str=M('enrollment')->field("state")->where("id = $orderid")->find();
+        if($str[state] == 1){
+            $this->errorResult("此订单已完成支付");
+            exit();
+        }
+        
+        M('enrollment')->where("id = $orderid")->save(array('state'=>1));
+        $param=array('enrollment_id'=>$orderid,'state'=>1,'state_text'=>"订单已付款",'createtime'=>date('Y-m-d H:i:s',time()));
+        M('enrollment_state')->add($param);
+        $this->successShortResult("完成支付");
+    }
+    //获取充值积分列表
+    public function getrechargescore(){
+        $res=M('integral_order_config')->order("amount asc")->select();
+        if($res){
+            $this->successLongResult($res, "获取成功");
+        }else{
+            $this->successShortResult("获取失败");
+        }
+    }
+}

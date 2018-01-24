@@ -1,0 +1,117 @@
+<?php
+
+namespace Order\Controller;
+use Common\Controller\AdminbaseController;
+class OrderController extends AdminbaseController {
+	function _initialize() {
+	}
+     public function orderlist(){
+         $where= "1=1";
+       /*   //判断是否表单处提交的数据，如果是就重置session值
+         if($_REQUEST['leixing']==1){
+             $_SESSION['user_key_word']=$user_key_word;
+             $_SESSION['phone_key_word']=$phone_key_word;
+         }
+         if($_SESSION['user_key_word'] != ''){
+             $where .= " and (a.user_login like '%$_SESSION[user_key_word]%')";
+         }
+         if($_SESSION['phone_key_word'] != ''){
+             $where .= " and (a.mobile like '%$_SESSION[phone_key_word]%')";
+         }
+         if($_POST['type']=='全部'){
+             $_SESSION['user_key_word']="";
+             $_SESSION['phone_key_word']="";
+         } */
+         $model = M ("enrollment");
+         $count = $model->table(C('DB_PREFIX').'enrollment as e')
+                 ->join(C('DB_PREFIX')."course as c on c.id = e.course_id",'left')
+                 ->join(C('DB_PREFIX')."child as ch on ch.id =e.child_id",'left')
+                 ->join(C('DB_PREFIX')."user as u on u.id = e.user_id",'left')
+                 ->where($where)->count();
+         $page = $this->page($count, 10);
+         $list = $model->table(C('DB_PREFIX').'enrollment as e')
+                 ->field("e.order_id,c.title as coursename,ch.name as childname,u.phone as username,e.createtime,e.state,e.id,e.cancel_state")
+                 ->join(C('DB_PREFIX')."course as c on c.id = e.course_id",'left')
+                 ->join(C('DB_PREFIX')."child as ch on ch.id =e.child_id",'left')
+                 ->join(C('DB_PREFIX')."user as u on u.id = e.user_id",'left')
+                 ->order("e.createtime DESC")->limit($page->firstRow . ',' . $page->listRows)->where($where)->select();
+         $this->assign('list', $list);
+         $this->assign("page", $page->show('Admin'));
+         $this->assign("formget",$_SESSION);
+         $this->display();
+     }
+     public function findorder(){
+         $model = M ("enrollment");
+         $where="e.id=$_GET[orderid]";
+         $list = $model->table(C('DB_PREFIX').'enrollment as e')
+         ->field("e.order_id,c.title as coursename,ch.name as childname,u.phone as username,e.createtime,e.state,e.id,e.cancel_state,e.note")
+         ->join(C('DB_PREFIX')."course as c on c.id = e.course_id",'left')
+         ->join(C('DB_PREFIX')."child as ch on ch.id =e.child_id",'left')
+         ->join(C('DB_PREFIX')."user as u on u.id = e.user_id",'left')
+         ->where($where)->find();
+         $param=explode('|订单取消中，取消理由为：',$list[note]);
+         $list[note]=$param[1];
+         $this->assign('list',$list);
+         $this->display();
+     }
+     public function editorder(){
+         $model = M ("enrollment");
+         $where="e.id=$_GET[orderid]";
+         $list = $model->table(C('DB_PREFIX').'enrollment as e')
+         ->field("e.order_id,c.title as coursename,ch.name as childname,u.phone as username,e.createtime,e.state,e.id,e.cancel_state,e.note")
+         ->join(C('DB_PREFIX')."course as c on c.id = e.course_id",'left')
+         ->join(C('DB_PREFIX')."child as ch on ch.id =e.child_id",'left')
+         ->join(C('DB_PREFIX')."user as u on u.id = e.user_id",'left')
+         ->where($where)->find();
+         $param=explode('|订单取消中，取消理由为：',$list[note]);
+         $list[note]=$param[1];
+         $this->assign('param',$param[0]);
+         $this->assign('list',$list);
+         $this->display();
+     }
+     //取消订单
+     public function ordercancel(){
+         $res=M('enrollment')->table(C('DB_PREFIX').'enrollment as e')
+              ->field("e.order_id,c.title,e.note,e.id")
+              ->join(C('DB_PREFIX')."course as c on c.id = e.course_id",'left')
+              ->where("e.id = $_GET[orderid]")
+              ->find();
+         $param=explode('|订单取消中，取消理由为：',$res[note]);
+         $res[note]=$param[1];
+         $this->assign("list",$res);
+         $this->display();
+     }
+     public function changestate(){
+         $editid=$_REQUEST['editid'];
+         $state=$_REQUEST['state'];
+         $param=$_REQUEST['param'];
+         $desc=$_REQUEST['desc'];
+         $where="id= $editid";
+         if($state == 4){
+             M('enrollment')->where($where)->save(array('note'=>$param.'|订单取消中，取消理由为：'.$desc));
+         }
+         if(M('enrollment')->where($where)->save(array('state'=>$state))){
+             $this->success("操作成功");
+         }else{
+             $this->error("操作失败");
+         }
+     }
+     public function agreecancelornot(){
+         $state=$_POST['state'];
+         $editid=$_POST['editid'];
+         if($state == ""){
+             $this->error("请批复此订单");
+         }
+         $where="id = $editid";
+         if($state == 1){
+             if(M('enrollment')->where($where)->save(array('cancel_state'=>2,'state'=>4))){
+                 $this->success("操作成功");
+             }else{
+                 $this->error("操作失败");
+             }
+         }else{
+             M('enrollment')->where($where)->save(array('cancel_state'=>2));
+             $this->success("操作成功");
+         }
+     }
+}

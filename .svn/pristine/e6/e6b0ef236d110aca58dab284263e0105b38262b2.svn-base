@@ -1,0 +1,49 @@
+@CHARSET "UTF-8";
+.text_overflow{width: 200px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;display: block;}
+.showdiv{width:100px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box; -webkit-box-orient:vertical;-webkit-line-clamp:2; text-align:center;}
+.showdiv2{min-width:100px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box; -webkit-box-orient:vertical;-webkit-line-clamp:2; text-align:center;}
+.w-100{min-width:100px}
+.w-20{min-width:20px}
+.w-30{min-width:30px}
+.w-40{min-width:40px}
+.w-50{min-width:50px}
+.w-60{min-width:60px}
+.w-70{min-width:70px}
+.w-80{min-width:80px}
+.w-90{min-width:90px}
+.w-120{min-width:120px}
+.w-150{min-width:150px}
+.w-180{min-width:180px}
+.w-200{min-width:200px}
+.w-56{min-width:56px}
+.w-95{min-width:95px}
+.w-120{min-width:120px}
+.body-min-1600{min-width:1600px}
+.body-min-2100{min-width:2100px}
+.body-min-900{min-width:900px}
+/* 弹窗 */
+.count{width:810px;height:300px;display:none;position:absolute;top:200px;}
+.count1{width:810px;height:300px;display:none;position:absolute;top:200px;}
+#bg{
+	z-index:1000;
+	background-color: black;
+	filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#3f000000', endColorstr='#3f000000');
+	background-color: rgba(0, 0, 0, 0.6);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	display: none;
+}
+.layer_top{height:59px;width:810px;background-color:#FFFFFF;}
+.time_ask{display:inline-block;width:750px;line-height:59px;float:left;padding-left:20px;font-size: 17px;    color: #317eac;
+font-weight: bold;    font-family: 'Telex',sans-serif;}
+.layer_top{height:59px;width:810px;background-color:#FFFFFF;border-top-left-radius: 6px;border-top-right-radius: 6px;}
+.close{display:inline-block;width:40px;line-height:40px;text-align:center;float:left;cursor:pointer;}
+.iframe{border-top: 1px solid #eee;border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;}
+.user_head{margin-bottom: 20px;}
+/* 弹窗结束 */
+
+.head-icon{height:50px}
+.form-textarea{width:300px ;height:120px;}

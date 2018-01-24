@@ -1,0 +1,171 @@
+<admintpl file="header" />
+</head>
+<style>
+	.control-group{
+		margin-left :100px; 
+	}
+	.s1{
+		margin: 1px;
+	}
+</style>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('User/userlist')}">用户列表</a></li>
+			<li><a href="{:U('User/add')}">新增用户</a></li>
+		</ul>
+		<form class="well form-search" method="get" action="{:U('User/userlist')}" id="form_submit">
+		    <div class="search_type cc mb10">
+		      <div class="mb10"> 
+		        <span class="mr20">
+		        <input type="hidden" name="g" value="Users">
+		        <input type="hidden" name="m" value="User">
+		        <input type="hidden" name="a" value="userlist">
+		     
+		        
+			        <div class="row" style="margin-top: 20px;">
+				        <div class="span1 s1">
+				        	姓名:
+				        </div>
+				        <div class="span2 s1">
+				        	<input type="text" name="name" style="width: 100px;" value="{$name}" placeholder="姓名"/>
+				        </div>
+				        <div class="span1 s1">
+				        	手机号:
+						</div>
+						<div class="span2 s1">
+							<input type="text" name="phone" style="width: 100px;" value="{$phone}" placeholder="手机号">
+						</div>
+						<div class="span1 s1">
+							推荐人手机号:
+						</div>	
+						<div class="span2 s1">
+							<input type="text" name="recommended_person" style="width: 100px;" value="{$recommended_person}" placeholder="推荐人手机号">
+						</div>
+						<div class="span1 s1">
+							小孩名
+						</div>
+						<div class="span2 s1">
+							<input type="text" name="chname" style="width: 100px;" value="{$chname}" placeholder="小孩名" >
+						</div>
+					</div>
+				</span>
+			   </div>
+			   <div class="mb10">
+			   	<span class="mr20">
+			   		<button class="btn btn-primary ">搜索</button>
+			   	</span>
+			   </div>
+		        
+		        
+		      
+		    </div>
+		  </form>
+			<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th width="50">ID</th>
+						<th>姓名</th>
+						<th>手机号</th>
+						<th width="45">积分</th>
+						<th width="120">推荐人手机号</th>
+						<th width="120">最后一次登录时间</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="userlist" item="vo">
+					<tr>
+						<td>{$vo.id}</td>
+						<td>{$vo.name}</td>
+						<td>{$vo.phone}</td>
+						<td>{$vo.integral}</td>
+						<td>{$vo.recommended_person}</td>
+						<td>{$vo.last_login_time}</td>
+						<td>
+							<a href="{:U('user/edit',array('id'=>$vo['id']))}">{:L('EDIT')}</a> |
+							<a href="{:U('user/delete',array('id'=>$vo['id']))}" class="js-ajax-delete">{:L('DELETE')}</a>
+							<button type="button" onclick="addsorce('{$vo[id]}','{$vo[name]}')" class="btn btn-small btn btn-link" data-toggle="modal" data-target="#detail" >添加积分</button>
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+				
+			</table>
+			<div class="modal fade" id="detail" style="top:300px;display: none;">
+    <div class="modal-dialog" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">给用户添加积分</h4>
+            </div>
+            <div class="modal-body">
+       			<form id="form1" action="{:U('User/addsorce')}" method="post">
+       				<fieldset>
+       				<input type="hidden" name="id" value="" >
+	       				<div class="control-group">
+							<label class="control-label">姓名</label>
+							<div class="controls">
+								<input type="text" id="uname" value="" readonly >
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">添加的积分</label>
+							<div class="controls">
+								<input type="number" name="integral" value="">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">添加的积分</label>
+							<div class="controls">
+								<select name="obtain_type">
+									<option value="6">小孩表现好</option>
+									<option value="7">小孩成绩好</option>
+									<option value="8">其他</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">备注</label>
+							<div class="controls">
+								<textarea name="content"></textarea>
+							</div>
+						</div>
+       				</fieldset>
+       			</form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取 消</button>
+                <button type="button" onclick="submit1()" class="btn btn-default" data-dismiss="modal">确 认</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script type="text/javascript">
+		function addsorce(id,name){
+			$("input[name=id]").val(id);
+			$("#uname").val(name);
+		}
+		function myrefresh()
+		{
+      	 window.location.reload();
+		}
+		function submit1(){
+
+			var data = $("#form1").serialize();
+			$.post("{:U('User/addsorce')}",data,function(res){
+				if(res=='1'){
+					alert("积分不能为负数");
+				}
+				if(res=='2'){
+					alert("添加积分成功");
+				}
+				
+			});
+			 setTimeout('myrefresh()',3000);
+		}
+	</script>
+</body>
+</html>

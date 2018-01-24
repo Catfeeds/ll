@@ -1,0 +1,245 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>课程</title>
+    <link rel="stylesheet" href="__TMPL__Public/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/course.css">
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body>
+<!--切换-->
+<div data-am-widget="tabs"
+     class="am-tabs am-tabs-default"
+>
+    <ul class="am-tabs-nav am-cf">
+        <li class="am-active" style="border: 1px solid; border-radius: 5px 0 0 5px"><a href="[data-tab-panel-0]">排课计划</a></li>
+        <li class="" style="border: 1px solid;border-left: none; border-radius: 0 5px 5px 0;"><a href="[data-tab-panel-1]">课程意向</a></li>
+    </ul>
+    <!-----------------------排课计划------------------------------------------------------->
+    <div class="am-tabs-bd" style="border: none">
+      <!--  <div data-tab-panel-0 class="am-tab-panel am-active">-->
+                <div data-tab-panel-0 class="am-cf am-intro-default am-tab-panel am-active" style="margin-top: 20px;padding: 5px 5px 5px">
+                    <div class="am-intro-hd">
+                        <strong style="border-right: none">周五</strong>
+                        <span>6月9日</span>
+                    </div>
+
+                    <div class="am-g am-intro-bd">
+                        <a href="{:U('Course/course_detail')}">
+                        <div class="xq" style="background:#eff6ff;height: 60px">
+                            <div class="am-intro-left am-u-sm-2" style="width:40px;height: 40px;margin: 8px 0 0 -6px;">
+                                <img style="width: 40px;height: 40px;" src="__TMPL__Public/images/math.png" alt="">
+                            </div>
+                            <div class="am-intro-right am-u-sm-10"><p style="font-size: 13px;margin-top: 8px;">沪教版7年级下学期物理第7章详解</p><p style="font-size: 11px;margin-top: -17px;">讲师：王大锤&nbsp;&nbsp; &nbsp;开课时间：上午10点</p></div>
+                        </div>
+                        </a>
+                    </div>
+
+                    <div class="am-g am-intro-bd" style="margin-top: -10px">
+                        <a href="{:U('Course/course_detail')}">
+                        <div class="xq" style="background:#eff6ff;height: 60px">
+                            <div class="am-intro-left am-u-sm-2" style="width:40px;height: 40px;margin: 8px 0 0 -6px;">
+                                <img style="width: 40px;height: 40px;" src="__TMPL__Public/images/math.png" alt="">
+                            </div>
+                            <div class="am-intro-right am-u-sm-10"><p style="font-size: 13px;margin-top: 8px;">沪教版5年级下学期物理第7章详解</p><p style="font-size: 11px;margin-top: -17px;">讲师：王大锤&nbsp;&nbsp; &nbsp;开课时间：下午1点</p></div>
+                        </div>
+                        </a>
+                    </div>
+
+
+                    <div data-tab-panel-0 class="am-cf am-intro-default am-tab-panel am-active"
+                         style="margin-top: 20px;padding: 5px 5px 5px;">
+                        <div class="am-intro-hd">
+                            <strong style="border-right: none;">周六</strong>
+                            <span>6月10日</span>
+                        </div>
+
+                        <div class="am-g am-intro-bd">
+                            <a href="{:U('Course/course_detail')}">
+                            <div class="xq" style="background:#eff6ff;height: 60px">
+                                <div class="am-intro-left am-u-sm-2" style="width:40px;height: 40px;margin: 8px 0 0 -6px;">
+                                    <img style="width: 40px;height: 40px;" src="__TMPL__Public/images/math.png" alt="">
+                                </div>
+                                <div class="am-intro-right am-u-sm-10"><p style="font-size: 13px;margin-top: 8px;">沪教版7年级下学期物理第7章详解</p><p style="font-size: 11px;margin-top: -17px;">讲师：王大锤&nbsp;&nbsp; &nbsp;开课时间：上午10点</p></div>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+        <!------------------------------课程意向------------------------------------->
+        <div data-tab-panel-1 class="am-tab-panel " style="background: #f4f5f7;padding: 0;">
+            <section>
+                <form class="am-form am-form-horizontal">
+                    <div class="am-form-group">
+                        <div class="am-u-sm-13" style="padding: 0;">
+                            <label>科目</label>
+                            <input type="text" class="am-radius" placeholder="语文" style="text-align: right;  padding-right: 27px;">
+                            <span class="am-list-date fa fa-chevron-right" aria-hidden="true" style="top: 1.7rem;color: #babeb6;"></span>
+                        </div>
+                    </div>
+
+                    <div class="am-form-group" style="margin-top: -16px;">
+                        <div class="am-u-sm-13" style="padding: 0;">
+                            <label>教材</label>
+                            <input type="text"  class="am-radius" placeholder="浙教版" style="padding-right: 27px;">
+                            <span class="am-list-date fa fa-chevron-right" aria-hidden="true" style="top: 1.7rem;color: #babeb6"></span>
+                        </div>
+                    </div>
+
+                    <div class="am-form-group" style="margin-top: -16px;">
+                        <div class="am-u-sm-13" style="padding: 0;">
+                            <label>学段</label>
+                            <input type="text"  class="am-radius" placeholder="七年级下学期" style="padding-right: 27px;">
+                            <span class="am-list-date fa fa-chevron-right" aria-hidden="true" style="top: 1.7rem;color: #babeb6"></span>
+                        </div>
+                    </div>
+
+                    <div class="am-form-group" style="margin-top: -16px;">
+                        <div class="am-u-sm-13" style="padding: 0;">
+                            <label>章节</label>
+                            <input type="text"  class="am-radius" placeholder="第2章 对环境的感觉" style="padding-right: 27px;">
+                            <span class="am-list-date fa fa-chevron-right" aria-hidden="true" style="top: 1.7rem;color: #babeb6"></span>
+
+                        </div>
+                    </div>
+
+                    <div class="am-form-group" style="margin-top: -16px;">
+                        <div class="am-u-sm-13" style="padding: 0;">
+                            <label>二级章节</label>
+                            <input type="text"  class="am-radius" placeholder="全部" style="padding-right: 27px;">
+                            <span class="am-list-date fa fa-chevron-right" aria-hidden="true" style="top: 1.7rem;color: #babeb6"></span>
+
+                        </div>
+                    </div>
+
+                    <div class="am-form-group" style="margin-top: -16px;">
+                        <div class="am-u-sm-13" style="padding: 0;">
+                            <label>题型</label>
+                            <input type="text"  class="am-radius" placeholder="全部" style="padding-right: 27px;">
+                            <span class="am-list-date fa fa-chevron-right" aria-hidden="true" style="top: 1.7rem;color: #babeb6"></span>
+
+                        </div>
+                    </div>
+
+                    <div class="am-form-group" style="margin-top: -16px;">
+                        <div class="am-u-sm-13" style="padding: 0;">
+                            <label>难度</label>
+                            <input type="text"  class="am-radius" placeholder="中档题" style="padding-right: 27px;">
+                            <span class="am-list-date fa fa-chevron-right" aria-hidden="true" style="top: 1.7rem;color: #babeb6"></span>
+
+                        </div>
+                    </div>
+
+                    <div class="am-form-group" style="margin-top: -16px;">
+                        <div class="am-u-sm-13" style="padding: 0;">
+                            <label>题级</label>
+                            <input type="text"  class="am-radius" placeholder="全部" style="padding-right: 27px;">
+                            <span class="am-list-date fa fa-chevron-right" aria-hidden="true" style="top: 1.7rem;color: #babeb6"></span>
+
+                        </div>
+                    </div>
+
+                    <div class="am-form-group" style="margin-top: -16px;">
+                        <div class="am-u-sm-13" style="padding: 0;">
+                            <label>希望上课的时间</label>
+                            <input type="text"  class="am-radius" placeholder="2017-06-07 上午" style="padding-right: 27px;">
+                            <span class="am-list-date fa fa-chevron-right" aria-hidden="true" style="top: 1.7rem;color: #babeb6"></span>
+
+                        </div>
+                    </div>
+
+                    <div class="am-form-group" style="margin-top: -16px;">
+                        <div class="am-u-sm-13" style="padding: 0;">
+                            <label>老师</label>
+                            <input type="text"  class="am-radius" placeholder="无需求" style="padding-right: 27px;">
+                            <span class="am-list-date fa fa-chevron-right" aria-hidden="true" style="top: 1.7rem;color: #babeb6"></span>
+
+                        </div>
+                    </div>
+
+                    <div class="am-form-group" style="margin-top: -16px;">
+                        <div class="am-u-sm-13" style="padding: 0;">
+                            <label>班级类型</label>
+                            <input type="text"  class="am-radius" placeholder="小班" style="padding-right: 27px;">
+                            <span class="am-list-date fa fa-chevron-right" aria-hidden="true" style="top: 1.7rem;color: #babeb6"></span>
+
+                        </div>
+                    </div>
+
+                    <div class="am-form-group" style="margin-top: -16px;">
+                        <div class="am-u-sm-13" style="padding: 0;">
+                            <label>意向学生</label>
+                            <input type="text"  class="am-radius" placeholder="王大锤">
+                            <span class="am-list-date fa fa-chevron-right" aria-hidden="true" style="top: 1.7rem;color: #babeb6"></span>
+
+                        </div>
+                    </div>
+
+                    <div class="am-form-group">
+                        <div class="am-u-sm-13"style="text-align: center">
+                            <p style="color: #a5a8a0;font-size: 12px;letter-spacing: 1px"><a href="{:U('Course/write_application')}" style="color: blue">还可以直接填写意向</a></p>
+                        </div>
+                    </div>
+
+
+                    <div class="am-form-group">
+                        <div class="am-u-sm-13" style="padding: 0;">
+                            <button type="submit" class="am-btn am-btn-block" style="background: #2adcaa;color: white;height: 50px;margin-top: -27px;border-radius:3px">提交意向</button>
+                        </div>
+                    </div>
+
+                </form>
+            </section>
+        </div>
+    </div>
+    <!------------------------------------------------------------------------------>
+
+
+</div>
+<footer>
+    <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default "
+         id="">
+        <ul class="am-navbar-nav am-cf am-avg-sm-4" style="background: #fbfbfb;">
+            <li >
+                <a href="{:U('Course/course')}">
+                    <img class="show" src="__TMPL__Public/images/course1.png" alt="课程"/>
+                    <img style="display: none" class="hide" src="__TMPL__Public/images/coursed.png" alt="课程"/>
+                    <span class="am-navbar-label">课程</span>
+                </a>
+            </li>
+            <li >
+                <a href="{:U('Mine/server')}">
+                    <img class="show1" src="__TMPL__Public/images/server.png" alt="服务"/>
+                    <img  style="display: none" class="hide1" src="__TMPL__Public/images/servered.png" alt="服务"/>
+                    <span class="am-navbar-label txt1">服务</span>
+                </a >
+            </li>
+            <li >
+                <a href="{:U('Mine/my')}">
+                    <img class="show2" src="__TMPL__Public/images/my.png" alt="我的"/>
+                    <img  style="display: none" class="hide2" src="__TMPL__Public/images/myd.png" alt="我的"/>
+                    <span class="am-navbar-label txt2">我的</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</footer>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__TMPL__Public/js/weixin/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<!--<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>-->
+<![endif]-->
+<script src="__TMPL__Public/js/weixin/amazeui.min.js"></script>
+<script src="__TMPL__Public/js/weixin/course.js"></script>
+</body>
+</html>

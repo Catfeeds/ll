@@ -1,0 +1,39 @@
+<!doctype html>
+<html class="no-js">
+<head>
+     <tc_include file="Public:header" />
+    <title>充值</title>
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/integration.css">
+	<link rel="stylesheet" href="__TMPL__Public/css/weixin/public.css">
+	<script src="__TMPL__Public/js/weixin/jquery.min.js"></script>	
+</head>
+<body style="background: #f4f5f7;">
+<div data-am-widget="list_news" class="am-list-news am-list-news-default" >
+<div class="am-tabs" data-am-tabs="{noSwipe: 1}" id="doc-tab-demo-1">
+    <ul style="padding-left: 13px;" class="am-tabs-nav am-nav am-nav-tabs am-avg-sm-3 am-avg-md-3 am-avg-lg-3 am-thumbnails">
+        <foreach name="ioc" item="i">
+	        <li class="chongzhi_li">
+	        	<a  class="chongzhi_a" href="javascript: void(0)" style="background: white">
+		            <span style="color: #4a76fb">{$i.integral}积分</span><input type="hidden" class="goods" value="{$i.integral}"/><br>
+		            <span style="color: black">售价{$i.amount}元<input type="hidden" class="price" value="{$i.amount}"/></span>
+		        </a>
+	        </li>
+        </foreach>
+    </ul>
+</div>
+</div>
+<form class="am-form am-form-horizontal">
+    <div class="am-form-group">
+        <div class="am-u-sm-13">
+            <input type="button" id="regist_go" value="微信支付" class="am-btn am-btn-block" style="text-align:center;background: #2adcaa;color: white;height: 50px;margin-top: 0px;border-radius:3px">
+        </div>
+    </div>
+</form>
+<input type="hidden" id="pw" value='{:U("Mine/pywy")}'>
+<input type="hidden" id="moban" value="__TMPL__">
+<tc_include file="Public:float"/>
+<script src="__TMPL__Public/js/weixin/public.js"></script>
+
+<script src="__TMPL__Public/js/weixin/recharge.js"></script>
+</body>
+</html>

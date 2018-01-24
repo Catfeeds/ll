@@ -1,0 +1,81 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Textbook/textbooklist')}">教科书列表</a></li>
+			<li><a href="{:U('Textbook/addtextbook')}">新增教科书</a></li>
+		</ul>
+		<form class="well form-search" method="get" action="{:U('Textbook/textbooklist')}" id="form_submit">
+		    <div class="search_type cc mb10">
+		      <div class="mb10"> 
+		        <span class="mr20">
+		        <input type="hidden" name="g" value="Classtypes">
+		        <input type="hidden" name="m" value="Textbook">
+		        <input type="hidden" name="a" value="textbooklist">
+		     
+		        
+			        <div class="row" style="margin-top: 20px;">
+				        <div class="span1">
+				        	科目:
+				        </div>
+				        <div class="span2">
+				        	<input type="text" name="subject" style="width: 100px;" value="{$subject}" placeholder="科目"/>
+				        </div>
+				        <div class="span1">
+				        	出版社:
+				        </div>
+				        <div class="span2">
+				        	<input type="text" name="press" style="width: 100px;" value="{$press}" placeholder="出版社"/>
+				        </div>
+				        <div class="span1">
+							学段:
+						</div>
+						<div class="span2">
+							<input type="text" name="grade" style="width: 100px;" value="{$grade}" placeholder="学段"/>	
+						</div>
+					</div>
+				</span>
+			   </div>
+			   <div class="mb10">
+			   	<span class="mr20">
+			   		<button class="btn btn-primary">搜索</button>
+			   	</span>
+			   </div>
+		        
+		        
+		      
+		    </div>
+		  </form>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th width="50">ID</th>
+					<th>科目</th>
+					<th>出版社</th>
+					<th>学段</th>
+					<th>更新时间</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<foreach name="list" item="v">
+					<tr>
+						<td>{$v.id}</td>
+						<td>{$v.subject}</td>
+						<td>{$v.press}</td>
+						<td>{$v.grade}</td>
+						<td>{$v.updatetime}</td>
+						<td>
+							<a href="{:U('Textbook/edittextbook',array('editid'=>$v[id]))}">{:L('EDIT')}</a>|
+							<a class="js-ajax-delete" href="{:U('Textbook/deletetextbook',array('id'=>$v[id]))}">{:L('DELETE')}</a>
+						</td>
+					</tr>
+				</foreach>
+			</tbody>
+		</table>
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

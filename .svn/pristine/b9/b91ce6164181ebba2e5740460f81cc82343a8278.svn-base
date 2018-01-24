@@ -1,0 +1,39 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Appversion/index')}">{:L('ADMIN_FEED_INDEX')}</a></li>
+			<li><a href="{:U('Appversion/add')}">{:L('ADMIN_FEED_ADD')}</a></li>
+		</ul>
+		<table class="table table-hover table-bordered" >
+			<thead>
+				<tr>
+					<th width="50">ID</th>
+					<th>{:L('VERSION')}</th>
+					<th>{:L('URL')}</th>
+					<th>{:L('CONTENT')}</th>
+					<th>{:L('FORCE')}</th>
+					<th>{:L('CTIME')}</th>
+					<th width="120">{:L('ACTIONS')}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<foreach name="list" item="list">
+					<tr>
+						<td>{$list.id}</td>
+						<td>{$list.version}</td>
+						<td>{$list.url}</td>
+						<td>{$list.content}</td>
+						<td><if condition="$list[force] eq 0">否<else/>是</if></td>
+						<td>{$list.createtime}</td>
+						<td><a href="{:U('Appversion/delete',array('id'=>$list[id]))}" class="js-ajax-delete">{:L('DELETE')}</a></td>
+					</tr>
+				</foreach>
+			</tbody>
+		</table>
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

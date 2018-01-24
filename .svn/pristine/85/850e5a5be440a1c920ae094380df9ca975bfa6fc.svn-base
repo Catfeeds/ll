@@ -1,0 +1,175 @@
+<!doctype html>
+<html class="no-js">
+<head>
+     <tc_include file="Public:header" />
+    <title>管家服务</title>
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/course.css">
+    <style>
+	.am-with-fixed-navbar{
+	padding-bottom:0;
+}
+body{
+padding-top:0;
+}
+@media (max-width: 767px){
+	body {
+    padding-right: 0;
+    padding-left: 0;
+}
+}
+		@media all and (orientation: landscape) { 
+		#lf{
+			left:-80px;
+		}
+	}
+        .am-list .am-list-item-desced a, .am-list .am-list-item-thumbed a{
+            color: #000;
+        }
+    </style>
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body>
+<!--切换-->
+<div class="qiehuang">
+    <div data-am-widget="tabs" class="am-tabs am-tabs-default" style="margin: 0;margin-top:11px">
+        <ul class="am-tabs-nav am-cf" style="position: fixed; top: 5px; left: calc(50% - 90px); z-index: 999">
+            <li id="fw" class="am-active" style="border: 1px solid;background: white; border-radius: 5px 0 0 5px"><a href="[data-tab-panel-0]">服务</a></li>
+            <li id="zx" class="" style="border: 1px solid;background: white;border-left: none; border-radius: 0 0px 0px 0;"><a href="[data-tab-panel-1]">资讯</a></li>
+            <li id="ms" class="" style="border: 1px solid;background: white;border-left: none; border-radius: 0 5px 5px 0;"><a href="[data-tab-panel-2]">名师</a></li>
+        </ul>
+    <!-----------------------服务------------------------------------------------------->
+    <div class="am-tabs-bd" style="border: none; margin-top: 40px;">
+        <div data-tab-panel-0 class="am-tab-panel am-active" style="padding: 0;">
+            <div data-am-widget="list_news" class="am-list-news am-list-news-default am-list-news-bd">
+                <ul class="am-list" id="service_list">
+                    <!--缩略图在标题左边-->
+                    <volist name="list" id="vo">
+                        <li style="padding-left: 5px;margin-bottom: 11px; border: none;" class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+                            <div class="am-u-sm-3 am-list-thumb" style="padding-left: 4px;padding-top: 8px;">
+                                <a href="{:U('Mine/server_art',['id'=>$vo['id'],'type'=>'s'])}">
+									<div style="width: 72px;height: 72px;margin-left: -2px;margin-top:-6px; background: url({$imgurl}{$vo.icon}) no-repeat center;background-size:cover;"></div>
+                                  
+                                </a>
+                            </div>
+                            <div id="lf" class=" am-u-sm-9 am-list-main" style="padding-top: 2px;">
+                                <h6  class="am-list-item-hd"><a class="" style="font-size: 1.6rem;color:black;">
+								<a style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis; display:block;" style="color:black" href="{:U('Mine/server_art',['id'=>$vo['id'],'type'=>'s'])}">{$vo.title}</a></h6>
+                                <a href="{:U('Mine/server_art',['id'=>$vo['id'],'type'=>'s'])}">
+                                    <div class="am-list-item-text" style="font-size: 1.4rem">
+                                        {$vo.content}
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    </volist>
+                </ul>
+                <if condition="$typea eq 1"><p style="text-align:center;color: #0e90d2;" class="select_f" name="1" id="service">点击加载更多</p></if>
+            </div>
+        </div>
+        <div id="box" data-tab-panel-1 class="am-tab-panel am-active" style="padding: 0;">
+            <div data-am-widget="list_news" class="am-list-news am-list-news-default am-list-news-bd">
+                <ul class="am-list" id="information_list">
+                    <!--缩略图在标题左边-->
+                    <volist name="ilist" id="vo">
+                        <li style="padding-left: 5px;margin-bottom: 11px; border: none;" class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+                            <div class="am-u-sm-3 am-list-thumb" style="padding-left: 4px;padding-top: 8px">
+                                <a  href="{:U('Mine/server_art',['id'=>$vo['id'],'type'=>'i'])}">
+                                   	<div style="width: 72px;height: 72px;margin-left: -2px;background: url({$imgurl}{$vo.icon}) no-repeat center;background-size:cover;"></div>
+                                </a>
+                            </div>
+                            <div id="lf" class=" am-u-sm-9 am-list-main" style="padding-top: 2px;">
+                                <h6  class="am-list-item-hd">
+								<a class="" style="font-size: 1.6rem;color:black;">
+								<a style="color:black;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; display:block;" href="{:U('Mine/server_art',['id'=>$vo['id'],'type'=>'i'])}">{$vo.title}</a></h6>
+                                <a  href="{:U('Mine/server_art',['id'=>$vo['id'],'type'=>'i'])}">
+                                    <div class="am-list-item-text" style="font-size: 1.4rem">
+                                        {$vo.content}
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    </volist>
+                </ul>
+                <if condition="$typeb eq 1"><p style="text-align:center;color: #0e90d2;" class="select_f" name="1" id="information">点击加载更多</p></if>
+            </div>
+        </div>
+        <div id="box" data-tab-panel-2 class="am-tab-panel am-active" style="padding: 0;">
+            <div data-am-widget="list_news" class="am-list-news am-list-news-default am-list-news-bd">
+                <ul class="am-list" id="information_list">
+                    <!--缩略图在标题左边-->
+                    <volist name="tlist" id="vt">
+                        <li style="padding-left: 5px;margin-bottom: 11px; border: none;" class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+                            <div class="am-u-sm-3 am-list-thumb" style="padding-left: 4px;padding-top: 8px">
+                                <a  href="{:U('Course/teacher_information',['id'=>$vt['id'],'type'=>'t'])}">
+                                   	<div style="width: 72px;height: 72px;margin-left: -2px;background: url({$imgurl}{$vt.avatar}) no-repeat center;background-size:cover;"></div>
+                                </a>
+                            </div>
+                            <div id="lf" class=" am-u-sm-9 am-list-main" style="padding-top: 2px;">
+                                <h6  class="am-list-item-hd">
+								<a class="" style="font-size: 1.6rem;color:black;">
+								<a style="color:black;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; display:block;" href="{:U('Course/teacher_information',['id'=>$vt['id'],'type'=>'t'])}">{$vt.name}</a></h6>
+                                <a  href="{:U('Course/teacher_information',['id'=>$vt['id'],'type'=>'t'])}">
+                                    <div class="am-list-item-text" style="font-size: 1.4rem">
+                                        {$vt.experience}
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    </volist>
+                </ul>
+                <if condition="$typec eq 1"><p style="text-align:center;color: #0e90d2;" class="select_f" name="1" id="information">点击加载更多</p></if>
+            </div>
+        </div>
+</div>
+</div>
+</div>
+<tc_include file="Public:footer"/>
+<!-- 顶部背景色 -->
+<div style="width: 100%;background: #f4f5f7;position: fixed;top: 0;height: 50px;z-index: 200;">
+</div>
+
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<!--<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>-->
+<![endif]-->
+
+<script src="__TMPL__Public/js/weixin/server.js"></script>
+<script>
+$("#box").css("display","none");
+
+$("#zx").click(function(){
+	$("#box").css("display","block");
+})
+
+
+
+//加载更多服务
+$(".select_f").click(function(){
+	var num=$(this).attr("name");
+	var table=$(this).attr("id");
+	var id = $(this).attr('id');
+	$.post('{:U("Mine/select_f")}',
+            { num : num , table : table , id : id},
+            function(data){
+            	console.log(data);
+            	if(data[1]!=""){
+            		$("#"+table).attr("name",data[1]);
+            	}else{
+            		$("#"+table).css("display","none");
+            	}
+            	$("#"+table+"_list").append(data[0]);
+            });
+})
+$('#fw').click(function(){
+    $('body').scrollTop(0);
+})
+$('#zx').click(function(){
+    $('body').scrollTop(0);
+})
+</script>
+</body>
+</html>

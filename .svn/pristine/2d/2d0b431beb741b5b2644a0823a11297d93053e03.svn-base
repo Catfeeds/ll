@@ -1,0 +1,56 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>修改密码</title>
+    <link rel="stylesheet" href="../Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="../Public/css/weixin/bdTel.css">
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body>
+<!--头部导航-->
+<!--表单-->
+<section>
+    <form class="am-form am-form-horizontal">
+        <div class="am-form-group">
+            <div class="am-u-sm-13">
+                <label>旧密码</label>
+                <input type="text"  class="am-radius" placeholder="输入旧密码">
+            </div>
+        </div>
+
+        <div class="am-form-group" style="margin-top: -16px">
+            <div class="am-u-sm-13">
+                <label>新密码</label>
+                <input type="text" class="am-radius" placeholder="请输入至少6位字母或数字">
+            </div>
+        </div>
+
+        <div class="am-form-group" style="margin-top: -16px">
+            <div class="am-u-sm-13">
+                <label>重复密码</label>
+                <input type="text" class="am-radius" placeholder="请重复输入一次新的密码">
+            </div>
+        </div>
+        <div class="am-form-group" style="margin-top: -7px">
+            <div class="am-u-sm-13">
+                <button type="submit" class="am-btn am-btn-block" style="background: #2adcaa;height: 50px;color: white;margin-top: 10px;border-radius:3px">提交</button>
+            </div>
+        </div>
+
+    </form>
+</section>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="../Public/js/weixin/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<!--<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>-->
+<![endif]-->
+<script src="../Public/js/weixin/amazeui.min.js"></script>
+</body>
+</html>

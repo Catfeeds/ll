@@ -1,0 +1,212 @@
+[ 2017-07-02T11:41:42+08:00 ] ::1 /ll/index.php?g=Order&m=Order&a=orderlist&order_id=&ctitle=&state=&chname=%E2%80%98ss%27%22&uphone=&screatetime=&ecreatetime=
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '"%'  ) LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM lailong_enrollment as e left JOIN lailong_course as c on c.id = e.course_id left JOIN lailong_child as ch on ch.id =e.child_id left JOIN lailong_user as u on u.id = e.user_id  WHERE ( 1=1 and ch.name like '%‘ss'"%'  ) LIMIT 1  
+
+[ 2017-07-02T11:58:34+08:00 ] ::1 /ll/index.php?g=Order&m=order&a=changestate
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.037363s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.095954s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.138488s ]
+
+[ 2017-07-02T11:59:18+08:00 ] ::1 /ll/index.php?g=Order&m=order&a=changestate
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.021172s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.049464s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.074181s ]
+NOTIC: [8] Undefined index: desc D:\tools\upupw\htdocs\ll\application\Order\Controller\OrderController.class.php 第 144 行.
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0151s ]
+SQL: UPDATE `lailong_enrollment` SET `state`='1' WHERE ( id= 12 ) [ RunTime:0.0004s ]
+
+[ 2017-07-02T12:00:44+08:00 ] ::1 /ll/index.php?g=Order&m=order&a=changestate
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.028333s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.060579s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.094245s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0225s ]
+SQL: UPDATE `lailong_enrollment` SET `note`='|订单取消中，取消理由为：' WHERE ( id= 12 ) [ RunTime:0.0009s ]
+SQL: SELECT * FROM `lailong_enrollment` WHERE (  id ='12' ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `lailong_course` [ RunTime:0.0138s ]
+SQL: SELECT `title` FROM `lailong_course` WHERE ( id = '3'  ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: xx D:\tools\upupw\htdocs\ll\application\Order\Controller\OrderController.class.php 第 164 行.
+SQL: SHOW COLUMNS FROM `lailong_integral` [ RunTime:0.0096s ]
+SQL: INSERT INTO `lailong_integral` (`user_id`,`obtain_type`,`is_obtain`,`integral`,`createtime`,`content`) VALUES ('1','5','1','0','2017-07-02 12:00:44','取消报名\'\',退还积分') [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `lailong_user` WHERE (  id =1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: UPDATE `lailong_user` SET `integral`='1213' WHERE `id` = 1 [ RunTime:0.0003s ]
+SQL: UPDATE `lailong_enrollment` SET `state`='4' WHERE ( id= 12 ) [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment_state` [ RunTime:0.0084s ]
+SQL: INSERT INTO `lailong_enrollment_state` (`enrollment_id`,`state`,`state_text`,`createtime`) VALUES ('12','4','订单已取消','2017-07-02 12:00:44') [ RunTime:0.0005s ]
+
+[ 2017-07-02T12:01:29+08:00 ] ::1 /ll/index.php?g=Order&m=order&a=changestate
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.024925s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.069554s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.099002s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0137s ]
+SQL: UPDATE `lailong_enrollment` SET `note`='12|订单取消中，取消理由为：12' WHERE ( id= 1 ) [ RunTime:0.0004s ]
+SQL: SELECT * FROM `lailong_enrollment` WHERE (  id ='1' ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `lailong_course` [ RunTime:0.0072s ]
+SQL: SELECT `title` FROM `lailong_course` WHERE ( id = '3'  ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: xx D:\tools\upupw\htdocs\ll\application\Order\Controller\OrderController.class.php 第 164 行.
+SQL: SHOW COLUMNS FROM `lailong_integral` [ RunTime:0.0074s ]
+SQL: INSERT INTO `lailong_integral` (`user_id`,`obtain_type`,`is_obtain`,`integral`,`createtime`,`content`) VALUES ('1','5','1','1000','2017-07-02 12:01:29','取消报名\'\',退还积分') [ RunTime:0.0004s ]
+
+[ 2017-07-02T12:04:11+08:00 ] ::1 /ll/index.php?g=Order&m=order&a=changestate
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.026396s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.068115s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.099393s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0168s ]
+SQL: UPDATE `lailong_enrollment` SET `note`='12|订单取消中，取消理由为：12' WHERE ( id= 1 ) [ RunTime:0.0004s ]
+SQL: SELECT * FROM `lailong_enrollment` WHERE (  id ='1' ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `lailong_course` [ RunTime:0.0112s ]
+SQL: SELECT `title` FROM `lailong_course` WHERE ( id = '3'  ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `lailong_integral` [ RunTime:0.0121s ]
+SQL: INSERT INTO `lailong_integral` (`user_id`,`obtain_type`,`is_obtain`,`integral`,`createtime`,`content`) VALUES ('1','5','1','1000','2017-07-02 12:04:11','取消报名\'1111\',退还积分') [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0106s ]
+SQL: SELECT * FROM `lailong_user` WHERE (  id =1 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: UPDATE `lailong_user` SET `integral`='2213' WHERE `id` = 1 [ RunTime:0.0007s ]
+
+[ 2017-07-02T12:05:38+08:00 ] ::1 /ll/index.php?g=Order&m=order&a=changestate
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.038458s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.177926s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.223129s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0232s ]
+SQL: UPDATE `lailong_enrollment` SET `note`='12|订单取消中，取消理由为：12' WHERE ( id= 1 ) [ RunTime:0.0005s ]
+SQL: SELECT * FROM `lailong_enrollment` WHERE (  id ='1' ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `lailong_course` [ RunTime:0.0156s ]
+SQL: SELECT `title` FROM `lailong_course` WHERE ( id = '3'  ) LIMIT 1   [ RunTime:0.0145s ]
+SQL: SHOW COLUMNS FROM `lailong_integral` [ RunTime:0.0164s ]
+SQL: INSERT INTO `lailong_integral` (`user_id`,`obtain_type`,`is_obtain`,`integral`,`createtime`,`content`) VALUES ('1','5','1','1000','2017-07-02 12:05:38','取消报名\'1111\',退还积分') [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0124s ]
+SQL: SELECT * FROM `lailong_user` WHERE (  id = '1' ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: UPDATE `lailong_user` SET `integral`='3213' WHERE `id` = 1 [ RunTime:0.0005s ]
+SQL: UPDATE `lailong_enrollment` SET `state`='4' WHERE ( id= 1 ) [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment_state` [ RunTime:0.0123s ]
+SQL: INSERT INTO `lailong_enrollment_state` (`enrollment_id`,`state`,`state_text`,`createtime`) VALUES ('1','4','订单已取消','2017-07-02 12:05:38') [ RunTime:0.0007s ]
+
+[ 2017-07-02T12:06:40+08:00 ] ::1 /ll/index.php?g=Order&m=order&a=changestate
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.018584s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.048856s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.070768s ]
+NOTIC: [8] Undefined index: desc D:\tools\upupw\htdocs\ll\application\Order\Controller\OrderController.class.php 第 144 行.
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0236s ]
+SQL: UPDATE `lailong_enrollment` SET `note`='12|订单取消中，取消理由为：' WHERE ( id= 1 ) [ RunTime:0.0005s ]
+SQL: SELECT * FROM `lailong_enrollment` WHERE (  id ='1' ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `lailong_course` [ RunTime:0.0079s ]
+SQL: SELECT `title` FROM `lailong_course` WHERE ( id = '3'  ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `lailong_integral` [ RunTime:0.0086s ]
+SQL: INSERT INTO `lailong_integral` (`user_id`,`obtain_type`,`is_obtain`,`integral`,`createtime`,`content`) VALUES ('1','5','1','1000','2017-07-02 12:06:40','取消报名\'1111\',退还积分') [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0083s ]
+SQL: SELECT * FROM `lailong_user` WHERE (  id = '1' ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: UPDATE `lailong_user` SET `integral`='4213' WHERE `id` = 1 [ RunTime:0.0003s ]
+
+[ 2017-07-02T12:13:24+08:00 ] ::1 /ll/index.php?g=Order&m=order&a=changestate
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.026115s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.069212s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.101059s ]
+NOTIC: [8] Undefined index: desc D:\tools\upupw\htdocs\ll\application\Order\Controller\OrderController.class.php 第 144 行.
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0172s ]
+SQL: UPDATE `lailong_enrollment` SET `note`='12|订单取消中，取消理由为：' WHERE ( id= 1 ) [ RunTime:0.0005s ]
+SQL: SELECT * FROM `lailong_enrollment` WHERE ( id= 1 ) LIMIT 1   [ RunTime:0.0005s ]
+
+[ 2017-07-02T12:13:38+08:00 ] ::1 /ll/index.php?g=Order&m=order&a=changestate
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.034677s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.093768s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.134629s ]
+NOTIC: [8] Undefined index: desc D:\tools\upupw\htdocs\ll\application\Order\Controller\OrderController.class.php 第 144 行.
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0202s ]
+SQL: UPDATE `lailong_enrollment` SET `note`='12|订单取消中，取消理由为：' WHERE ( id= 1 ) [ RunTime:0.0004s ]
+SQL: SELECT * FROM `lailong_enrollment` WHERE ( id= 1 ) LIMIT 1   [ RunTime:0.0005s ]
+
+[ 2017-07-02T12:14:40+08:00 ] ::1 /ll/index.php?g=Order&m=order&a=changestate
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015983s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.043053s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.064180s ]
+NOTIC: [8] Undefined index: desc D:\tools\upupw\htdocs\ll\application\Order\Controller\OrderController.class.php 第 144 行.
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0158s ]
+SQL: UPDATE `lailong_enrollment` SET `note`='12|订单取消中，取消理由为：' WHERE ( id= 1 ) [ RunTime:0.0003s ]
+SQL: SELECT * FROM `lailong_enrollment` WHERE ( id= 1 ) LIMIT 1   [ RunTime:0.0004s ]
+
+[ 2017-07-02T12:15:56+08:00 ] ::1 /ll/index.php?g=Order&m=order&a=changestate
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.025883s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.064714s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.097097s ]
+NOTIC: [8] Undefined index: desc D:\tools\upupw\htdocs\ll\application\Order\Controller\OrderController.class.php 第 144 行.
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0196s ]
+SQL: UPDATE `lailong_enrollment` SET `note`='12|订单取消中，取消理由为：' WHERE ( id= 1 ) [ RunTime:0.0004s ]
+SQL: SELECT * FROM `lailong_enrollment` WHERE ( id= 1 ) LIMIT 1   [ RunTime:0.0005s ]
+
+[ 2017-07-02T12:16:10+08:00 ] ::1 /ll/index.php?g=Order&m=order&a=changestate
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.029599s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.071193s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.105582s ]
+NOTIC: [8] Undefined index: desc D:\tools\upupw\htdocs\ll\application\Order\Controller\OrderController.class.php 第 144 行.
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0201s ]
+SQL: UPDATE `lailong_enrollment` SET `state`='3' WHERE ( id= 10 ) [ RunTime:0.0005s ]
+
+[ 2017-07-02T12:16:16+08:00 ] ::1 /ll/index.php?g=Order&m=order&a=changestate
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.028336s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.079081s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.112716s ]
+NOTIC: [8] Undefined index: desc D:\tools\upupw\htdocs\ll\application\Order\Controller\OrderController.class.php 第 144 行.
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0143s ]
+SQL: UPDATE `lailong_enrollment` SET `state`='3' WHERE ( id= 10 ) [ RunTime:0.0005s ]
+
+[ 2017-07-02T12:18:44+08:00 ] ::1 /ll/index.php?g=Order&m=order&a=changestate
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.018628s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.037955s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.059872s ]
+NOTIC: [8] Undefined index: desc D:\tools\upupw\htdocs\ll\application\Order\Controller\OrderController.class.php 第 144 行.
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0129s ]
+SQL: SELECT * FROM `lailong_enrollment` WHERE ( id= 10 ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2017-07-02T13:37:44+08:00 ] ::1 /ll/index.php?g=Order&m=order&a=changestate
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.027884s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.098197s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.130424s ]
+NOTIC: [8] Undefined index: desc D:\tools\upupw\htdocs\ll\application\Order\Controller\OrderController.class.php 第 144 行.
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0175s ]
+SQL: SELECT * FROM `lailong_enrollment` WHERE ( id= 116 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: UPDATE `lailong_enrollment` SET `state`='3' WHERE ( id= 116 ) [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment_state` [ RunTime:0.0111s ]
+SQL: INSERT INTO `lailong_enrollment_state` (`enrollment_id`,`state`,`state_text`,`createtime`) VALUES ('116','3','已完成','2017-07-02 13:37:44') [ RunTime:0.0005s ]
+
+[ 2017-07-02T13:55:09+08:00 ] ::1 /ll/index.php?g=Order&m=order&a=agreecancelornot
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.029168s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.075417s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.109836s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0236s ]
+SQL: UPDATE `lailong_enrollment` SET `cancel_state`='2',`state`='4' WHERE ( id = 114 ) [ RunTime:0.0007s ]
+SQL: SELECT `user_id`,`integral` FROM `lailong_enrollment` WHERE ( id = 114 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0153s ]
+SQL: SELECT `id`,`integral` FROM `lailong_user` WHERE (  id = '3'  ) LIMIT 1   [ RunTime:0.0063s ]
+SQL: SHOW COLUMNS FROM `lailong_course` [ RunTime:0.0404s ]
+NOTIC: [8] Undefined index: course_id D:\tools\upupw\htdocs\ll\application\Order\Controller\OrderController.class.php 第 212 行.
+SQL: SELECT `title` FROM `lailong_course` WHERE (  id = ''  ) LIMIT 1   [ RunTime:0.0013s ]
+SQL: UPDATE `lailong_user` SET `integral`='1010' WHERE `id` = 3 [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `lailong_integral` [ RunTime:0.0170s ]
+SQL: INSERT INTO `lailong_integral` (`user_id`,`obtain_type`,`is_obtain`,`integral`,`createtime`,`content`) VALUES ('3','5','1','50','2017-07-02 13:55:09','取消报名\'\',退还积分50') [ RunTime:0.0015s ]
+
+[ 2017-07-02T13:57:06+08:00 ] ::1 /ll/index.php?g=Order&m=order&a=change
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.028071s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.072232s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.107024s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0215s ]
+SQL: UPDATE `lailong_enrollment` SET `state`='3' WHERE `id` = 117 [ RunTime:0.0007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.032328s ]
+INFO: [ app_end ] --END-- [ RunTime:0.032464s ]
+

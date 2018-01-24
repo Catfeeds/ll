@@ -1,0 +1,26 @@
+[ 2017-06-23T16:44:15+08:00 ] ::1 /ll/index.php?g=Order&m=Order&a=orderlist&menuid=188
+ERR: 1054:Unknown column 'e.cancel_state' in 'field list'
+ [ SQL语句 ] : SELECT e.order_id,c.title as coursename,ch.name as childname,u.phone as username,e.createtime,e.state,e.id,e.cancel_state FROM lailong_enrollment as e left JOIN lailong_course as c on c.id = e.course_id left JOIN lailong_child as ch on ch.id =e.child_id left JOIN lailong_user as u on u.id = e.user_id  WHERE ( 1=1 ) ORDER BY e.createtime DESC LIMIT 0,10  
+
+[ 2017-06-23T17:27:42+08:00 ] ::1 /ll/index.php?g=Order&m=order&a=changestate
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.026835s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.056824s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.089954s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0205s ]
+SQL: UPDATE `lailong_enrollment` SET `note`='12|订单取消中，取消理由为：12' WHERE ( id= 1 ) [ RunTime:0.0008s ]
+SQL: UPDATE `lailong_enrollment` SET `state`='4' WHERE ( id= 1 ) [ RunTime:0.0006s ]
+
+[ 2017-06-23T17:28:06+08:00 ] ::1 /ll/index.php?g=Order&m=order&a=changestate
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.026165s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.073859s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.104758s ]
+NOTIC: [8] Undefined index: desc D:\tools\upupw\htdocs\ll\application\Order\Controller\OrderController.class.php 第 124 行.
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0152s ]
+SQL: UPDATE `lailong_enrollment` SET `state`='3' WHERE ( id= 1 ) [ RunTime:0.0008s ]
+
+[ 2017-06-23T17:54:19+08:00 ] ::1 /ll/index.php?g=Order&m=order&a=editorder&orderid=1
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `lailong_course` WHERE (  id =  ) LIMIT 1  
+

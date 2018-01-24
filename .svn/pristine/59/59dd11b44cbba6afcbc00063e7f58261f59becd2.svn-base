@@ -1,0 +1,66 @@
+<admintpl file="header" />
+</head>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/addcourse.css" />
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('order/orderlist')}">{:L('ADMIN_ENRO_INDEX')}</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" >
+			<input type="hidden" name="editid" value="{$list.id}"/>
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">{:L('ORDER_SN')}</label>
+					<div class="controls">
+						<input type="text" readonly value="{$list.order_id}">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('COURSE')}</label>
+					<div class="controls">
+						<input type="text" readonly value="{$list.coursename}">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('CHILD')}</label>
+					<div class="controls">
+						<input type="text" readonly value="<if condition='!empty($list[childname])'>{$list.childname}<else/>未选择学生</if>">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('PAYWAY')}</label>
+					<div class="controls">
+						<input type="text" readonly <if condition="$list[state] eq 0">value="未支付"<elseif condition="$list[state] eq 1"/>value="已支付待确认"<elseif condition="$list[state] eq 3"/>value="已完成"<elseif  condition="$list[state] eq 4"/>value="已取消"</if> >
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('CAOZUO')}</label>
+					<div class="controls">
+						<input type="text" readonly value="{$list.username}">
+					</div>
+				</div>
+				<if condition="$list[cancel_state] eq 1 || $list[cancel_state] eq 2">
+					<div class="control-group">
+						<label class="control-label">{:L('CANCELSTATE')}</label>
+						<div class="controls">
+							<if condition="$list[cancel_state] eq 1">订单取消申请中<elseif condition="$list[cancel_state] eq 2 && $list[state] neq 4"/>订单取消被拒绝</if>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">{:L('CANCELREASON')}</label>
+						<div class="controls">
+							<textarea name="desc"style="width:300px;height:100px;" disabled>{$list.note}</textarea>
+						</div>
+					</div>
+				</if>
+			</fieldset>
+			<div class="form-actions">
+				<a class="btn" href="{:U('order/orderlist')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+<script type="text/javascript">
+</script>
+</html>

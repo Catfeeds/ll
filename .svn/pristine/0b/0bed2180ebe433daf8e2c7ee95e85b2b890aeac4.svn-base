@@ -1,0 +1,6 @@
+<?php
+return  array(
+    'UPLOADPATH' => './data/upload/avatar/',
+);
+define ( "TONGZHI_MODEL", "WxMde2DGqeW8i6cMV8dtHBxbVpndrB8WKdtY5rU7LCA" );
+

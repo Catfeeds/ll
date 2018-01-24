@@ -1,0 +1,42 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('EncourageConfig/encourageconfiglist')}">积分奖励配置列表</a></li>
+			<li class="active"><a href="{:U('EncourageConfig/add')}">新增积分奖励配置列表</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('EncourageConfig/add_post')}">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">类型</label>
+					<div class="controls">
+						<select name="type">
+							<option value="0">认证成功</option>
+							<option value="1">推荐好友</option>
+							<option value="2">签到</option>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">积分数量</label>
+					<div class="controls">
+						<input type="number" name="integral">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">描述</label>
+					<div class="controls">
+						<textarea name="content"></textarea> 
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('ADD')}</button>
+				<a class="btn" href="{:U('EncourageConfig/encourageconfiglist')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

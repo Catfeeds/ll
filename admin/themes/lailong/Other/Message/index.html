@@ -1,0 +1,57 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('message/index')}">{:L('ADMIN_MESSAGE_INDEX')}</a></li>
+			<li><a href="{:U('message/add')}">{:L('ADMIN_MESSAGE_ADD')}</a></li>
+		</ul>
+		<form class="well form-search" method="post" action="{:U('message/index')}">
+			课程： <select name="course">
+					 <option></option>
+					 <foreach name="c" item="c">
+					 	 <option value="{$c.id}"<if condition="$_SESSION[course] eq $c[id]">selected</if>>{$c.title}</option>
+					 </foreach>
+				   </select>
+			用户：<select name="user_id">
+					 <option></option>
+					 <foreach name="u" item="u">
+					 	 <option value="{$u.id}" <if condition="$_SESSION[users_id] eq $u[id]">selected</if>>{$u.phone}</option>
+					 </foreach>
+				   </select>
+			<input type="hidden" name="leixing" value="1"/>
+			<input type="submit" class="btn btn-primary search" value="搜索"/>
+       		<input type="submit" class="btn btn-primary all" value="全部" name="type"/>
+		</form>
+			<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th width="5%">ID</th>
+						<th>{:L('COURSE')}</th>
+						<th>{:L('TITLE')}</th>
+						<th>{:L('TYPE')}</th>
+						<th>{:L('CTIME')}</th>
+						<th>{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="list" item="vo">
+						<tr>
+							<td>{$vo.id}</td>
+							<td>{$vo.coursename}</td>
+							<td>{$vo.title}</td>
+							<td><if condition="$vo[type] eq 0">安卓app<elseif condition="$vo[type] eq 1"/>微信<else/>安卓app 微信</if></td>
+							<td>{$vo.createtime}</td>
+							<td>
+								<a href="{:U('message/delete',array('id'=>$vo['id']))}" class="js-ajax-delete">{:L('DELETE')}</a>
+							</td>
+						</tr>
+					</foreach>
+				</tbody>
+			</table><br/>
+			<div class="pagination">{$page}</div>
+			<!-- <button class="btndelall btn-primary btn-small js-ajax-submit" type="button" data-subcheck="true" data-msg="你确定删除吗？">{:L('DELETE')}</button> -->
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

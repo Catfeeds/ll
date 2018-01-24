@@ -1,0 +1,46 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Order/orderlist')}">{:L('ADMIN_ENRO_INDEX')}</a></li>
+		</ul>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th width="50">ID</th>
+					<th>{:L('ORDER_SN')}</th>
+					<th>{:L('COURSE')}</th>
+					<th>{:L('CHILD')}</th>
+					<th>{:L('PAYWAY')}</th>
+					<th>{:L('CANCELSTATE')}</th>
+					<th>{:L('CAOZUO')}</th>
+					<th>{:L('CTIME')}</th>
+					<th width="120">{:L('ACTIONS')}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<foreach name="list" item="list">
+					<tr>
+						<td>{$list.id}</td>
+						<td>{$list.order_id}</td>
+						<td>{$list.coursename}</td>
+						<td>{$list.childname}</td>
+						<td>
+							<if condition="$list[state] eq 0">未支付<elseif condition="$list[state] eq 1"/>已支付待确认<elseif condition="$list[state] eq 3"/>已完成<elseif condition="$list[state] eq 4"/>已取消</if>
+						</td>
+						<td>
+							<if condition="$list[cancel_state] eq 1">订单申请取消<a href="{:U('order/ordercancel',array('orderid'=>$list[id]))}">(查看)</a><elseif condition="$list[cancel_state] eq 2 && $list[state] neq 4"/>订单取消被拒绝</if>
+						</td>
+						<td>{$list.username}</td>
+						<td>{$list.createtime}</td>
+						<td><a href="{:U('order/findorder',array('orderid'=>$list[id]))}">查看订单</a>|<a href="{:U('order/editorder',array('orderid'=>$list[id]))}">编辑订单</a></td>
+					</tr>
+				</foreach>
+			</tbody>
+		</table>
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

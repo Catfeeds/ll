@@ -1,0 +1,68 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Course/questiontypelist')}">题难度列表</a></li>
+			<li><a href="{:U('Course/addquestiontype')}">新增题难度</a></li>
+		</ul>
+		<form class="well form-search" method="get" action="{:U('Course/questiontypelist')}" id="form_submit">
+		    <div class="search_type cc mb10">
+		      <div class="mb10"> 
+		        <span class="mr20">
+		        <input type="hidden" name="g" value="Testbase">
+		        <input type="hidden" name="m" value="Course">
+		        <input type="hidden" name="a" value="questiontypelist">
+		     
+		        
+			        <div class="row" style="margin-top: 20px;">
+				        <div class="span1">
+				        	题型:
+				        </div>
+				        <div class="span2">
+				        	<input type="text" name="title" style="width: 100px;" value="{$title}" placeholder="题型"/>
+				        </div>
+				        <div class="span9">
+				        	&nbsp;
+						</div>
+					</div>
+				</span>
+			   </div>
+			   <div class="mb10">
+			   	<span class="mr20">
+			   		<button class="btn btn-primary">搜索</button>
+			   	</span>
+			   </div>
+		        
+		        
+		      
+		    </div>
+		  </form>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th width="50">ID</th>
+					<th>题型</th>
+					<th>创建时间</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<foreach name="list" item="v">
+					<tr>
+						<td>{$v.id}</td>
+						<td>{$v.title}</td>
+						<td>{$v.createtime}</td>
+						<td>
+							<a href="{:U('Course/editquestiontype',array('editid'=>$v[id]))}">{:L('EDIT')}</a>|
+							<a class="js-ajax-delete" href="{:U('Course/deletequestiontype',array('id'=>$v[id]))}">{:L('DELETE')}</a>
+						</td>
+					</tr>
+				</foreach>
+			</tbody>
+		</table>
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

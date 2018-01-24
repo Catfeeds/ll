@@ -1,0 +1,92 @@
+<?php
+
+namespace Classtypes\Controller;
+use Common\Controller\AdminbaseController;
+class SubjectController extends AdminbaseController {
+	function _initialize() {
+	}
+     public function subjectlist(){
+         $where= "1=1";
+         $title=$_REQUEST['title'];
+         if(!empty($title)){
+            $where.=" and title like '%".$title."%' ";
+            $parameter['title']=$title;
+            $this->assign('title',$title);
+         }
+         $model = M ("subject");
+         $count = $model->where($where)->count();
+         $page = $this->page($count, C('PAGENUM'));
+         $list = $model->where($where)->order("id DESC")->limit($page->firstRow . ',' . $page->listRows)->select();
+         $this->assign('list', $list);
+         if($parameter){
+            foreach ($parameter as $key => $value) {
+                $page->parameter .= "$key=".urlencode($value)."&";
+            }
+         } 
+         $this->assign("page", $page->show());
+         $this->display();
+     }
+     public function addsubject(){
+        $this->display();
+     }
+     public function add_post(){
+        if(empty($title)){
+            $this->error("科目不能为空");
+        }
+        $is_exist=M('subject')->where("title = '".$_POST[title]."'")->find();
+        if(empty($is_exist)){
+            if(IS_POST){
+                
+                $_POST['createtime']=date("Y-m-d H:i:s");
+                if (M("subject")->create()!==false){
+                    if (M("subject")->add()!==false) {
+                        $this->success(L('ADD_SUCCESS'), U("Subject/subjectlist"));
+                    } else {
+                        $this->error(L('ADD_FAILED'));
+                    }
+                } else {
+                    $this->error(M("subject")->getError());
+                }
+        
+            }
+        }else{
+                $this->error("科目已存在");
+            }
+        
+     }
+     public function editsubject(){
+        $res=M("subject")->where("id = $_REQUEST[editid]")->find();
+        $this->assign($res);
+        $this->display();
+     }
+     public function edit_post(){
+        if(empty($title)){
+            $this->error("科目不能为空");
+        }
+        $is_exist=M('subject')->where("title = '".$_POST[title]."' and id != '".$_POST[id]."' ")->find();
+        if(empty($is_exist)){
+            if(IS_POST){
+                
+                if (M("subject")->create()!==false){
+                    if (M("subject")->save()!==false) {
+                        $this->success(L('ADD_SUCCESS'), U("Subject/subjectlist"));
+                    } else {
+                        $this->error(L('ADD_FAILED'));
+                    }
+                } else {
+                    $this->error(M("subject")->getError());
+                }
+            }
+        }else{
+            $this->error("科目已存在");
+        }
+     }
+     public function deletesubject(){
+        $id = I("get.id",0,"intval");
+        if (M('subject')->delete($id)!==false) {
+            $this->success("删除成功！");
+        } else {
+            $this->error("删除失败！");
+        }
+    }
+}

@@ -1,0 +1,184 @@
+<?php
+
+namespace Testbase\Controller;
+use Common\Controller\AdminbaseController;
+class CourseController extends AdminbaseController {
+	function _initialize() {
+	}
+    /**
+     *排课列表
+     */
+    public function courselist() {
+       /*  $user_key_word = isset ( $_REQUEST ['user_key_word'] ) ? $_REQUEST ['user_key_word'] : ''; // 关键字
+        $phone_key_word = isset ( $_REQUEST ['phone_key_word'] ) ? $_REQUEST ['phone_key_word'] : ''; // 关键字 */
+        $where= "1=1";
+       /*  //判断是否表单处提交的数据，如果是就重置session值
+        if($_REQUEST['leixing']==1){
+            $_SESSION['user_key_word']=$user_key_word;
+            $_SESSION['phone_key_word']=$phone_key_word;
+        }
+        if($_SESSION['user_key_word'] != ''){
+            $where .= " and (a.user_login like '%$_SESSION[user_key_word]%')";
+        }
+        if($_SESSION['phone_key_word'] != ''){
+            $where .= " and (a.mobile like '%$_SESSION[phone_key_word]%')";
+        } */
+        $model = M ("course");
+        $count = $model->table(C('DB_PREFIX')."course as c")
+        ->join(C('DB_PREFIX')."teacher as t on t.id = c.teacher_id",'left')
+        ->join(C('DB_PREFIX')."h5 as h on h.id = c.h5_id",'left')
+        ->where($where)->count();
+        $page = $this->page($count, 10);
+        $list = $model->table(C('DB_PREFIX')."course as c")
+        ->field("c.id,c.title,c.picture,c.start_time,c.rated_number,c.integral,c.createtime,t.name as teacher,h.title as h5") 
+        ->join(C('DB_PREFIX')."teacher as t on t.id = c.teacher_id",'left')
+        ->join(C('DB_PREFIX')."h5 as h on h.id = c.h5_id",'left')->order("c.id DESC")->limit($page->firstRow . ',' . $page->listRows)->where($where)->select();
+        $this->assign('list', $list);
+        $this->assign("page", $page->show('Admin'));
+        $this->assign("formget",$_SESSION); 
+       	$this->display();
+    }
+    //添加课程
+     public function addcourse(){
+         $h5=M("H5")->select();
+         $teacher=M('teacher')->select();
+         $this->assign('h5',$h5);
+         $this->assign('teacher',$teacher);
+         $this->display();
+     }
+     public function add_post(){
+         $name=$_REQUEST['name'];
+         $picture=$_REQUEST['picture'];
+         $rated_number=$_REQUEST['rated_number'];
+         $integral=$_REQUEST['integral'];
+         $teacher_id=$_REQUEST['teacher_id'];
+         $h5_id=$_REQUEST['h5_id'];
+         $start_time=$_REQUEST['start_time'];
+         if(empty($name)){
+             $this->error("请填写名称");
+         }
+         if(empty($picture)){
+             $this->error("请选择图片");
+         }
+         if(empty($rated_number)){
+             $this->error("请填写额定人数");
+         }
+         if(empty($integral)){
+             $this->error("请填写兑换积分");
+         }
+         if($teacher_id == 0){
+             $this->error("请选择讲师");
+         }
+         if(empty($h5_id)){
+             $this->error("请选择H5页面");
+         }
+         if(empty($start_time)){
+            $this->error("请选择开课时间");
+         }
+         if(M('course')->where("title = '$name'")->find()){
+             $this->error("已有此课程");
+         }
+         $data=array('title'=>$name,'picture'=>$picture,'rated_number'=>$rated_number,'integral'=>$integral,'teacher_id'=>$teacher_id,'h5_id'=>$h5_id,'start_time'=>$start_time,'createtime'=>date('Y-m-d H:i:s',time()));
+        if(M('course')->add($data)){
+            $this->success("添加课程成功",U('course/courselist'));
+        }else{
+            $this->error("添加课程失败");
+        }
+     }
+     public function editcourse(){
+         $editid=$_REQUEST['editid'];
+         $res=M('course')->where("id = $editid")->find();
+         $h5=M("H5")->select();
+         $teacher=M('teacher')->select();
+         $this->assign('h5',$h5);
+         $this->assign('teacher',$teacher);
+         $this->assign('res',$res);
+         $this->display();
+     }
+     public function edit_post(){
+         $editid=$_REQUEST['editid'];
+         $name=$_REQUEST['name'];
+         $picture=$_REQUEST['picture'];
+         $rated_number=$_REQUEST['rated_number'];
+         $integral=$_REQUEST['integral'];
+         $teacher_id=$_REQUEST['teacher_id'];
+         $h5_id=$_REQUEST['h5_id'];
+         $start_time=$_REQUEST['start_time'];
+         if(empty($name)){
+             $this->error("请填写名称");
+         }
+         if(empty($picture)){
+             $this->error("请选择图片");
+         }
+         if(empty($rated_number)){
+             $this->error("请填写额定人数");
+         }
+         if(empty($integral)){
+             $this->error("请填写兑换积分");
+         }
+         if($teacher_id == 0){
+             $this->error("请选择讲师");
+         }
+         if(empty($h5_id)){
+             $this->error("请选择H5页面");
+         }
+         if(empty($start_time)){
+            $this->error("请选择开课时间");
+         }
+         $data=array('title'=>$name,'picture'=>$picture,'rated_number'=>$rated_number,'integral'=>$integral,'teacher_id'=>$teacher_id,'h5_id'=>$h5_id,'start_time'=>$start_time,'updatetime'=>date('Y-m-d H:i:s',time()));
+         if(M('course')->where("id = $editid")->save($data)){
+             $this->success("修改课程成功",U('course/courselist'));
+         }else{
+             $this->error("修改课程失败");
+         }
+     }
+     public function delete(){
+         $id=$_REQUEST[id];
+         if(M('course')->where("id = $id")->delete()){
+             $this->success("删除成功");
+         }else{
+             $this->error("删除失败");
+         }
+     }
+     //过滤效率图
+     function up(){
+         $savename="";
+         $config = array (
+             'FILE_UPLOAD_TYPE' => sp_is_sae () ? "Sae" : 'Local',
+             'rootPath' =>  C ( "UPLOADPATH" ),
+             /* 'maxSize' => 2097152, // 2M  */
+             /* 'maxSize' => 104857600, // 100M  */
+             'saveName' => array (
+                 'uniqid',
+                 $param.time()
+             ),
+             'exts' => array (
+                 'jpg',
+                 'png',
+                 'jpeg',
+                 'gif',
+                 'bmp'
+             ),
+             'autoSub' => false
+         );
+         $upload = new \Think\Upload ( $config );
+         $info = $upload->upload ();
+         $first = array_shift($info);
+         $savename= $first['savename'];
+         //ajax返回数据
+         if ($savename) {
+             $this->ajaxReturn ( sp_ajax_return ( array (
+                 'iconname'=>$savename
+             ), "上传成功！", 1 ), "AJAX_UPLOAD" );
+         } else {
+             $this->ajaxReturn ( sp_ajax_return ( array (), $upload->getError (), 0 ), "AJAX_UPLOAD" );
+         }
+     }
+     function deleteicon()
+     {
+         if(!empty($_POST['img2']))
+         {
+             unlink("./data/upload/avatar/$_POST[img2]");
+         }
+     }
+}

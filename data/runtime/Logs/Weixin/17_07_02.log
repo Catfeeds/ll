@@ -1,0 +1,191 @@
+[ 2017-07-02T13:07:46+08:00 ] ::1 /ll/index.php?g=Weixin&m=Center&a=send_note
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.025622s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.059941s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.091264s ]
+SQL: SHOW COLUMNS FROM `lailong_sms` [ RunTime:0.0230s ]
+SQL: SELECT * FROM `lailong_sms` WHERE ( phone='18020284218' ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: INSERT INTO `lailong_sms` (`code`,`createtime`,`phone`) VALUES ('799202','2017-07-02 13:07:44','18020284218') [ RunTime:0.0012s ]
+NOTIC: [8] Undefined index: url D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 24 行.
+NOTIC: [8] Undefined index: status D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 25 行.
+
+[ 2017-07-02T13:08:14+08:00 ] ::1 /ll/index.php?g=Weixin&m=Center&a=bang_go
+ERR: {"touser":"oRLbGwVN_ephoKxezu7MW7N2YrG4","template_id":"WxMde2DGqeW8i6cMV8dtHBxbVpndrB8WKdtY5rU7LCA","url":"","topcolor":"#7B68EE","data":{"productType":{"value":"%E7%BB%91%E5%AE%9A%E6%88%90%E5%8A%9F%EF%BC%8C%E4%B8%BA%E6%82%A8%E7%94%9F%E6%88%90%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81%E4%BD%8D123456%EF%BC%8C%E8%AF%B7%E7%89%A2%E8%AE%B0"},"name":{"value":"test"},"number":{"value":"1%E4%BB%BD"},"expDate":{"value":"2017-07-02"},"remark":{"value":"sss"}}}111
+[ 2017-07-02T13:08:14+08:00 ] ::1 /ll/index.php?g=Weixin&m=Center&a=bang_go
+ERR: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx6ccce8752525b8cc&secret=7d87a2a84199b99cf6c5765f657fcac4
+[ 2017-07-02T13:08:14+08:00 ] ::1 /ll/index.php?g=Weixin&m=Center&a=bang_go
+ERR: Array
+[ 2017-07-02T13:08:14+08:00 ] ::1 /ll/index.php?g=Weixin&m=Center&a=bang_go
+ERR: zWu0DjTOqK5ELmtJY4kZ8GypfAJ1bfV_pDDvl9tikOgOXGVXjJqJl_Nwxjh8Jof04gVHVwS3rmaqpRfomkDbPQBcpklrPenoygoD_UHBbda6wO89mptBS7zIA7xSE5Z8OMZbABAIGT222
+[ 2017-07-02T13:08:14+08:00 ] ::1 /ll/index.php?g=Weixin&m=Center&a=bang_go
+ERR: https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=zWu0DjTOqK5ELmtJY4kZ8GypfAJ1bfV_pDDvl9tikOgOXGVXjJqJl_Nwxjh8Jof04gVHVwS3rmaqpRfomkDbPQBcpklrPenoygoD_UHBbda6wO89mptBS7zIA7xSE5Z8OMZbABAIGT{"touser":"oRLbGwVN_ephoKxezu7MW7N2YrG4","template_id":"WxMde2DGqeW8i6cMV8dtHBxbVpndrB8WKdtY5rU7LCA","url":"","topcolor":"#7B68EE","data":{"productType":{"value":"绑定成功，为您生成默认密码位123456，请牢记"},"name":{"value":"test"},"number":{"value":"1份"},"expDate":{"value":"2017-07-02"},"remark":{"value":"sss"}}}3333
+[ 2017-07-02T13:08:15+08:00 ] ::1 /ll/index.php?g=Weixin&m=Center&a=bang_go
+ERR: 44444
+[ 2017-07-02T13:08:15+08:00 ] ::1 /ll/index.php?g=Weixin&m=Center&a=bang_go
+ERR: {"errcode":40003,"errmsg":"invalid openid hint: [5W2JCA0097ge20]"}555
+[ 2017-07-02T13:08:15+08:00 ] ::1 /ll/index.php?g=Weixin&m=Center&a=bang_go
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.022193s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.048244s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.074619s ]
+SQL: SHOW COLUMNS FROM `lailong_sms` [ RunTime:0.0217s ]
+SQL: SELECT * FROM `lailong_sms` WHERE ( phone='18020284218' ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0136s ]
+SQL: SELECT * FROM `lailong_user` WHERE ( phone='18020284218' ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: INSERT INTO `lailong_user` (`openid`,`phone`,`password`,`recommended_person`) VALUES ('oRLbGwVN_ephoKxezu7MW7N2YrG4','18020284218','e10adc3949ba59abbe56e057f20f883e','') [ RunTime:0.0007s ]
+NOTIC: [8] Undefined variable: timend D:\tools\upupw\htdocs\ll\application\Weixin\Controller\CenterController.class.php 第 49 行.
+NOTIC: [8] Array to string conversion D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Log.class.php 第 102 行.
+NOTIC: [8] Undefined index: url D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 24 行.
+NOTIC: [8] Undefined index: status D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 25 行.
+
+[ 2017-07-02T13:09:26+08:00 ] ::1 /ll/index.php?g=Weixin&m=Mine&a=member
+ERR: 1054:Unknown column 'index_id' in 'order clause'
+ [ SQL语句 ] : SELECT * FROM `lailong_grade` ORDER BY index_id asc 
+
+[ 2017-07-02T13:34:39+08:00 ] ::1 /ll/index.php?g=Weixin&m=Mine&a=payjifen
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.022522s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.049458s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.076983s ]
+NOTIC: [8] Use of undefined constant weiopen_id - assumed 'weiopen_id' D:\tools\upupw\htdocs\ll\application\Common\Controller\MemberbaseController.class.php 第 36 行.
+NOTIC: [8] Use of undefined constant weimes - assumed 'weimes' D:\tools\upupw\htdocs\ll\application\Common\Controller\MemberbaseController.class.php 第 37 行.
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0205s ]
+SQL: SELECT * FROM `lailong_user` WHERE ( openid='oe92uwwqXmicoPM9YNQxDbdvlgsA' ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `lailong_user` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0006s ]
+SQL: UPDATE `lailong_user` SET `integral`='960' WHERE `id` = 3 [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `lailong_integral` [ RunTime:0.0134s ]
+SQL: INSERT INTO `lailong_integral` (`user_id`,`obtain_type`,`is_obtain`,`integral`,`content`,`createtime`) VALUES ('3','4','0','-500','支付课程费500','2017-07-02 13:34:39') [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0144s ]
+SQL: UPDATE `lailong_enrollment` SET `state`='1' WHERE `id` = 116 [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment_state` [ RunTime:0.0140s ]
+SQL: INSERT INTO `lailong_enrollment_state` (`enrollment_id`,`state`,`state_text`,`createtime`) VALUES ('116','1','支付成功','2017-07-02 13:34:39') [ RunTime:0.0009s ]
+NOTIC: [8] Undefined index: url D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 24 行.
+NOTIC: [8] Undefined index: status D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 25 行.
+
+[ 2017-07-02T13:56:46+08:00 ] ::1 /ll/index.php?g=Weixin&m=course&a=do_pay
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.019162s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.044949s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.068230s ]
+NOTIC: [8] Use of undefined constant weiopen_id - assumed 'weiopen_id' D:\tools\upupw\htdocs\ll\application\Common\Controller\MemberbaseController.class.php 第 36 行.
+NOTIC: [8] Use of undefined constant weimes - assumed 'weimes' D:\tools\upupw\htdocs\ll\application\Common\Controller\MemberbaseController.class.php 第 37 行.
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0093s ]
+SQL: SELECT * FROM `lailong_user` WHERE ( openid='oe92uwwqXmicoPM9YNQxDbdvlgsA' ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `lailong_enrollment` WHERE ( course_id = 14 and user_id = 3 and state =0 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `lailong_enrollment` WHERE ( course_id = 14 and user_id = 3 and child_id= '3' and state =1 ) LIMIT 1   [ RunTime:0.0005s ]
+NOTIC: [8] Undefined variable: note D:\tools\upupw\htdocs\ll\application\Weixin\Controller\CourseController.class.php 第 294 行.
+SQL: INSERT INTO `lailong_enrollment` (`order_id`,`child_id`,`state`,`course_id`,`user_id`,`note`,`createtime`,`integral`) VALUES ('lailong59588b1eaf5ab','3','0','14','3',NULL,'2017-07-02 13:56:46','10') [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment_state` [ RunTime:0.0094s ]
+SQL: INSERT INTO `lailong_enrollment_state` (`enrollment_id`,`state`,`state_text`,`createtime`) VALUES ('117','0','订单已提交','2017-07-02 13:56:46') [ RunTime:0.0004s ]
+SQL: SELECT `integral` FROM `lailong_user` WHERE ( id =3 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant integral - assumed 'integral' D:\tools\upupw\htdocs\ll\application\Weixin\Controller\CourseController.class.php 第 301 行.
+NOTIC: [8] Use of undefined constant integral - assumed 'integral' D:\tools\upupw\htdocs\ll\application\Weixin\Controller\CourseController.class.php 第 304 行.
+SQL: UPDATE `lailong_user` SET `integral`='1000' WHERE ( id = 3 ) [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `lailong_integral` [ RunTime:0.0091s ]
+SQL: INSERT INTO `lailong_integral` (`user_id`,`obtain_type`,`is_obtain`,`integral`,`content`,`createtime`) VALUES ('3','4','0','-10','支付课程费10积分','2017-07-02 13:56:46') [ RunTime:0.0004s ]
+SQL: SELECT `state` FROM `lailong_enrollment` WHERE ( id = 117 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant state - assumed 'state' D:\tools\upupw\htdocs\ll\application\Weixin\Controller\CourseController.class.php 第 316 行.
+SQL: UPDATE `lailong_enrollment` SET `state`='1' WHERE ( id = 117 ) [ RunTime:0.0007s ]
+SQL: INSERT INTO `lailong_enrollment_state` (`enrollment_id`,`state`,`state_text`,`createtime`) VALUES ('117','1','支付成功','2017-07-02 13:56:46') [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: url D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 24 行.
+NOTIC: [8] Undefined index: status D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 25 行.
+
+[ 2017-07-02T16:06:38+08:00 ] ::1 /ll/index.php?g=Weixin&m=Course&a=course_textbook
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.036813s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.076424s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.127470s ]
+NOTIC: [8] Use of undefined constant weiopen_id - assumed 'weiopen_id' D:\tools\upupw\htdocs\ll\application\Common\Controller\MemberbaseController.class.php 第 36 行.
+NOTIC: [8] Use of undefined constant weimes - assumed 'weimes' D:\tools\upupw\htdocs\ll\application\Common\Controller\MemberbaseController.class.php 第 37 行.
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0143s ]
+SQL: SELECT * FROM `lailong_user` WHERE ( openid='oe92uwwqXmicoPM9YNQxDbdvlgsA' ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `lailong_textbook` [ RunTime:0.0165s ]
+SQL: SELECT * FROM `lailong_textbook` WHERE `subject` = '艺术' GROUP BY press  [ RunTime:0.0009s ]
+NOTIC: [8] Undefined index: url D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 24 行.
+NOTIC: [8] Undefined index: status D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 25 行.
+
+[ 2017-07-02T16:06:42+08:00 ] ::1 /ll/index.php?g=Weixin&m=Course&a=course_textbook
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.032941s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.067723s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.105973s ]
+NOTIC: [8] Use of undefined constant weiopen_id - assumed 'weiopen_id' D:\tools\upupw\htdocs\ll\application\Common\Controller\MemberbaseController.class.php 第 36 行.
+NOTIC: [8] Use of undefined constant weimes - assumed 'weimes' D:\tools\upupw\htdocs\ll\application\Common\Controller\MemberbaseController.class.php 第 37 行.
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0202s ]
+SQL: SELECT * FROM `lailong_user` WHERE ( openid='oe92uwwqXmicoPM9YNQxDbdvlgsA' ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `lailong_textbook` [ RunTime:0.0119s ]
+SQL: SELECT * FROM `lailong_textbook` WHERE `subject` = '英语' GROUP BY press  [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: url D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 24 行.
+NOTIC: [8] Undefined index: status D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 25 行.
+
+[ 2017-07-02T16:06:45+08:00 ] ::1 /ll/index.php?g=Weixin&m=Course&a=course_textbook
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.030091s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.078121s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.113386s ]
+NOTIC: [8] Use of undefined constant weiopen_id - assumed 'weiopen_id' D:\tools\upupw\htdocs\ll\application\Common\Controller\MemberbaseController.class.php 第 36 行.
+NOTIC: [8] Use of undefined constant weimes - assumed 'weimes' D:\tools\upupw\htdocs\ll\application\Common\Controller\MemberbaseController.class.php 第 37 行.
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0157s ]
+SQL: SELECT * FROM `lailong_user` WHERE ( openid='oe92uwwqXmicoPM9YNQxDbdvlgsA' ) LIMIT 1   [ RunTime:0.0014s ]
+SQL: SHOW COLUMNS FROM `lailong_textbook` [ RunTime:0.0118s ]
+SQL: SELECT * FROM `lailong_textbook` WHERE `subject` = '语文' GROUP BY press  [ RunTime:0.0007s ]
+NOTIC: [8] Undefined index: url D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 24 行.
+NOTIC: [8] Undefined index: status D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 25 行.
+
+[ 2017-07-02T16:06:49+08:00 ] ::1 /ll/index.php?g=Weixin&m=Course&a=course_textbook
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.032491s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.090800s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.128453s ]
+NOTIC: [8] Use of undefined constant weiopen_id - assumed 'weiopen_id' D:\tools\upupw\htdocs\ll\application\Common\Controller\MemberbaseController.class.php 第 36 行.
+NOTIC: [8] Use of undefined constant weimes - assumed 'weimes' D:\tools\upupw\htdocs\ll\application\Common\Controller\MemberbaseController.class.php 第 37 行.
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0199s ]
+SQL: SELECT * FROM `lailong_user` WHERE ( openid='oe92uwwqXmicoPM9YNQxDbdvlgsA' ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `lailong_textbook` [ RunTime:0.0113s ]
+SQL: SELECT * FROM `lailong_textbook` WHERE `subject` = '初级瑜伽教学' GROUP BY press  [ RunTime:0.0011s ]
+NOTIC: [8] Undefined index: url D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 24 行.
+NOTIC: [8] Undefined index: status D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 25 行.
+
+[ 2017-07-02T16:06:53+08:00 ] ::1 /ll/index.php?g=Weixin&m=Course&a=course_textbook
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.037025s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.087772s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.132672s ]
+NOTIC: [8] Use of undefined constant weiopen_id - assumed 'weiopen_id' D:\tools\upupw\htdocs\ll\application\Common\Controller\MemberbaseController.class.php 第 36 行.
+NOTIC: [8] Use of undefined constant weimes - assumed 'weimes' D:\tools\upupw\htdocs\ll\application\Common\Controller\MemberbaseController.class.php 第 37 行.
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `lailong_user` WHERE ( openid='oe92uwwqXmicoPM9YNQxDbdvlgsA' ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `lailong_textbook` [ RunTime:0.0122s ]
+SQL: SELECT * FROM `lailong_textbook` WHERE `subject` = '英语' GROUP BY press  [ RunTime:0.0011s ]
+NOTIC: [8] Undefined index: url D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 24 行.
+NOTIC: [8] Undefined index: status D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 25 行.
+
+[ 2017-07-02T16:06:54+08:00 ] ::1 /ll/index.php?g=Weixin&m=Course&a=course_textbook
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.028108s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.098913s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.131841s ]
+NOTIC: [8] Use of undefined constant weiopen_id - assumed 'weiopen_id' D:\tools\upupw\htdocs\ll\application\Common\Controller\MemberbaseController.class.php 第 36 行.
+NOTIC: [8] Use of undefined constant weimes - assumed 'weimes' D:\tools\upupw\htdocs\ll\application\Common\Controller\MemberbaseController.class.php 第 37 行.
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `lailong_user` WHERE ( openid='oe92uwwqXmicoPM9YNQxDbdvlgsA' ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `lailong_textbook` [ RunTime:0.0114s ]
+SQL: SELECT * FROM `lailong_textbook` WHERE `subject` = '艺术' GROUP BY press  [ RunTime:0.0007s ]
+NOTIC: [8] Undefined index: url D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 24 行.
+NOTIC: [8] Undefined index: status D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 25 行.
+
+[ 2017-07-02T16:06:58+08:00 ] ::1 /ll/index.php?g=Weixin&m=Course&a=course_pre
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.039470s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.065634s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.114347s ]
+NOTIC: [8] Use of undefined constant weiopen_id - assumed 'weiopen_id' D:\tools\upupw\htdocs\ll\application\Common\Controller\MemberbaseController.class.php 第 36 行.
+NOTIC: [8] Use of undefined constant weimes - assumed 'weimes' D:\tools\upupw\htdocs\ll\application\Common\Controller\MemberbaseController.class.php 第 37 行.
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0135s ]
+SQL: SELECT * FROM `lailong_user` WHERE ( openid='oe92uwwqXmicoPM9YNQxDbdvlgsA' ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `lailong_textbook` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `lailong_textbook` WHERE `subject` = '艺术' AND `press` = '人教版'  [ RunTime:0.0006s ]
+NOTIC: [8] Undefined index: url D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 24 行.
+NOTIC: [8] Undefined index: status D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 25 行.
+

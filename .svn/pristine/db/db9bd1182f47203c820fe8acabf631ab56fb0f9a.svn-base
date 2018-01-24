@@ -1,0 +1,211 @@
+<?php
+namespace Users\Controller;
+use Common\Controller\AdminbaseController;
+
+class UserController  extends AdminbaseController {
+    /**
+     * 用户列表
+     */
+    public function userlist(){
+      $name=$_REQUEST['name'];
+      $phone=$_REQUEST['phone'];
+      $recommended_person=$_REQUEST['recommended_person'];
+      $chname=$_REQUEST['chname'];
+      $where="1=1";
+      if(!empty($name)){
+        $where.=" and name like '%".$name."%' ";
+        $parameter['name']=$name;
+        $this->assign('name',$name);
+      }
+      if(!empty($phone)){
+        $where.=" and phone like '%".$phone."%'  ";
+        $parameter['phone']=$phone;
+        $this->assign('phone',$phone);
+      }
+      if(!empty($recommended_person)){
+        $where.=" and recommended_person like '%".$recommended_person."%' ";
+        $parameter['recommended_person']=$recommended_person;
+        $this->assign('recommended_person',$recommended_person);
+      }
+      if(!empty($chname)){
+        //根据名字获取child_id
+        $ch=M('child')->field("id")->where(" name like '%".$chname."%' ")->select();
+        if($ch){
+          foreach ($ch as $k => $v) {
+            $ch_ids[$k][]=$v['id'];
+          }
+        }
+        
+        $ch_ids=json_encode($ch_ids);
+        $ch_ids = str_replace("[","(",$ch_ids);
+        $ch_ids = str_replace("]",")",$ch_ids);
+        //var_dump($ch_ids);die;
+        //根据成员关系表获取用户id
+        $uinfo=M("member")->field("user_id")->where(" child_id in  ".$ch_ids)->select();
+        //var_dump($uinfo);die;
+        if($uinfo){
+          foreach ($uinfo as $s => $ss) {
+            $uids[$s][]=$ss['user_id'];
+          }
+        }
+        
+        $uids=json_encode($uids);
+        $uids = str_replace("[","(",$uids);
+        $uids = str_replace("]",")",$uids);
+        $where.=" and id in ".$uids;
+        $parameter['chname']=$chname;
+        $this->assign("chname",$chname);
+      }
+    $count=M('user')->where($where)->count();
+    $page = $this->page($count, C('PAGENUM'));
+    $userlist = M('user')
+        ->where($where)
+        ->limit($page->firstRow, $page->listRows)
+        ->select();
+    if($parameter){
+      foreach ($parameter as $key => $value) {
+          $page->parameter .= "$key=".urlencode($value)."&";
+      }
+    } 
+    $this->assign("page", $page->show());
+    $this->assign("userlist",$userlist);
+    $this->display();
+  }
+//新增
+  public function add(){
+    $this->display();
+  }
+//手机号唯一，需要验证
+  //新增提交
+  public function add_post(){
+    if(empty($_POST['name'])){
+      $this->error("姓名不能为空");
+    }
+    if(empty($_POST['phone'])){
+      $this->error("手机号不能为空");
+    }
+    if(empty($_POST['password'])){
+      $this->error("密码不能为空");
+    }
+    if(empty($_POST['integral'])){
+      $this->error("积分不能为空");
+    }
+    if(preg_match("/^((\d{3}-\d{8}|\d{4}-\d{7,8})|(1[3|4|5|7|8][0-9]{9}))$/",$_POST['phone'])){
+
+    }else{
+      $this->error("手机号格式不对");
+    }
+    if(preg_match("/^((\d{3}-\d{8}|\d{4}-\d{7,8})|(1[3|4|5|7|8][0-9]{9}))$/",$_POST['recommended_person'])){
+
+    }else{
+      $this->error("手机号格式不对");
+    }
+    if($_POST['phone']==$_POST['recommended_person']){
+      $this->error("手机号和推荐人手机号不能相同");
+    }
+    if(intval($_POST['integral'])<0){
+      $this->error("积分只能为正整数");
+    }
+    if(IS_POST){
+      
+      $_POST['integral']=intval($_POST['integral']);
+
+      $is_set=M("user")->where("phone=".$_POST['phone'])->find();
+      if(empty($is_set)){
+        if (M('user')->create()){
+          if (M('user')->add()!==false) {
+            $this->success(L('ADD_SUCCESS'), U("user/userlist"));
+          } else {
+            $this->error(L('ADD_FAILED'));
+          }
+        } else {
+          $this->error(M('user')->getError());
+        }
+      }else{
+        $this->error("手机号已存在");
+      }  
+    }
+  }
+  //编辑
+  public function edit(){
+    $id=I("get.id");
+    $user=M('user')->where("id=".$id)->find();
+    $this->assign($user);
+    $this->display();
+  }
+  //编辑提交
+  public function edit_post(){
+    if(empty($_POST['name'])){
+      $this->error("姓名不能为空");
+    }
+    if(empty($_POST['phone'])){
+      $this->error("手机号不能为空");
+    }
+    if(empty($_POST['password'])){
+      $this->error("密码不能为空");
+    }
+    if(empty($_POST['integral'])){
+      $this->error("积分不能为空");
+    }
+    if(preg_match("/^((\d{3}-\d{8}|\d{4}-\d{7,8})|(1[3|4|5|7|8][0-9]{9}))$/",$_POST['phone'])){
+
+    }else{
+      $this->error("手机号格式不对");
+    }
+    if(preg_match("/^((\d{3}-\d{8}|\d{4}-\d{7,8})|(1[3|4|5|7|8][0-9]{9}))$/",$_POST['recommended_person'])){
+
+    }else{
+      $this->error("手机号格式不对");
+    }
+    if($_POST['phone']==$_POST['recommended_person']){
+      $this->error("手机号和推荐人手机号不能相同");
+    }
+    if(intval($_POST['integral'])<0){
+      $this->error("积分只能为正整数");
+    }
+    if(IS_POST){
+      $_POST['integral']=intval($_POST['integral']);
+      
+      $is_set=M("user")->where("phone=".$_POST['phone'])->find();
+      if(empty($is_set)){
+        if (M('user')->create()){
+          if (M('user')->save()!==false) {
+            $this->success(L('ADD_SUCCESS'), U("user/userlist"));
+          } else {
+            $this->error(L('ADD_FAILED'));
+          }
+        } else {
+          $this->error(M('user')->getError());
+        }
+      }else{
+        $this->error("手机号已存在");
+      }
+    }
+  }
+//删除
+  public function delete(){
+    $id = I("get.id",0,"intval");
+    if (M("user")->delete($id)!==false) {
+      $this->success("删除成功！");
+    } else {
+      $this->error("删除失败！");
+    }
+  }
+//添加积分
+  public function addsorce(){
+    $data['user_id']=$_POST['id'];
+    $data['obtain_type']=$_POST['obtain_type'];
+    $data['integral']=intval($_POST['integral']);
+    $data['content']=$_POST['content'];
+    $data['is_obtain']=1;
+    $data['createtime']=date("Y-m-d H:i:s");
+    M('integral')->add($data);
+    //用户表修改,先查询用户
+    $id=$_POST['id'];
+    $uinfo=M('user')->where(" id = ".$id)->find();
+    $data1['integral']=$uinfo['integral']+intval($_POST['integral']);
+    $data1['id']=$id;
+    M('user')->save($data1);
+    echo 2;
+  }
+}

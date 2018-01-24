@@ -1,0 +1,108 @@
+<?php
+
+namespace Classtypes\Controller;
+use Common\Controller\AdminbaseController;
+class TextbookController extends AdminbaseController {
+	function _initialize() {
+	}
+     public function textbooklist(){
+         $where= "1=1";
+         $subject=$_REQUEST['subject'];
+         $press=$_REQUEST['press'];
+         $grade=$_REQUEST['grade'];
+         if(!empty($subject)){
+            $where.=" and subject like '%".$subject."%' ";
+            $parameter['subject']=$subject;
+            $this->assign('subject',$subject);
+         }
+         if(!empty($press)){
+            $where.=" and press like '%".$press."%' ";
+            $parameter['press']=$press;
+            $this->assign('press',$press);
+         }
+         if(!empty($grade)){
+            $where.=" and grade like '%".$grade."%' ";
+            $parameter['grade']=$grade;
+            $this->assign('grade',$grade);
+         }
+
+         $model = M ("textbook");
+         $count = $model->where($where)->count();
+         $page = $this->page($count, C('PAGENUM'));
+         $list = $model->where($where)->order("id DESC")->limit($page->firstRow . ',' . $page->listRows)->select();
+         $this->assign('list', $list);
+         if($parameter){
+            foreach ($parameter as $key => $value) {
+                $page->parameter .= "$key=".urlencode($value)."&";
+            }
+         } 
+         $this->assign("page", $page->show());
+         $this->display();
+     }
+     public function addtextbook(){
+        $this->display();
+     }
+     public function add_post(){
+        if(empty($subject)){
+            $this->error("科目不能为空");
+        }
+        if(empty($press)){
+            $this->error("出版社不能为空");
+        }
+        if(empty($grade)){
+            $this->error("学段不能为空");
+        }
+        if(IS_POST){
+            
+            $_POST['updatetime']=date("Y-m-d H:i:s");
+            $_POST['createtime']=date("Y-m-d H:i:s");
+            if (M("textbook")->create()!==false){
+                if (M("textbook")->add()!==false) {
+                    $this->success(L('ADD_SUCCESS'), U("Textbook/textbooklist"));
+                } else {
+                    $this->error(L('ADD_FAILED'));
+                }
+            } else {
+                $this->error(M("textbook")->getError());
+            }
+        
+        }
+     }
+     public function edittextbook(){
+        $res=M("textbook")->where("id = $_REQUEST[editid]")->find();
+        $this->assign($res);
+        $this->display();
+     }
+     public function edit_post(){
+        if(empty($subject)){
+            $this->error("科目不能为空");
+        }
+        if(empty($press)){
+            $this->error("出版社不能为空");
+        }
+        if(empty($grade)){
+            $this->error("学段不能为空");
+        }
+        if(IS_POST){
+
+            $_POST['updatetime']=date("Y-m-d H:i:s");
+            if (M("textbook")->create()!==false){
+                if (M("textbook")->save()!==false) {
+                    $this->success(L('ADD_SUCCESS'), U("Textbook/textbooklist"));
+                } else {
+                    $this->error(L('ADD_FAILED'));
+                }
+            } else {
+                $this->error(M("textbook")->getError());
+            }
+        }
+     }
+     public function deletetextbook(){
+        $id = I("get.id",0,"intval");
+        if (M('textbook')->delete($id)!==false) {
+            $this->success("删除成功！");
+        } else {
+            $this->error("删除失败！");
+        }
+    }
+}

@@ -1,0 +1,26 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <tc_include file="Public:header" />
+    <title>账户与安全</title>
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+	<link rel="stylesheet" href="__TMPL__Public/css/weixin/public.css">
+</head>
+<body>
+<div class="use" style="padding: 5px 10px">
+    <ul class="am-list">
+        <li style="border-top: none;padding-left: 5px">
+            <a href="{:U('Mine/change_tel')}" style="color: black;font-size:16px;">修改手机号
+            <span style="color: #bec2bb;font-size:14px" class="am-list-date fa fa-chevron-right" aria-hidden="true"></span></a>
+        </li>
+        <li style="border-bottom: none;padding-left: 5px">
+            <a href="{:U('Mine/change_pw')}" style="color: black;font-size:16px;">修改密码
+                <span style="color: #bec2bb;font-size:14px" class="am-list-date fa fa-chevron-right" aria-hidden="true"></a>
+        </li>
+    </ul>
+</div>
+<input type="hidden" id="moban" value="__TMPL__">
+<tc_include file="Public:float"/>
+<script src="__TMPL__Public/js/weixin/public.js"></script>
+</body>
+</html>

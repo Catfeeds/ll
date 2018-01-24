@@ -1,0 +1,210 @@
+<admintpl file="header" />
+</head>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/addcourse.css" />
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('classification/childlist')}">小孩列表</a></li>
+			<li><a href="{:U('classification/addchild')}">新增孩子</a></li>
+			<li class="active"><a href="{:U('classification/editchild',array('editid'=>$id))}">修改孩子</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('classification/editchild_post')}">
+			<fieldset>
+				<input type="hidden" name="id" value="{$id}">
+				<div class="control-group">
+					<label class="control-label">孩子真名</label>
+					<div class="controls">
+						<input type="text" name="name" value="{$name}">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">孩子昵称</label>
+					<div class="controls">
+						<input type="text" name="nickname" value="{$nickname}">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('ICON')}</label>
+					<div class="controls">
+						<if condition="!empty($avatar)">
+							<img src="__PUBLIC__/images/tv.gif" id='close2' style="margin-left: -13px;margin-top: -11px;position: relative;" />
+							<div id="img2" style="width: 100px;height: 100px;background: url(__ROOT__/data/upload/avatar/{$avatar}) no-repeat center; background-size: cover;"></div>
+						</if>
+						<if condition="empty($avatar)">
+						<div id="img2" style="width: 100px;height: 100px; background-size: cover;"></div>
+						</if>
+							<div id="add_img" <if condition="!empty($avatar)">style="display:none;"</if>>
+								<input type="hidden" name="avatar" value="{$avatar}"> 
+								<input type="file" onchange="avatar_upload_filtration(this)" id="file2" name="icon" required />
+							</div>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">生日</label>
+					<div class="controls">
+						<input type="text" name="birthday" required class="input length_2 J_date" value="{$birthday}" autocomplete="off" placeholder="请选择时间..." onClick="WdatePicker()" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">性别</label>
+					<div class="controls">
+						<select name="gender" id="gender" required>
+							<option value="0" <if condition="0 eq $gender">selected</if>>未知</option>
+							<option value="1" <if condition="1 eq $gender">selected</if>>男</option>
+							<option value="2" <if condition="2 eq $gender">selected</if>>女</option>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">所在学校</label>
+					<div class="controls">
+						<input type="text" name="school" required value="{$school}">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">所在年级</label>
+					<div class="controls">
+						<input type="text" name="grade" required value="{$grade}">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">关联用户</label>
+					<div class="controls" id="ceshi">
+						<input type="text" id="username" name="username" readonly value="{$uinfo[name]}" >
+						<?php if(empty($uinfo[id])){ ?>
+							<a style="margin-left: 30px;" href="{:U('classification/relation_user',array('type'=>2,'child_id'=>$id))}">点击关联</a>
+					<?php	} ?>
+						
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">用户与孩子的称呼</label>
+					<div class="controls">
+						<input type="text" name="appellation" value="{$info['appellation']}" <if condition="!empty($info['id'])">readonly</if>>
+					</div>
+				</div>
+				<input type="hidden" name="u_id" value="{$uinfo[id]}">
+				<div class="control-group">
+					<label class="control-label">是否为认证会员</label>
+					<div class="controls">
+						<select id="vip_state" name="vip_state" required>
+							<option value="0" <?php if($vip_state!="0"){ ?> style="display: none" <?php } ?> <if condition="0 eq $vip_state">selected</if>>未认证</option>
+							<option value="1" <?php if($vip_state=="2"||$vip_state=="3"){ ?> style="display: none" <?php } ?> <if condition="1 eq $vip_state">selected</if>>认证中</option>
+							<option value="2" <?php if($vip_state=="3"){ ?> style="display: none" <?php } ?> <if condition="2 eq $vip_state">selected</if>>认证失败</option>
+							<option value="3"  <if condition="3 eq $vip_state">selected</if>>认证成功</option>
+						</select>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" id="submit1" class="btn btn-primary js-ajax-submit
+">{:L('SAVE')}</button>
+				<a class="btn" href="{:U('classification/childlist')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/js/cookie.js"></script>
+</body>
+<script type="text/javascript">
+//上传图片
+function avatar_upload_filtration(obj) {
+	var $fileinput = $(obj);
+	var img2 = $('#img2').next().children('input').val();
+	Wind.css("jcrop");
+	Wind.use("ajaxfileupload", "jcrop", "noty", function() {
+		$.ajaxFileUpload({
+			url : "{:U('classification/up')}",
+			secureuri : false,
+			fileElementId : "file2",
+			dataType : 'json',
+			data : {
+				img2 : img2
+			},
+			success : function(data) {
+				$('#file2').parent().css({'display':'none'});
+				$('#img2').before(" <img src=\"__PUBLIC__/images/tv.gif\" id='close2' style=\"margin-left: -13px;margin-top: -11px;position: relative;\" />");
+				$('#img2').css(
+						'background',
+						'url(__ROOT__/data/upload/avatar/'
+								+ data.data.iconname+') no-repeat center');
+				$('#img2').next().children('input').val(data.data.iconname);
+			},
+			error : function(data, status, e) {
+			}
+		});
+	});
+}
+$('fieldset').on('click','#close2',function(){
+	var img2 = $('#img2').next().children('input').val();
+	 $.post('{:U("classification/deleteicon")}', {
+		 img2: img2
+		},
+		function(data) {
+		}
+	)
+	$('#img2').css('background','');
+	$('#file2').parent().css({'display':'block'});
+	$(this).css({'display':'none'});
+})
+ $("#ceshi").click(function(){
+ 	//跳转前先存一下cookie，提交删除
+ 	var name =$("input[name=name]").val();
+ 	//不可以用name，在cookie里会被默认 - -
+ 	$.cookie('uname',name);
+ 	var nickname = $("input[name=nickname]").val();
+ 	$.cookie('nickname',nickname);
+ 	var avatar = $("input[name=avatar]").val();
+ 	$.cookie('avatar',avatar);
+ 	var birthday = $("input[name=birthday]").val();
+ 	$.cookie('birthday',birthday);
+ 	var gender =$("#gender").val();
+ 	$.cookie('gender',gender);
+ 	var school = $("input[name=school]").val();
+ 	$.cookie('school',school);
+ 	var grade = $("input[name=grade]").val();
+ 	$.cookie('grade',grade);
+ 	var vip_state = $("#vip_state").val();
+ 	$.cookie('vip_state',vip_state);
+ });
+$(function(){
+	if($.cookie('uname')){
+		$("input[name=name]").val($.cookie('uname'));
+	}
+	if($.cookie('nickname')){
+		$("input[name=nickname]").val($.cookie('nickname'));
+	}
+	if($.cookie('birthday')){
+		$("input[name=birthday]").val($.cookie('birthday'));
+	}
+	if($.cookie('gender')){
+		$("#gender").val($.cookie('gender'));
+	}
+	if($.cookie('school')){
+		$("input[name=school]").val($.cookie('school'));
+	}
+	if($.cookie('grade')){
+		$("input[name=grade]").val($.cookie('grade'));
+	}
+	if($.cookie('vip_state')){
+		$("#vip_state").val($.cookie('vip_state'));
+	}
+	
+	if($.cookie('avatar')){
+		var s =$.cookie('avatar');
+		$('#file2').parent().css({'display':'none'});
+		$('#img2').before(" <img src=\"__PUBLIC__/images/tv.gif\" id='close2' style=\"margin-left: -13px;margin-top: -11px;position: relative;\" />");
+		$('#img2').attr('src','__ROOT__/data/upload/avatar/'+s);
+		//$('#img2').next().children('input').val(s);
+		$("input[name=avatar]").val($.cookie('avatar'));
+	}
+	
+	$("#submit1").click(function(){
+		$.cookie('uname',"");$.cookie('gender',"");
+		$.cookie('nickname',"");$.cookie('school',"");
+		$.cookie('avatar',"");$.cookie('grade',"");
+		$.cookie('birthday',"");$.cookie('vip_state',"");
+	});
+})
+</script>
+</html>

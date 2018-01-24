@@ -1,0 +1,27 @@
+[ 2017-07-04T13:18:03+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=edit_post&id=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.034305s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.080178s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.120251s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0122s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0008s ]
+NOTIC: [8] Undefined index: integral D:\tools\upupw\htdocs\ll\application\Users\Controller\UserController.class.php 第 206 行.
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0146s ]
+SQL: SELECT * FROM `lailong_user` WHERE ( phone=15618158200 ) LIMIT 1   [ RunTime:0.0008s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `lailong_user` SET `name`='麦克白',`phone`='15618158200',`password`='14e1b600b1fd579f47433b88e8d85291',`recommended_person`='',`integral`='0' WHERE `id` = 1 [ RunTime:0.0006s ]
+
+[ 2017-07-04T13:20:37+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=edit_post&id=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.031053s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.066477s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.102208s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0214s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0161s ]
+SQL: SELECT * FROM `lailong_user` WHERE ( phone=15618158200 ) LIMIT 1   [ RunTime:0.0009s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `lailong_user` SET `name`='麦克白',`phone`='15618158200',`password`='c56d0e9a7ccec67b4ea131655038d604',`recommended_person`='' WHERE `id` = 1 [ RunTime:0.0008s ]
+

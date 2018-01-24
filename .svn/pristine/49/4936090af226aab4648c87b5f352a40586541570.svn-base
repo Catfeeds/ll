@@ -1,0 +1,26 @@
+<!--浮动-->
+<link rel="stylesheet" href="__TMPL__Public/css/weixin/materialize.css">
+<script src="__TMPL__Public/js/weixin/materialize.min.js"></script>
+<script src="__TMPL__Public/js/weixin/jquery.min.js"></script>
+<script src="__TMPL__Public/js/weixin/float.js"></script>
+<div class="fixed-action-btn">
+    <a class="btn-floating ">
+        <i class="large material-icons"><img id="open" style="width: 100%;height: 40px;margin-top: -7px" src="__TMPL__Public/images/demo/open.png" alt="">
+            <img id="refor" style="width: 100%;height: 40px;display: none;" src="__TMPL__Public/images/demo/shou.png" alt=""></i>
+
+    </a>
+    <ul id="ul1" style="bottom: 32px;display: none;">
+        <li style="margin-bottom: 7px"><a style="width: 40px;height: 40px;" href="{:U('Mine/my')}" class="btn-floating"><i class="material-icons">
+            <img style="width: 40px;height: 40px;margin-top: -7px;" src="__TMPL__Public/images/demo/user.png" alt="">
+        </i></a></li>
+        <li style="margin-bottom: 7px"><a style="width: 40px;height: 40px;" href="{:U('Mine/server')}" class="btn-floating"><i class="material-icons">
+            <img style="width: 40px;height: 40px;margin-top: -7px;" src="__TMPL__Public/images/demo/gn.png" alt="">
+        </i></a></li>
+        <li><a style="width: 40px;height: 40px;" href="{:U('Course/course')}" class="btn-floating"><i class="material-icons">
+            <img style="width: 40px;height: 40px;margin-top: -7px;" src="__TMPL__Public/images/demo/course.png" alt="">
+        </i></a></li>
+        <!-- <li><a class="btn-floating" style="width: 40px;height: 40px;" class="btn-floating"><i class="material-icons">
+             <img id="refor" style="width: 40px;height: 40px;margin-top: -7px;" src="__TMPL__Public/images/demo/shou.png" alt="">
+         </i></a></li>-->
+    </ul>
+</div>

@@ -1,0 +1,136 @@
+[ 2017-06-23T15:13:42+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=addsorce
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.030062s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.065222s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.100425s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0218s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0008s ]
+
+[ 2017-06-23T15:16:52+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=addsorce
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.025178s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.055539s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.085082s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0201s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0008s ]
+
+[ 2017-06-23T15:17:36+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=addsorce
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.027654s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.070053s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.104918s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0210s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0009s ]
+
+[ 2017-06-23T15:18:21+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=addsorce
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.029531s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.063712s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.099567s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0205s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0009s ]
+
+[ 2017-06-23T15:18:50+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=addsorce
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.021585s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.068778s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.094876s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0240s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0009s ]
+
+[ 2017-06-23T15:19:10+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=addsorce
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.032056s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.063570s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.100735s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0235s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0008s ]
+
+[ 2017-06-23T15:20:02+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=addsorce
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.032710s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.061274s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.102101s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0215s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0008s ]
+
+[ 2017-06-23T15:20:20+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=addsorce
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.027788s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.066388s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.098716s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0211s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0008s ]
+
+[ 2017-06-23T15:21:25+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=addsorce
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.022098s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.063304s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.089178s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0212s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0011s ]
+
+[ 2017-06-23T15:22:05+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=addsorce
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.030829s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.069621s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.105198s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0223s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0008s ]
+
+[ 2017-06-23T15:23:18+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=addsorce
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.025854s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.054919s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.087165s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0146s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0008s ]
+
+[ 2017-06-23T15:24:18+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=addsorce
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.031265s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.060153s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.097562s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0256s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0011s ]
+
+[ 2017-06-23T15:25:03+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=addsorce
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.027306s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.066275s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.100375s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0229s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0008s ]
+
+[ 2017-06-23T15:26:34+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=addsorce
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.025827s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.065228s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.095784s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0204s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0011s ]
+
+[ 2017-06-23T16:02:51+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=userlist&name=&phone=&recommended_person=&chname=s
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+ [ SQL语句 ] : SELECT * FROM `lailong_member` WHERE (  child_id in   ) 
+
+[ 2017-06-23T16:03:06+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=userlist&name=&phone=&recommended_person=&chname=s
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+ [ SQL语句 ] : SELECT * FROM `lailong_member` WHERE (  child_id in   ) 
+
+[ 2017-06-23T16:03:16+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=userlist&name=&phone=&recommended_person=&chname=s
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+ [ SQL语句 ] : SELECT * FROM `lailong_member` WHERE (  child_id in   ) 
+
+[ 2017-06-23T16:03:27+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=userlist&name=&phone=&recommended_person=&chname=s
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '[["6"],["9"]] )' at line 1
+ [ SQL语句 ] : SELECT * FROM `lailong_member` WHERE (  child_id in  [["6"],["9"]] ) 
+
+[ 2017-06-23T16:06:38+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=userlist&name=&phone=&recommended_person=&chname=s
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '"6"],"9"]] )' at line 1
+ [ SQL语句 ] : SELECT * FROM `lailong_member` WHERE (  child_id in  "6"],"9"]] ) 
+
+[ 2017-06-23T16:06:51+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=userlist&name=&phone=&recommended_person=&chname=s
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '"6","9" )' at line 1
+ [ SQL语句 ] : SELECT * FROM `lailong_member` WHERE (  child_id in  "6","9" ) 
+

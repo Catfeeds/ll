@@ -1,0 +1,73 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('message/index')}">{:L('ADMIN_MESSAGE_INDEX')}</a></li>
+			<li class="active"><a href="{:U('message/add')}">{:L('ADMIN_MESSAGE_ADD')}</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form"
+			action="{:U('message/add_post')}">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">{:L('TITLE')}</label>
+					<div class="controls">
+						<input type="text" name="title">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('COURSE')}</label>
+					<div class="controls">
+						<select name="course_id">
+								<option></option>
+							<foreach name="res" item="v">
+								<option value="{$v.id}">{$v.title}</option>
+							</foreach>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('ICON')}</label>
+					<div class="controls">
+						<input type="text" name="icon">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('DESC')}</label>
+					<div class="controls">
+						<textarea name="content"></textarea>
+					</div>
+				</div>
+				<!-- <div class="control-group">
+					<label class="control-label">{:L('USER')}</label>
+					<div class="controls">
+						<select name="user_id">
+							<option></option>
+							<foreach name="user" item="vs">
+								<option value="{$vs.id}">{$vs.phone}</option>
+							</foreach>
+						</select>
+					</div>
+				</div> -->
+				<div class="control-group">
+					<label class="control-label">{:L('TYPE')}</label>
+					<div class="controls">
+						<!-- <select name="type">
+							<option value="0">安卓app</option>
+							<option value="1">微信</option>
+						</select> -->
+						<input type="checkbox" name="type1" value="1" ><span style="font-size: 15px;margin-right: :15px; ">安卓app</span>
+						<input type="checkbox" name="type2" value="1" ><span style="font-size: 15px;margin-right:15px; ">微信</span>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('ADD')}</button>
+				<a class="btn" href="{:U('message/index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	
+</body>
+</html>

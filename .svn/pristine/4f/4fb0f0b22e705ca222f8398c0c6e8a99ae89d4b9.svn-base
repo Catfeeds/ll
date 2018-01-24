@@ -1,0 +1,13 @@
+
+<!--浮动导航-->
+<div class="nav_bar" style="z-index:999;bottom:60px;left:20px">
+	<ul class="am-list" id="panel">
+		<li style="background:none!important;"><a href="{:U('Mine/my')}"><img style="width:41px;margin-top:-4px;" src="__TMPL__Public/images/demo/user.png"></a></li>
+		<li style="background:none!important;"><a href="{:U('Mine/server')}"><img style="width:41px;margin-top:-4px;" src="__TMPL__Public/images/demo/gn.png"></a></li>
+		<li style="background:none!important;"><a href="{:U('Course/course')}"><img style="width:41px;margin-top:-4px;" src="__TMPL__Public/images/demo/course.png"></a></li>
+	</ul>
+	<!--<div id="flip" class="icon_nav"></div>-->
+	<div id="flip" name="0" style="background:none" >
+		<img style="width:41px;margin-top:-4px;" src="__TMPL__Public/images/demo/open.png">
+	</div>
+</div>

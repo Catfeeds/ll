@@ -1,0 +1,10 @@
+.am-list>li>a{
+    padding: 5px;
+}
+.am-list>li>a .name{
+    color: black;
+    font-size: 13px;
+}
+.am-list-news-default .am-list>li{
+    padding: 5px;
+}

@@ -1,0 +1,14 @@
+[ 2017-07-02T12:27:23+08:00 ] ::1 /ll/index.php?g=user&m=index&a=is_login
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.011116s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.027023s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.039925s ]
+NOTIC: [8] Undefined index: url D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 24 行.
+
+[ 2017-07-02T12:28:44+08:00 ] ::1 /ll/index.php?g=user&m=index&a=is_login
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.024782s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.057772s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.087403s ]
+NOTIC: [8] Undefined index: url D:\tools\upupw\htdocs\ll\application\Common\Controller\AppframeController.class.php 第 24 行.
+

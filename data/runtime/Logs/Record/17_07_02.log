@@ -1,0 +1,12 @@
+[ 2017-07-02T11:10:04+08:00 ] ::1 /ll/index.php?g=Record&m=record&a=find
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT i.*,u.phone,ch.name FROM lailong_intention as i left JOIN lailong_user as u on u.id = i.user_id left JOIN lailong_child as ch on ch.id =i.child_id  WHERE ( i.id =  ) LIMIT 1  
+
+[ 2017-07-02T11:16:55+08:00 ] ::1 /ll/index.php?g=Record&m=record&a=relation
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT i.*,u.phone as uphone,u.name as uname,ch.name as chname FROM lailong_intention i  left join lailong_user as u on u.id = i.user_id left join lailong_child as ch on ch.id = i.child_id    WHERE (  i.id =  ) LIMIT 1  
+
+[ 2017-07-02T11:18:44+08:00 ] ::1 /ll/index.php?g=Record&m=record&a=relation
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT i.*,u.phone as uphone,u.name as uname,ch.name as chname FROM lailong_intention i  left join lailong_user as u on u.id = i.user_id left join lailong_child as ch on ch.id = i.child_id    WHERE (  i.id =  ) LIMIT 1  
+

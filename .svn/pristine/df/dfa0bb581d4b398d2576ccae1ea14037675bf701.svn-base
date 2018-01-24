@@ -1,0 +1,35 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>设置</title>
+    <link rel="stylesheet" href="../Public/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="../Public/css/weixin/bdTel.css">
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body>
+<div class="use" style="padding: 5px 10px;margin-top: 5px;">
+    <ul class="am-list">
+        <li style="border-top: none"><a href="safe.html" style="color: black;padding-left: 5px;position: relative">账户安全与设置</a>
+            <i style="float: right;position: absolute;top: 18px;right: 5px;font-size: 20px;color: #a3a1ad;" class="fa fa-angle-right" aria-hidden="true"></i></li>
+        <li style="border-bottom: none"><a href="#" style="color: black;padding-left: 5px;">当前版本
+        <span style="float: right;color: #ced4c8;margin-right: 5px;">版本1.0.2 build97</span></a>
+        </li>
+    </ul>
+</div>
+<tc_include file="Public:float"/>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="../Public/js/weixin/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<![endif]-->
+<script src="../Public/js/weixin/amazeui.min.js"></script>
+</body>
+</html>

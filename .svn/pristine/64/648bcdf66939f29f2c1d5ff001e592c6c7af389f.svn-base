@@ -1,0 +1,188 @@
+<admintpl file="header" />
+</head>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/addcourse.css" />
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('course/courselist')}">{:L('ADMIN_COURSE_INDEX')}</a></li>
+			<li class="active"><a href="{:U('course/addcourse')}">{:L('ADMIN_COURSE_ADD')}</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('course/add_post')}">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">{:L('NAME')}</label>
+					<div class="controls">
+						<input type="text" name="title">
+					</div>
+				</div>
+				<div class="control-group">
+					<span style="margin-left: 200px;">注:列表图片建议尺寸80*80</span>
+					<label class="control-label">列表图片</label>
+					<div class="controls">
+						<img id="img2" >
+							<div id="add_img">
+								<input type="hidden" name="cover"> 
+								<input type="file" onchange="avatar_upload_filtration(this)" id="file2" name="icon" />
+							</div>
+					</div>
+				</div>
+				<div class="control-group">
+					<span style="margin-left: 200px;">注:详情图片建议尺寸600*180</span>
+					<label class="control-label">详情图片</label>
+					<div class="controls">
+						<img id="img3" >
+							<div id="add_img2">
+								<input type="hidden" name="picture"> 
+								<input type="file" onchange="avatar_upload_filtration2(this)" id="file3" name="icon2" />
+							</div>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('PERSONCOUNT')}</label>
+					<div class="controls">
+						<input type="text" name="rated_number">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('SCORE')}</label>
+					<div class="controls">
+						<input type="text" name="integral">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('TEACHER')}</label>
+					<div class="controls">
+						<select name="teacher_id">
+							<foreach name="teacher" item="t">
+								<option value="{$t.id}">{$t.name}</option>
+							</foreach>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">教室</label>
+					<div class="controls">
+						<select name="classroom_id">
+							<foreach name="classroom" item="t">
+								<option value="{$t.id}">{$t.address}</option>
+							</foreach>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('STARTIME')}</label>
+					<div class="controls">
+						<input type="text"placeholder="请输入日期..." name="start_time" class="input length_2" value="{$formget.dates}" autocomplete="off" onClick="WdatePicker()" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">课程详情</label>
+					<div class="controls">
+						<script type="text/plain" id="content" name="textareas"></script>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('ADD')}</button>
+				<a class="btn" href="{:U('course/courselist')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/ueditor/ueditor.config.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/ueditor/ueditor.all.min.js"></script>
+</body>
+<script type="text/javascript">
+$(function(){
+	var editorURL = GV.DIMAUB;
+	editorcontent = new baidu.editor.ui.Editor();
+	editorcontent.render('content');
+	try {
+		editorcontent.sync();
+	} catch (err) {
+	}
+	$('#content').css({'width':'700px','height':'200px'});
+})
+//上传图片
+function avatar_upload_filtration(obj) {
+	var $fileinput = $(obj);
+	var img2 = $('#img2').next().children('input').val();
+	Wind.css("jcrop");
+	Wind.use("ajaxfileupload", "jcrop", "noty", function() {
+		$.ajaxFileUpload({
+			url : "{:U('Course/up')}",
+			secureuri : false,
+			fileElementId : "file2",
+			dataType : 'json',
+			data : {
+				img2 : img2
+			},
+			success : function(data) {
+				$('#file2').parent().css({'display':'none'});
+				$('#img2').before(" <img src=\"__PUBLIC__/images/tv.gif\" id='close2' style=\"margin-left: -13px;margin-top: -11px;position: relative;\" />");
+				$('#img2').attr(
+						'src',
+						'__ROOT__/data/upload/avatar/'
+								+ data.data.iconname);
+				$('#img2').next().children('input').val(data.data.iconname);
+			},
+			error : function(data, status, e) {
+			}
+		});
+	});
+}
+function avatar_upload_filtration2(obj) {
+	var $fileinput = $(obj);
+	var img3 = $('#img3').next().children('input').val();
+	Wind.css("jcrop");
+	Wind.use("ajaxfileupload", "jcrop", "noty", function() {
+		$.ajaxFileUpload({
+			url : "{:U('Course/up2')}",
+			secureuri : false,
+			fileElementId : "file3",
+			dataType : 'json',
+			data : {
+				img3 : img3
+			},
+			success : function(data) {
+				$('#file3').parent().css({'display':'none'});
+				$('#img3').before(" <img src=\"__PUBLIC__/images/tv.gif\" id='close3' style=\"margin-left: -13px;margin-top: -11px;position: relative;\" />");
+				$('#img3').attr(
+						'src',
+						'__ROOT__/data/upload/avatar/'
+								+ data.data.iconname2);
+				$('#img3').next().children('input').val(data.data.iconname2);
+			},
+			error : function(data, status, e) {
+			}
+		});
+	});
+}
+$('fieldset').on('click','#close2',function(){
+	var img2 = $('#img2').next().children('input').val();
+	 $.post('{:U("classification/deleteicon")}', {
+		 img2: img2
+		},
+		function(data) {
+		}
+	)
+	$('#img2').attr('src','');
+	$('#file2').parent().css({'display':'block'});
+	$('#img2').next().children('input').val('');
+	$(this).css({'display':'none'});
+})
+$('fieldset').on('click','#close3',function(){
+	var img3 = $('#img3').next().children('input').val();
+	 $.post('{:U("classification/deleteicon2")}', {
+		 img3: img3
+		},
+		function(data) {
+		}
+	)
+	$('#img3').attr('src','');
+	$('#file3').parent().css({'display':'block'});
+	$('#img3').next().children('input').val('');
+	$(this).css({'display':'none'});
+})
+</script>
+</html>

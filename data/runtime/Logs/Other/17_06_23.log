@@ -1,0 +1,12 @@
+[ 2017-06-23T10:26:58+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.025605s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.070692s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.100963s ]
+
+[ 2017-06-23T10:27:21+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.037516s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.079623s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.123095s ]
+

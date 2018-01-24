@@ -1,0 +1,85 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>我的积分</title>
+    <link rel="stylesheet" href="__TMPL__/Public/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="__TMPL__/Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="__TMPL__/Public/css/weixin/integration.css">
+	<link rel="stylesheet" href="__TMPL__Public/css/weixin/public.css">
+	<script src="__TMPL__Public/js/weixin/jquery.min.js"></script>	
+</head>
+<body>
+<div class="bgt">
+    <div class="lf">
+        <span style="font-size: 20px;position: absolute;top: 78px;right: 136px;">当前积分</span>
+        <span style="font-size:57px;font-weight: inherit;display: inline-block;
+        margin-left: 10px;position: absolute;top: 43px;right: 7px;">{$user.integral}</span>
+    </div>
+    <div class="rg">
+        <span style="display: inline-block;text-align: center; width: 18px;height: 18px;border: 1px solid white;
+        position: absolute;top: 13px;left: 7px; border-radius: 50%;color: white;line-height: 18px">i</span>
+        <a href="{:U('Rulepage/integral_rule')}"><span style="position: absolute;width: 100px;top: 9px;left: 28px;color: white">积分规则</span></a>
+        <a href="{:U('Mine/recharge')}"><p>充值</p></a>
+    </div>
+</div>
+<div class="tab">
+    <table class="am-table">
+        <thead>
+        <tr style="background: #eff6ff">
+            <th style="border: none;">积分</th>
+            <th style="border: none;">内容</th>
+            <th style="border: none;">时间</th>
+        </tr>
+        </thead>
+        <tbody id="integral_list">
+        <foreach name="array" item="a">
+	        <tr>
+	            <td style="font-size: 28px;color: #1b6bfc;border-top: none;"><if condition="$a[integral] gt 0">+{$a.integral}<else/>{$a.integral}</if></td>
+	            <td style="line-height: 49px;color: #969cb0;border-top: none;">{$a.content}</td>
+	            <td style="color: #969cb0;border-top: none;">
+	            	{$a.date}<br>{$a.time}
+	            </td>
+	        </tr>
+        </foreach>
+        </tbody>
+    </table>
+</div>
+<if condition="$typea eq 1"><p style="text-align:center;color: #0e90d2;" class="select_f" name="1" id="integral">点击加载更多</p></if>
+<input type="hidden" value="{$userid}" id="userid">
+<input type="hidden" id="moban" value="__TMPL__">
+<tc_include file="Public:float"/>
+<script src="__TMPL__Public/js/weixin/public.js"></script>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__TMPL__/Public/js/weixin/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<![endif]-->
+<script src="__TMPL__/Public/js/weixin/amazeui.min.js"></script>
+<script>
+//加载更多服务
+$(".select_f").click(function(){
+	var num=$(this).attr("name");
+	var table=$(this).attr("id");
+	var userid=$("#userid").val();
+	$.post('{:U("Mine/integral_more")}',
+			{ num : num , table : table , userid : userid},
+            function(data){
+            	console.log(data);
+            	if(data[1]!=""){
+            		$("#"+table).attr("name",data[1]);
+            	}else{
+            		$("#"+table).css("display","none");
+            	}
+            	$("#"+table+"_list").append(data[0]);
+            });
+})
+</script>
+</body>
+</html>

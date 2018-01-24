@@ -1,0 +1,117 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('course/courselist')}">{:L('ADMIN_COURSE_INDEX')}</a></li>
+			<li><a href="{:U('course/addcourse')}">{:L('ADMIN_COURSE_ADD')}</a></li>
+		</ul>
+		<form class="well form-search" method="get" action="{:U('course/courselist')}" id="form_submit">
+		    <div class="search_type cc mb10">
+		      <div class="mb10"> 
+		        <span class="mr20">
+		        <input type="hidden" name="g" value="Testbase">
+		        <input type="hidden" name="m" value="course">
+		        <input type="hidden" name="a" value="courselist">
+		        
+			        <div class="row" style="margin-top: 20px;">
+				        <div class="span1">
+				        	标题:
+				        </div>
+				        <div class="span2">
+				        	<input type="text" name="title" style="width: 100px;" value="{$title}" placeholder="标题"/>
+				        </div>
+				        <div class="span1">
+				        	最大人数:
+				        </div>
+				        <div class="span2">
+				        	<input type="text" name="rated_number" style="width: 100px;" value="{$rated_number}" placeholder="最大人数">
+				        </div>
+				        <div class="span1">
+							最大积分:
+						</div>
+						<div class="span2">
+							<input type="text" name="integral" style="width: 100px;" value="{$integral}" placeholder="最大积分">
+						</div>
+						<div class="span1">
+							教师:
+						</div>
+						<div class="span2">
+							<select name="teacher_id" style="width: 120px;">
+								<option value="">请选择</option>
+								<foreach name="teacher" item="v">
+									<option value="{$v[id]}" <if condition="$teacher_id eq $v[id]">selected</if> >{$v[name]}</option>
+								</foreach>
+							</select>
+						</div>
+					</div>
+				</span>
+			   </div>
+			   <div class="mb10"> 
+		        <span class="mr20">
+		        	<div class="row" style="margin-top: 20px;">
+				        <div class="span2">
+				        	开课时间起始：
+				        </div>
+				        <div class="span3">
+				        	<input type="text" name="sstart_time" class="input length_2 J_date" value="{$sstart_time}" autocomplete="off" placeholder="请选择时间..." onClick="WdatePicker()" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+				        </div>
+						<div class="span2">
+							开课时间结束：
+						</div>	
+						<div class="span3">
+							<input type="text" name="estart_time" class="input length_2 J_date" value="{$estart_time}" autocomplete="off" placeholder="请选择时间..." onClick="WdatePicker()" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+						</div>
+						<div class="span2">
+							&nbsp;
+						</div>
+					</div>
+				</span>
+			   </div>
+			   
+			   <div class="mb10">
+			   	<span class="mr20">
+			   		<button class="btn btn-primary">搜索</button>
+			   	</span>
+			   </div>
+		        
+		        
+		      
+		    </div>
+		  </form>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th width="50">ID</th>
+					<th>{:L('NAME')}</th>
+					<th>{:L('TEACHER')}</th>
+					<th>{:L('STARTIME')}</th>
+					<th>意向人数</th>
+					<th>{:L('PERSONCOUNT')}</th>
+					<th>已报名人数</th>
+					<th>{:L('CTIME')}</th>
+					<th width="120">{:L('ACTIONS')}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<foreach name="list" item="l">
+					<tr>
+						<td>{$l.id}</td>
+						<td>{$l.title}</td>
+						<td>{$l.teacher}</td>
+						<td>{$l.start_time}</td>
+						<td>{$l.intention_num}</td>
+						<td>{$l.rated_number}</td>
+						<td>{$l.sign_up_num}</td>
+						<td>{$l.createtime}</td>
+						<td><a href="{:U('course/editcourse',array('editid'=>$l[id]))}">{:L('EDIT')}</a>|<a href="{:U('course/delete',array('id'=>$l['id']))}" class="js-ajax-delete">{:L('DELETE')}</a>
+						</td>
+					</tr>
+				</foreach>
+			</tbody>
+		</table>
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

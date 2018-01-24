@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+/*添加创新*/
+#img2,#img3{width: 150px; height: 150px;float:left;background: url(../images/default_tupian4.png) no-repeat;background-size: cover;}
+#add_img,#add_img2{width:150px;height:150px;float:left;margin-left:2%;background: url(../images/add.png) no-repeat;background-size: cover;}
+#file2,#file3{width:100%;height:100%;opacity: 0;}
+#img1{width: 150px; height: 150px;float:left;background: url(../images/default_tupian4.png) no-repeat;background-size: cover;}
+#file1{width:100%;height:100%;opacity: 0;}

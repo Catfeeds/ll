@@ -1,0 +1,102 @@
+<?php
+namespace Lailonginterface\Controller;
+use Lailonginterface\Controller\PublicController;
+require 'php/jiguang.php';
+
+use JPush\Client as JPush;
+class RegisterController  extends PublicController {
+    /**
+     * 用户注册
+     */
+    public function index()
+    {
+       $phone =$_REQUEST['phone'];
+       $token=$_REQUEST['token'];
+       $pwd=$_REQUEST['password'];
+       //验证码
+       $code=$_REQUEST['code'];
+       //推荐人
+       $referees=$_REQUEST['referees'];
+       $s=M('sms')->where("phone = '$phone' and code = $code")->find();
+       if(!$s){
+           $msg = array(
+               "code" => 204,
+               "msg" => '验证码错误',
+           );
+           echo json_encode($msg);
+           exit();
+       }
+       if(empty($phone) || empty($pwd)){
+           $this->emptyResult();
+       }
+       $u=M('user')->where("phone = '$phone'")->find();
+       if($u){
+           //微信注册
+           if($u['password'] =='' && $u['openid'] !=''){
+               M('user')->where("phone = '$phone'")->save(array('password'=>md5($pwd)));
+               $this->successShortResult("注册成功");
+               exit();
+           }else{
+               $this->errorResult("此手机号已注册");
+           }
+       }
+      
+       $data=array('phone'=>$phone,'password'=>md5($pwd),'integral'=>0,'createtime'=>date('Y-m-d H:i:s'));
+       if(!empty($referees)){
+            $ph=M('user')->where("phone = '$referees'")->find();
+            if(!$ph){
+                $msg = array(
+                    "code" => 205,
+                    "msg" => '查无此联系人，请重新选择',
+                );
+                echo json_encode($msg);
+                exit();
+            }
+            $ec=M('encourage_config')->field("integral,content")->where("type = 1")->find();
+            $data3=array(
+                'user_id'=>$ph[id],
+                'obtain_type'=>1,
+                'is_obtain'=>1,
+                'integral'=>$ec[integral],
+                'content'=>$ec[content],
+                'createtime'=>date('Y-m-d H:i:s',time())
+            );
+            M('integral')->add($data3);
+            $datax=array('integral'=>intval($ph['integral']+$ec[integral]),'phone'=>$referees);
+           M('user')->save($datax);
+           $push = new \JPushZDY();
+           $receive = array('alias'=>array($ph[id]));//别名
+           $content='您的好友已通过您注册成功，您获得'.$ec[integral].'积分';
+           $result = $push->push($receive,$content,'','','86400');
+          /*  //$client = new JPush($this->_appkeys,$this->_masterSecret);
+           $platform="android";
+           $msg_content = json_encode(array('n_builder_id'=>$ph[id],'您的好友已通过您注册成功，您获得'.$ec[integral].'积分'));
+           $this->send(16,3,"8",1,$msg_content,$platform); */
+       }
+       if(M('user')->add($data)){
+           $this->successResult( M('user')->getLastInsID());
+       }
+       $this->checkAccess($token);
+       
+    }
+    //发送验证码
+    public function sendcode()
+    {
+        $user_id = $_REQUEST['user_id'];
+        $phone=$_REQUEST['phone'];
+        //$this->send_note($phone,$user_id);
+        
+        //测试
+        $code=rand(1000,9999);
+        if(!preg_match("/^1[0-9]{10}$/", $phone)){
+              $msg = array(
+                "code" => 203,
+                "msg" => '手机号有误！请重新输入',
+            );
+            echo json_encode($msg);
+            exit();
+        }
+        //等有短信应用时启用
+        $this->send_note($phone);
+    }
+}

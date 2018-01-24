@@ -1,0 +1,190 @@
+<?php
+
+namespace Classification\Controller;
+use Common\Controller\AdminbaseController;
+class ClassificationController extends AdminbaseController {
+	function _initialize() {
+	}
+    /**
+     *讲师列表
+     */
+    public function teacherlist() {
+        $user_key_word = isset ( $_REQUEST ['user_key_word'] ) ? $_REQUEST ['user_key_word'] : ''; // 关键字
+        $phone_key_word = isset ( $_REQUEST ['phone_key_word'] ) ? $_REQUEST ['phone_key_word'] : ''; // 关键字
+        $where= "1=1";
+        //判断是否表单处提交的数据，如果是就重置session值
+        if($_REQUEST['leixing']==1){
+            $_SESSION['user_key_word']=$user_key_word;
+            $_SESSION['phone_key_word']=$phone_key_word;
+        }
+        if($_SESSION['user_key_word'] != ''){
+            $where .= " and (a.user_login like '%$_SESSION[user_key_word]%')";
+        }
+        if($_SESSION['phone_key_word'] != ''){
+            $where .= " and (a.mobile like '%$_SESSION[phone_key_word]%')";
+        }
+        if($_POST['type']=='全部'){
+            $_SESSION['user_key_word']="";
+            $_SESSION['phone_key_word']="";
+        }
+        $model = M ("teacher");
+        $count = $model->where($where)->count();
+        $page = $this->page($count, C('PAGENUM'));
+        $list = $model->order("id DESC")->limit($page->firstRow . ',' . $page->listRows)->where($where)->select();
+        $this->assign('list', $list);
+        $this->assign("page", $page->show('Admin'));
+        $this->assign("formget",$_SESSION); 
+       	$this->display();
+    }
+    //添加课程
+     public function addteacher(){
+         $this->display();
+     }
+     //添加操作
+     public function add_post(){
+         $name=$_REQUEST['name'];
+         $avatar=$_REQUEST['avatar'];
+         $university=$_REQUEST['university'];
+         $teaching_grade=$_REQUEST['teaching_grade'];
+         $teaching_results=$_REQUEST['teaching_results'];
+         $experience=$_REQUEST['experience'];
+         $features=$_REQUEST['features'];
+         if(empty($name)){
+             $this->error("请填写讲师姓名");
+         }
+         if(empty($avatar)){
+             $this->error("请选择头像");
+         }
+         if(empty($university)){
+             $this->error("请填写毕业大学");
+         }
+         if(empty($teaching_grade)){
+             $this->error("授课年级");
+         }
+         if(empty($teaching_results)){
+             $this->error("请填写教学成果");
+         }
+         if(empty($experience)){
+             $this->error("请填写教学经验");
+         }
+         if(empty($features)){
+             $this->error("请填写教学特点");
+         }
+         $chongming=M('teacher')->where("name = '$name'")->find();
+         if($chongming){
+             $this->error("此讲师已存在");
+         }
+         $data=array(
+             'name'=>$name,
+             'avatar'=>$avatar,
+             'university'=>$university,
+             'teaching_grade'=>$teaching_grade,
+             'teaching_results'=>$teaching_results,
+             'experience'=>$experience,
+             'features'=>$features,
+             'createtime'=>date('Y-m-d H:i:s')
+         );
+         if(M('teacher')->add($data)){
+             $this->success('创建讲师成功',U('classification/teacherlist'));
+         }else{
+             $this->error('创建讲师失败');
+         }
+     }
+     //编辑
+     public function editeacher(){
+         $res=M("teacher")->where("id = $_REQUEST[editid]")->find();
+         $this->assign('list',$res);
+         $this->display();
+     }
+     public function edit_post(){
+         $editid=$_REQUEST['editid'];
+         $name=$_REQUEST['name'];
+         $avatar=$_REQUEST['avatar'];
+         $university=$_REQUEST['university'];
+         $teaching_grade=$_REQUEST['teaching_grade'];
+         $teaching_results=$_REQUEST['teaching_results'];
+         $experience=$_REQUEST['experience'];
+         $features=$_REQUEST['features'];
+         if(empty($name)){
+             $this->error("请填写讲师姓名");
+         }
+         if(empty($avatar)){
+             $this->error("请选择头像");
+         }
+         if(empty($university)){
+             $this->error("请填写毕业大学");
+         }
+         if(empty($teaching_grade)){
+             $this->error("授课年级");
+         }
+         if(empty($teaching_results)){
+             $this->error("请填写教学成果");
+         }
+         if(empty($experience)){
+             $this->error("请填写教学经验");
+         }
+         if(empty($features)){
+             $this->error("请填写教学特点");
+         }
+         $data=array(
+             'name'=>$name,
+             'avatar'=>$avatar,
+             'university'=>$university,
+             'teaching_grade'=>$teaching_grade,
+             'teaching_results'=>$teaching_results,
+             'experience'=>$experience,
+             'features'=>$features,
+         );
+         if(M('teacher')->where("id = $editid")->save($data)){
+             $this->success('修改讲师成功');
+         }else{
+             $this->error('修改讲师失败');
+         }
+     }
+     //过滤效率图
+     function up(){
+         $savename="";
+         $config = array (
+             'FILE_UPLOAD_TYPE' => sp_is_sae () ? "Sae" : 'Local',
+             'rootPath' =>  C ( "UPLOADPATH" ),
+             /* 'maxSize' => 2097152, // 2M  */
+             /* 'maxSize' => 104857600, // 100M  */
+             'saveName' => array (
+                 'uniqid',
+                 $param.time()
+             ),
+             'exts' => array (
+                 'jpg',
+                 'png',
+                 'jpeg',
+                 'gif',
+                 'bmp'
+             ),
+             'autoSub' => false
+         );
+         $upload = new \Think\Upload ( $config );
+         $info = $upload->upload ();
+         $first = array_shift($info);
+         $savename= $first['savename'];
+         //ajax返回数据
+         if ($savename) {
+             $this->ajaxReturn ( sp_ajax_return ( array (
+                 'iconname'=>$savename
+             ), "上传成功！", 1 ), "AJAX_UPLOAD" );
+         } else {
+             $this->ajaxReturn ( sp_ajax_return ( array (), $upload->getError (), 0 ), "AJAX_UPLOAD" );
+         }
+     }
+     function deleteicon()
+     {
+         if(!empty($_POST['img2']))
+         {
+             unlink("./data/upload/avatar/$_POST[img2]");
+         }
+     }
+
+     public function childlist(){
+        
+        
+     }
+}

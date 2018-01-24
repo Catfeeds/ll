@@ -1,0 +1,83 @@
+.am-tabs .am-tabs-nav{
+    text-align: center;
+    width: 180px;
+    margin: 0 auto;
+}
+.am-tabs-default .am-cf li a{
+    height: 35px;
+    line-height: 35px;
+}
+.am-tabs-default .am-tabs-nav>.am-active a{
+    background-color: black;
+}
+.am-intro-default{
+    background: white;
+}
+.am-intro-default .am-intro-bd .xq{
+    color: #2759f5;
+}
+.am-intro-default .am-intro-hd {
+    background-color: white;
+    color: black;
+    padding: 0 10px;
+    border-bottom: 0.5px solid #e6e9ea;
+}
+.am-intro-default .am-intro-hd strong{
+    display: inline-block;
+    padding-right: 10px;
+    border-right: 0.5px solid #e6e9ea;
+}
+.am-intro-default .am-intro-hd span{
+    font-weight: bold;
+}
+.am-intro-hd{
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: -10px;
+
+}
+.am-navbar-label{
+    color: #bfc6d1;
+}
+form .am-form-group label{
+    position: absolute;
+    font-size: 16px;
+    top: 12px;
+    left: 23px;
+    z-index: 999;
+}
+form .am-form-group input{
+    height: 50px;
+    text-align: right;
+    position: relative;
+    color: #9da397;
+    border: none!important;
+}
+
+section .am-form div label{
+    position: absolute;
+    font-size: 16px;
+    top: 12px;
+    left: 8px;
+    z-index: 999;
+}
+footer{
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    background:#fbfbfb;
+    padding: 0 0 0 10px;
+    position: fixed;
+    bottom: 0;
+}
+footer span{
+    color: #3f6efb;
+}
+footer button{
+    width: 100px;
+    height: 100%;
+    float: right;
+    border:none;
+    background: #4a76fb;
+    color: white;
+}

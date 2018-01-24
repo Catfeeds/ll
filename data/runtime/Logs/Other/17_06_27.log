@@ -1,0 +1,221 @@
+[ 2017-06-27T16:07:42+08:00 ] ::1 /ll/index.php?g=Other&m=classification&a=up
+ERR: 无法加载控制器:Classification
+
+[ 2017-06-27T16:11:15+08:00 ] ::1 /ll/index.php?g=Other&m=Message&a=deleteicon
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.030181s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.086135s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.121580s ]
+NOTIC: [2] unlink(./data/upload/avatar/1498550947595212a3244fe.jpg): No such file or directory D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 328 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.033816s ]
+INFO: [ app_end ] --END-- [ RunTime:0.033998s ]
+
+[ 2017-06-27T16:12:46+08:00 ] ::1 /ll/index.php?g=Other&m=Message&a=deleteicon
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.066974s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.115824s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.191268s ]
+NOTIC: [2] unlink(./data/upload/avatar/14985510865952132e4a2ce.jpg): No such file or directory D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 329 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.043999s ]
+INFO: [ app_end ] --END-- [ RunTime:0.045417s ]
+
+[ 2017-06-27T16:23:45+08:00 ] ::1 /ll/index.php?g=Other&m=Message&a=deleteicon
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.044893s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.108525s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.161022s ]
+NOTIC: [2] unlink(./data/upload/message/1498551768595215d887f65.png): No such file or directory D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 328 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.037661s ]
+INFO: [ app_end ] --END-- [ RunTime:0.037816s ]
+
+[ 2017-06-27T16:23:55+08:00 ] ::1 /ll/index.php?g=Other&m=Message&a=deleteicon
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.028054s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.082088s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.115837s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.033567s ]
+INFO: [ app_end ] --END-- [ RunTime:0.033777s ]
+
+[ 2017-06-27T16:25:22+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.032361s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.075469s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.112793s ]
+NOTIC: [8] Undefined index: user_id D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 70 行.
+NOTIC: [8] Undefined index: type D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 71 行.
+
+[ 2017-06-27T16:25:29+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.027275s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.074525s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.107358s ]
+NOTIC: [8] Undefined index: user_id D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 70 行.
+NOTIC: [8] Undefined index: type D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 71 行.
+
+[ 2017-06-27T16:26:09+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.030871s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.075933s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.111273s ]
+
+[ 2017-06-27T16:27:03+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.029660s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.074029s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.109137s ]
+
+[ 2017-06-27T16:27:35+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.030142s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.067637s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.102571s ]
+
+[ 2017-06-27T16:30:52+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.037059s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.117893s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.162758s ]
+
+[ 2017-06-27T16:31:26+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.061916s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.113019s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.180440s ]
+
+[ 2017-06-27T16:32:10+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.027853s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.080468s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.113814s ]
+NOTIC: [8] Undefined index: user_id D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 70 行.
+NOTIC: [8] Undefined index: type D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 71 行.
+SQL: SHOW COLUMNS FROM `lailong_course` [ RunTime:0.0147s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `title` FROM `lailong_course` WHERE ( id =  ) LIMIT 1  
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `title` FROM `lailong_course` WHERE ( id =  ) LIMIT 1  
+
+[ 2017-06-27T16:33:51+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.030613s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.072980s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.108042s ]
+NOTIC: [8] Undefined index: user_id D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 70 行.
+NOTIC: [8] Undefined index: type D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 71 行.
+
+[ 2017-06-27T16:33:55+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.039059s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.073381s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.118295s ]
+NOTIC: [8] Undefined index: user_id D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 70 行.
+NOTIC: [8] Undefined index: type D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 71 行.
+
+[ 2017-06-27T16:33:59+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.035418s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.080778s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.125306s ]
+NOTIC: [8] Undefined index: user_id D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 70 行.
+NOTIC: [8] Undefined index: type D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 71 行.
+
+[ 2017-06-27T16:34:08+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.025437s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.059708s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.089311s ]
+NOTIC: [8] Undefined index: user_id D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 70 行.
+NOTIC: [8] Undefined index: type D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 71 行.
+
+[ 2017-06-27T16:34:26+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.021643s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.078750s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.104470s ]
+NOTIC: [8] Undefined index: user_id D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 70 行.
+NOTIC: [8] Undefined index: type D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 71 行.
+SQL: SHOW COLUMNS FROM `lailong_course` [ RunTime:0.0263s ]
+SQL: SELECT `title` FROM `lailong_course` WHERE ( id = 5 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `lailong_news` [ RunTime:0.0143s ]
+SQL: INSERT INTO `lailong_news` (`title`,`icon`,`course_id`,`content`,`createtime`,`type`) VALUES ('1231','14985524465952187e93cdc.jpg','5','嘻嘻嘻','2017-06-27 16:34:26','0') [ RunTime:0.0012s ]
+SQL: INSERT INTO `lailong_news` (`title`,`icon`,`course_id`,`content`,`createtime`,`type`) VALUES ('1231','14985524465952187e93cdc.jpg','5','嘻嘻嘻','2017-06-27 16:34:26','1') [ RunTime:0.0006s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.028196s ]
+INFO: [ app_end ] --END-- [ RunTime:0.028383s ]
+
+[ 2017-06-27T16:35:36+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.038723s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.087663s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.133088s ]
+
+[ 2017-06-27T16:36:17+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+ERR: {"touser":"123","template_id":"WxMde2DGqeW8i6cMV8dtHBxbVpndrB8WKdtY5rU7LCA","url":"","topcolor":"#7B68EE","data":{"productType":{"value":"%E5%95%86%E5%93%81%E5%90%8D"},"name":{"value":"test"},"number":{"value":"1%E4%BB%BD"},"expDate":{"value":"2017-06-27"},"remark":{"value":"sss"}}}111
+[ 2017-06-27T16:36:17+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+ERR: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx6ccce8752525b8cc&secret=7d87a2a84199b99cf6c5765f657fcac4
+[ 2017-06-27T16:36:18+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+ERR: Array
+[ 2017-06-27T16:36:18+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+ERR: ZAD0eQ3Id0dlNpfIpjxW-3fRonYykK_s5e9O0P9xtedhUW5R5zsLTtQTSa6sc7M7tcmDN-xRjCXS0XUkWohqgJyZSV45CVT7fzo1vfjd-V5HnGe87ZB6Xy2l64pBoYRiWLCeAHAFUL222
+[ 2017-06-27T16:36:19+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+ERR: https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=ZAD0eQ3Id0dlNpfIpjxW-3fRonYykK_s5e9O0P9xtedhUW5R5zsLTtQTSa6sc7M7tcmDN-xRjCXS0XUkWohqgJyZSV45CVT7fzo1vfjd-V5HnGe87ZB6Xy2l64pBoYRiWLCeAHAFUL{"touser":"123","template_id":"WxMde2DGqeW8i6cMV8dtHBxbVpndrB8WKdtY5rU7LCA","url":"","topcolor":"#7B68EE","data":{"productType":{"value":"商品名"},"name":{"value":"test"},"number":{"value":"1份"},"expDate":{"value":"2017-06-27"},"remark":{"value":"sss"}}}3333
+[ 2017-06-27T16:36:19+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+ERR: 44444
+[ 2017-06-27T16:36:19+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+ERR: {"errcode":40003,"errmsg":"invalid openid hint: [OcOdia0645ge25]"}555
+[ 2017-06-27T16:36:19+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.037386s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.091962s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.134269s ]
+NOTIC: [8] Undefined index: user_id D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 70 行.
+NOTIC: [8] Undefined index: type D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 71 行.
+SQL: SHOW COLUMNS FROM `lailong_course` [ RunTime:0.0215s ]
+SQL: SELECT `title` FROM `lailong_course` WHERE ( id = 5 ) LIMIT 1   [ RunTime:0.0006s ]
+NOTIC: [8] Undefined index: type1 D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 98 行.
+SQL: SHOW COLUMNS FROM `lailong_news` [ RunTime:0.0178s ]
+SQL: INSERT INTO `lailong_news` (`title`,`icon`,`course_id`,`content`,`createtime`,`type`) VALUES ('44','1498552574595218feba7c2.jpg','5','444','2017-06-27 16:36:17','1') [ RunTime:0.0014s ]
+NOTIC: [8] Undefined index: type1 D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 114 行.
+NOTIC: [8] Undefined index: type1 D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 117 行.
+NOTIC: [8] Undefined variable: timend D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 126 行.
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0163s ]
+SQL: SELECT `openid` FROM `lailong_user`  [ RunTime:0.0008s ]
+NOTIC: [8] Array to string conversion D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Log.class.php 第 102 行.
+
+[ 2017-06-27T16:39:16+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.031699s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.089875s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.127465s ]
+NOTIC: [8] Undefined index: user_id D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 71 行.
+SQL: SHOW COLUMNS FROM `lailong_course` [ RunTime:0.0229s ]
+SQL: SELECT `title` FROM `lailong_course` WHERE ( id = 5 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `lailong_news` [ RunTime:0.0145s ]
+SQL: INSERT INTO `lailong_news` (`title`,`type`,`icon`,`course_id`,`content`,`createtime`) VALUES ('41','2','1498552744595219a88c417.jpg','5','142','2017-06-27 16:39:16') [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `lailong_intention` [ RunTime:0.0169s ]
+ERR: 1054:Unknown column 'i.course_id' in 'where clause'
+ [ SQL语句 ] : SELECT `user_id` FROM `lailong_intention` WHERE ( i.course_id = 5 ) LIMIT 1  
+ERR: 1054:Unknown column 'i.course_id' in 'where clause'
+ [ SQL语句 ] : SELECT `user_id` FROM `lailong_intention` WHERE ( i.course_id = 5 ) LIMIT 1  
+
+[ 2017-06-27T16:41:57+08:00 ] ::1 /ll/index.php?g=Other&m=message&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.034862s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.078458s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.118505s ]
+NOTIC: [8] Undefined index: user_id D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 71 行.
+SQL: SHOW COLUMNS FROM `lailong_course` [ RunTime:0.0250s ]
+SQL: SELECT `title` FROM `lailong_course` WHERE ( id = 5 ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `lailong_news` [ RunTime:0.0164s ]
+SQL: INSERT INTO `lailong_news` (`title`,`type`,`icon`,`course_id`,`content`,`createtime`) VALUES ('412','2','149855291359521a518f6dc.jpg','5','214','2017-06-27 16:41:57') [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `lailong_intention` [ RunTime:0.0154s ]
+SQL: SELECT `user_id` FROM `lailong_intention` WHERE ( course_id = 5 ) LIMIT 1   [ RunTime:0.0007s ]
+NOTIC: [8] Use of undefined constant user_id - assumed 'user_id' D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 141 行.
+NOTIC: [8] Undefined variable: timend D:\tools\upupw\htdocs\ll\application\Other\Controller\MessageController.class.php 第 168 行.
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0370s ]
+SQL: SELECT `openid` FROM `lailong_user` WHERE ( id = '' ) LIMIT 1   [ RunTime:0.0007s ]
+

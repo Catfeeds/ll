@@ -1,0 +1,86 @@
+<?php
+namespace Lailonginterface\Controller;
+use Lailonginterface\Controller\PublicController;
+
+class RegisterController  extends PublicController {
+    /**
+     * 用户注册
+     */
+    public function index()
+    {
+       $phone =$_REQUEST['phone'];
+       $token=$_REQUEST['token'];
+       $pwd=$_REQUEST['password'];
+       //验证码
+       $code=$_REQUEST['code'];
+       //推荐人
+       $referees=$_REQUEST['referees'];
+       $s=M('sms')->where("phone = '$phone' and code = $code")->find();
+       if(!$s){
+           $msg = array(
+               "code" => 204,
+               "msg" => '验证码错误',
+           );
+           echo json_encode($msg);
+           exit();
+       }
+       if(empty($phone) || empty($pwd)){
+           $this->emptyResult();
+       }
+       if(M('user')->where("phone = '$phone'")->find()){
+           $this->errorResult("此手机号已注册");
+       }
+       $data=array('phone'=>$phone,'password'=>md5($pwd),'integral'=>0,'createtime'=>date('Y-m-d H:i:s'));
+       if(!empty($referees)){
+            $ph=M('user')->where("phone = '$referees'")->find();
+            if(!$ph){
+                $msg = array(
+                    "code" => 205,
+                    "msg" => '查无此联系人，请重新选择',
+                );
+                echo json_encode($msg);
+                exit();
+            }
+            $datax=array('integral'=>1,'phone'=>$phone);
+           M('user')->save($datax);
+       }
+       if(M('user')->add($data)){
+           $this->successResult( M('user')->getLastInsID());
+       }
+       $this->checkAccess($token);
+       
+    }
+    //发送验证码
+    public function sendcode()
+    {
+        $phone=$_REQUEST['phone'];
+        $user_id = $_REQUEST['user_id'];
+        //测试
+        $code=rand(1000,9999);
+        if(!preg_match("/^1[0-9]{10}$/", $phone)){
+              $msg = array(
+                "code" => 203,
+                "msg" => '手机号有误！请重新输入',
+            );
+            echo json_encode($msg);
+            exit();
+        }
+        //等有短信应用时启用
+        //$this->send_note($phone);
+        $s=M('sms')->where("phone = '$phone'")->find();
+        if(!$s){
+            $data = array ('phone'=>$phone,'user_id'=>0,'createtime'=>date('Y-m-d H:i:s',time()),'code'=>$code);
+            M('sms')->add($data);
+        }else{
+            $data = array ('user_id'=>$user_id,'createtime'=>date('Y-m-d H:i:s',time()),'code'=>$code);
+            M('sms')->where("phone = $phone")->save($data);
+        }
+        $msg = array(
+            "code" => 101,
+            "msg" => '获取短信成功',
+            'data'=>$code
+        );
+        echo json_encode($msg);
+        exit();
+    }
+}

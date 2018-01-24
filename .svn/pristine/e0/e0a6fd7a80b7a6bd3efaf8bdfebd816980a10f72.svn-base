@@ -1,0 +1,96 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>成为会员</title>
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body>
+
+<!--表单-->
+<section>
+    <form class="am-form am-form-horizontal">
+        <div class="am-form-group">
+            <div class="am-u-sm-13">
+                <label style="font-weight: inherit">真实姓名</label>
+                <input type="text"  class="am-radius" placeholder="王大锤">
+            </div>
+        </div>
+
+        <div class="am-form-group" style="margin-top: -16px">
+            <div class="am-u-sm-13">
+                <label style="font-weight: inherit">年龄</label>
+                <input type="text" class="am-radius" placeholder="请输入至少6位字母或数字">
+            </div>
+        </div>
+
+        <div class="am-form-group" style="margin-top: -16px">
+            <div class="am-u-sm-13">
+                <label style="font-weight: inherit">性别</label>
+                <input type="text" class="am-radius" placeholder="请重复输入一次新的密码">
+            </div>
+        </div>
+
+        <div class="am-form-group" style="margin-top: -16px">
+            <div class="am-u-sm-13">
+                <label style="font-weight: inherit">所在学校</label>
+                <input type="text" class="am-radius" placeholder="请填写学校名称">
+            </div>
+        </div>
+
+        <div class="am-form-group" style="margin-top: -16px">
+            <div class="am-u-sm-13">
+                <label style="font-weight: inherit">年级</label>
+                <input type="text" class="am-radius" placeholder="请选择年级">
+            </div>
+        </div>
+        <div class="am-u-sm-5" style="text-indent: 10px;margin-top: -13px;
+    margin-bottom: 5px;font-weight: bold">
+            <span>家长信息</span>
+        </div>
+        <div class="am-form-group" style="margin-top: -16px">
+            <div class="am-u-sm-13">
+                <label style="font-weight: inherit">称呼</label>
+                <input type="text" class="am-radius" placeholder="与孩子的关系">
+            </div>
+        </div>
+
+        <div class="am-form-group" style="margin-top: -16px">
+            <div class="am-u-sm-13">
+                <label style="font-weight: inherit">姓名</label>
+                <input type="text" class="am-radius" placeholder="真实姓名">
+            </div>
+        </div>
+
+        <div class="am-form-group" style="margin-top: -16px">
+            <div class="am-u-sm-13">
+                <label style="font-weight: inherit">手机号码</label>
+                <input type="text" class="am-radius" placeholder="13812345678">
+            </div>
+        </div>
+
+        <div class="am-form-group" style="margin-top: -7px">
+            <div class="am-u-sm-13">
+                <button type="submit" class="am-btn am-btn-block" style="background: #2adcaa;height: 50px;color: white;margin-top: 10px;border-radius:3px">
+                    <a style="width: 100%;height: 50px;color: white" href="{:U('Mine/my')}">提交认证</a></button>
+            </div>
+        </div>
+
+    </form>
+</section>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__TMPL__Public/js/weixin/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<![endif]-->
+<script src="__TMPL__Public/js/weixin/amazeui.min.js"></script>
+</body>
+</html>

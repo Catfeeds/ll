@@ -1,0 +1,127 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <tc_include file="Public:header" />
+    <title>绑定手机号</title>
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body>
+<!--表单-->
+<section>
+    <form class="am-form am-form-horizontal">
+        <div class="am-form-group">
+            <div class="am-u-sm-13">
+                <label id="te" style="color: #6f716c;">手机号</label>
+                <input type="number" id="doc-ipt-3" class="am-radius" style="text-align: right;padding-right:13rem"placeholder="请输入手机号">
+                <input id="min" style="font-size: 12px;width:92px;text-align:center" type="button" value="发送验证码" class="btn1 getcode">
+            </div>
+        </div>
+
+        <div class="am-form-group" style="margin-top: -16px;">
+            <div class="am-u-sm-13">
+                <label id="yz" style="color: #6f716c;">验证码</label>
+                <input type="text" id="doc-ipt-pwd-2" class="am-radius" placeholder="输入验证码">
+            </div>
+        </div>
+
+        <div class="am-form-group">
+            <div class="am-u-sm-13">
+                <label id="tj" style="color: #6f716c;">推荐人</label>
+                <input type="text" id="doc-ipt-pwd-3" class="am-radius" placeholder="请填写推荐人手机号码（选填）">
+            </div>
+        </div>
+
+        <div class="am-form-group">
+            <div class="am-u-sm-13">
+                <p style="color: #a5a8a0;font-size: 12px;margin: -2px 0 20px 0;letter-spacing: 1.5px">绑定即表明您同意<a href="{:U('rulepage/user_protocol')}" style="color: #0190ff;border-bottom: 1px solid #0190ff;">用户协议</a></p>
+            </div>
+        </div>
+
+        <div class="am-form-group">
+            <div class="am-u-sm-13">
+            <input type="button" id="regist_go" value="绑定" class="am-btn am-btn-block" style="text-align:center;background: #2adcaa;font-weight: bold; color: white;height: 50px;margin-top: -23px;border-radius:3px">
+            </div>
+        </div>
+
+    </form>
+</section>
+<tc_include file="Public:weixin_foot"/>
+<!--[if (gte IE 9)|!(IE)]><!-->
+
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<!--<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>-->
+<![endif]-->
+<script src="__TMPL__Public/js/weixin/amazeui.min.js"></script>
+<script>
+$("#min").click(function(){
+	$("#min").css({"width":"92px","text-align":"center"})
+})
+$("#regist_go").click(function(){
+	var phone=$("#doc-ipt-3").val();
+	var code=$("#doc-ipt-pwd-2").val();
+	var recommend=$("#doc-ipt-pwd-3").val();
+	if(phone==""){
+		$("#my-alert").modal();
+ 		$("#alert_cont").text("请输入手机号!");
+ 		return;
+	}
+	if(code==""){
+		$("#my-alert").modal();
+ 		$("#alert_cont").text("请输入验证码!");
+ 		return;
+	}
+	$.post('{:U("Center/bang_go")}',
+			{ phone : phone , code : code , recommend : recommend},
+		 	function(data){
+				if(data[0]=="101"){
+					$("#my-alert").modal();
+			 		$("#alert_cont").text(data[1]);
+			 		window.location.href="{:U('Mine/my')}";
+				}else{
+					$("#my-alert").modal();
+			 		$("#alert_cont").text(data[1]);
+			 		return;
+				}
+	});
+})
+$(".getcode").click(function(){
+	var phone=$("#doc-ipt-3").val();
+	var re = /^1\d{10}$/;
+    if (re.test(phone)) {
+    } else {
+   	 $("#my-alert").modal();
+		 $("#alert_cont").text("请输入正确手机号!");
+		 return;
+    }
+	 $.post('{:U("Center/send_note")}',
+			{ phone : phone},
+		 	function(data){
+				if(data[0]=="101"){
+					//$("#my-alert").modal();
+			 		 var t=60;
+			 	    var interval=setInterval(function(){
+			 	    	console.log(t);
+			 	        if(t>0){
+			 	            $(".getcode").attr("disabled","true")
+			 	            $(".getcode").val(""+t+" 秒");
+			 	        }else{
+			 	            $(".getcode").removeAttr("disabled");
+			 	            $(".getcode").val("获取验证码");
+			 	            clearInterval(interval);
+			 	        }
+			 	        t--;
+			 	    },1000);
+			 		
+				}else{
+					$("#my-alert").modal();
+			 		$("#alert_cont").text(data[1]);
+			 		return;
+			}
+	}); 
+   
+})
+</script>
+</body>
+</html>

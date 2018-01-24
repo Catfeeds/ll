@@ -1,0 +1,84 @@
+<?php
+
+namespace Classtypes\Controller;
+use Common\Controller\AdminbaseController;
+class GradeController extends AdminbaseController {
+	function _initialize() {
+	}
+     public function gradelist(){
+         $where= "1=1";
+         $title=$_REQUEST['title'];
+         if(!empty($title)){
+            $where.=" and title like '%".$title."%' ";
+            $parameter['title']=$title;
+            $this->assign('title',$title);
+         }
+         $model = M ("grade");
+         $count = $model->where($where)->count();
+         $page = $this->page($count, C('PAGENUM'));
+         $list = $model->where($where)->order("id DESC")->limit($page->firstRow . ',' . $page->listRows)->select();
+         $this->assign('list', $list);
+         if($parameter){
+            foreach ($parameter as $key => $value) {
+                $page->parameter .= "$key=".urlencode($value)."&";
+            }
+         } 
+         $this->assign("page", $page->show());
+         $this->display();
+     }
+     public function addgrade(){
+        $this->display();
+     }
+     public function add_post(){
+        $is_exist=M('grade')->where("title = '".$_POST[title]."'")->find();
+        if(empty($is_exist)){
+            if(IS_POST){
+                $_POST['createtime']=date("Y-m-d H:i:s");
+                if (M("grade")->create()!==false){
+                    if (M("grade")->add()!==false) {
+                        $this->success(L('ADD_SUCCESS'), U("Grade/gradelist"));
+                    } else {
+                        $this->error(L('ADD_FAILED'));
+                    }
+                } else {
+                    $this->error(M("grade")->getError());
+                }
+        
+            }
+        }else{
+                $this->error("学段已存在");
+            }
+        
+     }
+     public function editgrade(){
+        $res=M("grade")->where("id = $_REQUEST[editid]")->find();
+        $this->assign($res);
+        $this->display();
+     }
+     public function edit_post(){
+        $is_exist=M('grade')->where("title = '".$_POST[title]."' and id != '".$_POST[id]."' ")->find();
+        if(empty($is_exist)){
+            if(IS_POST){
+                if (M("grade")->create()!==false){
+                    if (M("grade")->save()!==false) {
+                        $this->success(L('ADD_SUCCESS'), U("Grade/gradelist"));
+                    } else {
+                        $this->error(L('ADD_FAILED'));
+                    }
+                } else {
+                    $this->error(M("grade")->getError());
+                }
+            }
+        }else{
+            $this->error("学段已存在");
+        }
+     }
+     public function deletegrade(){
+        $id = I("get.id",0,"intval");
+        if (M('grade')->delete($id)!==false) {
+            $this->success("删除成功！");
+        } else {
+            $this->error("删除失败！");
+        }
+    }
+}

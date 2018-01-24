@@ -1,0 +1,47 @@
+<admintpl file="header" />
+</head>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/addcourse.css" />
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('order/orderlist')}">{:L('ADMIN_ENRO_INDEX')}</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('order/agreecancelornot')}">
+			<input type="hidden" name="editid" value="{$list.id}"/>
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">{:L('ORDER_SN')}</label>
+					<div class="controls">
+						<input type="text" readonly value="{$list.order_id}">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('COURSE')}</label>
+					<div class="controls">
+						<input type="text" readonly value="{$list.title}">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('CANCELREASON')}</label>
+					<div class="controls">
+						<textarea name="desc"style="width:300px;height:100px;" disabled>{$list.note}</textarea>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('操作')}</label>
+					<div class="controls">
+						<select name="state"><option></option><option value="0">拒绝</option><option value="1">批准</option></select>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<!-- <button type="submit" class="btn btn-primary js-ajax-submit">{:L('确定')}</button> -->
+				<a class="btn" href="{:U('order/orderlist')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+<script type="text/javascript">
+</script>
+</html>

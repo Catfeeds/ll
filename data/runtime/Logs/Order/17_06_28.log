@@ -1,0 +1,16 @@
+[ 2017-06-28T13:58:29+08:00 ] ::1 /ll/index.php?g=Order&m=order&a=agreecancelornot
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.027109s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.076470s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.108484s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0201s ]
+SQL: UPDATE `lailong_enrollment` SET `cancel_state`='2' WHERE ( id = 1 ) [ RunTime:0.0010s ]
+
+[ 2017-06-28T13:59:15+08:00 ] ::1 /ll/index.php?g=Order&m=order&a=agreecancelornot
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.024821s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.069711s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.099143s ]
+SQL: SHOW COLUMNS FROM `lailong_enrollment` [ RunTime:0.0136s ]
+SQL: UPDATE `lailong_enrollment` SET `cancel_state`='2',`state`='4' WHERE ( id = 9 ) [ RunTime:0.0007s ]
+

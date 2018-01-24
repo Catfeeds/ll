@@ -1,0 +1,845 @@
+<?php
+
+/**
+ * 我的
+ */
+namespace Weixin\Controller;
+date_default_timezone_set("Asia/Shanghai");
+use Common\Controller\MemberbaseController;
+use Think\Log;
+class MineController extends MemberbaseController {
+    
+	//我的
+	function my(){
+	    $userid = $_SESSION['weixin_user_id'];
+		//查询孩子
+		$child=M('child')->field("c.*,m.appellation,u.name as username,u.integral")->table(C('DB_PREFIX')."child as c")
+		->join(C('DB_PREFIX')."member as m on m.child_id =c.id",'left')
+		->join(C('DB_PREFIX')."user as u on u.id =m.user_id",'left')
+		->where("m.user_id =$userid")->select();
+		/* $child=M("user")->field("c.*")->table(C("DB_PREFIX")."user as a")->join(C("DB_PREFIX")."member as b on a.id=b.user_id")
+		->join(C("DB_PREFIX")."child as c on b.child_id=c.id")->where("a.id=8")->select(); */
+		$u=M('user')->where("id = $userid")->find();
+		$date=date('Y-m-d H:i:s',time());
+		$start=date('Y-m-d 00:00:00',time());
+		$end=date('Y-m-d 23:59:59');
+		$bool=0;
+		if(M('check_in')->where("createtime between '$start' and '$end' and user_id = $userid")->find()){
+		    $bool=1;
+		}
+		$this->assign("bool",$bool);
+		$this->assign("u",$u);
+		$this->assign("child",$child);
+		$this->assign("url",C("UPLOADPATH")."avatar/");
+		$this->display(":my");
+	}
+	//会员信息
+	function user_info(){
+		$id=$_REQUEST['child'];
+		if($id){
+			$userinfo=M("child")->where("id=$id")->find();
+		}
+		$this->assign("url",C("UPLOADPATH")."avatar/");
+		$this->assign("userinfo",$userinfo);
+		$this->display(":user_info");
+	}
+	//订单列表
+	function order_list(){
+	    $userid=$_SESSION['weixin_user_id'];
+		$id=$_REQUEST['id'];
+		$num=10;
+		if($id){
+			$nwhere="child_id=$id and user_id = $userid";
+			//全部订单
+			$all_order=M("enrollment")->field("b.*,a.state,a.id as oid,a.createtime as time")->table(C("DB_PREFIX")."enrollment as a")
+			->join(C("DB_PREFIX")."course as b on a.course_id=b.id")
+			->where("a.child_id=$id and a.user_id = $userid")->limit("0,".$num)->order(array("a.createtime"=>DESC))->select();
+			$all_count=M("enrollment")->where($nwhere)->count();
+			if($all_count>$num){
+				$this->assign("all_c","1");
+			}
+			//待支付订单
+			$dai_order=M("enrollment")->field("b.*,a.state,a.id as oid,a.createtime as time")->table(C("DB_PREFIX")."enrollment as a")
+			->join(C("DB_PREFIX")."course as b on a.course_id=b.id")
+			->where("a.child_id=$id and a.user_id = $userid and a.state=0")->limit("0,".$num)->order(array("a.createtime"=>DESC))->select();
+			$dai_count=M("enrollment")->where($nwhere." and state=0")->count();
+			if($dai_count>$num){
+				$this->assign("dai_c","1");
+			}
+			//待确认订单
+			$true_order=M("enrollment")->field("b.*,a.state,a.id as oid,a.createtime as time")->table(C("DB_PREFIX")."enrollment as a")
+			->join(C("DB_PREFIX")."course as b on a.course_id=b.id")
+			->where("a.child_id=$id and a.user_id = $userid and a.state=1")->limit("0,".$num)->order(array("a.createtime"=>DESC))->select();
+			$true_count=M("enrollment")->where($nwhere." and state=1")->count();
+			if($true_count>$num){
+				$this->assign("true_c","1");
+			}
+			//已完成订单
+			$over_order=M("enrollment")->field("b.*,a.state,a.id as oid,a.createtime as time")->table(C("DB_PREFIX")."enrollment as a")
+			->join(C("DB_PREFIX")."course as b on a.course_id=b.id")
+			->where("a.child_id=$id and a.user_id = $userid and a.state=3")->limit("0,".$num)->order(array("a.createtime"=>DESC))->select();
+			$over_count=M("enrollment")->where($nwhere." and state=3")->count();
+			if($over_count>$num){
+				$this->assign("over_c","1");
+			}
+			//已取消订单
+			$die_order=M("enrollment")->field("b.*,a.state,a.id as oid,a.createtime as time")->table(C("DB_PREFIX")."enrollment as a")
+			->join(C("DB_PREFIX")."course as b on a.course_id=b.id")
+			->where("a.child_id=$id and a.user_id = $userid and a.state=4")->limit("0,".$num)->order(array("a.createtime"=>DESC))->select();
+			$die_count=M("enrollment")->where($nwhere." and state=4")->count();
+			if($die_count>$num){
+				$this->assign("die_c","1");
+			}
+		}
+		$this->assign("url",C("UPLOADPATH")."avatar/");
+		$this->assign("all_order",$all_order);
+		$this->assign("dai_order",$dai_order);
+		$this->assign("true_order",$true_order);
+		$this->assign("over_order",$over_order);
+		$this->assign("die_order",$die_order);
+		$this->assign("userid",$userid);
+//		$this->assign('cid',$id);//小孩id
+		$this->display(":order_list");
+	}
+	//课程意向
+	function write_application(){
+	    $this->display(":write_application");
+	}
+	//会员认证
+	function member(){
+	    $user=$_SESSION['weixin_user_id'];
+	    $child=$_REQUEST['child'];
+	    $g=M('grade')->select();
+	    $u=M('user')->field("phone ,name")->where("id = $user")->find();
+	     if(!empty($child)){
+	         $res=M('child')->where("id = $child")->find();
+	         $age=intval((time()-strtotime($res[birthday]))/86400/30/12);
+	         $parent=M('member')->where("child_id = $child")->find();
+	         $this->assign("age",$age);
+	         $this->assign("res",$res);
+	         $this->assign("parent",$parent);
+	     }
+	    $this->assign("u",$u);
+	    $this->assign("g",$g);
+		$this->display(":member");
+	}
+	function do_member(){
+	    $user=$_SESSION['weixin_user_id'];
+	    $name=$_REQUEST['name'];
+	    $age=$_REQUEST['age']?$_REQUEST['age']:0;
+	    $gender=$_REQUEST['gender'];
+	    $school=$_REQUEST['school'];
+	    $grade=$_REQUEST['grade'];
+	    $appellation=$_REQUEST['appellation'];
+	    $username=$_REQUEST['username'];
+	    $phone=$_REQUEST['phone'];
+	    $editid=$_REQUEST['editid'];
+	    if(!empty($editid)){
+	        $data=array(
+	            'nickname'=>$name,
+	            'name'=>$name,
+	            'birthday'=> date('Y-m-d',time()-$age*30*12*86400),
+	            'gender'=>$gender,
+	            'school'=>$school,
+	            'grade'=>$grade,
+	            'vip_state'=>1,
+	        );
+	        M('child')->where("id = $editid")->save($data);
+	        M('member')->where("user_id = $user and child_id = $editid")->save(array('appellation'=>$appellation));
+	        $this->ajaxReturn(array("0"=>"101","1"=>'用户认证中'));
+	    }else{
+	        $data=array(
+	            'nickname'=>$name,
+	            'name'=>$name,
+	            'birthday'=> date('Y-m-d',time()-$age*30*12*86400),
+	            'gender'=>$gender,
+	            'school'=>$school,
+	            'grade'=>$grade,
+	            'vip_state'=>1,
+	            'createtime'=>date('Y-m-d H:i:s',time())
+	        );
+	        M('child')->add($data);
+	        M('member')->add(array('appellation'=>$appellation,'child_id'=>M('child')->getLastInsID(),'user_id'=>$user,'createtime'=>date('Y-m-d H:i:s',time())));
+	        $this->ajaxReturn(array("0"=>"101","1"=>'用户认证中'));
+	    }
+	}
+
+	function chosegender(){
+	    $this->display(":chosegender");
+	}
+	function chosegrade(){
+	    $g=M('grade')->order("index_id desc")->select();
+	    $this->assign('g',$g);
+	    $this->display(":chosegrade");
+	}
+	// 订单详情
+	function lineitem() {
+		$id=$_REQUEST['id'];
+		if($id){
+		    $field="b.*,a.state,a.cancel_state,a.order_id,a.createtime,a.note,a.id as oid,c.name,d.name as cname,b.integral as bintegral ,b.createtime as time,cr.title as classroom,cr.address,cr.phone as classroomphone";
+			$all_order = M ( "enrollment" )->field ( $field )->table ( C ( "DB_PREFIX" ) . "enrollment as a" )
+			->join ( C ( "DB_PREFIX" ) . "course as b on a.course_id=b.id" )->join ( C ( "DB_PREFIX" ) . "teacher as c on b.teacher_id=c.id" )
+			->join ( C ( "DB_PREFIX" ) . "child as d on a.child_id=d.id" )
+			->join(C ( "DB_PREFIX" ) ."classroom as cr on cr.id =b.classroom_id",'left')
+			->where ( "a.id=$id" )->find();
+			//订单状态查询
+			$state=M("enrollment_state")->where("enrollment_id=$id")->select();
+		}
+		$type_state=array("0"=>"订单已提交","1"=>"支付成功","3"=>"已完成","4"=>"已取消");
+		$this->assign("type_state",$type_state);
+		$this->assign("url",C("UPLOADPATH")."avatar/");
+		$this->assign("listmes",$all_order);
+		$this->assign("state",$state);
+		$this->display ( ":lineitem" );
+	}
+	//创建订单
+	function cancel_order(){
+		$this->display(":cancel_order");
+	}
+	//切换孩子
+	function switch_child(){
+		$this->display(":switch_child");
+	}
+	//课程意向
+	function my_intention(){
+	    $user=$_SESSION['weixin_user_id'];
+	    $child=$_REQUEST['child'];
+	   $model=M('intention');
+       $where="i.user_id = $user and child_id =$child";
+       $field="i.*,u.phone,ch.name";
+       $res=$model->field($field)->table(C('DB_PREFIX')."intention as i")->join(C('DB_PREFIX')."user as u on u.id = i.user_id",'left')->join(C('DB_PREFIX').'child as ch on ch.id =i.child_id','left')->order("i.createtime DESC")->where($where)->select();
+       $array=array();
+       foreach($res as $l =>$li){
+           if($li[content] == ""){
+               $array[$l][id]=$li[id];
+               $array[$l][childname]=$li[name];
+               $array[$l][grade]=$li[grade];
+               $array[$l][press]=$li[press];
+               $array[$l][subject]=$li[subject];
+               $array[$l][chapter]=$li[chapter];
+               $array[$l][sub_chapter]=$li[sub_chapter];
+               $array[$l][question_type]=$li[question_type];
+               $array[$l][question_difficulty]=$li[question_difficulty];
+               $array[$l][topic_set]=$li[topic_set];
+               $array[$l][teacher]=$li[teacher];
+               $array[$l][class_type]=$li[class_type];
+               $array[$l][createtime]=$li[createtime];
+                $testtime= strtotime($li[wanted_start_time]);
+               //上课时间
+               if(!empty($testtime)){
+                   $timea=explode(" ", $li[wanted_start_time]);
+                   $timeb=explode(":", $timea['1']);
+                   if($timeb['0']>12){
+                       $types="下午";
+                   }else{
+                       $types="上午";
+                   }
+               }else{
+                   $types='任意';
+               }
+               $array[$l][wanted_start_time]=$timea['0']." ".$types;
+           }else{
+               $array[$l][id]=$li[id];
+               $array[$l][content]=$li[content];
+               $array[$l][createtime]=$li[createtime];
+               $array[$l][phone]=$li[phone];
+           }
+       }
+        $this->assign("mes",$array);
+		$this->display(":my_intention");
+	}
+	//我的积分
+	function integration(){
+	    $user=$_SESSION['weixin_user_id'];
+	    $num=10;
+	    if($user == ""){
+	    	$user = $_GET['user_id'];
+	    }
+	    $array=array();
+	    $users=array();
+	    $u=M('user')->field("integral")->where("id = $user")->find();
+	    $count=M('integral')->where("user_id = $user")->count();
+	    $data=M('integral')->where("user_id = $user")->order("createtime DESC")->limit("0,".$num)->select();
+	    foreach ($data as $d=>$a){
+	        $dates=explode(' ', $a['createtime']);
+	        $data[$d][date]=$dates[0];
+	        $data[$d][time]=$dates[1];
+	    }
+	    if($count>$num){
+	    	$this->assign("typea",1);
+	    }
+	    $array=$data;
+	    $this->assign("userid",$user);
+	    $users[integral]=$u[integral];
+	    $this->assign("user",$users);
+	    $this->assign("array",$array);
+		$this->display(":integration");
+	}
+	//充值
+	function recharge(){
+	    $ioc=M('integral_order_config')->order("index_id asc")->select();
+	    $this->assign('ioc',$ioc);
+		$this->display(":recharge");
+	}
+	//我的收藏
+	function collection(){
+	    $user=$_SESSION['weixin_user_id'];
+	    //$user=6;
+	    $num=10;
+	    $count=M('collection')->table(C('DB_PREFIX')."collection as col")->join(C('DB_PREFIX')."course as c on c.id = col.course_id",'left')->join(C('DB_PREFIX').'teacher as t on t.id = c.teacher_id','left')->where("col.user_id = $user")->count();
+	    $collect=M('collection')->field("c.id,c.title,c.picture,c.start_time,t.name as teacher")->table(C('DB_PREFIX')."collection as col")->join(C('DB_PREFIX')."course as c on c.id = col.course_id",'left')
+	    ->join(C('DB_PREFIX').'teacher as t on t.id = c.teacher_id','left')->where("col.user_id = $user")->limit("0,".$num)->order(array("col.createtime"=>DESC))->select();
+	    foreach ($collect as $c=>$co){
+	        $collect[$c][classstate]=0;
+	        $collect[$c][start_time] =date('Y-m-d H:i',strtotime($co[start_time]));
+	        $collect[$c][picture] =__ROOT__.'/data/upload/avatar/'.$co[picture];
+	        if($co['start_time']<date('Y-m-d H:i:s',time())){
+	             $collect[$c][classstate]=1;
+	        }
+	    }
+	    if($count>$num){
+	    	$this->assign("typea",1);
+	    }
+	    $this->assign("userid",$user);
+	    $this->assign('col',$collect);
+		$this->display(":collection");
+	}
+	//我的消息
+	function my_message(){
+	    $user=$_SESSION['weixin_user_id'];
+	    $num=10;
+	    $count=M('news')->table(C('DB_PREFIX')."news as n")
+	    ->join(C('DB_PREFIX')."course as c on c.id = n.course_id",'left')->where("user_id =$user or user_id=0")->count();
+	    $n=M('news')->table(C('DB_PREFIX')."news as n")->field("n.title,n.content,n.createtime,n.icon")
+	    ->join(C('DB_PREFIX')."course as c on c.id = n.course_id",'left')->order(array("n.createtime"=>DESC))
+	    ->limit("0,".$num)->where("user_id =$user or user_id =0")->order("n.createtime desc")->select();
+	    foreach($n as $k=>$v){
+	        $n[$k][createtime] = date('Y-m-d',strtotime($v[createtime]));
+            $n[$k][icon]=__ROOT__.'/data/upload/message/'.$v[icon];
+	    }
+	    if($count>$num){
+	    	$this->assign("typea",1);
+	    }
+	    $this->assign("userid",$user);
+	    $this->assign('n',$n);
+		$this->display(":my_message");
+	}
+	//设置
+	function setting(){
+	    $this->display(":setting");
+	}
+	//账户与安全
+	function safe(){
+		$this->display(":safe");
+	}
+	//修改手机号
+	function change_tel(){
+		$this->display(":change_tel");
+	}
+	//修改密码
+	function change_pw(){
+		$this->display(":change_pw");
+	}
+	//意见反馈
+	function feedback(){
+		$this->display(":feedback");
+	}
+	function do_feedback(){
+	    $user=$_SESSION['weixin_user_id'];
+	    $content=$_POST[content];
+	    if(empty($content)){
+	        $data=array('status'=>0);
+	    }else{
+	        $savedata=array('user_id'=>$user,'content'=>$content,'createtime'=>date('Y-m-d H:i:s',time()));
+	        M('feedback')->add($savedata);
+	        $data=array('status'=>1);
+	    }
+	    $this->ajaxReturn($data);
+	}
+	function changepwd(){
+	    $user=$_SESSION['weixin_user_id'];
+	    $oldpwd=$_REQUEST['oldpwd'];
+	    $newpwd=$_REQUEST['newpwd'];
+	    $repwd=$_REQUEST['repwd'];
+       
+	    $u=M('user')->field("password")->where("id = '$user'")->find();
+	    if(empty($oldpwd)){
+	        $this->ajaxReturn(array("0"=>"102","1"=>'请输入原密码'));
+	    }
+	    if($u['password'] != md5($oldpwd)){
+	        $this->ajaxReturn(array("0"=>"102","1"=>'账户密码不匹配，无法修改'));
+	    }
+	    if(strlen($newpwd)<6){
+	        $this->ajaxReturn(array("0"=>"102","1"=>'密码位数不能小于六位'));
+	    }
+	    if($u['password'] == md5($newpwd)){
+	        $this->ajaxReturn(array("0"=>"102","1"=>'修改密码不能与原密码相同'));
+	    }
+	    if($newpwd != $repwd){
+	        $this->ajaxReturn(array("0"=>"102","1"=>'两次密码不一致'));
+	    }
+	    M('user')->where("id = $user")->save(array('password'=>md5($newpwd)));
+	    $this->ajaxReturn(array("0"=>"101","1"=>'修改密码成功'));
+	}
+	function donewphone(){
+	    $user=$_SESSION['weixin_user_id'];
+	    $phone=$_REQUEST['phone'];
+        $code=$_REQUEST['code'];
+        $pwd=$_REQUEST['pwd'];
+        $count=M('user')->where("phone = '$phone'")->count();
+        if($count >0){
+            $this->ajaxReturn(array("0"=>"102","1"=>'此手机号为当前绑定手机号！'));
+        }
+        $u=M('user')->field("password")->where("id = $user")->find();
+        if($u['password'] != md5($pwd)){
+            $this->ajaxReturn(array("0"=>"102","1"=>'账户密码不匹配，无法修改'));
+        }
+	    $count=M('sms')->where("phone = '$phone' and code = '$code'")->count();
+	    if($count<=0){
+	        $this->ajaxReturn(array("0"=>"102","1"=>'验证码不正确，无法修改'));
+	    }
+	    M('user')->where("id = $user")->save(array('phone'=>$phone));
+	    $this->ajaxReturn(array("0"=>"101","1"=>'修改手机号成功'));
+	}
+	function sign(){
+	   $user=$_SESSION['weixin_user_id'];
+	   $date=date('Y-m-d H:i:s',time());
+       $start=date('Y-m-d 00:00:00',time());
+       $end=date('Y-m-d 23:59:59');
+       if(M('check_in')->where("createtime between '$start' and '$end' and user_id = $user")->find()){
+           $this->ajaxReturn(array("0"=>"102","1"=>'今天已签到过了'));
+       }
+       if(M('check_in')->add(array('user_id'=>$user,'createtime'=>date('Y-m-d H:i:s',time())))){
+           $ec=M('encourage_config')->field("integral,content")->where("type = 2")->find();
+           if($ec){
+               $data=array(
+                   'user_id'=>$user,
+                   'obtain_type'=>2,
+                   'is_obtain'=>1,
+                   'integral'=>$ec[integral],
+                   'content'=>$ec[content],
+                   'createtime'=>date('Y-m-d H:i:s',time())
+               );
+               M('integral')->add($data);
+               $u=M('user')->field("integral")->where("id =$user")->find();
+               M('user')->where("id = $user")->save(array('integral'=>intval($u[integral]+$ec[integral])));
+           }
+            $u=M('user')->field("integral")->where("id = $user")->find();
+           $this->ajaxReturn(array("0"=>"101","1"=>'签到成功，获得'.$ec[integral].'积分','2'=>$u['integral']));
+       }else{
+           $this->ajaxReturn(array("0"=>"102","1"=>'签到失败'));
+       }
+	}
+	//服务
+	function server(){
+	    $imgurl = IMGURL;
+	    $num=10;
+	    $result_c=M('service')->count();
+        $result = M('service')->limit("0,$num")->order(array("createtime"=>DESC))->select();
+        $rest_c= M('information')->count();
+        $rest = M('information') ->limit("0,$num")->order(array("createtime"=>DESC))->select();
+        if($result_c>$num){
+        	$typea=1;
+        }
+        if($rest_c>$num){
+        	$typeb=1;
+        }
+	    $this->assign('imgurl',$imgurl);
+	    $this->assign("typea",$typea);
+	    $this->assign("typeb",$typeb);
+        $this->assign('list',$result);
+        $this->assign('ilist',$rest);
+		$this->display("/server");
+	}
+	function server_art() {
+		$id = I ( 'get.id' );
+		$res=M('service')->field("s.title ,h.content,h.url,h.createtime")->table(C('DB_PREFIX')."service as s")->join(C('DB_PREFIX')."h5 as h on h.id =s.h5_id",'left')
+		      ->where("s.id = $id")->find();
+		if (!empty ( $res ['url'] )) {
+			header ( "Location: " . $res ['url']);
+			exit ();
+		}
+		$this->assign ( $res );
+		$this->display ( '/server_art' );
+	}
+    //充值提交
+    function pywy(){
+    	$goods = $_REQUEST['goods'];//所买的积分-即商品
+    	$price = $_REQUEST['price'];//支付金额
+    	$order_sn = "lailong".uniqid();//订单号
+    	$user_id = get_user_id($_SESSION['weiopen_id']);//用户id
+    	$data = array(
+    		"user_id"=>$user_id,
+    		"createtime"=>date("Y-m-d H:i:s"),
+    		"updatetime"=>"",
+    		"order_id"=>$order_sn,
+    		"order_id_time"=>$order_sn."_".time(),
+    		"ext_order_id"=>"",
+    		"pay_type"=>"0",
+    		"content"=>"积分充值",
+    		"amount"=>$price,
+    		"pay_amount"=>"",
+    		"state"=>"0",
+    		"integral"=>$goods,
+    	);
+    	$success = M("order")->add($data);
+    	//$price = $_REQUEST['price'];
+    	if($success){
+    		$price = 0.01;
+			$codeurl=urlencode(SITE_URL."/index.php?g=weixin&m=Mine&a=integration&user_id=".$user_id);
+			$url = PAY_URL."/WxPayTest/example/jsapi2.php?price=".$price."&order_sn=".$order_sn."_".time()."&Notify_url="
+			.NOTIFY_URL."&codeurl=".$codeurl."&orderid=".$success."&nums=1";
+			$this->ajaxReturn(array("0"=>"101","1"=>$url));
+    	}else{
+    		$this->ajaxReturn(array("0"=>"102","1"=>""));
+    	}
+    }
+   function up(){
+       $config = array (
+           'FILE_UPLOAD_TYPE' => sp_is_sae () ? "Sae" : 'Local',
+           'rootPath' =>  C ( "UPLOADPATH" )."avatar/",
+           /* 'maxSize' => 2097152, // 2M  */
+           /* 'maxSize' => 104857600, // 100M  */
+           'saveName' => array (
+               'uniqid',
+               $param.time()
+           ),
+           'exts' => array (
+               'jpg',
+               'png',
+               'jpeg',
+               'gif',
+               'bmp'
+           ),
+           'autoSub' => false
+       );
+       $upload = new \Think\Upload ( $config );
+       $info = $upload->upload ();
+       $first = array_shift($info);
+       $savename= $first['savename'];
+       $cutpath= C ( "UPLOADPATH" )."avatar/".$savename;
+       $im = imagecreatefromjpeg($cutpath);
+       $name = time() . rand(0,999999);
+       $newname = $this->resizeImage($im,120,120,$name,'.jpg');   //压缩图片
+       $savenames=explode(C ( "UPLOADPATH" )."avatar/",$newname);
+       //ajax返回数据
+       if ($newname) {
+           $this->ajaxReturn ( sp_ajax_return ( array (
+               "icon" => $savenames[1],
+           ), "上传成功！", 1 ), "AJAX_UPLOAD" );
+       } else {
+           $this->ajaxReturn ( sp_ajax_return ( array (), $upload->getError (), 0 ), "AJAX_UPLOAD" );
+       }
+   }
+   //压缩图片（后台）
+   public function resizeImage($im,$maxwidth,$maxheight,$name,$filetype)
+   {
+       $pic_width = imagesx($im);
+       $pic_height = imagesy($im);
+   
+       if(($maxwidth && $pic_width > $maxwidth) && ($maxheight && $pic_height > $maxheight))
+       {
+           if($maxwidth && $pic_width>$maxwidth)
+           {
+               $widthratio = $maxwidth/$pic_width;
+               $resizewidth_tag = true;
+           }
+           if($maxheight && $pic_height>$maxheight)
+           {
+               $heightratio = $maxheight/$pic_height;
+               $resizeheight_tag = true;
+           }
+           if($resizewidth_tag && $resizeheight_tag)
+           {
+               if($widthratio<$heightratio)
+                   $ratio = $widthratio;
+               else
+                   $ratio = $heightratio;
+           }
+           if($resizewidth_tag && !$resizeheight_tag)
+               $ratio = $widthratio;
+           if($resizeheight_tag && !$resizewidth_tag)
+               $ratio = $heightratio;
+           $newwidth = $pic_width * $ratio;
+           $newheight = $pic_height * $ratio;
+           if(function_exists("imagecopyresampled"))
+           {
+               $newim = imagecreatetruecolor($newwidth,$newheight);
+               imagecopyresampled($newim,$im,0,0,0,0,$newwidth,$newheight,$pic_width,$pic_height);
+               $newsize = $newwidth >= $newheight ? $newheight : $newwidth;
+               $new_x = ($newwidth - $newsize)/2;
+               $new_y = ($newheight - $newsize)/2;
+               $new_im = imagecreatetruecolor($newsize,$newsize);
+               imagecopyresampled($new_im,$newim,0,0,$new_x,$new_y,$newwidth,$newheight,$newwidth,$newheight);
+           }
+           else
+           {
+               $newim = imagecreate($newwidth,$newheight);
+               imagecopyresized($newim,$im,0,0,0,0,$newwidth,$newheight,$pic_width,$pic_height);
+               $newsize = $newwidth >= $newheight ? $newheight : $newwidth;
+               $new_x = ($newwidth - $newsize)/2;
+               $new_y = ($newheight - $newsize)/2;
+               $new_im = imagecreate($newsize,$newsize);
+               imagecopyresized($new_im,$newim,0,0,$new_x,$new_y,$newwidth,$newheight,$newwidth,$newheight);
+           }
+   
+           $name =  C ( "UPLOADPATH" ) . "avatar/".$name.$filetype;
+           imagejpeg($new_im,$name);
+           imagedestroy($newim);
+           imagedestroy($new_im);
+       }
+       else
+       {
+           $name = 1;
+       }
+       return $name;
+   }
+   function setuserinfo(){
+       $icon=$_REQUEST['icon'];
+       $nickname=$_REQUEST['nickname'];
+       $child=$_REQUEST['child'];
+       if(!empty($icon)){
+           $data[avatar]=$icon;
+       }
+       if(!empty($nickname)){
+           $data[name]=$nickname;
+           $data[nickname]=$nickname;
+       }
+       if(M('child')->where("id = $child")->save($data)){
+           $this->ajaxReturn(array("0"=>"101","1"=>'修改成功'));
+       }else{
+           $this->ajaxReturn(array("0"=>"102","1"=>'修改失败'));
+       }
+   }
+
+   //加载更多服务
+   function select_f(){
+   	  $num=$_REQUEST['num'];
+   	  $table=$_REQUEST['table'];
+   	  $page=10;//每页条数
+   	  $count=M("$table")->count();//总条数
+   	  $page_n=ceil($count/$page);//总页数
+   	  $mes=M("$table")->limit($num*$page.",".$page)->order(array("createtime"=>DESC))->select();
+   	  foreach($mes as $k=>$v){
+   	  	 $str.='
+   	  	 		<li style="padding-left: 5px;margin-bottom: 11px; border: none;" class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+                            <div class="am-u-sm-3 am-list-thumb" style="padding-left: 4px;padding-top: 8px">
+                                <a href="'.U("Mine/server_art?id=").$v['h5_id'].'">
+                                    <img style="width: 72px;height: 72px;margin-left: -2px;" src="'.IMGURL.$v['icon'].'" alt=""/>
+                                </a>
+                            </div>
+                            <div class=" am-u-sm-9 am-list-main">
+                                <h6  class="am-list-item-hd"><a class="" style="font-size: 1.6rem;color:black;"><a href="'.U("Mine/server_art?id=").$v['h5_id'].'">'.$v['title'].'</a></h6>
+                                <a href="'.U("Mine/server_art?id=").$v['h5_id'].'">
+                                    <div class="am-list-item-text" style="font-size: 1.4rem">
+                                        '.$v['content'].'
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+   	  	 		';
+   	  }
+   	  if(($num+1)<$page_n){
+   	  	 $type=$num+1;
+   	  }else{
+   	  	$type="";
+   	  }
+   	  $data=array(
+   	  	"0"=>$str,
+   	  	"1"=>$type
+   	  );
+   	  $this->ajaxReturn($data);
+   }
+
+   //加载更多订单
+   function enrollment_more(){
+   	$num=$_REQUEST['num'];
+   	$type=$_REQUEST['type'];
+   	$id=$_REQUEST['id'];
+   	$userid=$_REQUEST['userid'];
+   	if($type!="6"){
+   		$where=" and a.state=$type";
+   	}
+   	$page=10;//每页条数
+   	$count=M("enrollment")->table(C("DB_PREFIX")."enrollment as a")->join(C("DB_PREFIX")."course as b on a.course_id=b.id")
+   	->where("a.child_id=$id and a.user_id = $userid".$where)->count();
+   	$mes=M("enrollment")->field("b.*,a.state,a.id as oid")->table(C("DB_PREFIX")."enrollment as a")
+   	->join(C("DB_PREFIX")."course as b on a.course_id=b.id")
+   	->where("a.child_id=$id and a.user_id = $userid".$where)->limit($num*$page.",".$page)->order(array("a.createtime"=>DESC))->select();
+   	$page_n=ceil($count/$page);//总页数
+   	foreach($mes as $k=>$v){
+   		if($v['state']=="0"){
+   			$typmes='<p>待付款</p><p class="pay">去支付</p>';
+   		}elseif($v['state']=="1"){
+   			$typmes='<p>待确认</p>';
+   		}elseif($v['state']=="3"){
+   			$typmes='<p style="color: #30ddac">已完成</p>';
+   		}elseif($v['state']=="4"){
+   			$typmes='<p>已取消</p>';
+   		}
+   		$str.='
+   				<div class="lb1">
+			            <img class="img1" src="'.IMGURL.$v['picture'].'" alt="">
+			            <div class="txt" style="width: 150px;height: 64px;" onclick="textmes('.$v['oid'].')">
+			                <p style="font-size: 13px;color: #4a76fb">'.$v['title'].'</p>
+			                <p style="font-size: 12px">下单时间：'.date("Y-m-d",strtotime($v['createtime'])).'</p>
+			                <p style="font-size: 12px">需要积分：'.$v['integral'].'</p>
+			            </div>
+			            <div class="statu">'.$typmes.'</div>
+			        </div>
+   	  	 	';
+   	}
+   	if(($num+1)<$page_n){
+   		$type=$num+1;
+   	}else{
+   		$type="";
+   	}
+   	$data=array(
+   		"0"=>$str,
+   		"1"=>$type
+   	);
+   	$this->ajaxReturn($data);
+   }
+   //加载更多收藏
+   function collection_more(){
+   	$num=$_REQUEST['num'];
+   	$user=$_REQUEST['userid'];
+   	$page=10;//每页条数
+   	$count=M('collection')->table(C('DB_PREFIX')."collection as col")->join(C('DB_PREFIX')."course as c on c.id = col.course_id",'left')->join(C('DB_PREFIX').'teacher as t on t.id = c.teacher_id','left')->where("col.user_id = $user")->count();
+   	$page_n=ceil($count/$page);//总页数
+    $mes=M('collection')->field("c.id,c.title,c.picture,c.start_time,t.name as teacher")->table(C('DB_PREFIX')."collection as col")->join(C('DB_PREFIX')."course as c on c.id = col.course_id",'left')
+    ->join(C('DB_PREFIX').'teacher as t on t.id = c.teacher_id','left')->where("col.user_id = $user")->limit($num*$page.",".$page)->order(array("col.createtime"=>DESC))->select();
+   	foreach($mes as $k=>$v){
+   		$str.='
+   	  	 		<a href="'.U('course/course_detail?id=').$v['id'].'">
+	        	<div class="lb1">
+	                <img class="img1" src="'.$v['picture'].'" alt="">
+	                <div class="txt">
+	                    <p style="font-size: 1.6rem;color: #4a76fb">'.$v['title'].'</p>
+	                    <p style="font-size: 12px">讲师：'.$v['teacher'].'</p>
+	                    <p style="font-size: 12px">'.$v['start_time'].'开课</p>
+	                </div>
+           		</div>
+           		</a>
+   	  	 		';
+   	}
+   	if(($num+1)<$page_n){
+   		$type=$num+1;
+   	}else{
+   		$type="";
+   	}
+   	$data=array(
+   		"0"=>$str,
+   		"1"=>$type
+   	);
+   	$this->ajaxReturn($data);
+   }
+   //加载更多消息
+   function news_more(){
+   	$num=$_REQUEST['num'];
+   	$user=$_REQUEST['userid'];
+   	$page=10;//每页条数
+   	$count=M('news')->table(C('DB_PREFIX')."news as n")->field("n.title,n.content,n.createtime,c.picture")
+   	->join(C('DB_PREFIX')."course as c on c.id = n.course_id",'left')->where("user_id =$user")->count();
+   	$page_n=ceil($count/$page);//总页数
+   	$mes=M('news')->table(C('DB_PREFIX')."news as n")->field("n.title,n.content,n.createtime,c.picture")
+   	->join(C('DB_PREFIX')."course as c on c.id = n.course_id",'left')->order(array("n.createtime"=>DESC))
+   	->limit($num*$page.",".$page)->where("user_id =$user")->select();
+   	foreach($mes as $k=>$v){
+   		$str.='
+   	  	 		<div data-am-widget="intro" class="am-intro am-cf am-intro-default" style="padding: 10px 12px;background: #f4f5f7">
+				    <div class="am-g am-intro-bd" style="background:white;padding: 0px">
+				        <div class="xq" style="height: inherit">
+				            <div class="am-intro-left am-u-sm-3" style="width:79px;height: 56px;margin-top: 15px">
+				                <img style="display: inline-block; width: 56px;height: 56px" src="'.IMGURL.$v['picture'].'" alt="">
+				            </div>
+				            <div class="am-intro-right am-u-sm-9">
+				                <p style="font-size: 13px;margin-top: 8px;font-weight: bold">'.$v['title'].'</p>
+				                <p style="margin-top: -19px;font-size: 12px;color:black;">'.date("Y-m-d",strtotime($v['createtime'])).'</p>
+				                <p style="font-size: 11px;margin-top: -17px;color: #7f7c8e">'.$v[' '].'</p></div>
+				        </div>
+				    </div>
+				</div>
+   	  	 		';
+   	}
+   	if(($num+1)<$page_n){
+   		$type=$num+1;
+   	}else{
+   		$type="";
+   	}
+   	$data=array(
+   			"0"=>$str,
+   			"1"=>$type
+   	);
+   	$this->ajaxReturn($data);
+   }
+   //加载更多积分
+   function integral_more(){
+   	$num=$_REQUEST['num'];
+   	$user=$_REQUEST['userid'];
+   	$page=10;//每页条数
+   	$count=M('integral')->where("user_id = $user")->count();
+   	$page_n=ceil($count/$page);//总页数
+   	$mes=M('integral')->where("user_id = $user")->order("createtime DESC")->limit($num*$page.",".$page)->select();
+   	foreach($mes as $k=>$v){
+   		$dates=explode(' ', $v['createtime']);
+   		if($v['integral']>0){
+   			$jifen="+";
+   		}else{
+   			$jifen="";
+   		}
+   		$str.='
+   	  	 		<tr>
+	            <td style="font-size: 28px;color: #1b6bfc;border-top: none;">'.$jifen.$v['integral'].'</td>
+	            <td style="line-height: 49px;color: #969cb0;border-top: none;">'.$v['content'].'</td>
+	            <td style="color: #969cb0;border-top: none;">
+	            	'.$dates['0'].'<br>'.$dates['1'].'
+	            </td>
+	        </tr>
+   	  	 		';
+   	}
+   	if(($num+1)<$page_n){
+   		$type=$num+1;
+   	}else{
+   		$type="";
+   	}
+   	$data=array(
+   			"0"=>$str,
+   			"1"=>$type
+   	);
+   	$this->ajaxReturn($data);
+   }
+    function payjifen(){
+        $jf=$_REQUEST['jf'];
+        $dd=$_REQUEST['dd'];
+        $this->isjifen($jf, $dd);
+    }
+   //判断积分
+    function isjifen($jf,$dd){
+        $user_id = session('weixin_user_id');
+        $rest = M('user')->where(['id'=>$user_id])->find();
+        if((int)$jf <= (int)$rest['integral']){
+            $zjife =  (int)$rest['integral'] - (int)$jf;
+            $restx = M('user')->where(['id'=>session('weixin_user_id')])->save(['integral'=>$zjife]);
+            $data = [
+                'user_id'=>$rest['id'],
+                'obtain_type'=>'4',
+                'is_obtain'=>'0',
+                'integral'=>'-'.$jf,
+                'content'=>'支付课程费'.$jf,
+                'createtime'=>date('Y-m-d H:i:s',time())
+            ];
+            M('integral')->where(['user_id'=>$rest['id']])->add($data);
+            if($dd){
+                M('enrollment')->where(['id'=>$dd])->save(['state'=>'1']);
+                $param=array('enrollment_id'=>$dd,'state'=>1,'state_text'=>"支付成功",'createtime'=>date('Y-m-d H:i:s',time()));
+                M('enrollment_state')->add($param);
+                $this->ajaxReturn(array("0"=>"0","1"=>'支付完成','2'=>$dd));
+            }else{
+                $this->ajaxReturn(array("0"=>"2","1"=>'不存在订单号'));
+            }
+        }else{
+            $this->ajaxReturn(array("0"=>"1","1"=>'当前支付积分不足'));
+        }
+    }
+}

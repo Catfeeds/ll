@@ -1,0 +1,385 @@
+[ 2017-07-04T11:33:56+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.030598s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.078287s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.114702s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0217s ]
+SQL: UPDATE `lailong_child` SET `vip_state`='3' WHERE `id` = 13 [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.027902s ]
+INFO: [ app_end ] --END-- [ RunTime:0.028180s ]
+
+[ 2017-07-04T12:00:51+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.027410s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.076594s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.108486s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0205s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0157s ]
+SQL: SELECT u.id FROM lailong_user as u left JOIN lailong_member as m on m.user_id = u.id  WHERE ( m.child_id = 14 ) LIMIT 1   [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0166s ]
+SQL: UPDATE `lailong_child` SET `vip_state`='3' WHERE `id` = 14 [ RunTime:0.0007s ]
+
+[ 2017-07-04T12:01:27+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.030369s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.068738s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.105968s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0099s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0098s ]
+SQL: SELECT u.id FROM lailong_user as u left JOIN lailong_member as m on m.user_id = u.id  WHERE ( m.child_id = 14 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0114s ]
+SQL: UPDATE `lailong_child` SET `vip_state`='3' WHERE `id` = 14 [ RunTime:0.0006s ]
+
+[ 2017-07-04T13:02:42+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.023103s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.051990s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.078332s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0189s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0121s ]
+SQL: SELECT u.id FROM lailong_user as u left JOIN lailong_member as m on m.user_id = u.id  WHERE ( m.child_id = 14 ) LIMIT 1   [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0137s ]
+SQL: UPDATE `lailong_child` SET `vip_state`='3' WHERE `id` = 14 [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `lailong_member` [ RunTime:0.0111s ]
+SQL: SELECT * FROM `lailong_member` WHERE (  child_id =  14 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `lailong_encourage_config` [ RunTime:0.0104s ]
+SQL: SELECT * FROM `lailong_encourage_config` WHERE (  type = 0  ) LIMIT 1   [ RunTime:0.0006s ]
+NOTIC: [8] Undefined variable: u_id D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 571 行.
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `lailong_user` WHERE (  id =  ) LIMIT 1  
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `lailong_user` WHERE (  id =  ) LIMIT 1  
+
+[ 2017-07-04T13:04:34+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: {"touser":"oRLbGwVN_ephoKxezu7MW7N2YrG4","template_id":"WxMde2DGqeW8i6cMV8dtHBxbVpndrB8WKdtY5rU7LCA","url":"","topcolor":"#7B68EE","data":{"productType":{"value":"%E6%82%A8%E7%9A%84%E5%B0%8F%E5%AD%A9%E8%AE%A4%E8%AF%81%E5%B7%B2%E8%AE%A4%E8%AF%81%E6%88%90%E5%8A%9F"},"name":{"value":"test"},"number":{"value":"1%E4%BB%BD"},"expDate":{"value":"2017-07-04"},"remark":{"value":"sss"}}}111
+[ 2017-07-04T13:04:34+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx6ccce8752525b8cc&secret=7d87a2a84199b99cf6c5765f657fcac4
+[ 2017-07-04T13:04:36+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: Array
+[ 2017-07-04T13:04:36+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: AubI4wXENHBnmmaX3mGKudpgyKp9jsiFmfbNDSykAZf4zgRpF1pYi4NeW9iITDcmckDZRMd-U_rNZmdl4h3ttvtSkt3OruqT6fxv4gaw6N2pn6s9MK33kNFeAred0Ln2TUXhAIAEFI222
+[ 2017-07-04T13:04:36+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=AubI4wXENHBnmmaX3mGKudpgyKp9jsiFmfbNDSykAZf4zgRpF1pYi4NeW9iITDcmckDZRMd-U_rNZmdl4h3ttvtSkt3OruqT6fxv4gaw6N2pn6s9MK33kNFeAred0Ln2TUXhAIAEFI{"touser":"oRLbGwVN_ephoKxezu7MW7N2YrG4","template_id":"WxMde2DGqeW8i6cMV8dtHBxbVpndrB8WKdtY5rU7LCA","url":"","topcolor":"#7B68EE","data":{"productType":{"value":"您的小孩认证已认证成功"},"name":{"value":"test"},"number":{"value":"1份"},"expDate":{"value":"2017-07-04"},"remark":{"value":"sss"}}}3333
+[ 2017-07-04T13:04:36+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: 44444
+[ 2017-07-04T13:04:36+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: {"errcode":40003,"errmsg":"invalid openid hint: [Y4VDgA0680ge25]"}555
+[ 2017-07-04T13:04:37+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.024751s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.079375s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.109703s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0249s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0248s ]
+SQL: SELECT u.id FROM lailong_user as u left JOIN lailong_member as m on m.user_id = u.id  WHERE ( m.child_id = 14 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0158s ]
+SQL: UPDATE `lailong_child` SET `vip_state`='3' WHERE `id` = 14 [ RunTime:0.0006s ]
+NOTIC: [8] Undefined variable: timend D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 598 行.
+SQL: SELECT `openid` FROM `lailong_user` WHERE ( id = 1 ) LIMIT 1   [ RunTime:0.0006s ]
+NOTIC: [8] Array to string conversion D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Log.class.php 第 102 行.
+NOTIC: [8] Use of undefined constant id - assumed 'id' D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 605 行.
+NOTIC: [8] Undefined index: id D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 605 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.028491s ]
+INFO: [ app_end ] --END-- [ RunTime:0.028686s ]
+
+[ 2017-07-04T13:05:57+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: {"touser":"oRLbGwVN_ephoKxezu7MW7N2YrG4","template_id":"WxMde2DGqeW8i6cMV8dtHBxbVpndrB8WKdtY5rU7LCA","url":"","topcolor":"#7B68EE","data":{"productType":{"value":"%E6%82%A8%E7%9A%84%E5%B0%8F%E5%AD%A9%E8%AE%A4%E8%AF%81%E5%B7%B2%E8%AE%A4%E8%AF%81%E6%88%90%E5%8A%9F"},"name":{"value":"test"},"number":{"value":"1%E4%BB%BD"},"expDate":{"value":"2017-07-04"},"remark":{"value":"sss"}}}111
+[ 2017-07-04T13:05:57+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx6ccce8752525b8cc&secret=7d87a2a84199b99cf6c5765f657fcac4
+[ 2017-07-04T13:05:59+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: Array
+[ 2017-07-04T13:05:59+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: 69Zmecijl5C9ByaT1zfCsbjgObta3uOcHisGdcjLd6mQ4eFR6OwjjssKzlHfv6bK44c6n3J_B7cE1Ui2fuKzkZe8bYKIhl8hA9GDB8vLeTcfs8RqwqobSYDItdg2vQwoLESgAJAEXL222
+[ 2017-07-04T13:05:59+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=69Zmecijl5C9ByaT1zfCsbjgObta3uOcHisGdcjLd6mQ4eFR6OwjjssKzlHfv6bK44c6n3J_B7cE1Ui2fuKzkZe8bYKIhl8hA9GDB8vLeTcfs8RqwqobSYDItdg2vQwoLESgAJAEXL{"touser":"oRLbGwVN_ephoKxezu7MW7N2YrG4","template_id":"WxMde2DGqeW8i6cMV8dtHBxbVpndrB8WKdtY5rU7LCA","url":"","topcolor":"#7B68EE","data":{"productType":{"value":"您的小孩认证已认证成功"},"name":{"value":"test"},"number":{"value":"1份"},"expDate":{"value":"2017-07-04"},"remark":{"value":"sss"}}}3333
+[ 2017-07-04T13:05:59+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: 44444
+[ 2017-07-04T13:05:59+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: {"errcode":40003,"errmsg":"invalid openid hint: [0763ge21]"}555
+[ 2017-07-04T13:05:59+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.020368s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.051057s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.076147s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0190s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0108s ]
+SQL: SELECT u.id FROM lailong_user as u left JOIN lailong_member as m on m.user_id = u.id  WHERE ( m.child_id = 14 ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0116s ]
+SQL: UPDATE `lailong_child` SET `vip_state`='3' WHERE `id` = 14 [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `lailong_member` [ RunTime:0.0113s ]
+SQL: SELECT * FROM `lailong_member` WHERE (  child_id =  14 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `lailong_encourage_config` [ RunTime:0.0093s ]
+SQL: SELECT * FROM `lailong_encourage_config` WHERE (  type = 0  ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `lailong_user` WHERE (  id = 1 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: UPDATE `lailong_user` SET `integral`='570' WHERE `id` = 1 [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `lailong_integral` [ RunTime:0.0122s ]
+SQL: INSERT INTO `lailong_integral` (`user_id`,`obtain_type`,`is_obtain`,`integral`,`content`,`createtime`) VALUES ('1','0','1','50','认证孩子成功','2017-07-04 13:05:57') [ RunTime:0.0008s ]
+NOTIC: [8] Undefined variable: timend D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 598 行.
+SQL: SELECT `openid` FROM `lailong_user` WHERE ( id = 1 ) LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Array to string conversion D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Log.class.php 第 102 行.
+NOTIC: [8] Use of undefined constant id - assumed 'id' D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 605 行.
+NOTIC: [8] Undefined index: id D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 605 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.028756s ]
+INFO: [ app_end ] --END-- [ RunTime:0.028918s ]
+
+[ 2017-07-04T13:09:37+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.026281s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.075911s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.107392s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0219s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0136s ]
+SQL: SELECT u.id FROM lailong_user as u left JOIN lailong_member as m on m.user_id = u.id  WHERE ( m.child_id = 13 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0143s ]
+SQL: UPDATE `lailong_child` SET `vip_state`='3' WHERE `id` = 13 [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `lailong_member` [ RunTime:0.0137s ]
+SQL: SELECT * FROM `lailong_member` WHERE (  child_id =  13 ) LIMIT 1   [ RunTime:0.0006s ]
+
+[ 2017-07-04T13:11:05+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.031174s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.086914s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.122873s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0239s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0153s ]
+SQL: SELECT u.id FROM lailong_user as u left JOIN lailong_member as m on m.user_id = u.id  WHERE ( m.child_id = 13 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0166s ]
+SQL: UPDATE `lailong_child` SET `vip_state`='3' WHERE `id` = 13 [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `lailong_member` [ RunTime:0.0190s ]
+SQL: SELECT * FROM `lailong_member` WHERE (  child_id =  13 ) LIMIT 1   [ RunTime:0.0008s ]
+
+[ 2017-07-04T13:12:38+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.022282s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.055275s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.082234s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0174s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0112s ]
+SQL: SELECT u.id FROM lailong_user as u left JOIN lailong_member as m on m.user_id = u.id  WHERE ( m.child_id = 13 ) LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: a D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 561 行.
+NOTIC: [8] Undefined variable: timend D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 602 行.
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `openid` FROM `lailong_user` WHERE ( id =  ) LIMIT 1  
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT `openid` FROM `lailong_user` WHERE ( id =  ) LIMIT 1  
+
+[ 2017-07-04T13:17:31+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.030810s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.079295s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.114944s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0219s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0146s ]
+SQL: SELECT u.id FROM lailong_user as u left JOIN lailong_member as m on m.user_id = u.id  WHERE ( m.child_id = 13 ) LIMIT 1   [ RunTime:0.0008s ]
+NOTIC: [8] Undefined variable: a D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 561 行.
+
+[ 2017-07-04T13:51:38+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: {"touser":"oRLbGwVN_ephoKxezu7MW7N2YrG4","template_id":"WxMde2DGqeW8i6cMV8dtHBxbVpndrB8WKdtY5rU7LCA","url":"","topcolor":"#7B68EE","data":{"productType":{"value":"%E6%82%A8%E7%9A%84%E5%B0%8F%E5%AD%A9%E8%AE%A4%E8%AF%81%E5%B7%B2%E8%AE%A4%E8%AF%81%E6%88%90%E5%8A%9F"},"name":{"value":"test"},"number":{"value":"1%E4%BB%BD"},"expDate":{"value":"2017-07-04"},"remark":{"value":"sss"}}}111
+[ 2017-07-04T13:51:38+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx6ccce8752525b8cc&secret=7d87a2a84199b99cf6c5765f657fcac4
+[ 2017-07-04T13:51:38+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: Array
+[ 2017-07-04T13:51:38+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: RGDZHDssTPCAbI2w82sICRBIBag9SuXyaQO-OIGEKhlagu70atG6mUid8vSy_1rSGFdC5eBni-72UN6JD1mqb1t_GCUezL_EXChEVREmCRewMidPFZxQHoMeR4kDGVsCRLSiAIACWD222
+[ 2017-07-04T13:51:38+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=RGDZHDssTPCAbI2w82sICRBIBag9SuXyaQO-OIGEKhlagu70atG6mUid8vSy_1rSGFdC5eBni-72UN6JD1mqb1t_GCUezL_EXChEVREmCRewMidPFZxQHoMeR4kDGVsCRLSiAIACWD{"touser":"oRLbGwVN_ephoKxezu7MW7N2YrG4","template_id":"WxMde2DGqeW8i6cMV8dtHBxbVpndrB8WKdtY5rU7LCA","url":"","topcolor":"#7B68EE","data":{"productType":{"value":"您的小孩认证已认证成功"},"name":{"value":"test"},"number":{"value":"1份"},"expDate":{"value":"2017-07-04"},"remark":{"value":"sss"}}}3333
+[ 2017-07-04T13:51:38+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: 44444
+[ 2017-07-04T13:51:38+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: {"errcode":40003,"errmsg":"invalid openid hint: [CKHGUa0502ge25]"}555
+[ 2017-07-04T13:51:39+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.024517s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.064198s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.093001s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0190s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0100s ]
+SQL: SELECT u.id FROM lailong_user as u left JOIN lailong_member as m on m.user_id = u.id  WHERE ( m.child_id = 13 ) LIMIT 1   [ RunTime:0.0006s ]
+NOTIC: [8] Undefined variable: a D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 561 行.
+NOTIC: [8] Undefined variable: timend D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 610 行.
+SQL: SELECT `openid` FROM `lailong_user` WHERE ( id = 1 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Array to string conversion D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Log.class.php 第 102 行.
+NOTIC: [8] Use of undefined constant id - assumed 'id' D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 618 行.
+NOTIC: [8] Undefined index: id D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 618 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.015731s ]
+INFO: [ app_end ] --END-- [ RunTime:0.015846s ]
+
+[ 2017-07-04T13:51:47+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: {"touser":"oRLbGwVN_ephoKxezu7MW7N2YrG4","template_id":"WxMde2DGqeW8i6cMV8dtHBxbVpndrB8WKdtY5rU7LCA","url":"","topcolor":"#7B68EE","data":{"productType":{"value":"%E6%82%A8%E7%9A%84%E5%B0%8F%E5%AD%A9%E8%AE%A4%E8%AF%81%E5%B7%B2%E8%AE%A4%E8%AF%81%E6%88%90%E5%8A%9F"},"name":{"value":"test"},"number":{"value":"1%E4%BB%BD"},"expDate":{"value":"2017-07-04"},"remark":{"value":"sss"}}}111
+[ 2017-07-04T13:51:47+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx6ccce8752525b8cc&secret=7d87a2a84199b99cf6c5765f657fcac4
+[ 2017-07-04T13:51:47+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: Array
+[ 2017-07-04T13:51:47+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: RGDZHDssTPCAbI2w82sICRBIBag9SuXyaQO-OIGEKhm1ilZop8BRRMUdHbg3nHgS22g5u2_5tvmtpOMBj2v4vlZSjzHWjExuGnmLdzxKXXq7y0ZEl0W9lYWGHjc_ADA9TIQiAIALAI222
+[ 2017-07-04T13:51:47+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=RGDZHDssTPCAbI2w82sICRBIBag9SuXyaQO-OIGEKhm1ilZop8BRRMUdHbg3nHgS22g5u2_5tvmtpOMBj2v4vlZSjzHWjExuGnmLdzxKXXq7y0ZEl0W9lYWGHjc_ADA9TIQiAIALAI{"touser":"oRLbGwVN_ephoKxezu7MW7N2YrG4","template_id":"WxMde2DGqeW8i6cMV8dtHBxbVpndrB8WKdtY5rU7LCA","url":"","topcolor":"#7B68EE","data":{"productType":{"value":"您的小孩认证已认证成功"},"name":{"value":"test"},"number":{"value":"1份"},"expDate":{"value":"2017-07-04"},"remark":{"value":"sss"}}}3333
+[ 2017-07-04T13:51:48+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: 44444
+[ 2017-07-04T13:51:48+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: {"errcode":40003,"errmsg":"invalid openid hint: [XPQnVA0512ge21]"}555
+[ 2017-07-04T13:51:48+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.027857s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.071657s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.104054s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0138s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0140s ]
+SQL: SELECT u.id FROM lailong_user as u left JOIN lailong_member as m on m.user_id = u.id  WHERE ( m.child_id = 13 ) LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: a D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 561 行.
+NOTIC: [8] Undefined variable: timend D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 610 行.
+SQL: SELECT `openid` FROM `lailong_user` WHERE ( id = 1 ) LIMIT 1   [ RunTime:0.0005s ]
+NOTIC: [8] Array to string conversion D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Log.class.php 第 102 行.
+NOTIC: [8] Use of undefined constant id - assumed 'id' D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 618 行.
+NOTIC: [8] Undefined index: id D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 618 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.026238s ]
+INFO: [ app_end ] --END-- [ RunTime:0.026425s ]
+
+[ 2017-07-04T13:52:33+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: {"touser":"oRLbGwVN_ephoKxezu7MW7N2YrG4","template_id":"WxMde2DGqeW8i6cMV8dtHBxbVpndrB8WKdtY5rU7LCA","url":"","topcolor":"#7B68EE","data":{"productType":{"value":"%E6%82%A8%E7%9A%84%E5%B0%8F%E5%AD%A9%E8%AE%A4%E8%AF%81%E5%B7%B2%E8%AE%A4%E8%AF%81%E6%88%90%E5%8A%9F"},"name":{"value":"test"},"number":{"value":"1%E4%BB%BD"},"expDate":{"value":"2017-07-04"},"remark":{"value":"sss"}}}111
+[ 2017-07-04T13:52:33+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx6ccce8752525b8cc&secret=7d87a2a84199b99cf6c5765f657fcac4
+[ 2017-07-04T13:52:33+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: Array
+[ 2017-07-04T13:52:33+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: HN-P9kKyV3fp1O7FlM8OHywzgC0G3zJyePtdANYEkRgMyQEKRLz4A_vfn_78dBDIgCZGehvFWJm7pyFvk0bXAxPhu1DmGPKl8tyEG8Wmchvf-z2GtpdgVOacf3GJIUujCPJfACAVIC222
+[ 2017-07-04T13:52:33+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=HN-P9kKyV3fp1O7FlM8OHywzgC0G3zJyePtdANYEkRgMyQEKRLz4A_vfn_78dBDIgCZGehvFWJm7pyFvk0bXAxPhu1DmGPKl8tyEG8Wmchvf-z2GtpdgVOacf3GJIUujCPJfACAVIC{"touser":"oRLbGwVN_ephoKxezu7MW7N2YrG4","template_id":"WxMde2DGqeW8i6cMV8dtHBxbVpndrB8WKdtY5rU7LCA","url":"","topcolor":"#7B68EE","data":{"productType":{"value":"您的小孩认证已认证成功"},"name":{"value":"test"},"number":{"value":"1份"},"expDate":{"value":"2017-07-04"},"remark":{"value":"sss"}}}3333
+[ 2017-07-04T13:52:33+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: 44444
+[ 2017-07-04T13:52:33+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: {"errcode":40003,"errmsg":"invalid openid hint: [A4CL7a0557ge20]"}555
+[ 2017-07-04T13:52:33+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.040516s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.103507s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.150288s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0184s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0148s ]
+SQL: SELECT u.id FROM lailong_user as u left JOIN lailong_member as m on m.user_id = u.id  WHERE ( m.child_id = 13 ) LIMIT 1   [ RunTime:0.0014s ]
+NOTIC: [8] Undefined variable: a D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 561 行.
+NOTIC: [8] Undefined variable: timend D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 610 行.
+SQL: SELECT `openid` FROM `lailong_user` WHERE ( id = 1 ) LIMIT 1   [ RunTime:0.0005s ]
+NOTIC: [8] Array to string conversion D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Log.class.php 第 102 行.
+NOTIC: [8] Use of undefined constant id - assumed 'id' D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 618 行.
+NOTIC: [8] Undefined index: id D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 618 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.039444s ]
+INFO: [ app_end ] --END-- [ RunTime:0.039662s ]
+
+[ 2017-07-04T13:53:28+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: {"touser":"oRLbGwVN_ephoKxezu7MW7N2YrG4","template_id":"WxMde2DGqeW8i6cMV8dtHBxbVpndrB8WKdtY5rU7LCA","url":"","topcolor":"#7B68EE","data":{"productType":{"value":"%E6%82%A8%E7%9A%84%E5%B0%8F%E5%AD%A9%E8%AE%A4%E8%AF%81%E5%B7%B2%E8%AE%A4%E8%AF%81%E6%88%90%E5%8A%9F"},"name":{"value":"test"},"number":{"value":"1%E4%BB%BD"},"expDate":{"value":"2017-07-04"},"remark":{"value":"sss"}}}111
+[ 2017-07-04T13:53:28+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx6ccce8752525b8cc&secret=7d87a2a84199b99cf6c5765f657fcac4
+[ 2017-07-04T13:53:28+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: Array
+[ 2017-07-04T13:53:28+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: z02VNwUFxzGt52gyuOEdIZg-RP0azu-CPJdwVfTd60LeI-SEkZtqiyUqKWZC5mqWvAxAzocS5T13NJaQDxIFHzPVkq2flEh_tgmVhVBHxbadcS5k5ljCj8PF4rgMMw9tYKDgAFAEQJ222
+[ 2017-07-04T13:53:28+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=z02VNwUFxzGt52gyuOEdIZg-RP0azu-CPJdwVfTd60LeI-SEkZtqiyUqKWZC5mqWvAxAzocS5T13NJaQDxIFHzPVkq2flEh_tgmVhVBHxbadcS5k5ljCj8PF4rgMMw9tYKDgAFAEQJ{"touser":"oRLbGwVN_ephoKxezu7MW7N2YrG4","template_id":"WxMde2DGqeW8i6cMV8dtHBxbVpndrB8WKdtY5rU7LCA","url":"","topcolor":"#7B68EE","data":{"productType":{"value":"您的小孩认证已认证成功"},"name":{"value":"test"},"number":{"value":"1份"},"expDate":{"value":"2017-07-04"},"remark":{"value":"sss"}}}3333
+[ 2017-07-04T13:53:28+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: 44444
+[ 2017-07-04T13:53:28+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+ERR: {"errcode":40003,"errmsg":"invalid openid hint: [50612ge25]"}555
+[ 2017-07-04T13:53:28+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.029580s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.061951s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.094854s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0208s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0148s ]
+SQL: SELECT u.id FROM lailong_user as u left JOIN lailong_member as m on m.user_id = u.id  WHERE ( m.child_id = 13 ) LIMIT 1   [ RunTime:0.0011s ]
+NOTIC: [8] Undefined variable: a D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 561 行.
+NOTIC: [8] Undefined variable: timend D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 611 行.
+SQL: SELECT `openid` FROM `lailong_user` WHERE ( id = 1 ) LIMIT 1   [ RunTime:0.0007s ]
+NOTIC: [8] Array to string conversion D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Log.class.php 第 102 行.
+NOTIC: [8] Use of undefined constant id - assumed 'id' D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 619 行.
+NOTIC: [8] Undefined index: id D:\tools\upupw\htdocs\ll\application\Classification\Controller\ClassificationController.class.php 第 619 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.029589s ]
+INFO: [ app_end ] --END-- [ RunTime:0.029755s ]
+
+[ 2017-07-04T13:54:17+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.022934s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.060726s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.089010s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0202s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0127s ]
+SQL: SELECT u.id FROM lailong_user as u left JOIN lailong_member as m on m.user_id = u.id  WHERE ( m.child_id = 13 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `lailong_member` [ RunTime:0.0183s ]
+SQL: SELECT * FROM `lailong_member` WHERE (  child_id =  13 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `lailong_encourage_config` [ RunTime:0.0124s ]
+SQL: SELECT * FROM `lailong_encourage_config` WHERE (  type = 0  ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `lailong_user` WHERE (  id = 1 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: UPDATE `lailong_user` SET `integral`='1363' WHERE `id` = 1 [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `lailong_integral` [ RunTime:0.0134s ]
+SQL: INSERT INTO `lailong_integral` (`user_id`,`obtain_type`,`is_obtain`,`integral`,`content`,`createtime`) VALUES ('1','0','1','50','认证孩子成功','2017-07-04 13:54:17') [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0142s ]
+SQL: UPDATE `lailong_child` SET `vip_state`='3' WHERE `id` = 13 [ RunTime:0.0006s ]
+
+[ 2017-07-04T13:58:41+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=changechild
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.030449s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.081586s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.117377s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0177s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0172s ]
+SQL: SELECT u.id FROM lailong_user as u left JOIN lailong_member as m on m.user_id = u.id  WHERE ( m.child_id = 13 ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0187s ]
+SQL: UPDATE `lailong_child` SET `vip_state`='2' WHERE `id` = 13 [ RunTime:0.0011s ]
+
+[ 2017-07-04T17:53:29+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.027666s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.062743s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.096393s ]
+SQL: SHOW COLUMNS FROM `lailong_teacher` [ RunTime:0.0185s ]
+SQL: SELECT * FROM `lailong_teacher` WHERE ( name = '213' ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: INSERT INTO `lailong_teacher` (`name`,`avatar`,`university`,`teaching_grade`,`teaching_results`,`experience`,`features`,`createtime`) VALUES ('213','1499162005595b65963464e.jpg','312','213','213','321','231','2017-07-04 17:53:29') [ RunTime:0.0009s ]
+
+[ 2017-07-04T17:53:50+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.038552s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.096407s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.142370s ]
+SQL: SHOW COLUMNS FROM `lailong_teacher` [ RunTime:0.0312s ]
+SQL: UPDATE `lailong_teacher` SET `name`='213',`avatar`='1499162005595b65963464e.jpg',`university`='312',`teaching_grade`='213',`teaching_results`='213',`experience`='321',`features`='231' WHERE ( id = 6 ) [ RunTime:0.0009s ]
+
+[ 2017-07-04T17:54:03+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.024362s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.068023s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.096890s ]
+SQL: SHOW COLUMNS FROM `lailong_teacher` [ RunTime:0.0229s ]
+SQL: UPDATE `lailong_teacher` SET `name`='213',`avatar`='1499162005595b65963464e.jpg',`university`='312',`teaching_grade`='213',`teaching_results`='213',`experience`='321',`features`='2313221' WHERE ( id = 6 ) [ RunTime:0.0007s ]
+
+[ 2017-07-04T17:54:23+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.031325s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.086641s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.121720s ]
+SQL: SHOW COLUMNS FROM `lailong_teacher` [ RunTime:0.0232s ]
+SQL: UPDATE `lailong_teacher` SET `name`='213',`avatar`='1499162005595b65963464e.jpg',`university`='312',`teaching_grade`='213',`teaching_results`='213',`experience`='321谢谢',`features`='2313221' WHERE ( id = 6 ) [ RunTime:0.0010s ]
+
+[ 2017-07-04T17:55:35+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.032113s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.075743s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.111804s ]
+SQL: SHOW COLUMNS FROM `lailong_teacher` [ RunTime:0.0212s ]
+SQL: UPDATE `lailong_teacher` SET `name`='213',`avatar`='1499162005595b65963464e.jpg',`university`='312',`teaching_grade`='213',`teaching_results`='213',`experience`='321谢谢',`features`='2313221' WHERE ( id = 6 ) [ RunTime:0.0007s ]
+
+[ 2017-07-04T17:58:52+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=deleteteacher&id=4
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015230s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.036565s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.054488s ]
+SQL: SHOW COLUMNS FROM `lailong_teacher` [ RunTime:0.0129s ]
+SQL: DELETE FROM `lailong_teacher` WHERE `id` = 4 [ RunTime:0.0003s ]
+

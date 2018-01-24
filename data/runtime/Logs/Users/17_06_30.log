@@ -1,0 +1,13 @@
+[ 2017-06-30T21:28:33+08:00 ] ::1 /ll/index.php?g=Users&m=User&a=edit_post&id=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.028835s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.061449s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.095696s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0229s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `lailong_user` [ RunTime:0.0139s ]
+SQL: SELECT * FROM `lailong_user` WHERE ( phone=13073328283 ) LIMIT 1   [ RunTime:0.0006s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `lailong_user` SET `name`='1232',`phone`='13073328283',`password`='e10adc3949ba59abbe56e057f20f883e',`integral`='1213',`recommended_person`='13073328281' WHERE `id` = 1 [ RunTime:0.0005s ]
+

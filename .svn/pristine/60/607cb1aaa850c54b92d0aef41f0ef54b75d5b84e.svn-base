@@ -1,0 +1,72 @@
+<?php
+namespace Lailonginterface\Controller;
+use Lailonginterface\Controller\PublicController;
+
+class OrderController  extends PublicController {
+    /**
+     * 生成订单
+     */
+    public function makeorder()
+    {
+       $token=$_REQUEST['token'];
+       $userid=$this->checkAccess($token);
+      /*  $child=$_REQUEST['child_id']; */
+       $course_id=$_REQUEST['course_id'];
+       $note=$_REQUEST['note'];
+       if(empty($child) || empty($course_id)){
+           $this->emptyResult();
+       }
+      /*  $p=M('course')->field("rated_number,havenumber")->where("id = '$course_id'")->find();
+           if($p[havenumber]>=$p[rated_number]){
+               
+           } */
+       $data=array('order_id'=>'lailong'.uniqid(),'course_id'=>$course_id,'user_id'=>$userid,'note'=>$note,'createtime'=>date('Y-m-d H:i:s',time()));
+        if(M('enrollment')->add($data)){
+            $res=M('course')->where("id = $course_id")->find();
+            $this->successLongResult($res,'生成订单成功');
+        }else{
+            $this->errorResult("生成订单失败");
+        }
+    }
+    
+    /**
+     * 获取学生列表
+     */
+    public function getstudentlist(){
+        $token=$_REQUEST['token'];
+        $this->checkAccess($token);
+        $c=M('Child')->select();
+        if($c){
+            $this->successLongResult($c, "获取学生列表成功");
+        }else{
+            $this->errorResult("未获取到学生列表");
+        }
+    }
+    /**
+     * 获取选择学生
+     */
+    public function findstudent(){
+        $token=$_REQUEST['token'];
+        $this->checkAccess($token);
+        $child=$_REQUEST['child'];
+        $c=M('Child')->field("id,name")->where("id = $child")->find();
+        if($c){
+            $this->successLongResult($c, "获取学生id成功");
+        }else{
+            $this->errorResult("未获取到学生id");
+        }
+    }
+    /**
+     * 取消订单
+     */
+    public function cancelorder(){
+        $token=$_REQUEST['token'];
+        $this->checkAccess($token);
+        $orderid=$_REQUEST['orderid'];
+        if(M('enrollment')->where("id = $orderid")->save(array('state'=>4))){
+            $this->successShortResult("订单已取消");
+        }else{
+            $this->errorResult("订单无法取消");
+        }
+    }
+}

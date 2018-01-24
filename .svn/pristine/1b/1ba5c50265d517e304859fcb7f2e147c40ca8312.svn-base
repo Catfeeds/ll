@@ -1,0 +1,156 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>来龙教育</title>
+    <link rel="stylesheet" href="../Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="../Public/css/weixin/bdTel.css">
+    <link rel="stylesheet" href="../Public/css/weixin/dd.css">
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body>
+<!--头部导航-->
+<header data-am-widget="header" class="am-header am-header-default">
+    <div class="am-header-left am-header-nav">
+        <a href="#left-link" class="">
+            <img class="am-header-icon-custom" src="data:image/svg+xml;charset&#x3D;utf-8,&lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 12 20&quot;&gt;&lt;path d&#x3D;&quot;M10,0l2,2l-8,8l8,8l-2,2L0,10L10,0z&quot; fill&#x3D;&quot;%23fff&quot;/&gt;&lt;/svg&gt;" alt=""/>
+            返回
+        </a>
+    </div>
+
+    <h1 class="am-header-title">
+       我的订单
+    </h1>
+
+    <div class="am-header-right am-header-nav">
+        <a href="#right-link" class="">
+         . . .
+        </a>
+    </div>
+</header>
+
+<!--列表切换-->
+<div data-am-widget="tabs"
+     class="am-tabs am-tabs-d2"
+>
+    <ul class="am-tabs-nav am-cf" style="background: white">
+        <li class="am-active"><a href="[data-tab-panel-0]">全部</a></li>
+        <li class=""><a href="[data-tab-panel-1]">待支付</a></li>
+        <li class=""><a href="[data-tab-panel-2]">待确认</a></li>
+        <li class=""><a href="[data-tab-panel-3]">已完成</a></li>
+        <li class=""><a href="[data-tab-panel-4]">已取消</a></li>
+    </ul>
+    <div class="am-tabs-bd">
+        <div data-tab-panel-0 class="am-tab-panel am-active">
+            <div class="lb1">
+                <img class="img1" src="../Public/images/p.png" alt="">
+                <div class="txt" style="width: 150px;
+height: 64px;">
+                    <p style="font-size: 13px;color: #4a76fb">沪教版9年纪下学期化学</p>
+                    <p style="font-size: 12px">下单时间：2017-06-12</p>
+                    <p style="font-size: 12px">需要积分：2000</p>
+                </div>
+                <div class="statu">
+                    <p>待付款</p>
+                    <p class="pay">去支付</p>
+                </div>
+            </div>
+            <div class="lb1">
+                <img class="img1" src="../Public/images/p.png" alt="">
+                <div class="txt" style="width: 150px;
+height: 64px;">
+                    <p style="font-size: 13px;color: #4a76fb">沪教版9年纪下学期化学</p>
+                    <p style="font-size: 12px">下单时间：2017-06-12</p>
+                    <p style="font-size: 12px">需要积分：2000</p>
+                </div>
+                <div class="statu">
+                    <p>待确认</p>
+                </div>
+            </div>
+            <div class="lb1">
+                <img class="img1" src="../Public/images/p.png" alt="">
+                <div class="txt" style="width: 150px;
+height: 64px;">
+                    <p style="font-size: 13px;color: #4a76fb">沪教版9年纪下学期化学</p>
+                    <p style="font-size: 12px">下单时间：2017-06-12</p>
+                    <p style="font-size: 12px">需要积分：2000</p>
+                </div>
+                <div class="statu">
+                    <p style="color: #30ddac">已完成</p>
+                </div>
+            </div>
+        </div>
+        <div data-tab-panel-1 class="am-tab-panel ">
+            <div class="lb1">
+                <img class="img1" src="../Public/images/p.png" alt="">
+                <div class="txt" style="width: 150px;
+height: 64px;">
+                    <p style="font-size: 13px;color: #4a76fb">沪教版9年纪下学期化学</p>
+                    <p style="font-size: 12px">下单时间：2017-06-12</p>
+                    <p style="font-size: 12px">需要积分：2000</p>
+                </div>
+                <div class="statu">
+                    <p>待付款</p>
+                    <p class="pay">去支付</p>
+                </div>
+            </div>
+        </div>
+        <div data-tab-panel-2 class="am-tab-panel ">
+            <div class="lb1">
+                <img class="img1" src="../Public/images/p.png" alt="">
+                <div class="txt" style="width: 150px;
+height: 64px;">
+                    <p style="font-size: 13px;color: #4a76fb">沪教版9年纪下学期化学</p>
+                    <p style="font-size: 12px">下单时间：2017-06-12</p>
+                    <p style="font-size: 12px">需要积分：2000</p>
+                </div>
+                <div class="statu">
+                    <p>待确认</p>
+                </div>
+            </div>
+        </div>
+        <div data-tab-panel-3 class="am-tab-panel ">
+            <div class="lb1">
+                <img class="img1" src="../Public/images/p.png" alt="">
+                <div class="txt" style="width: 150px;
+height: 64px;">
+                    <p style="font-size: 13px;color: #4a76fb">沪教版9年纪下学期化学</p>
+                    <p style="font-size: 12px">下单时间：2017-06-12</p>
+                    <p style="font-size: 12px">需要积分：2000</p>
+                </div>
+                <div class="statu">
+                    <p style="color: #30ddac">已完成</p>
+                </div>
+            </div>
+        </div>
+        <div data-tab-panel-4 class="am-tab-panel ">
+            <div class="lb1">
+                <img class="img1" src="../Public/images/p.png" alt="">
+                <div class="txt" style="width: 150px;
+height: 64px;">
+                    <p style="font-size: 13px;color: #4a76fb">沪教版9年纪下学期化学</p>
+                    <p style="font-size: 12px">下单时间：2017-06-12</p>
+                    <p style="font-size: 12px">需要积分：2000</p>
+                </div>
+                <div class="statu">
+                    <p>已取消</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="../Public/js/weixin/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<![endif]-->
+<script src="../Public/js/weixin/amazeui.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+[ 2017-06-28T11:19:12+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Textbook&a=edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.025978s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.057581s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.088348s ]
+SQL: SHOW COLUMNS FROM `lailong_subject` [ RunTime:0.0193s ]
+SQL: SELECT * FROM `lailong_subject` WHERE (  title = '321'  ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `lailong_press` [ RunTime:0.0132s ]
+SQL: SELECT * FROM `lailong_press` WHERE (  title = '123'  ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `lailong_grade` [ RunTime:0.0134s ]
+SQL: SELECT * FROM `lailong_grade` WHERE (  title = '3123'  ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `lailong_textbook` [ RunTime:0.0143s ]
+SQL: UPDATE `lailong_textbook` SET `subject`='321',`press`='123',`grade`='3123',`updatetime`='2017-06-28 11:19:12' WHERE `id` = 13 [ RunTime:0.0009s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.025200s ]
+INFO: [ app_end ] --END-- [ RunTime:0.025329s ]
+
+[ 2017-06-28T11:19:13+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Textbook&a=add_chapter
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.026660s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.057495s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.088723s ]
+SQL: SHOW COLUMNS FROM `lailong_chapter` [ RunTime:0.0194s ]
+SQL: DELETE FROM `lailong_chapter` WHERE (  textbook_id = 13 ) [ RunTime:0.0005s ]
+NOTIC: [8] Undefined index: zhang0 D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\TextbookController.class.php 第 207 行.
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('312','0','13','2017-06-28 11:19:13') [ RunTime:0.0010s ]
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('312','149','13','2017-06-28 11:19:13') [ RunTime:0.0006s ]
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('3','149','13','2017-06-28 11:19:13') [ RunTime:0.0005s ]
+SQL: INSERT INTO `lailong_chapter` (`title`,`parent_id`,`textbook_id`,`createtime`) VALUES ('213','0','13','2017-06-28 11:19:13') [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: jie2 D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\TextbookController.class.php 第 221 行.
+NOTIC: [8] Undefined index: zhang3 D:\tools\upupw\htdocs\ll\application\Classtypes\Controller\TextbookController.class.php 第 207 行.
+

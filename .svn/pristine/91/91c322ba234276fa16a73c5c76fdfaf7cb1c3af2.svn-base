@@ -1,0 +1,69 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>消息</title>
+    <link rel="stylesheet" href="__TMPL__Public/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/course.css">
+	<link rel="stylesheet" href="__TMPL__Public/css/weixin/public.css">
+	<script src="__TMPL__Public/js/weixin/jquery.min.js"></script>	
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body>
+<div id="news_list">
+<foreach name="n" item="n">
+	<div data-am-widget="intro" class="am-intro am-cf am-intro-default" style="padding: 10px 12px;background: #f4f5f7;margin-bottom:-5px;">
+	    <div class="am-g am-intro-bd" style="background:white;padding: 0px">
+	        <div class="xq" style="height: inherit">
+	            <div class="am-intro-left am-u-sm-3" style="width:79px;height: 56px;margin-top: 11px">
+					<div style=" width: 56px;height: 56px;border-radius:50%;background: url({$n.icon}) no-repeat center;background-size:cover;"></div>
+	            </div>
+	            <div class="am-intro-right am-u-sm-9">
+	                <p style="font-size: 1.6rem;margin-top: 8px;font-weight: bold">{$n.title}</p>
+	                <p style="margin-top: -21px;font-size:1.4rem;color:black;">{$n.createtime}</p>
+	                <p style="font-size: 1.3rem;margin-top: -21px;margin-bottom:8px;color: #7f7c8e">{$n.content}</p></div>
+	        </div>
+	    </div>
+	</div>
+</foreach>
+</div>
+<input type="hidden" id="moban" value="__TMPL__">
+<tc_include file="Public:float"/>
+<script src="__TMPL__Public/js/weixin/public.js"></script>
+<if condition="$typea eq 1"><p style="text-align:center;color: #0e90d2;" class="select_f" name="1" id="news">点击加载更多</p></if>
+<input type="hidden" value="{$userid}" id="userid">
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="__TMPL__Public/js/weixin/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<![endif]-->
+<script src="__TMPL__Public/js/weixin/amazeui.min.js"></script>
+<script>
+//加载更多服务
+$(".select_f").click(function(){
+	var num=$(this).attr("name");
+	var table=$(this).attr("id");
+	var userid=$("#userid").val();
+	$.post('{:U("Mine/news_more")}',
+			{ num : num , table : table , userid : userid},
+            function(data){
+            	console.log(data);
+            	if(data[1]!=""){
+            		$("#"+table).attr("name",data[1]);
+            	}else{
+            		$("#"+table).css("display","none");
+            	}
+            	$("#"+table+"_list").append(data[0]);
+            });
+})
+</script>
+</body>
+</html>

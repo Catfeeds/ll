@@ -1,0 +1,122 @@
+<admintpl file="header" />
+</head>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/addcourse.css" />
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('record/intention')}">{:L('ADMIN_INTENT_INDEX')}</a></li>
+			<li><a href="{:U('record/intention2')}">{:L('ADMIN_INTENTX_INDEX')}</a></li>
+			<li class="active"><a href="{:U('record/relation',array('id'=>$id,'type'=>$type))}">关联意向课程</a></li>
+		</ul>
+		<button type="button" class="btn btn-primary" style="margin-bottom:20px;margin-left: 100px; " data-toggle="modal" data-target="#detail">查看意向详情</button>
+		<form method="post" action="{:U('record/relation_post')}" class="form-horizontal js-ajax-form">
+			<input type="hidden" name="id" value="{$intention_info['id']}">
+			<input type="hidden" name="type" value="{$type}">
+			<div class="control-group">
+				<label class="control-label">课程列表</label>
+				<div class="controls">
+					<select name="course_id" id="course_id" >
+					<option value="">请选择</option>
+						<foreach name="course" item="v">
+						<option value="{$v[id]}" ig="{$v['picture']}" start_time="{$v['start_time']}" title="{$v['title']}" integral="{$v['integral']}" teacher="{$v['tname']}" >{$v['title']}</option>
+						</foreach>
+					</select>
+				</div>
+			</div>
+	
+				<div class="control-group">
+					<label class="control-label">课程标题</label>
+					<div class="controls">
+						<input type="text" id="title" readonly value="">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">图片</label>
+					<div class="controls">
+						<div id="img2" style="width: 100px;height: 100px; background-size: cover;"></div>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">兑换积分</label>
+					<div class="controls">
+						<input type="text" readonly id="integral" value="">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">讲师</label>
+					<div class="controls">
+						<input type="text" readonly id="teacher" value="">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">开课时间</label>
+					<div class="controls">
+						<input type="text" readonly id="start_time" value="">
+					</div>
+				</div>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary js-ajax-submit">关联</button>
+					<a class="btn" href="{:U('record/intention')}">{:L('BACK')}</a>
+				</div>
+		</form>
+	</div>	
+		
+			
+			
+	
+<div class="modal fade" id="detail" style="top:300px;display: none;">
+    <div class="modal-dialog" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">意向用户详细</h4>
+            </div>
+            <div class="modal-body">
+       			上课学生：{$intention_info['chname']}
+       			<br>
+       			<!-- 选择型 -->
+       			<?php if(empty($intention_info['content'])){ ?>
+       			学段：{$intention_info['grade']}
+       			<br>
+       			科目：{$intention_info['subject']}
+       			<br>
+       			题型：{$intention_info['question_type']}
+       			<br>
+       			试题难度：{$intention_info['question_difficulty']}
+       			<br>
+       			希望上课时间：{$intention_info['wanted_start_time']}
+       			<br>
+       			希望上课老师：{$intention_info['teacher']}
+       			<br>
+       			班级类型：{$intention_info['class_type']}
+       			<?php }else{ ?>
+       				意向描述：{$intention_info['content']}
+       			<?php } ?>	
+       			
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取 消</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#course_id").change(function(){
+				var ig = $(this).find("option:selected").attr("ig");
+				var title = $(this).find("option:selected").attr("title");
+				var start_time = $(this).find("option:selected").attr("start_time");
+				var integral = $(this).find("option:selected").attr("integral");
+				var teacher = $(this).find("option:selected").attr("teacher");
+				$("#title").val(title);
+				$("#start_time").val(start_time);
+				$("#integral").val(integral);
+				$("#teacher").val(teacher);
+				$('#img2').css('background',
+					'url(__ROOT__/data/upload/avatar/'+ ig+') no-repeat center');
+			});
+		})
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<admintpl file="header" />
+</head>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/addcourse.css" />
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('course/courselist')}">{:L('ADMIN_COURSE_INDEX')}</a></li>
+			<li class="active"><a href="{:U('course/addcourse')}">{:L('ADMIN_COURSE_ADD')}</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('course/add_post')}">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">{:L('NAME')}</label>
+					<div class="controls">
+						<input type="text" name="name">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('ICON')}</label>
+					<div class="controls">
+						<img id="img2" >
+							<div id="add_img">
+								<input type="hidden" name="picture"> 
+								<input type="file" onchange="avatar_upload_filtration(this)" id="file2" name="icon" />
+							</div>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('PERSONCOUNT')}</label>
+					<div class="controls">
+						<input type="text" name="rated_number">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('SCORE')}</label>
+					<div class="controls">
+						<input type="text" name="integral">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('TEACHER')}</label>
+					<div class="controls">
+						<select name="teacher_id">
+							<foreach name="teacher" item="t">
+								<option value="{$t.id}">{$t.name}</option>
+							</foreach>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('H5')}</label>
+					<div class="controls">
+						<select name="h5_id">
+							<foreach name="h5" item="h">
+								<option value="{$h.id}">{$h.title}</option>
+							</foreach>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('STARTIME')}</label>
+					<div class="controls">
+						<input type="text"placeholder="请输入日期..." name="start_time" class="input length_2" value="{$formget.dates}" autocomplete="off" onClick="WdatePicker()" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('ADD')}</button>
+				<a class="btn" href="{:U('user/index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+<script type="text/javascript">
+//上传图片
+function avatar_upload_filtration(obj) {
+	var $fileinput = $(obj);
+	var img2 = $('#img2').next().children('input').val();
+	Wind.css("jcrop");
+	Wind.use("ajaxfileupload", "jcrop", "noty", function() {
+		$.ajaxFileUpload({
+			url : "{:U('Course/up')}",
+			secureuri : false,
+			fileElementId : "file2",
+			dataType : 'json',
+			data : {
+				img2 : img2
+			},
+			success : function(data) {
+				$('#file2').parent().css({'display':'none'});
+				$('#img2').before(" <img src=\"__PUBLIC__/images/tv.gif\" id='close2' style=\"margin-left: -13px;margin-top: -11px;position: relative;\" />");
+				$('#img2').attr(
+						'src',
+						'__ROOT__/data/upload/avatar/'
+								+ data.data.iconname);
+				$('#img2').next().children('input').val(data.data.iconname);
+			},
+			error : function(data, status, e) {
+			}
+		});
+	});
+}
+$('fieldset').on('click','#close2',function(){
+	var img2 = $('#img2').next().children('input').val();
+	 $.post('{:U("classification/deleteicon")}', {
+		 img2: img2
+		},
+		function(data) {
+		}
+	)
+	$('#img2').attr('src','');
+	$('#file2').parent().css({'display':'block'});
+	$('#img2').next().children('input').val('');
+	$(this).css({'display':'none'});
+})
+</script>
+</html>

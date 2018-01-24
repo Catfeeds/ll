@@ -1,0 +1,1016 @@
+<?php
+
+/**
+ * 店铺
+ */
+namespace Weixin\Controller;
+use Common\Controller\MemberbaseController;
+use Think\Log;
+require_once 'php/jssdk.php';
+class PublicController extends MemberbaseController {
+	private $appId;
+	private $appSecret;
+	function _initialize(){ 
+		if (empty($_SESSION ['userinfo']) || ! isset ( $_SESSION ['userinfo'] )) {
+			if (! isset ( $_GET ['userInfo'] )) {
+				$url = URL1.urlencode(SITE_URLS.$_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING']."&");
+				header("Location: $url");
+				exit();
+			}else{
+				$_SESSION ['userinfo'] = $_GET ['userInfo'];
+			}
+		}
+		if(isset($_GET ['userInfo'])){
+			$usersi=$_GET ['userInfo'];
+		}else{
+			$usersi=$_SESSION ['userinfo'];
+		}
+		$userinfo =  json_decode($usersi,true);
+		$userinfo =  json_decode($userinfo,true);
+		$open_id=$userinfo['openid'];
+		//设置session openid
+		$users=M("member")->field("phone")->where("openid='$open_id'")->find();
+		if(empty($users)){
+			$datam=array(
+				"avatar"=>$userinfo[headimgurl],
+				"openid"=>$userinfo[openid],
+				"nickname"=>$userinfo[nickname],
+				"ctime"=>date("Y-m-d H:i:s",time()),
+			);
+			M("member")->add($datam);
+		}
+		//设置session openid
+		$_SESSION[weiopen_id]=$open_id;
+		$_SESSION[weimes]=$userinfo;
+		$this->appId = APPID;
+		$this->appSecret = APPSECRET;
+	}
+	//店铺首页
+	function shop(){
+		$city=$_REQUEST['city']?$_REQUEST['city']:"";
+		$sign = $this->GetSignPackage();
+		$this->assign('sign',$sign);
+		$this->assign("city",$city);
+		$this->display(":shop");
+	}
+	//城市查询
+	function select_city(){
+		$city=M("open_city")->field("a.*,b.picture")->table("21g_open_city as a")
+		->join("21g_icon as b on a.icon=b.id")->where("a.shows=1")->order(array("top"=>DESC))->select();
+		$config=C("UPLOAD_CONFIG");//图片上传路径
+		$this->assign("config",$config['rootPath']);
+		$this->assign("city",$city);
+		$this->display(":select_city");
+	}
+	//查询店铺
+	function select_shop(){
+		$cityname=$_REQUEST[name];
+		$openid=$_SESSION[weiopen_id];
+		$start=5;
+		//后台是否添加该城市
+		$cunzai=M("open_city")->where("cname like'%$cityname%' and shows=1")->find();
+		if(empty($cunzai)){
+			$cityname="上海";//默认上海市
+		}
+		$where="a.shop_type=1 and top_first=2";
+		if($cityname){
+			$where.=" and city_name like'%$cityname%'";
+		}
+		$lat = $_REQUEST[latitude];
+		$lng = $_REQUEST[longitude];
+		$config=C("UPLOAD_CONFIG");//图片上传路径
+		
+		//轮播图
+		$lun=M("open_city")->field("b.*,c.picture")->table("21g_open_city as a")
+		->join("21g_carousel as b on a.id=b.city","left")->join("21g_icon as c on b.icon=c.id","left")
+		->where("a.cname='$cityname' and b.show=1")->select();
+		$lstrs='<div class="main"> <div class="am-slider am-slider-default myslides" data-am-flexslider id="myslide"><ul class="am-slides" >';
+		foreach($lun as $kl=>$vl){
+			if($vl[type]=="1"){
+				$lstc.='<li><a href="#" style="background: url('.$config['rootPath'].$vl['picture'].') no-repeat center;background-size:cover;"></a></li>';
+			}elseif($vl[type]=="2"){
+				$lstc.='<li><a href="'.U('Weixin/shop/shop_message?id='.$vl['shopid']).'" style="background: url('.$config['rootPath'].$vl['picture'].') no-repeat center;background-size:cover;"></a></li>';
+			}elseif($vl[type]=="3"){
+				$lstc.='<li><a href="'.$vl['url'].'" style="background: url('.$config['rootPath'].$vl['picture'].') no-repeat center;background-size:cover;"></a></li>';
+			}
+		}
+		$lstre='</ul></div></div>';
+		if(empty($lstc)){//是否有轮播图
+			$lstr="";
+		}else{
+			$lstr=$lstrs.$lstc.$lstre;
+		}
+		//查询店铺分类行业
+		$works=M("open_city")->field("d.id as industry_id")->table("21g_open_city as a")
+		->join("21g_city_industry as b on a.id=b.city","left")->join("21g_icon as c on b.b_icon=c.id","left")
+		->join("21g_industry as d on d.id=b.industry","left")->join("21g_icon as e on d.h_icon=e.id","left")
+		->where("a.cname='$cityname'")->order("d.orders ASC")->select();
+		foreach($works as $ka=>$va){
+			if($va[industry_id]){
+				//行业
+				$workjob=M("open_city")->field("a.city_id,a.id as cid,b.id,d.name,c.picture,e.picture as bcolor")->table("21g_open_city as a")
+				->join("21g_city_industry as b on a.id=b.city","left")->join("21g_icon as c on b.b_icon=c.id","left")
+				->join("21g_industry as d on d.id=b.industry","left")->join("21g_icon as e on d.h_icon=e.id","left")
+				->where("a.cname='$cityname' and b.industry=$va[industry_id]")->find();
+				$sql = "round(6378.138*2*asin(sqrt(pow(sin( (lat*pi()/180-$lat*pi()/180)/2),2)+cos(lat*pi()/180)*cos($lat*pi()/180)* pow(sin( (lng*pi()/180-$lng*pi()/180)/2),2)))*1000)";
+				$order=M("shop")->field("a.*,$sql as juli")->table("21g_shop as a")->join("21g_city as d on a.city=d.city_id","left")
+				->where($where." and industry_id=$va[industry_id]")->select();
+				$sorts = array(
+						'direction' => 'SORT_ASC', //排序顺序标志 SORT_DESC 降序；SORT_ASC 升序
+						'field'     => 'juli',       //排序字段
+				);
+				$arrSorts = array();
+				foreach($order as $uniqid => $row){
+					//查询图片
+					$icon=M("shop_icon")->field("b.picture")->table("21g_shop_icon as a")->join("21g_icon as b on a.icon=b.id")
+					->where("a.shop_id=$row[id] and a.type=0")->find();
+					$order[$uniqid][picture]=empty($icon[picture])?__ROOT__."/themes/21g/Public/images/no_img.png":$config['rootPath'].$icon[picture];
+					//店铺详情
+					$shop=M("shop")->where("id=$row[id]")->find();
+					//累计充值
+					$money=M("cardrecord")->field("sum(a.money) as money,b.id")->table("21g_cardrecord as a")->join("21g_card as b on a.card_id=b.id","left")
+					->join("21g_member as c on b.member_id=c.id","left")
+					->where("c.openid='$openid' and a.shop_id=$row[id] and a.type=0")->find();
+					//店铺折扣率
+					$dian=M("shop_discount")->where("shop_id=$row[id] and type_a=2")->order(array("type"=>ASC))->select();
+					if(empty($money[money])){
+						$zhe=$shop[discount];
+					}else{
+						if($money[money] < $dian[0][money]){
+							$zhe=$shop[discount];
+						}elseif($dian[0][money] <= $money[money] && $money[money] < $dian[1][money]){
+							$zhe=$dian[0][discount];
+						}elseif($dian[1][money] <= $money[money] && $money[money] < $dian[2][money]){
+							$zhe=$dian[1][discount];
+						}else{
+							$zhe=$dian[2][discount];
+						}
+					}
+					if(empty($zhe)){
+						$zhe=$shop[discount];
+					}
+					$order[$uniqid][shopzhe]=$zhe;
+					foreach($row as $key=>$value){
+						$arrSorts[$key][$uniqid] = $value;
+					}
+					unset($zhe);
+				}
+				if($sorts['direction']){
+					array_multisort($arrSorts[$sorts['field']], constant($sorts['direction']), $order);
+				}
+				$i=1;
+				if(!empty($workjob)){
+					$str.='
+					<div class="am-container nopadding midbox">
+					        <img src="'.$config['rootPath'].$workjob[picture].'">
+					        <a class="am-block midbox_cover" onclick="jump('.$workjob['id'].')">
+					            <div class="midbox_cover_bg"></div>
+					            <div class="midbox_cover_cont">
+					                <img src="'.$config['rootPath'].$workjob[bcolor].'">
+					                <span class="am-block am-text-center">'.$workjob[name].'</span>
+					            </div>
+					        </a>
+					</div>
+					';
+					$cityid=$workjob['cid'];
+					$selectid=$workjob['city_id'];
+				}
+				$str.='<div class="am-container marbtm50"><ul class="main_list am-list">';
+				foreach($order as $k=>$v){
+					if($v[juli]>10000){
+						$juli=round(($v[juli]/1000),1)."km";
+					}elseif($v[juli]>1000 && $v[juli]< 10000){
+						$juli=round(($v[juli]/1000),1)."km";
+					}else{
+						$juli=round($v[juli],2)."m";
+					}
+					//折扣
+					if($v[shopzhe]=="100"){
+						$zhekou="";
+					}else{
+						$zhekou=($v[shopzhe]/10)."折";
+					}
+					//满减
+					if(!empty($v[money]) && !empty($v[preferential])){
+						$manjian="满减";
+					}
+					if($i<=$start){
+						$str.='<li class="mainlist_shop">
+				            <a onclick="shopmess('.$v[id].')" class="am-block">
+				                <div style="background: url('.$v[picture].') no-repeat center;background-size:cover;"></div>
+				                <span><em class="mainlist_shop_lt am-text-truncate">'.$v[name].'</em><em class="mainlist_shop_rt am-block">'.$juli.'</em></span>
+				                <em>'.$zhekou.' '.$manjian.'</em>
+				            </a>
+				        </li>';
+					}
+					$i++;
+					unset($zhekou);
+					unset($manjian);
+				}
+				$str.='<li class="more am-text-center"><a class="am-block" onclick="jump('.$workjob['id'].')">More</a></li></ul></div>';
+				if(!empty($workjob[name])){
+					$topstr.='<li><a href="#" onclick="jump('.$workjob[id].')">'.$workjob[name].'</a></li>';
+				}
+				unset($workjob);
+			}
+		}
+		$data=array(
+			"0"=>empty($str)?"<div style='padding-left: 1rem;font-size:14px;' >暂无数据</div>":$str,
+			"1"=>$cityname,
+			"2"=>$cityid,
+			"3"=>$selectid,
+			"4"=>$lstr,
+			"5"=>$topstr,
+		);
+		$this->ajaxReturn($data);
+	}
+	//搜索页面
+	function search(){
+		$this->assign("city",$_REQUEST['city_id']);
+		$this->assign("lat",$_REQUEST['lat']);
+		$this->assign("lng",$_REQUEST['lng']);
+		$this->display(":search");
+	}
+	function search_shop(){
+		$key=$_REQUEST['key'];
+		$city=$_REQUEST['city'];
+		$where="1=1";
+		if($key){
+			$where.=" and (name like'%$key%' or address like'%$key%')";
+		}
+		if($city){
+			$where.=" and city=$city";
+		}
+		$order=$this->shoplist($page,$where,$_REQUEST['latitude'],$_REQUEST['longitude']);
+		foreach($order[2] as $k=>$v){
+			$str.='
+				<li>
+	                <a onclick="shopmess('.$v[id].')">
+	                    <div class="shoplist_lt">
+	                        <div class="shoplist_pho" style="background: url('.$v[picture].') no-repeat center;background-size:cover;"></div>
+	                        <div class="shoplist_data">
+	                            <span class="am-text-truncate shoplist_data_title">'.$v[name].'</span>
+	                            <span class="am-text-truncate shoplist_data_addr">'.$v[address].'</span>
+	                            <span class="shoplist_data_discount">'.$v[shopzhe].'</span>
+	                        </div>
+	                    </div>
+	                    <span class="shoplist_rt">'.$v[newjuli].'</span>
+	                </a>
+	            </li>
+				 ';
+        }
+        //计算页数
+        $page=ceil($order[1]/NUM);
+        if($page>1){
+            $show=1;
+        }
+        if(empty($str)){
+            $str="<div style='padding-left: 1rem;font-size:14px;' >暂无数据</div>";
+        }
+        $data=array(
+            "0"=>$str,
+            "1"=>$page,
+            "2"=>$show,
+        );
+        $this->ajaxReturn($data);
+    }
+    //搜索更多
+    function search_shop_more(){
+        $key=$_REQUEST['key'];
+        $city=$_REQUEST['city_id'];
+        $page=$_REQUEST['nums']+1;
+        $where="1=1";
+        if($key){
+            $where.=" and (name like'%$key%' or address like'%$key%')";
+        }
+        if($city){
+            $where.=" and city=$city";
+        }
+        $order=$this->shoplist($page,$where,$_REQUEST['latitude'],$_REQUEST['longitude']);
+        foreach($order[2] as $k=>$v){
+            $str.='
+				<li>
+	                <a onclick="shopmess('.$v[id].')">
+	                    <div class="shoplist_lt">
+	                        <div class="shoplist_pho" style="background: url('.$v[picture].') no-repeat center;background-size:cover;"></div>
+	                        <div class="shoplist_data">
+	                            <span class="am-text-truncate shoplist_data_title">'.$v[name].'</span>
+	                            <span class="am-text-truncate shoplist_data_addr">'.$v[address].'</span>
+	                            <span class="shoplist_data_discount">'.$v[shopzhe].'</span>
+	                        </div>
+	                    </div>
+	                    <span class="shoplist_rt">'.$v[newjuli].'</span>
+	                </a>
+	            </li>
+				 ';
+		}
+		$data=array(
+			"0"=>$str,
+			"1"=>$page,
+		);
+		$this->ajaxReturn($data);
+	}
+	//首次加载
+	function more_shops(){
+		$keys=$_REQUEST[keys];
+		$cityname=$_REQUEST[cityname];
+		$openid=$_SESSION[weiopen_id];
+		$start=NUM;
+		$where="a.shop_type=1";
+		if($keys){
+			$where.=" and name like'%$keys%'";
+		}
+		$lat = $_REQUEST[latitude];
+		$lng = $_REQUEST[longitude];
+		$sql = "round(6378.138*2*asin(sqrt(pow(sin( (lat*pi()/180-$lat*pi()/180)/2),2)+cos(lat*pi()/180)*cos($lat*pi()/180)* pow(sin( (lng*pi()/180-$lng*pi()/180)/2),2)))*1000)";
+		$count=M("shop")->field("a.*")->table("21g_shop as a")->join("21g_city as d on a.city=d.city_id","left")->where($where)->count();
+		$order=M("shop")->field("a.*,$sql as juli")->table("21g_shop as a")->join("21g_city as d on a.city=d.city_id","left")
+		->where($where)->select();
+		$sorts = array(
+				'direction' => 'SORT_ASC', //排序顺序标志 SORT_DESC 降序；SORT_ASC 升序
+				'field'     => 'juli',       //排序字段
+		);
+		$arrSorts = array();
+		foreach($order as $uniqid => $row){
+			//查询图片
+			$icon=M("shop_icon")->field("b.picture")->table("21g_shop_icon as a")->join("21g_icon as b on a.icon=b.id")
+			->where("a.shop_id=$row[id] and a.type=0")->find();
+			$order[$uniqid][picture]=empty($icon[picture])?__ROOT__."/themes/21g/Public/images/no_img.png":__ROOT__."/data/upload/avatar/".$icon[picture];
+			//店铺详情
+			$shop=M("shop")->where("id=$row[id]")->find();
+			//累计充值
+			$money=M("cardrecord")->field("sum(a.money) as money,b.id")->table("21g_cardrecord as a")->join("21g_card as b on a.card_id=b.id","left")
+			->join("21g_member as c on b.member_id=c.id","left")
+			->where("c.openid='$openid' and a.shop_id=$row[id] and a.type=0")->find();
+			//店铺折扣率
+			$dian=M("shop_discount")->where("shop_id=$row[id] and type_a=2")->order(array("type"=>ASC))->select();
+			if(empty($money[money])){
+				$zhe=$shop[discount];
+			}else{
+				if($money[money] < $dian[0][money]){
+					$zhe=$shop[discount];
+				}elseif($dian[0][money] <= $money[money] && $money[money] < $dian[1][money]){
+					$zhe=$dian[0][discount];
+				}elseif($dian[1][money] <= $money[money] && $money[money] < $dian[2][money]){
+					$zhe=$dian[1][discount];
+				}else{
+					$zhe=$dian[2][discount];
+				}
+			}
+			if(empty($zhe)){
+				$zhe=$shop[discount];
+			}
+			$order[$uniqid][shopzhe]=$zhe;
+			foreach($row as $key=>$value){
+				$arrSorts[$key][$uniqid] = $value;
+			}
+			unset($zhe);
+		}
+		if($sorts['direction']){
+			array_multisort($arrSorts[$sorts['field']], constant($sorts['direction']), $order);
+		}
+		$i=1;
+		foreach($order as $k=>$v){
+		    if($v[juli]>10000){
+		        $juli=round(($v[juli]/1000),1)."km";
+		    }elseif($v[juli]>1000 && $v[juli]< 10000){
+		    	$juli=round(($v[juli]/1000),2)."km";
+		    }else{
+		    	$juli=round($v[juli],2)."m";
+		    }
+		    //折扣
+		    if($v[shopzhe]=="100"){
+		    	$zhekou="";
+		    }else{
+		    	$zhekou=($v[shopzhe]/10)."折";
+		    }
+		    //满减
+		    if(!empty($v[money]) && !empty($v[preferential])){
+		    	$manjian="满$v[money]减$v[preferential]";
+		    }
+			if($i<=$start){
+				$str.='
+					 <li>
+		                <a onclick="shopmess('.$v[id].')">
+		                   <div class="shoplist_lf" style="background: url('.$v[picture].') no-repeat center;background-size:cover;"></div>
+		                     <div class="shoplist_rt">
+		                        <div class="shoplist_rt_top">
+	                               <div class="shop_name">'.$v[name].'</div>
+	                               <div class="distance">'.$juli.'</div>
+	                            </div>
+	                            <div class="address">'.$v[address].'</div>
+	                            <div class="dazhe">'.$zhekou.' '.$manjian.'</div>
+		                     </div>
+		                </a>
+		             </li>';
+			}
+			$i++; 
+			unset($zhekou);
+			unset($manjian);
+		}
+		$nums=ceil($count/NUM);
+		if($nums >1 ){
+			$yin=1;
+		}
+		if(empty($str)){
+			$str="<div style='padding-left: 1rem;font-size:14px;' >暂无数据</div>";
+		}
+		$data=array(
+			"0"=>$str,
+			"1"=>$nums,
+			"2"=>$yin,
+		);
+		$this->ajaxReturn($data);
+	}
+	//下拉加载更多
+	function more_shop(){
+		$keys=$_REQUEST[keys];
+		$num=$_REQUEST[nums];
+		$start=($num+1)*NUM;
+		$cityname=$_REQUEST[cityname];
+		$where="a.shop_type=1";
+		if($keys){
+			$where.=" and name like'%$keys%'";
+		}
+		$lat = $_REQUEST[latitude];
+		$lng = $_REQUEST[longitude];
+		$sql = "round(6378.138*2*asin(sqrt(pow(sin( (lat*pi()/180-$lat*pi()/180)/2),2)+cos(lat*pi()/180)*cos($lat*pi()/180)* pow(sin( (lng*pi()/180-$lng*pi()/180)/2),2)))*1000)";
+		$count=M("shop")->field("a.*")->table("21g_shop as a")->join("21g_city as d on a.city=d.city_id","left")->where($where)->count();
+		$order=M("shop")->field("a.*,$sql as juli")->table("21g_shop as a")->join("21g_city as d on a.city=d.city_id","left")
+		->where($where)->select();
+		$sorts = array(
+				'direction' => 'SORT_ASC', //排序顺序标志 SORT_DESC 降序；SORT_ASC 升序
+				'field'     => 'juli',       //排序字段
+		);
+		$arrSorts = array();
+		foreach($order as $uniqid => $row){
+			//查询图片
+			$icon=M("shop_icon")->field("b.picture")->table("21g_shop_icon as a")->join("21g_icon as b on a.icon=b.id")
+			->where("a.shop_id=$row[id] and a.type=0")->find();
+			$order[$uniqid][picture]=empty($icon[picture])?__ROOT__."/themes/21g/Public/images/no_img.png":__ROOT__."/data/upload/avatar/".$icon[picture];
+			//店铺详情
+			$shop=M("shop")->where("id=$row[id]")->find();
+			//累计充值
+			$money=M("cardrecord")->field("sum(a.money) as money,b.id")->table("21g_cardrecord as a")->join("21g_card as b on a.card_id=b.id","left")
+			->join("21g_member as c on b.member_id=c.id","left")
+			->where("c.openid='$openid' and a.shop_id=$row[id] and a.type=0")->find();
+			//店铺折扣率
+			$dian=M("shop_discount")->where("shop_id=$row[id] and type_a=2")->order(array("type"=>ASC))->select();
+			if(empty($money[money])){
+				$zhe=$shop[discount];
+			}else{
+				if($money[money] < $dian[0][money]){
+					$zhe=$shop[discount];
+				}elseif($dian[0][money] <= $money[money] && $money[money] < $dian[1][money]){
+					$zhe=$dian[0][discount];
+				}elseif($dian[1][money] <= $money[money] && $money[money] < $dian[2][money]){
+					$zhe=$dian[1][discount];
+				}else{
+					$zhe=$dian[2][discount];
+				}
+			}
+			if(empty($zhe)){
+				$zhe=$shop[discount];
+			}
+			$order[$uniqid][shopzhe]=$zhe;
+			foreach($row as $key=>$value){
+				$arrSorts[$key][$uniqid] = $value;
+			}
+			unset($zhe);
+		}
+		if($sorts['direction']){
+			array_multisort($arrSorts[$sorts['field']], constant($sorts['direction']), $order);
+		}
+		$i=1;
+		foreach($order as $k=>$v){
+			if($v[juli]>10000){
+		        $juli=round(($v[juli]/1000),1)."km";
+		    }elseif($v[juli]>1000 && $v[juli]< 10000){
+		    	$juli=round(($v[juli]/1000),2)."km";
+		    }else{
+		    	$juli=round($v[juli],2)."m";
+		    }
+		    //折扣
+		    if($v[shopzhe]=="100"){
+		    	$zhekou="";
+		    }else{
+		    	$zhekou=($v[shopzhe]/10)."折";
+		    }
+		    //满减
+		    if(!empty($v[money]) && !empty($v[preferential])){
+		    	$manjian="满$v[money]减$v[preferential]";
+		    }
+			if($i<=$start){
+				$str.='
+				 <li>
+	                <a onclick="shopmess('.$v[id].')">
+	                   <div class="shoplist_lf" style="background: url('.$v[picture].') no-repeat center;background-size:cover;"></div>
+	                     <div class="shoplist_rt">
+	                   		<div class="shoplist_rt_top">
+                               <div class="shop_name">'.$v[name].'</div>
+                               <div class="distance">'.$juli.'</div>
+                            </div>
+                            <div class="address">'.$v[address].'</div>
+                            <div class="dazhe">'.$zhekou.' '.$manjian.'</div>
+	                     </div>
+	                </a>
+	             </li>';
+            }
+            $i++;
+            unset($zhekou);
+            unset($manjian);
+        }
+        $data=array(
+            "0"=>$str,
+            "1"=>$num+1,
+        );
+        $this->ajaxReturn($data);
+    }
+    function shop_message(){
+        $sign = $this->GetSignPackage();
+        $root=SITE_URL;
+        $this->assign('root',$root);
+        $this->assign('sign',$sign);
+        $openid=$_SESSION[weiopen_id];
+        $userid=$_REQUEST[userid];//分享人id
+        $statetype=$_REQUEST[statetype];//分享充值,扫码充值
+        $id = I("get.id");
+        if($id){
+        	//是否为本店会员
+        	$user=M("member")->field("a.id")->table("21g_member as a")->join("21g_card as b on a.id=b.member_id")
+        	->join("21g_cardticket as c on b.id=c.card_id")
+        	->where("a.openid='$openid' and c.shopid=$id ")->find();
+        	$ouser=M("member")->field("cardnum")->where("openid = '$openid'")->find();
+        	$shop = M('shop')->alias('s')->field("s.*,p.province_name,c.city_name,d.name as tname")->join(C("DB_PREFIX")."province as p on p.province_id = s.province",'left')
+        	->join(C("DB_PREFIX")."city as c on c.city_id = s.city",'left')->join(C("DB_PREFIX")."industry d on s.industry_id=d.id","left")
+        	->where(array('s.id'=>$id))->find();
+        	$dish=M('Dishes')->field("d.*,i.picture")->table(C("DB_PREFIX")."dishes as d")->join(C("DB_PREFIX")."dishes_icon as di on di.dishes_id = d.id",'left')->join(C("DB_PREFIX")."icon as i on i.id =di.icon",'left')->where(array('d.shop_id'=>$id,'d.state'=>1))->select();
+        	//轮播图
+        	$lun=M("shop_icon")->field("b.picture")->table("21g_shop_icon as a")->join("21g_icon as b on a.icon=b.id")
+        	->where("a.shop_id=$id and a.type=1")->select();
+        	
+        	//店铺详情
+        	$shops=M("shop")->where("id=$id")->find();
+        	//累计充值
+        	$money=M("cardrecord")->field("sum(a.money) as money,b.id")->table("21g_cardrecord as a")->join("21g_card as b on a.card_id=b.id","left")
+        	->join("21g_member as c on b.member_id=c.id","left")
+        	->where("c.openid='$openid' and a.shop_id=$id and a.type=0")->find();
+        	//店铺折扣率
+        	$dian=M("shop_discount")->where("shop_id=$id and type_a=2")->order(array("type"=>ASC))->select();
+        	if(empty($money[money])){
+        		$zhe=$shops[discount];
+        	}else{
+        		if($money[money] < $dian[0][money]){
+        			$zhe=$shops[discount];
+        		}elseif($dian[0][money] <= $money[money] && $money[money] < $dian[1][money]){
+        			$zhe=$dian[0][discount];
+        		}elseif($dian[1][money] <= $money[money] && $money[money] < $dian[2][money]){
+        			$zhe=$dian[1][discount];
+        		}else{
+        			$zhe=$dian[2][discount];
+        		}
+        	}
+        	if(empty($zhe)){
+        		$zhe=$shops[discount];
+        	}
+        	if($zhe=="100"){
+        		$zhe="";
+        	}else{
+        		$zhe="折扣 : ".($zhe/10)."折";
+        	}
+        	//满减
+		    if(!empty($shops[money]) && !empty($shops[preferential])){
+		    	$manjian=" 满$shops[money]减$shops[preferential]";
+		    }
+        	$zhekou=$zhe.$manjian;
+        	$sc=M('shop_categories')->where("shop_id = $id")->order("id desc")->find();
+        	//门店头像
+        	$shop_phone=M("shop_icon")->field("b.picture")->table("21g_shop_icon as a")->join("21g_icon as b on a.icon=b.id")->where("a.shop_id=$id and a.type=0")->find();
+        	//是否签到、点赞
+        	$shop_raise=M("sign_praise")->field("a.user")->table("21g_sign_praise as a")
+        	->join("21g_member as b on a.user=b.id")->where("a.shop=$id and a.type=2 and b.openid='$openid'")->find();
+        	$time_s=date("Y-m-d",time());
+        	$time_e=date("Y-m-d",time()+3600*24);
+        	$shop_sign=M("sign_praise")->field("a.user")->table("21g_sign_praise as a")->join("21g_member as b on a.user=b.id")
+        	->where("a.shop=$id and a.type=1 and b.openid='$openid' and a.ctime>='$time_s' and a.ctime<='$time_e'")->find();
+        }
+        $this->assign("shop_phone",$shop_phone);
+        $this->assign("shop_sign",empty($shop_sign)?"签到":"已签到");
+        $this->assign("shop_raise",empty($shop_raise)?"点赞":"已点赞");
+        $this->assign("id",$id);
+        $this->assign("sc",$sc);
+        $this->assign("lun",$lun);
+        $this->assign("user",$user);
+        $this->assign('dish',$dish);
+        $this->assign('ouser',$ouser);
+        $this->assign('shop',$shop);
+        $this->assign("zhekou",$zhekou);
+        $this->assign("userid",$userid);
+        $this->assign("statetype",$statetype);
+        $this->assign("gname",GNAME);
+        $config=C("UPLOAD_CONFIG");//图片上传路径
+        $this->assign("config",$config['rootPath']);
+        $this->assign("looks",$_SESSION['weimes']['subscribe']);
+		$this->display(":shop_message");
+	}
+	//点赞
+	function dianzan(){
+		$id=$_REQUEST['id'];
+		$type=$_REQUEST['type'];
+		$lat=$_REQUEST['lat'];
+		$lng=$_REQUEST['lng'];
+		if($id && $type){
+			$userid=$_SESSION[weiopen_id];
+			$usermes=M("member")->field("id")->where("openid='$userid'")->find();
+			$shopmes=M("shop")->where("id=$id")->find();
+			$data_a=array(
+				"type"=>$type,
+				"shop"=>$id,
+				"user"=>$usermes['id'],
+				"ctime"=>date("Y-m-d H:i:s",time()),
+			);
+			//计算签到的距离
+			$sql = "round(6378.138*2*asin(sqrt(pow(sin( (lat*pi()/180-$lat*pi()/180)/2),2)+cos(lat*pi()/180)*cos($lat*pi()/180)* pow(sin( (lng*pi()/180-$lng*pi()/180)/2),2)))*1000)";
+			$order=M("shop")->field("*,$sql as juli")->where("id=$id")->find();
+			if($type==1){
+				if($order['juli']>LONGS){
+					$data=array(
+						"0"=>"102",
+					);
+					$this->ajaxReturn($data);
+				}
+			}
+			if(M("sign_praise")->add($data_a)){
+				$code="101";
+				if($type==1){
+					$num=$shopmes['sign_num']+1;
+					M("shop")->where("id=$shopmes[id]")->save(array("sign_num"=>$num));
+				}else{
+					$num=$shopmes['praise_num']+1;
+					M("shop")->where("id=$shopmes[id]")->save(array("praise_num"=>$num));
+				}
+			}
+		}
+		$data=array(
+			"0"=>$code,
+			"1"=>$num,
+		);
+		$this->ajaxReturn($data);
+	}
+	//行业详情页面
+	function industry_message(){
+		$id=$_REQUEST['id'];
+		$city=$_REQUEST['city'];
+		$config=C("UPLOAD_CONFIG");//图片上传路径
+		if(!empty($id) && !empty($city)){
+			//行业信息
+			$workjob=M("open_city")->field("a.city_id,b.industry,b.title,d.name,c.picture,e.picture as bcolor")->table("21g_open_city as a")
+			->join("21g_city_industry as b on a.id=b.city","left")->join("21g_icon as c on b.b_icon=c.id","left")
+			->join("21g_industry as d on d.id=b.industry","left")->join("21g_icon as e on d.h_icon=e.id","left")
+			->where("a.id=$city and b.id=$id")->find();
+			//推荐商家
+			if($workjob['city_id'] && $workjob['industry']){
+				$where="shop_type=1 and city=$workjob[city_id] and industry_id=$workjob[industry]";
+				$order=$this->shoplist("1",$where,$_REQUEST['lat'],$_REQUEST['lng']);
+			}
+		}
+		//计算页数
+		$page=ceil($order[1]/NUM);
+		if($page>1){
+			$show=1;
+		}
+		$this->assign("page",$page);
+		$this->assign("show",$show);
+		$this->assign("shop",$order[2]);
+		$this->assign("workjob",$workjob);
+		$this->assign("latitude",$_REQUEST['lat']);
+		$this->assign("longitude",$_REQUEST['lng']);
+        $this->assign("config",$config['rootPath']);
+        $this->display(":industry_message");
+    }
+    //获取更多门店
+    function works_more(){
+        $page=$_REQUEST["nums"]+1;
+        $city_id=$_REQUEST['city_id'];
+        $industry=$_REQUEST['industry'];
+        $where="shop_type=1 and city=$city_id and industry_id=$industry";
+        $order=$this->shoplist($page,$where,$_REQUEST['latitude'],$_REQUEST['longitude']);
+        foreach($order[2] as $k=>$v){
+            $str.='
+				<li>
+	                <a onclick="shopmess('.$v[id].')">
+	                    <div class="shoplist_lt">
+	                        <div class="shoplist_pho" style="background: url('.$v[picture].') no-repeat center;background-size:cover;"></div>
+	                        <div class="shoplist_data">
+	                            <span class="am-text-truncate shoplist_data_title">'.$v[name].'</span>
+	                            <span class="am-text-truncate shoplist_data_addr">'.$v[address].'</span>
+	                            <span class="shoplist_data_discount">'.$v[shopzhe].'</span>
+	                        </div>
+	                    </div>
+	                    <span class="shoplist_rt">'.$v[newjuli].'</span>
+	                </a>
+	            </li>	
+				 ';
+		}
+		$data=array(
+			"0"=>$str,
+			"1"=>$page,
+		);
+		$this->ajaxReturn($data);
+	}
+	//门店列表方法
+	function shoplist($page,$where,$lat,$lng){
+		$lat=isset($lat)?$lat:"1";
+		$lng=isset($lng)?$lng:"1";
+		$where=isset($where)?$where:"1=1";
+		$page=isset($page)?$page:"1";
+		$config=C("UPLOAD_CONFIG");//图片上传路径
+		$limit=$page*NUM;
+		$count=M("shop")->where($where)->count();
+		$sql = "round(6378.138*2*asin(sqrt(pow(sin( (lat*pi()/180-$lat*pi()/180)/2),2)+cos(lat*pi()/180)*cos($lat*pi()/180)* pow(sin( (lng*pi()/180-$lng*pi()/180)/2),2)))*1000)";
+		$order=M("shop")->field("*,$sql as juli")->where($where)->select();
+		$sorts = array(
+				'direction' => 'SORT_ASC', //排序顺序标志 SORT_DESC 降序；SORT_ASC 升序
+				'field'     => 'juli',       //排序字段
+		);
+		$arrSorts = array();
+		foreach($order as $uniqid => $row){
+			//查询图片
+			$icon=M("shop_icon")->field("b.picture")->table("21g_shop_icon as a")->join("21g_icon as b on a.icon=b.id")
+			->where("a.shop_id=$row[id] and a.type=0")->find();
+			$order[$uniqid][picture]=empty($icon[picture])?__ROOT__."/themes/21g/Public/images/no_img.png":$config['rootPath'].$icon[picture];
+			//店铺详情
+			$shop=M("shop")->where("id=$row[id]")->find();
+			//累计充值
+			$money=M("cardrecord")->field("sum(a.money) as money,b.id")->table("21g_cardrecord as a")->join("21g_card as b on a.card_id=b.id","left")
+			->join("21g_member as c on b.member_id=c.id","left")
+			->where("c.openid='$openid' and a.shop_id=$row[id] and a.type=0")->find();
+			//店铺折扣率
+			$dian=M("shop_discount")->where("shop_id=$row[id] and type_a=2")->order(array("type"=>ASC))->select();
+			if(empty($money[money])){
+				$zhe=$shop[discount];
+			}else{
+				if($money[money] < $dian[0][money]){
+					$zhe=$shop[discount];
+				}elseif($dian[0][money] <= $money[money] && $money[money] < $dian[1][money]){
+					$zhe=$dian[0][discount];
+				}elseif($dian[1][money] <= $money[money] && $money[money] < $dian[2][money]){
+					$zhe=$dian[1][discount];
+				}else{
+					$zhe=$dian[2][discount];
+				}
+			}
+			//折扣
+			if($zhe=="100"){
+				$zhekou="";
+			}else{
+				$zhekou=($zhe/10)."折";
+			}
+			//满减
+			if(!empty($row[money]) && !empty($row[preferential])){
+				$manjian="满$row[money]减$row[preferential]";
+			}
+			//转换距离
+			if($row[juli]>10000){
+				$juli=round(($row[juli]/1000),1)."km";
+			}elseif($row[juli]>1000 && $row[juli]< 10000){
+				$juli=round(($row[juli]/1000),1)."km";
+			}else{
+				$juli=round($row[juli],2)."m";
+			}
+			$order[$uniqid][newjuli]=$juli;
+			$order[$uniqid][shopzhe]=$zhekou." ".$manjian;
+			foreach($row as $key=>$value){
+				$arrSorts[$key][$uniqid] = $value;
+			}
+			unset($zhekou);
+			unset($juli);
+		}
+		if($sorts['direction']){
+			array_multisort($arrSorts[$sorts['field']], constant($sorts['direction']), $order);
+		}
+		$i=1;
+		foreach($order as $k=>$v){
+			if($i>$limit){
+				unset($order[$k]);
+			}
+			$i++;
+		}
+		$data=array(
+			"1"=>$count,
+			"2"=>$order,
+		);
+		return $data;
+	}
+	//当前店铺我的会员券信息
+	function coupons(){
+		$openid=$_SESSION[weiopen_id];
+		$id=$_REQUEST[id];
+		if($id){
+			//会员卡id
+			$card=M("member")->field("b.id")->table("21g_member as a")->join("21g_card as b on a.id=b.member_id")
+			->where("a.openid='$openid'")->find();
+			if($card[id]){
+				//我的代金券
+				$endtime=date("Y-m-d",time());
+				$quan=M("cardticket")->field("etime,money,count(id) as num")
+				->where("card_id=$card[id] and shopid=$id and type=0 and etime>='$endtime' and status=0")->group("money,etime")->select();
+				//我的其他卡券
+				$qita=M("cardticket")->field("etime,type,count(id) as num")
+				->where("card_id=$card[id] and shopid=$id and type > 0 and etime>='$endtime' and status=0")->group("type,etime")->select();
+			}
+		}
+		$arraya=array("1"=>"饮品券","2"=>"菜品券","3"=>"礼品券","4"=>"特价券","5"=>"折扣券","6"=>"其他券");
+		$this->assign("quan",$quan);
+		$this->assign("qita",$qita);
+		$this->assign("typea",$arraya);
+		$this->display(":coupons");
+	}
+	// 保存用户现在的地理位置
+	function insert_city() {
+		$lat = $_REQUEST[latitude];
+		$lng = $_REQUEST[longitude];
+		$url = "http://api.map.baidu.com/ag/coord/convert?from=2&to=4&x=$lng&y=$lat";
+		$ch = curl_init ();
+		curl_setopt ( $ch, CURLOPT_URL, $url );
+		curl_setopt ( $ch, CURLOPT_SSL_VERIFYPEER, FALSE );
+		curl_setopt ( $ch, CURLOPT_SSL_VERIFYHOST, FALSE );
+		curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, 1 );
+		$output = curl_exec ( $ch );
+		curl_close ( $ch );
+		$jsoninfo = json_decode ( $output, true );
+		$lat = base64_decode ( $jsoninfo ['y'] );
+		$lng = base64_decode ( $jsoninfo ['x'] );
+		//$url = "http://api.map.baidu.com/geocoder?location=$lat,$lng&output=json&key=" . BDKEY;
+		$urla="http://api.map.baidu.com/geocoder/v2/?ak=".BDKEY."&location=$lat,$lng&output=json&pois=1";
+		$cha = curl_init ();
+		curl_setopt ( $cha, CURLOPT_URL, $urla );
+		curl_setopt ( $cha, CURLOPT_SSL_VERIFYPEER, FALSE );
+		curl_setopt ( $cha, CURLOPT_SSL_VERIFYHOST, FALSE );
+		curl_setopt ( $cha, CURLOPT_RETURNTRANSFER, 1 );
+		$outputa = curl_exec ( $cha );
+		curl_close ( $cha );
+		$jsoninfoa = json_decode ( $outputa, true );
+		$city = str_replace("市","",$jsoninfoa ['result'] ['addressComponent'] ['city']);
+		if($city){
+			$selcity=M("city")->field("city_id")->where("city_name like'%$city%'")->find();
+			$_SESSION['city_abbreviate_id']=$selcity['city_id'];
+		}
+		$data=array("0"=>$city);
+		$city=$this->pinyin1($city);
+		$_SESSION[city_abbreviate]=$city;
+		$this->ajaxReturn($data);
+	}
+	public function getSignPackage() {
+	    $jsapiTicket = $this->getJsApiTicket();
+	
+	    // 注意 URL 一定要动态获取，不能 hardcode.
+	    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+	    $url = SITE_URLS.$_SERVER[REQUEST_URI];
+	
+	    $timestamp = time();
+	    $nonceStr = $this->createNonceStr();
+	
+	    // 这里参数的顺序要按照 key 值 ASCII 码升序排序
+	    $string = "jsapi_ticket=$jsapiTicket&noncestr=$nonceStr&timestamp=$timestamp&url=$url";
+	
+	    $signature = sha1($string);
+	
+	    $signPackage = array(
+	      "appId"     => $this->appId,
+	      "nonceStr"  => $nonceStr,
+	      "timestamp" => $timestamp,
+	      "url"       => $url,
+	      "signature" => $signature,
+	      "rawString" => $string,
+	      "jsapi_ticket"=>$jsapiTicket,
+	    );
+	    return $signPackage; 
+  }
+
+    private function createNonceStr($length = 16) {
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        $str = "";
+        for ($i = 0; $i < $length; $i++) {
+            $str .= substr($chars, mt_rand(0, strlen($chars) - 1), 1);
+        }
+        return $str;
+    }
+
+    private function getJsApiTicket() {
+        // jsapi_ticket 应该全局存储与更新，以下代码以写入到文件中做示例
+        $data = json_decode(file_get_contents("jsapi_ticket.json"));
+        if ($data->expire_time < time()) {
+            $accessToken = $this->getAccessToken();
+            // 如果是企业号用以下 URL 获取 ticket
+            // $url = "https://qyapi.weixin.qq.com/cgi-bin/get_jsapi_ticket?access_token=$accessToken";
+            $url = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?type=jsapi&access_token=$accessToken";
+            $res = json_decode($this->httpGet($url));
+            $ticket = $res->ticket;
+            if ($ticket) {
+                $data->expire_time = time() + 7000;
+                $data->jsapi_ticket = $ticket;
+                $fp = fopen("jsapi_ticket.json", "w");
+                fwrite($fp, json_encode($data));
+                fclose($fp);
+            }
+        } else {
+            $ticket = $data->jsapi_ticket;
+        }
+
+        return $ticket;
+    }
+
+    private function getAccessToken() {
+        // access_token 应该全局存储与更新，以下代码以写入到文件中做示例
+        $data = json_decode(file_get_contents("access_token.json"));
+        if ($data->expire_time < time()) {
+            // 如果是企业号用以下URL获取access_token
+            // $url = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=$this->appId&corpsecret=$this->appSecret";
+            $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$this->appId&secret=$this->appSecret";
+            $res = json_decode($this->httpGet($url));
+            $access_token = $res->access_token;
+            if ($access_token) {
+                $data->expire_time = time() + 7000;
+                $data->access_token = $access_token;
+                $fp = fopen("access_token.json", "w");
+                fwrite($fp, json_encode($data));
+                fclose($fp);
+            }
+        } else {
+            $access_token = $data->access_token;
+        }
+        return $access_token;
+    }
+
+    private function httpGet($url) {
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_TIMEOUT, 500);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($curl, CURLOPT_URL, $url);
+
+        $res = curl_exec($curl);
+        curl_close($curl);
+
+        return $res;
+    }
+    //php中文转拼音
+    function getfirstchar($s0){
+        $fchar = ord($s0{0});
+        if($fchar >= ord("A") and $fchar <= ord("z") )return strtoupper($s0{0});
+        $s1 = iconv("UTF-8","gb2312", $s0);
+        $s2 = iconv("gb2312","UTF-8", $s1);
+        if($s2 == $s0){$s = $s1;}else{$s = $s0;}
+        $asc = ord($s{0}) * 256 + ord($s{1}) - 65536;
+        if($asc >= -20319 and $asc <= -20284) return "A";
+        if($asc >= -20283 and $asc <= -19776) return "B";
+        if($asc >= -19775 and $asc <= -19219) return "C";
+        if($asc >= -19218 and $asc <= -18711) return "D";
+        if($asc >= -18710 and $asc <= -18527) return "E";
+        if($asc >= -18526 and $asc <= -18240) return "F";
+        if($asc >= -18239 and $asc <= -17923) return "G";
+        if($asc >= -17922 and $asc <= -17418) return "H";
+        if($asc >= -17417 and $asc <= -16475) return "J";
+        if($asc >= -16474 and $asc <= -16213) return "K";
+        if($asc >= -16212 and $asc <= -15641) return "L";
+        if($asc >= -15640 and $asc <= -15166) return "M";
+        if($asc >= -15165 and $asc <= -14923) return "N";
+        if($asc >= -14922 and $asc <= -14915) return "O";
+        if($asc >= -14914 and $asc <= -14631) return "P";
+        if($asc >= -14630 and $asc <= -14150) return "Q";
+        if($asc >= -14149 and $asc <= -14091) return "R";
+        if($asc >= -14090 and $asc <= -13319) return "S";
+        if($asc >= -13318 and $asc <= -12839) return "T";
+        if($asc >= -12838 and $asc <= -12557) return "W";
+        if($asc >= -12556 and $asc <= -11848) return "X";
+        if($asc >= -11847 and $asc <= -11056) return "Y";
+        if($asc >= -11055 and $asc <= -10247) return "Z";
+        return null;
+    }
+
+    function make_semiangle($str){
+        $arr = array('0' => '0', '1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5', '6' => '6', '7' => '7', '8' => '8', '9' => '9', 'A' => 'A', 'B' => 'B', 'C' => 'C', 'D' => 'D', 'E' => 'E', 'F' => 'F', 'G' => 'G', 'H' => 'H', 'I' => 'I', 'J' => 'J', 'K' => 'K', 'L' => 'L', 'M' => 'M', 'N' => 'N', 'O' => 'O', 'P' => 'P', 'Q' => 'Q', 'R' => 'R', 'S' => 'S', 'T' => 'T', 'U' => 'U', 'V' => 'V', 'W' => 'W', 'X' => 'X', 'Y' => 'Y', 'Z' => 'Z', 'a' => 'a', 'b' => 'b', 'c' => 'c', 'd' => 'd', 'e' => 'e', 'f' => 'f', 'g' => 'g', 'h' => 'h', 'i' => 'i', 'j' => 'j', 'k' => 'k', 'l' => 'l', 'm' => 'm', 'n' => 'n', 'o' => 'o', 'p' => 'p', 'q' => 'q', 'r' => 'r', 's' => 's', 't' => 't', 'u' => 'u', 'v' => 'v', 'w' => 'w', 'x' => 'x', 'y' => 'y', 'z' => 'z', '（' => '(', '）' => ')', '〔' => '[', '〕' => ']', '【' => '[', '】' => ']', '〖' => '[', '〗' => ']', '“' => '"', '”' => '"', '‘' => '\'', '’' => '\'', '｛' => '{', '｝' => '}', '《' => '<', '》' => '>', '％' => '%', '＋' => '+', '—' => '-', '－' => '-', '～' => '-', '：' => ':', '。' => '.', '、' => ',', '，' => ',', '；' => ';', '？' => '?', '！' => '!', '…' => '...', '‖' => '|', '｜' => '|', '〃' => '"', '　' => ' ');
+        return strtr($str, $arr);
+    }
+
+    function pinyin1($zh){
+        $zh = $this->make_semiangle($zh);
+        $ret = "";
+        $s1 = iconv("UTF-8","gb2312", $zh);
+        $s2 = iconv("gb2312","UTF-8", $s1);
+        if($s2 == $zh){$zh = $s1;}
+        for($i = 0; $i < strlen($zh); $i++){
+            $s1 = substr($zh,$i,1);
+            $p = ord($s1);
+            if($p > 160){
+                $s2 = substr($zh,$i++,2);
+                $ret .= $this->getfirstchar($s2);
+            }else{
+                $ret .= $s1;
+            }
+        }
+        return $ret;
+    }
+}

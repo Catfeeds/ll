@@ -1,0 +1,73 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Grade/gradelist')}">学段列表</a></li>
+			<li><a href="{:U('Grade/addgrade')}">新增学段</a></li>
+		</ul>
+		<form class="well form-search" method="get" action="{:U('Grade/gradelist')}" id="form_submit">
+		    <div class="search_type cc mb10">
+		      <div class="mb10"> 
+		        <span class="mr20">
+		        <input type="hidden" name="g" value="Classtypes">
+		        <input type="hidden" name="m" value="Grade">
+		        <input type="hidden" name="a" value="gradelist">
+		     
+		        
+			        <div class="row" style="margin-top: 20px;">
+				        <div class="span1">
+				        	学段名称:
+				        </div>
+				        <div class="span2">
+				        	<input type="text" name="title" style="width: 100px;" value="{$title}" placeholder="学段名称"/>
+				        </div>
+				        <div class="span9">
+				        	<button class="btn btn-primary">搜索</button>
+						</div>
+					</div>
+				</span>
+			   </div>
+		        
+		        
+		      
+		    </div>
+		  </form>
+		  <form class="js-ajax-form" action="{:U('Grade/listorders')}" method="post">
+			<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit">{:L('SORT')}</button>
+			</div>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th width="80">排序</th>
+					<th width="50">ID</th>
+					<th>学段名称</th>
+					<th>创建时间</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<foreach name="list" item="v">
+					<tr>
+						<td style='padding-left:20px;'><input name='listorders[{$v[id]}]' type='number' size='3' value='{$v["index_id"]}' class='input input-order'></td>
+						<td>{$v.id}</td>
+						<td>{$v.title}</td>
+						<td>{$v.createtime}</td>
+						<td>
+							<a href="{:U('Grade/editgrade',array('editid'=>$v[id]))}">{:L('EDIT')}</a>|
+							<a class="js-ajax-delete" href="{:U('Grade/deletegrade',array('id'=>$v[id]))}">{:L('DELETE')}</a>
+						</td>
+					</tr>
+				</foreach>
+			</tbody>
+		</table>
+		<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit">{:L('SORT')}</button>
+			</div>
+		</form>
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

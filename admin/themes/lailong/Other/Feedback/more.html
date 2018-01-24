@@ -1,0 +1,40 @@
+<admintpl file="header" />
+<link href="__TMPL__Public/assets/css/public.css" rel="stylesheet">
+<style>
+	.wrap{
+		padding: 11px 20px 70px;
+	}
+</style>
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<div class="user_head" >用户：{$feedback[0][name]}</div>
+			<table class="table table-hover table-bordered table-list" id="menus-table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th class="w-100">反馈内容</th>
+						<th class="w-100">积分</th>
+						<th class="w-100">反馈时间</th>
+						<th class="w-120">添加积分时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="feedback" item="vo">
+					<tr>
+						<td>{$vo.id}</td>
+						<td><div class="text_overflow" title="{$vo.fcontent}">{$vo.fcontent}</div></td>
+						<td>{$vo.integral}</td>
+						<td>{$vo.ftime}</td>
+						<td>{$vo.itime}</td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+			<div class="pagination">{$Page}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script>
+	</script>
+</body>
+</html>

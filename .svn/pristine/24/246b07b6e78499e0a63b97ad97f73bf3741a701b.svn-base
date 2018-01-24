@@ -1,0 +1,88 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Collection/collectionlist')}">收藏记录列表</a></li>
+		</ul>
+		<form class="well form-search" method="get" action="{:U('Collection/collectionlist')}" id="form_submit">
+		    <div class="search_type cc mb10">
+		      <div class="mb10"> 
+		        
+		        <input type="hidden" name="g" value="Collection">
+		        <input type="hidden" name="m" value="Collection">
+		        <input type="hidden" name="a" value="collectionlist">
+			        <div style="display:inline;">
+				        	用户名：
+				        
+				        	<input type="text" name="uname"  value="{$uname}" placeholder="请输入查找的用户名"/>
+				    </div>
+				    <div style="display:inline;margin-left: 20px;">    
+				        	手机号：
+				       
+				        	<input type="text" name="uphone"  value="{$uphone}" placeholder="请输入查找的手机号"/>
+				    </div>
+				    <div style="display:inline;margin-left: 20px;">    
+							课程名：
+						
+							<input type="text" name="ctitle"  value="{$ctitle}" placeholder="请输入查找的课程名"/>
+					</div>	
+			
+			   </div>
+			   <div class="mb10" style="margin-top: 20px;"> 
+		        
+		        	<div style="display:inline">
+				        	收藏时间起始：
+				        
+				        	<input type="text" name="startcreatetime"  class="input length_2 J_date" value="{$startcreatetime}" autocomplete="off" placeholder="请选择时间..." onClick="WdatePicker()" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+				    </div>
+				    <div style="display:inline;margin-left: 20px;">    
+							收藏时间结束：
+						
+						
+							<input type="text" name="endcreatetime"  class="input length_2 J_date" value="{$endcreatetime}" autocomplete="off" placeholder="请选择时间..." onClick="WdatePicker()" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+					</div>	
+					<div  style="display:inline;margin-left: 20px;text-align: right;">
+						<button class="btn btn-primary">搜索</button>
+					</div>
+				
+			   </div>
+			   
+			   
+		        
+		        
+		      
+		    </div>
+		  </form>
+			<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th width="50">ID</th>
+						<th>课程名</th>
+						<th>用户名</th>
+						<th width="150">手机号</th>
+						<th width="100">积分</th>
+						<th width="100">课程所需积分</th>
+						<th >收藏时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="list" item="vo">
+					<tr>
+						<td>{$vo.id}</td>
+						<td>{$vo.ctitle}</a></td>
+						<td>{$vo.uname}</td>
+						<td>{$vo.uphone}</td>
+						<td>{$vo.uintegral}</td>
+						<td>{$vo.cintegral}</td>
+						<td>{$vo.createtime}</td>
+					</tr>
+					</foreach>
+				</tbody>
+				
+			</table>
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

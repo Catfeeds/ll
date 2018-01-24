@@ -1,0 +1,27 @@
+[ 2017-06-28T16:37:15+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=addchild_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.025889s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.075430s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.106121s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0214s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `lailong_child` (`name`,`nickname`,`avatar`,`birthday`,`gender`,`school`,`grade`,`vip_state`) VALUES ('x\'x\'x','x\'x\'x','149863900959536aa204968.png','2017-07-01','1','谢谢','谢谢','1') [ RunTime:0.0014s ]
+SQL: SHOW COLUMNS FROM `lailong_member` [ RunTime:0.0135s ]
+SQL: INSERT INTO `lailong_member` (`appellation`,`child_id`,`user_id`,`createtime`) VALUES ('习俗','18','1','2017-06-28 16:37:15') [ RunTime:0.0008s ]
+
+[ 2017-06-28T17:05:37+08:00 ] ::1 /ll/index.php?g=Classification&m=classification&a=editchild_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.018626s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.064529s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.086979s ]
+SQL: SHOW COLUMNS FROM `lailong_child` [ RunTime:0.0195s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `lailong_child` SET `name`='x\'x\'x',`nickname`='x\'x\'x',`avatar`='149863900959536aa204968.png',`birthday`='2017-07-01 00:00:00',`gender`='1',`school`='谢谢',`grade`='谢谢',`vip_state`='1' WHERE `id` = 18 [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `lailong_member` [ RunTime:0.0118s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''1'  ) LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `lailong_member` WHERE (  child_id = '18' and user_id '1'  ) LIMIT 1  
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''1'  ) LIMIT 1' at line 1
+ [ SQL语句 ] : SELECT * FROM `lailong_member` WHERE (  child_id = '18' and user_id '1'  ) LIMIT 1  
+

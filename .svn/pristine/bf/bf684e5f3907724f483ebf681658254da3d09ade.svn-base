@@ -1,0 +1,36 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>账户与安全</title>
+    <link rel="stylesheet" href="__TMPL__Public/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/amazeui.min.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/weixin/bdTel.css">
+	<link rel="stylesheet" href="__TMPL__Public/css/weixin/public.css">
+	<script src="__TMPL__Public/js/weixin/jquery.min.js"></script>	
+	<script src="__TMPL__Public/js/weixin/amazeui.min.js"></script>
+    <!--<link rel="stylesheet" href="assets/css/app.css">-->
+</head>
+<body>
+<div class="use" style="padding: 5px 10px">
+    <ul class="am-list">
+        <li style="border-top: none;padding-left: 5px">
+            <a href="{:U('Mine/change_tel')}" style="color: black;font-size:16px;">修改手机号
+            <span style="color: #bec2bb;font-size:14px" class="am-list-date fa fa-chevron-right" aria-hidden="true"></span></a>
+        </li>
+        <li style="border-bottom: none;padding-left: 5px">
+            <a href="{:U('Mine/change_pw')}" style="color: black;font-size:16px;">修改密码
+                <span style="color: #bec2bb;font-size:14px" class="am-list-date fa fa-chevron-right" aria-hidden="true"></a>
+        </li>
+    </ul>
+</div>
+<input type="hidden" id="moban" value="__TMPL__">
+<tc_include file="Public:float"/>
+<script src="__TMPL__Public/js/weixin/public.js"></script>
+</body>
+</html>

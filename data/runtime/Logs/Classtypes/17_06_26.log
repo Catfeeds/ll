@@ -1,0 +1,4 @@
+[ 2017-06-26T15:30:32+08:00 ] ::1 /ll/index.php?g=Classtypes&m=Subject&a=subjectlist&menuid=175
+ERR: 1054:Unknown column 'sort' in 'order clause'
+ [ SQL语句 ] : SELECT * FROM `lailong_subject` WHERE ( 1=1 ) ORDER BY sort asc LIMIT 0,10  
+

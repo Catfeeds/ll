@@ -1,0 +1,35 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('record/intention')}">{:L('ADMIN_INTENT_INDEX')}</a></li>
+			<li class="active"><a href="{:U('record/intention2')}">{:L('ADMIN_INTENTX_INDEX')}</a></li>
+		</ul>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th width="50">ID</th>
+					<th>{:L('CONTENT')}</th>
+					<th>{:L('USER')}</th>
+					<th>{:L('CTIME')}</th>
+					<th width="120">{:L('ACTIONS')}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<foreach name="list" item="list">
+					<tr>
+						<td>{$list.id}</td>
+						<td>{$list.content}</td>
+						<td>{$list.phone}</td>
+						<td>{$list.createtime}</td>
+						<td><a href="{:U('record/find',array('id'=>$list[id],'type'=>1))}">{:L('查看')}</a>|<a href="{:U('record/relation',array('id'=>$list[id],'type'=>2))}">关联意向课程</a></td>
+					</tr>
+				</foreach>
+			</tbody>
+		</table>
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

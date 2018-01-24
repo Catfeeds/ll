@@ -1,0 +1,104 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('classification/member')}">成员列表</a></li>
+			<li><a href="{:U('classification/addmember')}">新增成员</a></li>
+		</ul>
+		<form class="well form-search" method="get" action="{:U('classification')}" id="form_submit">
+		    <div class="search_type cc mb10">
+		      <div class="mb10"> 
+		        <span class="mr20">
+		        <input type="hidden" name="g" value="Classification">
+		        <input type="hidden" name="m" value="classification">
+		        <input type="hidden" name="a" value="member">
+		     
+		        
+			        <div class="row" style="margin-top: 20px;">
+				        <div class="span1">
+				        	小孩:
+				        </div>
+				        <div class="span2">
+				        	<input type="text" name="childname" style="width: 100px;" value="{$childname}" placeholder="小孩"/>
+				        </div>
+				        <div class="span1">
+				        	用户:
+				        </div>
+				        <div class="span2">
+				        	<input type="text" name="username" style="width: 100px;" value="{$username}" placeholder="小孩用户"/>
+				        </div>
+				        <div class="span1">
+							&nbsp;
+						</div>
+						<div class="span2">
+							&nbsp;
+						</div>
+					</div>
+				</span>
+			   </div>
+			   <div class="mb10"> 
+		        <span class="mr20">
+		        	<div class="row" style="margin-top: 20px;">
+				        <div class="span1">
+				        	称呼:
+				        </div>
+				        <div class="span2">
+				        	<input type="text" name="appellation" style="width: 100px;" value="{$appellation}" placeholder="称呼"/>
+				        </div>
+		        		<div class="span1">
+							手机号
+						</div>
+						<div class="span2">
+							<input type="number" name="phone" style="width: 100px;" value="{$phone}" placeholder="手机号">
+						</div>
+						<div class="span1">
+		        			&nbsp;
+		        		</div>
+		        		<div class="span2">
+		        			&nbsp;
+		        		</div>
+					</div>
+				</span>
+			   </div>
+			   
+			   
+			   <div class="mb10">
+			   	<span class="mr20">
+			   		<button class="btn btn-primary">搜索</button>
+			   	</span>
+			   </div>
+		        
+		        
+		      
+		    </div>
+		  </form>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th width="50">ID</th>
+					<th>小孩</th>
+					<th>用户</th>
+					<th>称呼</th>
+					<th>手机号</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<foreach name="list" item="v">
+					<tr>
+						<td>{$v.id}</td>
+						<td>{$v.childname}({$v.childnickname})</td>
+						<td>{$v.username}</td>
+						<td>{$v.appellation}</td>
+						<td>{$v.phone}</td>
+						<td><a href="{:U('classification/editmember',array('editid'=>$v[id]))}">{:L('EDIT')}</a></td>
+					</tr>
+				</foreach>
+			</tbody>
+		</table>
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

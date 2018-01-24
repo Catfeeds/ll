@@ -1,0 +1,215 @@
+<admintpl file="header" />
+</head>
+ <style>  
+.bu{
+  margin-left: 10px;
+ }
+ .add_zhang{
+    margin-left: 100px;
+ }
+ .add_jie{
+    margin-left: 100px;
+ }
+  .list-name-input{  
+   color: #333;  
+   font-family: tahoma, 'Microsoft YaHei', 'Segoe UI', Arial, 'Microsoft Yahei', Simsun, sans-serif;  
+   font-size: 15px;  
+   font-weight: bold;  
+   height: 50px;  
+   margin: 0px;  
+   padding: 0px;  
+   position: relative;  
+   width: 200px;  
+  }  
+  .list-name-for-select{  
+   border: 0;  
+   color: #555;  
+   height: 20px;  
+   lighting-color: rgb(255, 255, 255);  
+   line-height: 20px;  
+   margin:0 0 10px 0;    
+    outline-color: #555;  
+   outline-offset: 0px;  
+   outline-style: none;  
+   outline-width: 0px;   
+    padding: 0px 0px;  
+   position: absolute;  
+   top: 1px;  
+   left: 3px;  
+   vertical-align: middle;  
+   width: 200px;  
+  }  
+  .list-name-input-for-select:focus{  
+   border: 0;  
+   border-radius: 0;  
+  }  
+  .list-select{  
+   background-color: #FFF;  
+   border:1px #ccc solid;  
+   border-radius: 4px;  
+   color: #555;  
+   cursor: pointer;  
+   height: 30px;  
+   left: 0px;  
+   
+   padding: 0px 0px;  
+   position: absolute;  
+   top: 0px;  
+   vertical-align: middle;  
+   white-space: pre;  
+   width: 240px; 
+   border:none;margin:-2px; 
+  }  
+ </style>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/addcourse.css" />
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('Textbook/textbooklist')}">教科书列表</a></li>
+			<li class="active"><a href="{:U('Textbook/addtextbook')}">新增教科书</a></li>
+		</ul>
+		<form id="form1" method="post" class="form-horizontal" action="{:U('Textbook/add_post')}">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">科目</label>
+					<div class="controls">
+					<div id="list-name-input" class="list-name-input">  
+     					<select type="text" class="list-select" id="subject_select" style="outline:none;margin-left: 3px;">
+     						<foreach name="subject" item="v">
+     							<option value="{$v['title']}">{$v[title]}</option>
+     						</foreach>
+     					</select>
+     					<input type="text" class="name item-width list-name-for-select" id="subject_input" name="subject" value="">
+ 					</div>
+ 					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">出版社</label>
+					<div class="controls">
+						<div id="list-name-input" class="list-name-input">  
+     					<select type="text" class="list-select" id="press_select" style="outline:none;margin-left: 3px;">
+     						<foreach name="press" item="v">
+     							<option value="{$v['title']}">{$v[title]}</option>
+     						</foreach>
+     					</select>
+     					<input type="text" class="name item-width list-name-for-select" id="press_input" name="press" value="">
+ 					</div>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">学段</label>
+					<div class="controls">
+						<div id="list-name-input" class="list-name-input">  
+     					<select type="text" class="list-select" id="grade_select" style="outline:none;margin-left: 3px;">
+     						<foreach name="grade" item="v">
+     							<option value="{$v['title']}上学期">{$v[title]}上学期</option>
+                  <option value="{$v['title']}下学期">{$v[title]}下学期</option>
+     						</foreach>
+     					</select>
+     					<input type="text" class="name item-width list-name-for-select" id="grade_input" name="grade" value="">
+ 					</div>
+					</div>
+				</div>
+			</fieldset>
+
+		</form>
+    <button type="button"  onclick="add_zhang()" class="btn btn-link" >添加章</button>
+    <form id="form2">
+      <div id="addchapter">
+      <input type="hidden" name="i" value="">
+      <input type="hidden" name="t_id" value="">
+      </div>
+    </form>
+    <div class="form-actions">
+      <button type="button" onclick="subimt1()" class="btn btn-primary ">{:L('ADD')}</button>
+        <a class="btn" href="{:U('Textbook/textbooklist')}">{:L('BACK')}</a>
+        <span id="a"></span>
+    </div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script type="text/javascript">
+$(function(){
+	$('#subject_select').change(function(){
+  	var a =$("#subject_select").val();
+  	$("#subject_input").val(a);
+  });
+  $('#press_select').change(function(){
+  	var a =$("#press_select").val();
+  	$("#press_input").val(a);
+  });
+  $('#grade_select').change(function(){
+  	var a =$("#grade_select").val();
+  	$("#grade_input").val(a);
+  });
+})
+function subimt1(){
+	$("#s").attr("disabled","true");
+  var data = $("#form1").serialize();
+  $.ajax({
+      type: "POST",
+      url: "{:U('Textbook/add_post')}",
+      dataType : 'json',
+      data: data,
+      success: function(res){
+        //吧回传回来的textbook_id补上
+        if(res.id!=''){
+          $("input[name=t_id]").val(res.id);
+        }
+        
+        $("#a").append('<span class="tips_success">' + res.msg + '正在添加章节</span>');
+            //把i值传递
+        $("input[name=i]").val(i);
+        var data2 = $("#form2").serialize();
+        $.ajax({
+            type: "POST",
+            url: "{:U('Textbook/add_chapter')}",
+            dataType : 'json',
+            data:data2,
+            success: function(result){
+              if(result.id=='1'){
+             //    $("#a").append('<span class="tips_success">' + result.msg + '</span>');
+             //  }else{
+             //    $("#a").append('<span class="tips_success">' + result.msg + '</span>');
+              }
+             // $("#a").append('<span class="tips_success">添加结束，请返回列表</span>');
+             $("#s").removeAttr("disabled");
+            },
+          });
+        
+      },
+    });
+  
+}
+var i=1;
+function add_zhang(){
+  $("#addchapter").append('<div class="row add_zhang rep" id="zz'+i+'">章标题：<input type="text" name="zhang[]" > <button type="button" onclick="add_jie('+i+')" id="z'+i+'" class="btn btn-link">添加节</button><button type="button" class="btn btn-danger" onclick="del_div($(this))" >删除章</button></div>');
+ i=++i;
+}
+
+function add_jie(num){
+  
+  $("#zz"+num+"").append('<div id="j'+i+'" class="row add_jie rej"><div>节标题：<input type="text" name="jie'+num+'[]"  ><button type="button" class="btn btn-danger bu" onclick="del_div2($(this))" >删除节</button></div></div>');
+}
+function del_div(obj){
+  var del = confirm("是否删除本章");
+  if(!del){
+    return false;
+  }else{
+    obj.parents(".rep").remove();
+  }
+  
+}
+function del_div2(obj){
+  var del2=confirm("是否删除本节");
+  if(!del2){
+    return false;
+  }else{
+    obj.parents(".rej").remove();
+  }
+  
+}
+
+</script>
+</body>
+
+</html>

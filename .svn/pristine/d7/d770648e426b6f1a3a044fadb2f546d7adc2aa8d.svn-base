@@ -1,0 +1,21 @@
+<?php
+return array(
+        'ADMIN_INTENT_INDEX' => '选择型意向列表',
+        'ADMIN_INTENTX_INDEX' => '填写型意向列表',
+        'ADMIN_INTENTX_FIND' => '查看意向详情',
+        'USER'=>'用户',
+        'CHILD'=>'上课学生',
+        'CONTENT'=>'意向描述文本',
+        'GRADE'=>'学段',
+        'PRESS'=>'出版社',
+        'SUB'=>'科目',
+        'CHAPTER'=>'章节标题',
+        'SUB_CHAPTER'=>'二级章节标题',
+        'QT'=>'题型',
+        'QD'=>'试题难度',
+        'TS'=>'题集',
+        'WST'=>'希望上课时间',
+        'TEACHER'=>'希望上课教师',
+        'CT'=>'班级类型',
+        'CTIME'=>'创建时间',
+);

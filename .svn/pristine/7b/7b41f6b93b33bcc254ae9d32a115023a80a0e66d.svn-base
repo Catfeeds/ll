@@ -1,0 +1,389 @@
+<?php
+
+namespace Classification\Controller;
+use Common\Controller\AdminbaseController;
+class ClassificationController extends AdminbaseController {
+	function _initialize() {
+	}
+    /**
+     *讲师列表
+     */
+    public function teacherlist() {
+        $user_key_word = isset ( $_REQUEST ['user_key_word'] ) ? $_REQUEST ['user_key_word'] : ''; // 关键字
+        $phone_key_word = isset ( $_REQUEST ['phone_key_word'] ) ? $_REQUEST ['phone_key_word'] : ''; // 关键字
+        $where= "1=1";
+        //判断是否表单处提交的数据，如果是就重置session值
+        if($_REQUEST['leixing']==1){
+            $_SESSION['user_key_word']=$user_key_word;
+            $_SESSION['phone_key_word']=$phone_key_word;
+        }
+        if($_SESSION['user_key_word'] != ''){
+            $where .= " and (a.user_login like '%$_SESSION[user_key_word]%')";
+        }
+        if($_SESSION['phone_key_word'] != ''){
+            $where .= " and (a.mobile like '%$_SESSION[phone_key_word]%')";
+        }
+        if($_POST['type']=='全部'){
+            $_SESSION['user_key_word']="";
+            $_SESSION['phone_key_word']="";
+        }
+        $model = M ("teacher");
+        $count = $model->where($where)->count();
+        $page = $this->page($count, C('PAGENUM'));
+        $list = $model->order("id DESC")->limit($page->firstRow . ',' . $page->listRows)->where($where)->select();
+        $this->assign('list', $list);
+        $this->assign("page", $page->show('Admin'));
+        $this->assign("formget",$_SESSION); 
+       	$this->display();
+    }
+    //添加课程
+     public function addteacher(){
+         $this->display();
+     }
+     //添加操作
+     public function add_post(){
+         $name=$_REQUEST['name'];
+         $avatar=$_REQUEST['avatar'];
+         $university=$_REQUEST['university'];
+         $teaching_grade=$_REQUEST['teaching_grade'];
+         $teaching_results=$_REQUEST['teaching_results'];
+         $experience=$_REQUEST['experience'];
+         $features=$_REQUEST['features'];
+         if(empty($name)){
+             $this->error("请填写讲师姓名");
+         }
+         if(empty($avatar)){
+             $this->error("请选择头像");
+         }
+         if(empty($university)){
+             $this->error("请填写毕业大学");
+         }
+         if(empty($teaching_grade)){
+             $this->error("授课年级");
+         }
+         if(empty($teaching_results)){
+             $this->error("请填写教学成果");
+         }
+         if(empty($experience)){
+             $this->error("请填写教学经验");
+         }
+         if(empty($features)){
+             $this->error("请填写教学特点");
+         }
+         $chongming=M('teacher')->where("name = '$name'")->find();
+         if($chongming){
+             $this->error("此讲师已存在");
+         }
+         $data=array(
+             'name'=>$name,
+             'avatar'=>$avatar,
+             'university'=>$university,
+             'teaching_grade'=>$teaching_grade,
+             'teaching_results'=>$teaching_results,
+             'experience'=>$experience,
+             'features'=>$features,
+             'createtime'=>date('Y-m-d H:i:s')
+         );
+         if(M('teacher')->add($data)){
+             $this->success('创建讲师成功',U('classification/teacherlist'));
+         }else{
+             $this->error('创建讲师失败');
+         }
+     }
+     //编辑
+     public function editeacher(){
+         $res=M("teacher")->where("id = $_REQUEST[editid]")->find();
+         $this->assign('list',$res);
+         $this->display();
+     }
+     public function edit_post(){
+         $editid=$_REQUEST['editid'];
+         $name=$_REQUEST['name'];
+         $avatar=$_REQUEST['avatar'];
+         $university=$_REQUEST['university'];
+         $teaching_grade=$_REQUEST['teaching_grade'];
+         $teaching_results=$_REQUEST['teaching_results'];
+         $experience=$_REQUEST['experience'];
+         $features=$_REQUEST['features'];
+         if(empty($name)){
+             $this->error("请填写讲师姓名");
+         }
+         if(empty($avatar)){
+             $this->error("请选择头像");
+         }
+         if(empty($university)){
+             $this->error("请填写毕业大学");
+         }
+         if(empty($teaching_grade)){
+             $this->error("授课年级");
+         }
+         if(empty($teaching_results)){
+             $this->error("请填写教学成果");
+         }
+         if(empty($experience)){
+             $this->error("请填写教学经验");
+         }
+         if(empty($features)){
+             $this->error("请填写教学特点");
+         }
+         $data=array(
+             'name'=>$name,
+             'avatar'=>$avatar,
+             'university'=>$university,
+             'teaching_grade'=>$teaching_grade,
+             'teaching_results'=>$teaching_results,
+             'experience'=>$experience,
+             'features'=>$features,
+         );
+         if(M('teacher')->where("id = $editid")->save($data)){
+             $this->success('修改讲师成功');
+         }else{
+             $this->error('修改讲师失败');
+         }
+     }
+     //过滤效率图
+     function up(){
+         $savename="";
+         $config = array (
+             'FILE_UPLOAD_TYPE' => sp_is_sae () ? "Sae" : 'Local',
+             'rootPath' =>  C ( "UPLOADPATH" ),
+             /* 'maxSize' => 2097152, // 2M  */
+             /* 'maxSize' => 104857600, // 100M  */
+             'saveName' => array (
+                 'uniqid',
+                 $param.time()
+             ),
+             'exts' => array (
+                 'jpg',
+                 'png',
+                 'jpeg',
+                 'gif',
+                 'bmp'
+             ),
+             'autoSub' => false
+         );
+         $upload = new \Think\Upload ( $config );
+         $info = $upload->upload ();
+         $first = array_shift($info);
+         $savename= $first['savename'];
+         //ajax返回数据
+         if ($savename) {
+             $this->ajaxReturn ( sp_ajax_return ( array (
+                 'iconname'=>$savename
+             ), "上传成功！", 1 ), "AJAX_UPLOAD" );
+         } else {
+             $this->ajaxReturn ( sp_ajax_return ( array (), $upload->getError (), 0 ), "AJAX_UPLOAD" );
+         }
+     }
+     function deleteicon()
+     {
+         if(!empty($_POST['img2']))
+         {
+             unlink("./data/upload/avatar/$_POST[img2]");
+         }
+     }
+
+     public function childlist(){
+        $name=$_REQUEST['name'];
+        $nickname=$_REQUEST['nickname'];
+        $gender=$_REQUEST['gender'];
+        $school=$_REQUEST['school'];
+        $grade=$_REQUEST['grade'];
+        $is_vip=$_REQUEST['is_vip'];
+        $startbirthday=$_REQUEST['startbirthday'];
+        $endbirthday=$_REQUEST['endbirthday'];
+        $where="1=1";
+        if(!empty($name)){
+            $where.=" and name like '%".$name."%' ";
+            $parameter['name']=$name;
+            $this->assign('name',$name);
+        }
+        if(!empty($nickname)){
+            $where.=" and nickname like '%".$nickname."%' ";
+            $parameter['nickname']=$nickname;
+            $this->assign('nickname',$nickname);
+        }
+        if(!empty($gender)){
+            if($gender=="3"){
+                $gender1=0;
+            }else{
+                $gender1=$gender;
+            }
+            $where.=" and gender =  ".$gender1;
+            $parameter['gender']=$gender;
+            $this->assign('gender',$gender);
+        }
+        if(!empty($school)){
+            $where.=" and school like '%".$school."%' ";
+            $parameter['school']=$school;
+            $this->assign('school',$school);
+        }
+        if(!empty($grade)){
+            $where.=" and grade like '%".$grade."%' ";
+            $parameter['grade']=$grade;
+            $this->assign('grade',$grade);
+        }
+        if(!empty($is_vip)){
+            if($is_vip=='2'){
+                $is_vip1=0;
+            }else{
+                $is_vip1=$is_vip;
+            }
+            $where.=" and is_vip = ".$is_vip1;
+            $parameter['is_vip']=$is_vip;
+            $this->assign("is_vip",$is_vip);
+        }
+        if(!empty($startbirthday)){
+            $where.=" and birthday >= '".$startbirthday."' ";
+            $parameter['startbirthday']=$startbirthday;
+            $this->assign('startbirthday',$startbirthday);
+        }
+        if(!empty($endbirthday)){
+            $where.=" and birthday <= '".$endbirthday."' ";
+            $parameter['endbirthday']=$endbirthday;
+            $this->assign('endbirthday',$endbirthday);
+        }
+        $model = M ("child");
+        $count = $model->where($where)->count();
+        $page = $this->page($count, C('PAGENUM'));
+        $list = $model->where($where)->order("id DESC")->limit($page->firstRow . ',' . $page->listRows)->select();
+        $this->assign('list', $list);
+        if($parameter){
+            foreach ($parameter as $key => $value) {
+                $page->parameter .= "$key=".urlencode($value)."&";
+            }
+        }  
+        $this->assign("page", $page->show('Admin'));
+        $this->display();  
+     }
+     public function addchild(){
+        $this->display();
+     }
+     public function addchild_post(){
+        if(IS_POST){
+            if (M("child")->create()!==false){
+                if (M("child")->add()!==false) {
+                    $this->success(L('ADD_SUCCESS'), U("classification/childlist"));
+                } else {
+                    $this->error(L('ADD_FAILED'));
+                }
+            } else {
+                $this->error(M("child")->getError());
+            }
+        
+        }
+     }
+     public function editchild(){
+        $res=M("child")->where("id = $_REQUEST[editid]")->find();
+        $this->assign($res);
+        $this->display();
+     }
+     public function editchild_post(){
+        if(IS_POST){
+            if (M("child")->create()!==false){
+                if (M("child")->save()!==false) {
+                    $this->success(L('ADD_SUCCESS'), U("classification/childlist"));
+                } else {
+                    $this->error(L('ADD_FAILED'));
+                }
+            } else {
+                $this->error(M("child")->getError());
+            }
+        
+        }
+     }
+     public function member(){
+        $childname=$_REQUEST['childname'];
+        $username=$_REQUEST['username'];
+        $appellation=$_REQUEST['appellation'];
+        $phone=$_REQUEST['phone'];
+        $where="1=1";
+        if(!empty($childname)){
+            $where.=" and (c.name like '%".$childname."%' or c.nickname like '%".$childname."%' ) ";
+            $parameter['childname']=$childname;
+            $this->assign('childname',$childname);
+        }
+        if(!empty($username)){
+            $where.=" and u.name like '%".$username."%' ";
+            $parameter['username']=$username;
+            $this->assign('username',$username);
+        }
+        if(!empty($appellation)){
+            $where.=" and m.appellation like '%".$appellation."%' ";
+            $parameter['appellation']=$appellation;
+            $this->assign('appellation',$appellation);
+        }
+        if(!empty($phone)){
+            $where.=" and u.phone like '%".$phone."%' ";
+            $parameter['phone']=$phone;
+            $this->assign('phone',$phone);
+        }
+        $model=M('member');
+        $count = $model->alias('m')
+        ->join(" left join ".C('DB_PREFIX')."user u on u.id = m.user_id 
+                left join ".C('DB_PREFIX')."child c on c.id = m.child_id ")
+        ->where($where)->count();
+        $page = $this->page($count, C('PAGENUM'));
+        $list = $model->alias('m')->field("m.*,u.name as username,c.name as childname,u.phone")
+        ->join(" left join ".C('DB_PREFIX')."user u on u.id = m.user_id 
+                left join ".C('DB_PREFIX')."child c on c.id = m.child_id ")
+        ->where($where)->order("m.id DESC")->limit($page->firstRow . ',' . $page->listRows)->select();
+        $this->assign('list', $list);
+        if($parameter){
+            foreach ($parameter as $key => $value) {
+                $page->parameter .= "$key=".urlencode($value)."&";
+            }
+        }  
+        $this->assign("page", $page->show('Admin'));
+        $this->display();
+     }
+
+     public function addmember(){
+        //查询孩子
+        $child=M("child")->select();
+        $this->assign("child",$child);
+        $users=M("user")->select();
+        $this->assign("users",$users);
+
+        $this->display();
+     }
+
+     public function addmember_post(){
+        if(IS_POST){
+            if (M("member")->create()!==false){
+                if (M("member")->add()!==false) {
+                    $this->success(L('ADD_SUCCESS'), U("classification/member"));
+                } else {
+                    $this->error(L('ADD_FAILED'));
+                }
+            } else {
+                $this->error(M("member")->getError());
+            }
+        
+        }
+     }
+
+     public function editmember(){
+        $child=M("child")->select();
+        $this->assign("child",$child);
+        $users=M("user")->select();
+        $this->assign("users",$users);
+        $res=M("member")->where("id = $_REQUEST[editid]")->find();
+        $this->assign($res);
+        $this->display();
+     }
+
+     public function editmember_post(){
+        if(IS_POST){
+            if (M("member")->create()!==false){
+                if (M("member")->save()!==false) {
+                    $this->success(L('ADD_SUCCESS'), U("classification/member"));
+                } else {
+                    $this->error(L('ADD_FAILED'));
+                }
+            } else {
+                $this->error(M("member")->getError());
+            } 
+        }
+     }
+}

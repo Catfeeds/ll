@@ -1,0 +1,34 @@
+<?php
+namespace Lailonginterface\Controller;
+use Lailonginterface\Controller\PublicController;
+
+class ServerController  extends PublicController {
+    /**
+     * 获取服务
+     */
+    public function getserver()
+    {
+       $token=$_REQUEST['token'];
+       $userid=$this->checkAccess($token);
+       $server=M('Service')->select();
+       if($server){
+           $this->successLongResult($server, "获取服务列表成功");
+       }else{
+           $this->errorResult("未获取到服务列表");
+       }
+    }
+    /**
+     * 获取资讯
+     */
+    public function getinformation()
+    {
+        $token=$_REQUEST['token'];
+        $userid=$this->checkAccess($token);
+        $information=M('information')->select();
+        if($information){
+            $this->successLongResult($server,"获取资讯列表成功");
+        }else{
+            $this->errorResult("获取资讯列表失败");
+        }
+    }
+}

@@ -1,0 +1,82 @@
+@CHARSET "UTF-8";
+body{background:#ebebeb;}
+.user_name{display: flex;justify-content: space-between;align-items:center;padding:10px;border-bottom:1px solid #dedede;background:#fff;}
+.my_membercard_lt,.user_name_lt{display: flex;justify-content: flex-start;align-items:center;padding:5px 0;}
+.likebtn{background:#f60;color:#fff;font-size:12px;padding:3px 8px;margin-left:10px;display:block;}
+.total{color:#aaa;font-size: 14px;}
+.tohref{color:#f60;margin-left:10px;}
+.user_name_rt{padding-right:35px;background:url("../../images/iconrt.png") no-repeat right;background-size:22px;}
+.user_name_rt div{width:70px;height:70px;}
+.membercard{padding: 0 10px;background: #fff;margin: 10px 0;border: 1px solid #dedede;}
+.membercard li{display: flex;justify-content: space-between;align-items: center;border: none;border-top: 1px solid #dedede;padding: 10px 0;margin:0;color:#aaa;}
+.membercard li:first-child{border:none;}
+.membercard li em{font-style: normal;}
+.my_qrcode{background:url("../../images/iconrt.png") no-repeat right #fff;background-size:22px;padding: 10px;color: #aaa;border: 1px solid #dedede;}
+.usercard_list{margin-top: 15px;margin-bottom:60px;}
+.usercard_list>span{padding: 0 10px 5px;color: #aaa;}
+.usercard_list ul{margin:0;padding:0 10px;background:#fff;}
+.usercard_list li a{display: flex;justify-content: flex-start;align-items: center;padding: 10px 0;color:#000;}
+.usercard_list li:first-child{border:none;}
+.usercard_list_lt{width:60px;height:60px;}
+.usercard_list_rt{padding-left:10px;width:80%;}
+.usercard_list_rt>span{}
+.usercard_list_btm{width: 100%;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.usercard_list_btm>span{margin-right:10px;color:#aaa;font-size:14px;}
+/*-------我的会员卡--------*/
+.my_membercard{display: flex;justify-content: space-between;align-items:center;padding:10px;background:#fff;}
+.somedata{
+    /*实现了宽度为父容器宽度减去固定的300像素*/
+    width:-webkit-calc(100% - 70px);
+    width:-moz-calc(100% - 70px);
+    width:calc(100% - 70px);
+}
+.my_membercard_rt{background: #f60;color: #fff;font-size: 14px;padding: 3px 0;width: 65px;text-align: center;}
+.topbox{background:#fff;border-bottom:1px solid #dedede;}
+.zhekou{margin:0 10px;border-top:1px solid #ebebeb;padding:10px 0;}
+.chongzhi{background:url("../../images/iconrt.png") no-repeat right #fff;background-size:22px;padding: 10px;color: #000;border: 1px solid #dedede;margin-top:10px;}
+.mycard_list{margin-top: 15px;}
+.mycard_list>span{padding: 0 10px 5px;color: #aaa;}
+.mycard_list ul{margin:0;padding:0 10px;background:#fff;}
+.mycard_list li a{display: flex;justify-content: space-between;align-items: center;padding:10px 0;color:#000;}
+.mycard_list li:first-child{border:none;}
+.mycard_list li span{color:#aaa;font-size:14px;}
+
+/*-----编辑资料-----*/
+.form_lt{min-width:85px;}
+.myform{margin:10px 0;font-size:1em;}
+.myform>div{display: flex;display:-webkit-box;display:-webkit-flex;justify-content: flex-start;align-items: center;margin-bottom:20px;text-align:right;}
+.nickname{padding:10px 0;}
+.submit{padding:10px 0;margin-top:40px;}
+input.form_rt{height:40px !important;}
+.data_ipt{line-height:40px;}
+.removebind span{color:#0a6ea7;text-decoration: underline;font-size:14px;}
+/*--------充值优惠 充值明细---------*/
+.am-tabs{background:#fff;margin:0;}
+.am-active a{background:#fff !important;border-bottom:1px solid #f60;color:#000 !important;}
+.am-tabs-nav a{background:#fff;font-weight: bold;padding: 5px 0;}
+.am-tabs-bd{border:none;}
+.am-tab-panel{padding-top:0 !important;padding-bottom:0 !important;}
+.am-tab-panel .charge_list:last-child{border:none !important;}
+.charge_list{display: flex;justify-content: space-between;align-items: center;border-bottom:1px solid #EBEBEB;padding: 10px 0;}
+.bold{font-weight:bold;font-size:1em;}
+.gray{color:#aaa;font-size:0.8em;}
+.recharge{width:85%;padding: 10px 0;margin-top:20px;margin-bottom:30px;}
+button:focus{box-shadow:none;outline:none !important;}
+.mylist{padding:10px 0;border-bottom:1px solid #EBEBEB;display: flex;justify-content: space-between;align-items: flex-end;}
+.mylist:last-child{border:none;}
+.recharge_address span{color:#aaa;font-size:14px;}
+.recharge_tabs li a{color:#000;font-weight:bold;}
+/*----店长二维码----*/
+.manager_qrcode{padding-top:30px;}
+.manager_photo{width:70px;height:70px;}
+.manager_qrcode_img{margin-top:30px;}
+.manager_qrcode_img img{background:#fff;padding:10px;width:200px;}
+/*----二维码---------*/
+.qrcode img{width:150px;height:150px;margin-top:10px;}
+.qrcode>div{margin-top:30px;}
+
+/*---footer-----*/
+.footerbar{background:#fff;text-align:center;position:fixed;bottom:0;width:100%;}
+.footerbar li{padding:0;border-right:1px solid #ebebeb;}
+.footerbar li a{display:block;padding:10px 0;width:100%;}
+.current_page a{color:#f60;}

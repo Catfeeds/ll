@@ -1,0 +1,14 @@
+<?php
+define('VERSION','1.0.0');
+//容联云通信参数
+define('AccountSid', 'aaf98f89539b228f01539cd58e5702c1');
+define('AccountToken', '7ffc8de27eef4d2da7c7a01d3e59f448');
+define('AppId', 'aaf98f89539b228f01539cd725d402d2');
+//沙盒环境（用于应用开发调试）：sandboxapp.cloopen.com
+//生产环境（用户应用上线使用）：app.cloopen.com
+define('ServerIP', 'sandboxapp.cloopen.com');
+define('ServerPort', '8883');
+define('SoftVersion', '2013-12-26');
+define('tempId', '1');//模板Id,测试应用和未上线应用使用测试模板请填写1，正式应用上线后填写已申请审核通过的模板ID=======
+define('CODE_LAST_TIME',"15");//验证码过期时间单位(分钟)
+define('VALID_DAYS', '30');

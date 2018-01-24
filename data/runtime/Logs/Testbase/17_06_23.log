@@ -1,0 +1,70 @@
+[ 2017-06-23T11:02:01+08:00 ] ::1 /ll/index.php?g=Testbase&m=Course&a=courselist&menuid=164
+ERR: 1054:Unknown column 'course_id' in 'where clause'
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `lailong_intention` WHERE (  course_id = 4 ) LIMIT 1  
+
+[ 2017-06-23T13:34:45+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.029785s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.088167s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.122957s ]
+NOTIC: [8] Undefined index: h5_id D:\tools\upupw\htdocs\ll\application\Testbase\Controller\CourseController.class.php 第 91 行.
+SQL: SHOW COLUMNS FROM `lailong_course` [ RunTime:0.0201s ]
+NOTIC: [8] Undefined variable: name D:\tools\upupw\htdocs\ll\application\Testbase\Controller\CourseController.class.php 第 114 行.
+SQL: SELECT * FROM `lailong_course` WHERE ( title = '' ) LIMIT 1   [ RunTime:0.0007s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `lailong_course` (`title`,`picture`,`rated_number`,`integral`,`teacher_id`,`start_time`,`createtime`,`updatetime`) VALUES ('测试','1498196070594ca8670b1b8.jpg','32','21','1','2017-06-24 13:34:38','2017-06-23 13:34:45','2017-06-23 13:34:45') [ RunTime:0.0013s ]
+
+[ 2017-06-23T18:17:23+08:00 ] ::1 /ll/index.php?g=Testbase&m=classification&a=deleteicon
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.036169s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.081522s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.128226s ]
+ERR: 无法加载控制器:Classification
+
+[ 2017-06-23T18:20:21+08:00 ] ::1 /ll/index.php?g=Testbase&m=classification&a=deleteicon
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.050025s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.152973s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.212249s ]
+ERR: 无法加载控制器:Classification
+
+[ 2017-06-23T18:20:33+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.021679s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.055306s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.081742s ]
+NOTIC: [8] Undefined index: h5_id D:\tools\upupw\htdocs\ll\application\Testbase\Controller\CourseController.class.php 第 91 行.
+SQL: SHOW COLUMNS FROM `lailong_course` [ RunTime:0.0206s ]
+NOTIC: [8] Undefined variable: name D:\tools\upupw\htdocs\ll\application\Testbase\Controller\CourseController.class.php 第 114 行.
+SQL: SELECT * FROM `lailong_course` WHERE ( title = '' ) LIMIT 1   [ RunTime:0.0007s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `lailong_course` (`title`,`picture`,`rated_number`,`integral`,`teacher_id`,`start_time`,`createtime`,`updatetime`) VALUES ('3123123','1498213219594ceb6386114.jpg','123','123','1','2017-06-23 18:20:30','2017-06-23 18:20:33','2017-06-23 18:20:33') [ RunTime:0.0009s ]
+
+[ 2017-06-23T18:20:45+08:00 ] ::1 /ll/index.php?g=Testbase&m=classification&a=deleteicon
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.066310s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.123112s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.195372s ]
+ERR: 无法加载控制器:Classification
+
+[ 2017-06-23T18:20:51+08:00 ] ::1 /ll/index.php?g=Testbase&m=course&a=edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.031909s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.075977s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.112556s ]
+NOTIC: [8] Undefined index: editid D:\tools\upupw\htdocs\ll\application\Testbase\Controller\CourseController.class.php 第 142 行.
+NOTIC: [8] Undefined index: h5_id D:\tools\upupw\htdocs\ll\application\Testbase\Controller\CourseController.class.php 第 148 行.
+SQL: SHOW COLUMNS FROM `lailong_course` [ RunTime:0.0214s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `lailong_course` SET `title`='3123123',`picture`='1498213219594ceb6386114.jpg',`rated_number`='123',`integral`='123',`teacher_id`='1',`start_time`='2017-06-23 18:20:30',`updatetime`='2017-06-23 18:20:51' WHERE `id` = 6 [ RunTime:0.0007s ]
+
+[ 2017-06-23T18:21:50+08:00 ] ::1 /ll/index.php?g=Testbase&m=classification&a=deleteicon
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.026236s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.099220s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.130760s ]
+ERR: 无法加载控制器:Classification
+

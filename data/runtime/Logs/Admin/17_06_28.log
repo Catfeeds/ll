@@ -1,0 +1,65 @@
+[ 2017-06-28T08:51:14+08:00 ] ::1 /ll/index.php?g=Admin&m=public&a=dologin
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.020003s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.052829s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.077013s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0199s ]
+SQL: SELECT * FROM `lailong_users` WHERE `user_login` = 'admin' LIMIT 1   [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `lailong_role_user` [ RunTime:0.0156s ]
+SQL: SELECT `role_id` FROM lailong_role_user a INNER JOIN lailong_role as b on a.role_id =b.id  WHERE `user_id` = '1' AND `status` = 1  [ RunTime:0.0033s ]
+SQL: UPDATE `lailong_users` SET `user_login`='admin',`user_pass`='###1caf83a293a8e3399bafb3a70ffd913e',`user_nicename`='admin',`user_email`='admin@qq.com',`user_url`='',`avatar`=NULL,`sex`='0',`birthday`=NULL,`signature`=NULL,`last_login_ip`='0.0.0.0',`last_login_time`='2017-06-28 08:51:14',`create_time`='2017-06-12 04:50:03',`user_activation_key`='',`user_status`='1',`score`='0',`user_type`='1',`coin`='0',`mobile`='' WHERE `id` = '1' [ RunTime:0.0011s ]
+
+[ 2017-06-28T16:50:39+08:00 ] ::1 /ll/index.php?g=Admin&m=Menu&a=index&menuid=100
+NOTIC: D方法实例化没找到模型类Common\Model\AuthRuleModel
+
+[ 2017-06-28T16:50:44+08:00 ] ::1 /ll/index.php?g=Admin&m=menu&a=add
+NOTIC: D方法实例化没找到模型类Common\Model\AuthRuleModel
+
+[ 2017-06-28T16:51:21+08:00 ] ::1 /ll/index.php?g=Admin&m=Menu&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.029911s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.074733s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.112226s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0207s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `lailong_menu` [ RunTime:0.0151s ]
+NOTIC: D方法实例化没找到模型类Common\Model\AuthRuleModel
+SQL: SHOW COLUMNS FROM `lailong_auth_rule` [ RunTime:0.0138s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+SQL: SELECT * FROM `lailong_menu` WHERE `app` = 'Other' AND `model` = 'Appversion' AND `action` = 'index' LIMIT 1   [ RunTime:0.0022s ]
+SQL: SELECT `parentid` FROM `lailong_menu` WHERE `id` = 162 LIMIT 1   [ RunTime:0.0008s ]
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `lailong_menu` (`parentid`,`name`,`app`,`model`,`action`,`data`,`icon`,`remark`,`status`,`type`) VALUES ('162','app管理','Other','Appversion','index','','','','1','1') [ RunTime:0.0015s ]
+SQL: SELECT * FROM `lailong_auth_rule` WHERE `name` = 'other/appversion/index' LIMIT 1   [ RunTime:0.0015s ]
+SQL: INSERT INTO `lailong_auth_rule` (`name`,`module`,`type`,`title`) VALUES ('other/appversion/index','Other','admin_url','app管理') [ RunTime:0.0011s ]
+
+[ 2017-06-28T16:51:24+08:00 ] ::1 /ll/index.php?g=Admin&m=Menu&a=index
+NOTIC: D方法实例化没找到模型类Common\Model\AuthRuleModel
+
+[ 2017-06-28T17:51:51+08:00 ] ::1 /ll/index.php?g=Admin&m=Menu&a=index&menuid=100
+NOTIC: D方法实例化没找到模型类Common\Model\AuthRuleModel
+
+[ 2017-06-28T17:52:19+08:00 ] ::1 /ll/index.php?g=Admin&m=menu&a=add
+NOTIC: D方法实例化没找到模型类Common\Model\AuthRuleModel
+
+[ 2017-06-28T17:52:36+08:00 ] ::1 /ll/index.php?g=Admin&m=Menu&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.036911s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.104319s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.162942s ]
+SQL: SHOW COLUMNS FROM `lailong_users` [ RunTime:0.0212s ]
+SQL: SELECT * FROM `lailong_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `lailong_menu` [ RunTime:0.0357s ]
+NOTIC: D方法实例化没找到模型类Common\Model\AuthRuleModel
+SQL: SHOW COLUMNS FROM `lailong_auth_rule` [ RunTime:0.0149s ]
+NOTIC: [8] Undefined index: validate D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+SQL: SELECT * FROM `lailong_menu` WHERE `app` = 'Other' AND `model` = 'Scorecharge' AND `action` = 'scorechargelist' LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT `parentid` FROM `lailong_menu` WHERE `id` = 0 LIMIT 1   [ RunTime:0.0023s ]
+NOTIC: [8] Undefined index: auto D:\tools\upupw\htdocs\ll\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `lailong_menu` (`parentid`,`name`,`app`,`model`,`action`,`data`,`icon`,`remark`,`status`,`type`) VALUES ('0','积分充值','Other','Scorecharge','scorechargelist','','','','1','1') [ RunTime:0.0012s ]
+SQL: SELECT * FROM `lailong_auth_rule` WHERE `name` = 'other/scorecharge/scorechargelist' LIMIT 1   [ RunTime:0.0010s ]
+SQL: INSERT INTO `lailong_auth_rule` (`name`,`module`,`type`,`title`) VALUES ('other/scorecharge/scorechargelist','Other','admin_url','积分充值') [ RunTime:0.0007s ]
+
+[ 2017-06-28T17:52:39+08:00 ] ::1 /ll/index.php?g=Admin&m=Menu&a=index
+NOTIC: D方法实例化没找到模型类Common\Model\AuthRuleModel
+
